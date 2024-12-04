@@ -5,3 +5,7 @@ export './EmailCompaignsView/email_compaigns_view.dart';
 export './SmsCompaignsView/sms_compaign_view.dart';
 
 export './ChatView/chat_view.dart';
+
+export './Reports/reports_view.dart';
+
+export './SocialCalenderView/social_calender_view.dart';

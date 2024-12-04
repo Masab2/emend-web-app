@@ -1,4 +1,5 @@
 import 'package:emend_web_app/Controllers/controller.dart';
+import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/views/view.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _SideBarViewState extends State<SideBarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.whiteColor,
       body: Obx(() {
         return Column(
           children: [
@@ -43,6 +45,10 @@ class _SideBarViewState extends State<SideBarView> {
         return const EmailCompaignsView();
       case 2:
         return const SmsCompaignView();
+      case 4:
+        return const ReportsView();
+      case 6:
+      return const SocialCalendarView();
       case 7:
         return const ChatView();
       default:

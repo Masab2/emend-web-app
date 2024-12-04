@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.6
   google_fonts: any
   iconly: ^1.0.1
+  syncfusion_flutter_calendar: ^27.2.5
 
 dev_dependencies:
   flutter_test:
