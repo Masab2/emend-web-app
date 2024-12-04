@@ -1,3 +1,4 @@
+import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +44,7 @@ class SideBarWidgets extends StatelessWidget {
                 ? context.mw * 0.17
                 : context.mw * 0.043,
             height: context.mh * 0.85,
+            color: AppColor.whiteColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -68,7 +70,8 @@ class SideBarWidgets extends StatelessWidget {
                               : null,
                           index: sidebarController.selectedIndex.value == 1,
                           ontap: () {
-                            sidebarController.setSelectedIndex(1, "E-Mail Campaigns");
+                            sidebarController.setSelectedIndex(
+                                1, "E-Mail Campaigns");
                           },
                         ),
                         DashboardSideBarComp(
@@ -78,7 +81,8 @@ class SideBarWidgets extends StatelessWidget {
                               : null,
                           index: sidebarController.selectedIndex.value == 2,
                           ontap: () {
-                            sidebarController.setSelectedIndex(2, "SMS Campaigns");
+                            sidebarController.setSelectedIndex(
+                                2, "SMS Campaigns");
                           },
                         ),
                         DashboardSideBarComp(
@@ -88,7 +92,8 @@ class SideBarWidgets extends StatelessWidget {
                               : null,
                           index: sidebarController.selectedIndex.value == 3,
                           ontap: () {
-                            sidebarController.setSelectedIndex(3, "Social media Campaign");
+                            sidebarController.setSelectedIndex(
+                                3, "Social media Campaign");
                           },
                         ),
                         DashboardSideBarComp(
@@ -118,7 +123,8 @@ class SideBarWidgets extends StatelessWidget {
                               : null,
                           index: sidebarController.selectedIndex.value == 6,
                           ontap: () {
-                            sidebarController.setSelectedIndex(6, "Social Calendar");
+                            sidebarController.setSelectedIndex(
+                                6, "Social Calendar");
                           },
                         ),
                         DashboardSideBarComp(

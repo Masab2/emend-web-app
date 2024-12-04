@@ -1,12 +1,12 @@
-import 'package:emend_web_app/config/Color/app_color.dart';
+import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/TopIconComp/top_icon_comp.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 
-class EmailCompaginSectionOneWidget extends StatelessWidget {
-  const EmailCompaginSectionOneWidget({super.key});
+class EmailCompaginHeaderWidget extends StatelessWidget {
+  const EmailCompaginHeaderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,9 @@ class EmailCompaginSectionOneWidget extends StatelessWidget {
                     child: TextFormField(
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
-                            vertical: context.mh * 0.01,
-                            horizontal: context.mw * 0.01),
+                          vertical: context.mh * 0.01,
+                          horizontal: context.mw * 0.01,
+                        ),
                         suffixIcon: const Icon(IconlyLight.search),
                         border: InputBorder.none,
                       ),

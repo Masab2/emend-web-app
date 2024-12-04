@@ -2,7 +2,7 @@ import 'package:emend_web_app/Bindings/bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'config/Routes/routes.dart';
+import 'config/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());

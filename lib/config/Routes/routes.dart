@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/Routes/routes_name.dart';
+import 'package:emend_web_app/config/routes/routes_name.dart';
 import 'package:emend_web_app/views/view.dart';
 import 'package:get/get.dart';
 

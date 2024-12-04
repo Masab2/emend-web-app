@@ -3,11 +3,9 @@ import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EmailCompainsBox extends StatelessWidget {
+class SmsCompaignComp extends StatelessWidget {
   final String count;
-  final String heading;
-  const EmailCompainsBox(
-      {super.key, required this.count, required this.heading});
+  const SmsCompaignComp({super.key, required this.count});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,6 @@ class EmailCompainsBox extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(Icons.report),
             Text(
               count,
               style: GoogleFonts.barlow(
@@ -30,7 +27,7 @@ class EmailCompainsBox extends StatelessWidget {
               ),
             ),
             Text(
-              heading,
+              "UnRead Message",
               style: GoogleFonts.barlow(
                 fontSize: context.mh * 0.022,
                 fontWeight: FontWeight.w600,

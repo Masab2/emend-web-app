@@ -1,6 +1,10 @@
-import 'package:emend_web_app/config/Color/app_color.dart';
-import 'package:emend_web_app/config/Widgets/widgets.dart';
+import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/views/EmailCompaignsView/emailCompaignWidgets/email_compaign_card_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'emailCompaignWidgets/email_compaagin_second_widget.dart';
+import 'emailCompaignWidgets/email_compagin_section_one_widget.dart';
+import 'emailCompaignWidgets/email_compaigns_list_widget.dart';
 
 class EmailCompaignsView extends StatelessWidget {
   const EmailCompaignsView({super.key});
@@ -9,10 +13,10 @@ class EmailCompaignsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.viewsBackgroundColor,
-      child: SingleChildScrollView(
+      child: const SingleChildScrollView(
         child: Column(
-          children: const [
-            EmailCompaginSectionOneWidget(),
+          children: [
+            EmailCompaginHeaderWidget(),
             EmailCompaignCardWidget(),
             EmailCompaaginSecondWidget(),
             EmailCompaignsListWidget(),

@@ -2,7 +2,7 @@ import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../components/EmailCompainBox/email_compains_box.dart';
+import '../../../config/components/EmailCompainBox/email_compains_box.dart';
 
 class EmailCompaignCardWidget extends StatelessWidget {
   const EmailCompaignCardWidget({super.key});
@@ -17,8 +17,8 @@ class EmailCompaignCardWidget extends StatelessWidget {
             children: [
               Text(
                 "E-Mail Campaigns",
-                style: GoogleFonts.roboto(
-                  fontSize: context.mh * 0.024,
+                style: GoogleFonts.barlow(
+                  fontSize: context.mh * 0.028,
                   fontWeight: FontWeight.w500,
                 ),
               )

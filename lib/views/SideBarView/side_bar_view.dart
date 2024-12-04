@@ -1,5 +1,5 @@
 import 'package:emend_web_app/Controllers/controller.dart';
-import 'package:emend_web_app/config/Widgets/widgets.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/views/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +40,11 @@ class _SideBarViewState extends State<SideBarView> {
   Widget _getSelectedWidget(int index) {
     switch (index) {
       case 1:
-      return const EmailCompaignsView();
+        return const EmailCompaignsView();
+      case 2:
+        return const SmsCompaignView();
+      case 7:
+        return const ChatView();
       default:
         return const Center(child: Text('Page not found'));
     }
