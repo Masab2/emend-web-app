@@ -28,6 +28,10 @@ class EmailCompaginHeaderWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                       decoration: InputDecoration(
+                        hintText: "Search",
+                        hintStyle: GoogleFonts.barlow(
+                          fontSize: context.mh * 0.020,
+                        ),
                         contentPadding: EdgeInsets.symmetric(
                           vertical: context.mh * 0.01,
                           horizontal: context.mw * 0.01,

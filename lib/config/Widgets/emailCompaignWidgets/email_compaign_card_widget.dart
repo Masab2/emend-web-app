@@ -2,7 +2,7 @@ import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../config/components/EmailCompainBox/email_compains_box.dart';
+import '../../components/EmailCompainBox/email_compains_box.dart';
 
 class EmailCompaignCardWidget extends StatelessWidget {
   const EmailCompaignCardWidget({super.key});

@@ -1,14 +1,18 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
+
+import '../../../Controllers/createEmailController/create_email_controller.dart';
 
 class EmailCompaaginSecondWidget extends StatelessWidget {
   const EmailCompaaginSecondWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final createEmailController = Get.put(CreateEmailController());
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
       child: Row(
@@ -17,7 +21,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
             color: AppColor.whiteColor,
             child: Container(
               height: context.mh * 0.20,
-              width: context.mw * 0.35,
+              width: context.mw * 0.74,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,7 +43,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                   0.01.ph(context),
                   Container(
                     height: context.mh * 0.038,
-                    width: context.mw * 0.25,
+                    width: context.mw * 0.40,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: AppColor.boxBorderColor,
@@ -91,7 +95,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                   ),
                   Container(
                     height: context.mh * 0.038,
-                    width: context.mw * 0.25,
+                    width: context.mw * 0.40,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: AppColor.boxBorderColor,
@@ -145,7 +149,9 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                   MaterialButton(
                     minWidth: context.mw * 0.15,
                     height: context.mh * 0.05,
-                    onPressed: () {},
+                    onPressed: () {
+                      createEmailController.showCreateEmailUi(true);
+                    },
                     color: AppColor.buttonColor,
                     child: Text(
                       '+ Create a New Campaign',
@@ -158,47 +164,6 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
               ),
             ),
           ),
-          0.03.pw(context),
-          Card(
-            color: AppColor.whiteColor,
-            child: Container(
-              height: context.mh * 0.20,
-              width: context.mw * 0.35,
-              child: Column(
-                children: [
-                  0.02.ph(context),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: context.mw * 0.023),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Email Compaigns",
-                        style: GoogleFonts.barlow(
-                          fontSize: context.mh * 0.020,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Spacer(),
-                  MaterialButton(
-                    minWidth: context.mw * 0.15,
-                    height: context.mh * 0.05,
-                    onPressed: () {},
-                    color: AppColor.buttonColor,
-                    child: Text(
-                      '+ Create a New Campaign',
-                      style: GoogleFonts.barlow(
-                        fontSize: context.mh * 0.018,
-                      ),
-                    ),
-                  ),
-                  0.02.ph(context),
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );

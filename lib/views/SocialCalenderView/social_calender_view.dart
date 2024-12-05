@@ -59,7 +59,7 @@ class SocialCalendarView extends StatelessWidget {
         endTime: DateTime.now().add(const Duration(days: 1, hours: 1)),
         subject: 'Lunch Meeting',
         color: Colors.blueAccent,
-        isAllDay: true,
+        isAllDay: true, 
       ),
       Appointment(
         startTime: DateTime.now().add(const Duration(days: 2)),

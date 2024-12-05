@@ -1,6 +1,6 @@
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/views/SmsCompaignsView/widgets/sms_compaigns_card_widget.dart';
-import 'package:emend_web_app/views/SmsCompaignsView/widgets/sms_copaign_header_widget.dart';
+import 'package:emend_web_app/config/widgets/smsCompaginWidgets/sms_compaigns_card_widget.dart';
+import 'package:emend_web_app/config/widgets/smsCompaginWidgets/sms_copaign_header_widget.dart';
 import 'package:flutter/material.dart';
 
 class SmsCompaignView extends StatefulWidget {

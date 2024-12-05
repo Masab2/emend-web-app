@@ -14,7 +14,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
         color: AppColor.whiteColor,
         child: Container(
           height: context.mh * 0.40,
-          // width: context.mw * 0.8,
+          // width: context.mw * 0.,
           padding: EdgeInsets.symmetric(
             horizontal: context.mw * 0.01,
           ),

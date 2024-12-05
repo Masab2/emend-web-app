@@ -9,3 +9,5 @@ export './ChatView/chat_view.dart';
 export './Reports/reports_view.dart';
 
 export './SocialCalenderView/social_calender_view.dart';
+
+export './EmailCompaignsView/createEmailCompaign/create_email_compagin_view.dart';

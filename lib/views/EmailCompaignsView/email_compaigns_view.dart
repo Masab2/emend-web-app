@@ -1,27 +1,41 @@
+import 'package:emend_web_app/Controllers/createEmailController/create_email_controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/views/EmailCompaignsView/emailCompaignWidgets/email_compaign_card_widget.dart';
+import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/views/view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../config/Widgets/widgets.dart';
 
-import 'emailCompaignWidgets/email_compaagin_second_widget.dart';
-import 'emailCompaignWidgets/email_compagin_section_one_widget.dart';
-import 'emailCompaignWidgets/email_compaigns_list_widget.dart';
-
-class EmailCompaignsView extends StatelessWidget {
+class EmailCompaignsView extends StatefulWidget {
   const EmailCompaignsView({super.key});
 
+  @override
+  State<EmailCompaignsView> createState() => _EmailCompaignsViewState();
+}
+
+class _EmailCompaignsViewState extends State<EmailCompaignsView> {
+  final createEmailController = Get.put(CreateEmailController());
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.viewsBackgroundColor,
-      child: const SingleChildScrollView(
-        child: Column(
-          children: [
-            EmailCompaginHeaderWidget(),
-            EmailCompaignCardWidget(),
-            EmailCompaaginSecondWidget(),
-            EmailCompaignsListWidget(),
-          ],
-        ),
+      child: SingleChildScrollView(
+        child: Obx(() {
+          return createEmailController.showCreateEmailView.value == false
+              ? Column(
+                  children: [
+                    const EmailCompaginHeaderWidget(),
+                    0.01.ph(context),
+                    const EmailCompaignCardWidget(),
+                    0.01.ph(context),
+                    const EmailCompaaginSecondWidget(),
+                    0.01.ph(context),
+                    const EmailCompaignsListWidget(),
+                    0.01.ph(context),
+                  ],
+                )
+              : const CreateEmailCompaginView();
+        }),
       ),
     );
   }

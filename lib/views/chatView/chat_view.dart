@@ -1,8 +1,9 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
-import 'package:emend_web_app/views/chatView/chatWidgets/chat_contact_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../config/Widgets/widgets.dart';
 
 class ChatView extends StatelessWidget {
   const ChatView({super.key});

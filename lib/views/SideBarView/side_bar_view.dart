@@ -48,7 +48,7 @@ class _SideBarViewState extends State<SideBarView> {
       case 4:
         return const ReportsView();
       case 6:
-      return const SocialCalendarView();
+        return const SocialCalendarView();
       case 7:
         return const ChatView();
       default:
