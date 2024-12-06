@@ -52,7 +52,7 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
                 ],
               ),
               Container(
-                height: context.mh * 0.7,
+                height: context.mh * 0.8,
                 width: context.mw,
                 // color: Colors.red,
                 child: Column(
@@ -66,14 +66,19 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+                padding: EdgeInsets.only(right: context.mw * 0.10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    IconButton.filled(
-                      onPressed: createEmailController.incrementIndex,
-                      icon: const Icon(Icons.arrow_forward_ios_rounded),
-                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        createEmailController.incrementIndex();
+                      },
+                      child: Text(
+                        "Next",
+                        style: GoogleFonts.barlow(),
+                      ),
+                    )
                   ],
                 ),
               )
@@ -87,7 +92,11 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
   Widget getselectedIndexForm(int index) {
     switch (index) {
       case 0:
-        return CreateEmailFormSetupWidget();
+        return const CreateEmailFormSetupWidget();
+      case 1:
+        return const CreateEmailContentWidget();
+      case 2:
+        return const CreateEmailRecipientWidget();
       default:
         return const Text("No Form");
     }

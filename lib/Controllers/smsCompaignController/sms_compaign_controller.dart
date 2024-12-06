@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
-class CreateEmailController extends GetxController {
-  RxBool showCreateEmailView = false.obs;
-  final processes = ['Setup', 'Content', 'Recipient', 'Send'];
+class SmsCompaignController extends GetxController {
+  RxBool showsmsCompaignView = false.obs;
+  final processes = ['Setup', 'Content', 'Message', 'Send'];
   void showCreateEmailUi(bool visibility) {
-    showCreateEmailView.value = visibility;
+    showsmsCompaignView.value = visibility;
   }
 
   // Reactive process index

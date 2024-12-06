@@ -2,13 +2,17 @@ import 'package:emend_web_app/config/components/messagingComp/messaging_comp.dar
 import 'package:emend_web_app/config/components/smsCompaignComp/sms_compaign_comp.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../Controllers/controller.dart';
 
 class SmsCompaignsCardWidget extends StatelessWidget {
   const SmsCompaignsCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final smsController = Get.put(SmsCompaignController());
     return Column(
       children: [
         Padding(
@@ -69,22 +73,27 @@ class SmsCompaignsCardWidget extends StatelessWidget {
         0.01.ph(context),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-          child: const Row(
+          child: Row(
             children: [
-              MessagingComp(
+              const MessagingComp(
                 text: "Send a group Text",
                 subtext:
                     "Compose and send group texts to your subscribed contacts",
               ),
-              MessagingComp(
+              const MessagingComp(
                 text: "Start 1-on-chat",
                 subtext:
                     "Use a textable phone number to start a 1-on-1 chat with a contact",
               ),
-              MessagingComp(
-                text: "Create a drip campaign",
-                subtext:
-                    "Automate messages when sunscribers join your contact group",
+              GestureDetector(
+                onTap: () {
+                  smsController.showCreateEmailUi(true);
+                },
+                child: const MessagingComp(
+                  text: "Create a SMS campaign",
+                  subtext:
+                      "Automate messages when sunscribers join your contact group",
+                ),
               ),
             ],
           ),

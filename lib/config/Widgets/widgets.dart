@@ -24,3 +24,10 @@ export './chatWidgets/contact_list_widget.dart';
 
 // Create Email Compagin Screen
 export './createEmailFormWidget/create_email_form_setup_widget.dart';
+export './createEmailFormWidget/email_content_widget.dart';
+export './createEmailFormWidget/create_email_recipent_widget.dart';
+
+
+// Create SMS Compaign Widget
+export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_setup_widget.dart';
+export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_content_widget.dart';
