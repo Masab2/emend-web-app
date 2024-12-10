@@ -10,6 +10,8 @@ export './Reports/reports_view.dart';
 
 export './SocialCalenderView/social_calender_view.dart';
 
+export './SocialCalenderView/AddPostView/add_post_view.dart';
+
 export './EmailCompaignsView/createEmailCompaign/create_email_compagin_view.dart';
 
 export './SmsCompaignsView/createSmsCompaignView/create_sms_compaign_view.dart';

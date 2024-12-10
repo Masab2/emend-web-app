@@ -3,6 +3,7 @@ import 'package:emend_web_app/Controllers/createEmailController/create_email_con
 import 'package:emend_web_app/config/Painter/painter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
 import 'package:timelines/timelines.dart';
 
 const completeColor = Color(0xff5e6172);
@@ -84,10 +85,7 @@ class ProcessTimelineIndicator extends StatelessWidget {
                     color = inProgressColor;
                     child = Padding(
                       padding: EdgeInsets.all(screenHeight * 0.01),
-                      child: CircularProgressIndicator(
-                        strokeWidth: screenHeight * 0.003,
-                        valueColor: const AlwaysStoppedAnimation(Colors.white),
-                      ),
+                      child: Icon(IconlyLight.add_user)
                     );
                   } else if (index < processIndex) {
                     color = completeColor;

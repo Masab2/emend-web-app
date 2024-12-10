@@ -36,7 +36,9 @@ class FormFeildsComp extends StatelessWidget {
                 width: context.mw * 0.60,
                 padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                  border: Border.all(
+                    color: Colors.grey, 
+                  ),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   maxLines: maxLines,
@@ -45,9 +47,8 @@ class FormFeildsComp extends StatelessWidget {
                     hintStyle: GoogleFonts.barlow(
                       fontSize: context.mh * 0.020,
                     ),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: context.mh * 0.01,
-                      horizontal: context.mw * 0.01,
+                    contentPadding: EdgeInsets.only(
+                      bottom: context.mh * 0.02
                     ),
                     border: InputBorder.none,
                   ),

@@ -1,5 +1,6 @@
 import 'package:emend_web_app/Controllers/controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/config/widgets/smsCompaginWidgets/sms_compaigns_card_widget.dart';
 import 'package:emend_web_app/config/widgets/smsCompaginWidgets/sms_copaign_header_widget.dart';
 import 'package:emend_web_app/views/SmsCompaignsView/createSmsCompaignView/create_sms_compaign_view.dart';
@@ -19,15 +20,17 @@ class _SmsCompaignViewState extends State<SmsCompaignView> {
     final smsController = Get.put(SmsCompaignController());
     return Container(
       color: AppColor.viewsBackgroundColor,
+      height: context.mh,
       child: SingleChildScrollView(
         child: Obx(
           () {
             return smsController.showsmsCompaignView.value == false
-                ? const Column(
+                ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SmsCopaignHeaderWidget(),
+                      0.02.ph(context),
                       SmsCompaignsCardWidget(),
                     ],
                   )

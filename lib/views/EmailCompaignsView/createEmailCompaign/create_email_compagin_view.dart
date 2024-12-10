@@ -54,7 +54,6 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
               Container(
                 height: context.mh * 0.8,
                 width: context.mw,
-                // color: Colors.red,
                 child: Column(
                   children: [
                     ProcessTimelineIndicator(),

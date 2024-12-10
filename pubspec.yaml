@@ -42,6 +42,8 @@ dependencies:
   timelines: ^0.1.0
   font_awesome_flutter: ^10.8.0
   searchfield: ^1.2.0
+  intl: any
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:

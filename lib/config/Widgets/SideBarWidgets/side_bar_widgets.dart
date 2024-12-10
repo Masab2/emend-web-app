@@ -85,25 +85,15 @@ class SideBarWidgets extends StatelessWidget {
                                 2, "SMS Campaigns");
                           },
                         ),
-                        DashboardSideBarComp(
-                          icon: Icons.person_2_outlined,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'Social media Campaign'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 3,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(
-                                3, "Social media Campaign");
-                          },
-                        ),
+                        
                         DashboardSideBarComp(
                           icon: Icons.add_chart,
                           title: sidebarController.isSidebarVisible.value
                               ? 'Reports'
                               : null,
-                          index: sidebarController.selectedIndex.value == 4,
+                          index: sidebarController.selectedIndex.value == 3,
                           ontap: () {
-                            sidebarController.setSelectedIndex(4, "Reports");
+                            sidebarController.setSelectedIndex(3, "Reports");
                           },
                         ),
                         DashboardSideBarComp(
@@ -111,9 +101,9 @@ class SideBarWidgets extends StatelessWidget {
                           title: sidebarController.isSidebarVisible.value
                               ? 'Templates'
                               : null,
-                          index: sidebarController.selectedIndex.value == 5,
+                          index: sidebarController.selectedIndex.value == 4,
                           ontap: () {
-                            sidebarController.setSelectedIndex(5, "Templates");
+                            sidebarController.setSelectedIndex(4, "Templates");
                           },
                         ),
                         DashboardSideBarComp(
@@ -121,10 +111,10 @@ class SideBarWidgets extends StatelessWidget {
                           title: sidebarController.isSidebarVisible.value
                               ? 'Social Calendar'
                               : null,
-                          index: sidebarController.selectedIndex.value == 6,
+                          index: sidebarController.selectedIndex.value == 5,
                           ontap: () {
                             sidebarController.setSelectedIndex(
-                                6, "Social Calendar");
+                                5, "Social Calendar");
                           },
                         ),
                         DashboardSideBarComp(
@@ -132,9 +122,9 @@ class SideBarWidgets extends StatelessWidget {
                           title: sidebarController.isSidebarVisible.value
                               ? 'Chats'
                               : null,
-                          index: sidebarController.selectedIndex.value == 7,
+                          index: sidebarController.selectedIndex.value == 6,
                           ontap: () {
-                            sidebarController.setSelectedIndex(7, "Chats");
+                            sidebarController.setSelectedIndex(6, "Chats");
                           },
                         ),
                       ],
