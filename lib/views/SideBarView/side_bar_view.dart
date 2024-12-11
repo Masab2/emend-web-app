@@ -41,11 +41,13 @@ class _SideBarViewState extends State<SideBarView> {
 
   Widget _getSelectedWidget(int index) {
     switch (index) {
+      case 0:
+        return const DashboardView();
       case 1:
         return const EmailCompaignsView();
       case 2:
         return const SmsCompaignView();
-      case 4:
+      case 3:
         return const ReportsView();
       case 5:
         return const SocialCalendarView();

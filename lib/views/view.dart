@@ -15,3 +15,5 @@ export './SocialCalenderView/AddPostView/add_post_view.dart';
 export './EmailCompaignsView/createEmailCompaign/create_email_compagin_view.dart';
 
 export './SmsCompaignsView/createSmsCompaignView/create_sms_compaign_view.dart';
+
+export './DashboardView/dashboard_view.dart';

@@ -31,3 +31,8 @@ export './createEmailFormWidget/create_email_recipent_widget.dart';
 // Create SMS Compaign Widget
 export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_setup_widget.dart';
 export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_content_widget.dart';
+
+// Dashboard Widgets
+export './DashBoardWidgets/dash_board_header_widget.dart';
+export './DashBoardWidgets/dashboard_bar_graph_tiles.dart';
+export './DashBoardWidgets/post_immpresshion_card_widget.dart';
