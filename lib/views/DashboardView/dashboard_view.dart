@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace, avoid_unnecessary_containers
+
 import 'package:emend_web_app/Model/GraphDataModel/graph_model.dart';
 import 'package:emend_web_app/config/Widgets/widgets.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
@@ -39,7 +41,7 @@ class DashboardView extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                       const Row(
+                      const Row(
                         children: [
                           DashboardBarGraphTiles(),
                           DashboardBarGraphTiles(),
@@ -83,6 +85,7 @@ class DashboardView extends StatelessWidget {
                                 Expanded(
                                   child: SfCartesianChart(
                                     legend: const Legend(isVisible: false),
+                                    plotAreaBorderWidth: 0,
                                     tooltipBehavior:
                                         TooltipBehavior(enable: false),
                                     primaryXAxis: const CategoryAxis(
@@ -108,7 +111,8 @@ class DashboardView extends StatelessWidget {
                                         yValueMapper: (GraphData sales, _) =>
                                             sales.sales,
                                         color: Colors.blue,
-                                        width: 0.2, // Reduced bar width
+                                        borderRadius: BorderRadius.circular(10),
+                                        width: 0.1, // Reduced bar width
                                       ),
                                     ],
                                   ),
@@ -123,8 +127,13 @@ class DashboardView extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      height: context.mh * 1.1,
-                      color: Colors.red,
+                      child: Column(
+                        children: [
+                          const DashboardPiechartCardWidgetOne(),
+                          PostInsightsWidget(),
+                          const DashboardPostSummaryWidget()
+                        ],
+                      ),
                     ),
                   )
                 ],

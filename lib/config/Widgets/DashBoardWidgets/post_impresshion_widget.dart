@@ -8,45 +8,50 @@ class PostImpresshionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Container(
-          height: context.mw * 0.07,
-          width: context.mw * 0.07,
-          decoration: const BoxDecoration(
-            color: Colors.grey,
-          ),
-        ),
-        0.02.pw(context),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        0.05.ph(context),
+        Row(
           children: [
-            Text(
-              "ENGAGEMENT",
-              style: GoogleFonts.barlow(
-                fontSize: context.mh * 0.018,
-                fontWeight: FontWeight.w500,
+            Container(
+              height: context.mw * 0.07,
+              width: context.mw * 0.07,
+              decoration: const BoxDecoration(
+                color: Colors.grey,
               ),
             ),
-            0.01.ph(context),
-            Text(
-              "89.64%",
-              style: GoogleFonts.barlow(
-                fontSize: context.mh * 0.018,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            0.01.ph(context),
-            SimpleAnimationProgressBar(
-              height: context.mh * 0.02,
-              width: context.mw * 0.16,
-              backgroundColor: Colors.grey.shade200,
-              foregrondColor: Colors.blue,
-              ratio: 0.2,
-              direction: Axis.horizontal,
-              curve: Curves.fastLinearToSlowEaseIn,
-              duration: const Duration(seconds: 3),
-              borderRadius: BorderRadius.circular(20),
+            0.02.pw(context),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "ENGAGEMENT",
+                  style: GoogleFonts.barlow(
+                    fontSize: context.mh * 0.018,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                0.01.ph(context),
+                Text(
+                  "89.64%",
+                  style: GoogleFonts.barlow(
+                    fontSize: context.mh * 0.018,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                0.02.ph(context),
+                SimpleAnimationProgressBar(
+                  height: context.mh * 0.02,
+                  width: context.mw * 0.16,
+                  backgroundColor: Colors.grey.shade200,
+                  foregrondColor: Colors.blue,
+                  ratio: 0.2,
+                  direction: Axis.horizontal,
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  duration: const Duration(seconds: 3),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ],
             ),
           ],
         ),

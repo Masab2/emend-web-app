@@ -36,3 +36,6 @@ export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_content_widget
 export './DashBoardWidgets/dash_board_header_widget.dart';
 export './DashBoardWidgets/dashboard_bar_graph_tiles.dart';
 export './DashBoardWidgets/post_immpresshion_card_widget.dart';
+export './DashBoardWidgets/dashboard_pieChart_card_widget_one.dart';
+export './DashBoardWidgets/dashboard_post_insight_widget.dart';
+export './DashBoardWidgets/dashboard_post_summary_widget.dart';

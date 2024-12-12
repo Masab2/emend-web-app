@@ -45,13 +45,13 @@ class DashboardBarGraphTiles extends StatelessWidget {
                   child: SfCartesianChart(
                     legend: const Legend(isVisible: false),
                     tooltipBehavior: TooltipBehavior(enable: false),
+                     plotAreaBorderWidth: 0,
                     primaryXAxis: const CategoryAxis(
                       isVisible: false,
                     ),
                     primaryYAxis: const NumericAxis(
                       isVisible: false,
                       axisLine: AxisLine(width: 0),
-                      majorGridLines: MajorGridLines(color: Colors.white),
                       labelFormat: '',
                     ),
                     series: <CartesianSeries>[
@@ -64,6 +64,7 @@ class DashboardBarGraphTiles extends StatelessWidget {
                         ],
                         xValueMapper: (GraphData sales, _) => sales.month,
                         yValueMapper: (GraphData sales, _) => sales.sales,
+                        borderRadius: BorderRadius.circular(10),
                         color: Colors.blue,
                         width: 0.3,
                       ),
