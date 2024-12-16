@@ -83,12 +83,8 @@ class SmsProcessTimelineIndicator extends StatelessWidget {
                   if (index == processIndex) {
                     color = inProgressColor;
                     child = Padding(
-                      padding: EdgeInsets.all(screenHeight * 0.01),
-                      child: CircularProgressIndicator(
-                        strokeWidth: screenHeight * 0.003,
-                        valueColor: const AlwaysStoppedAnimation(Colors.white),
-                      ),
-                    );
+                        padding: EdgeInsets.all(screenHeight * 0.01),
+                        child: const Icon(Icons.loop));
                   } else if (index < processIndex) {
                     color = completeColor;
                     child = Icon(
@@ -174,7 +170,6 @@ class SmsProcessTimelineIndicator extends StatelessWidget {
             );
           }),
         ),
-       
       ],
     );
   }

@@ -3,11 +3,10 @@ import 'package:emend_web_app/Controllers/createEmailController/create_email_con
 import 'package:emend_web_app/config/Painter/painter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconly/iconly.dart';
 import 'package:timelines/timelines.dart';
 
 const completeColor = Color(0xff5e6172);
-const inProgressColor = Color(0xff5ec792);
+const inProgressColor = Color.fromARGB(255, 94, 160, 199);
 const todoColor = Color(0xffd1d2d7);
 
 class ProcessTimelineIndicator extends StatelessWidget {
@@ -83,10 +82,7 @@ class ProcessTimelineIndicator extends StatelessWidget {
 
                   if (index == processIndex) {
                     color = inProgressColor;
-                    child = Padding(
-                      padding: EdgeInsets.all(screenHeight * 0.01),
-                      child: Icon(IconlyLight.add_user)
-                    );
+                    child = const Icon(Icons.loop);
                   } else if (index < processIndex) {
                     color = completeColor;
                     child = Icon(

@@ -38,7 +38,7 @@ dependencies:
   get: ^4.6.6
   google_fonts: any
   iconly: ^1.0.1
-  syncfusion_flutter_calendar: any
+  syncfusion_flutter_calendar: ^26.1.14
   timelines: ^0.1.0
   font_awesome_flutter: ^10.8.0
   searchfield: ^1.2.0

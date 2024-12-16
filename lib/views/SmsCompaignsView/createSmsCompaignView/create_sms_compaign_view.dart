@@ -1,9 +1,8 @@
-import 'package:emend_web_app/Controllers/controller.dart';
+import 'package:emend_web_app/Controllers/StepController/step_controller.dart';
+import 'package:emend_web_app/Controllers/smsCompaignController/sms_compaign_controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/components/stepIndicator/sms_process_timeLine_indicator.dart';
+import 'package:emend_web_app/config/components/stepIndicator/step_indicator.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
-import 'package:emend_web_app/config/widgets/smsCompaginWidgets/createSmsCompaignWidget/create_sms_message_widget.dart';
-import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +12,10 @@ class CreateSmsCompaignView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize the StepController
+    final StepController stepController = Get.put(StepController());
     final createSmsController = Get.put(SmsCompaignController());
+
     return Container(
       color: AppColor.viewsBackgroundColor,
       height: context.mh,
@@ -40,62 +42,60 @@ class CreateSmsCompaignView extends StatelessWidget {
                 ),
               ],
             ),
+            // Steps Section
             Container(
               height: context.mh * 0.8,
               width: context.mw,
-              // color: Colors.red,
-              child: Column(
-                children: [
-                  SmsProcessTimelineIndicator(),
-                  Obx(() {
-                    return getselectedIndexForm(
-                        createSmsController.processIndex.value);
-                  })
-                ],
+              child: Obx(
+                () => SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Steps Map: Display steps dynamically
+                      ...stepController.steps.map((step) {
+                        final int index = stepController.steps.indexOf(step);
+                        return StepIndicator(
+                          title: step.title,
+                          isActive: step.isActive,
+                          isLast: index == stepController.steps.length - 1,
+                          widget: step.widget,
+                          onRemove: () {
+                            stepController.removeStep(index);
+                          },
+                        );
+                      }),
+
+                      const SizedBox(height: 20),
+                      // Add Step Button
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.mw * 0.03,
+                        ),
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                stepController.addStep();
+                              },
+                              child: const CircleAvatar(
+                                backgroundColor: AppColor.blueColor,
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(right: context.mw * 0.10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  MaterialButton(
-                    onPressed: () {
-                      createSmsController.decrementIndex();
-                    },
-                    child: Text(
-                      "Previous",
-                      style: GoogleFonts.barlow(),
-                    ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      createSmsController.incrementIndex();
-                    },
-                    child: Text(
-                      "Next",
-                      style: GoogleFonts.barlow(),
-                    ),
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),
     );
-  }
-
-  Widget getselectedIndexForm(int index) {
-    switch (index) {
-      case 0:
-        return const SmsCompaignSetupWidget();
-      case 1:
-        return const SmsCompaignContentWidget();
-      case 2:
-        return const CreateSmsMessageWidget();
-      default:
-        return const Text("No Form");
-    }
   }
 }

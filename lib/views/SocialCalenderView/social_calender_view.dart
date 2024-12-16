@@ -3,9 +3,8 @@ import 'package:emend_web_app/Model/EmailCompaignModel/SocialCalenderAppoinmentL
 import 'package:emend_web_app/views/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../../config/utils/Dialog/add_post_dialog.dart';
-
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 class SocialCalendarView extends StatelessWidget {
   const SocialCalendarView({super.key});
 
