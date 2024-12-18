@@ -127,11 +127,11 @@ class DashboardView extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      child: Column(
+                      child: const Column(
                         children: [
-                          const DashboardPiechartCardWidgetOne(),
+                          DashboardPiechartCardWidgetOne(),
                           PostInsightsWidget(),
-                          const DashboardPostSummaryWidget()
+                          DashboardPostSummaryWidget()
                         ],
                       ),
                     ),

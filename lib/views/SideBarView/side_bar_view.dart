@@ -49,6 +49,8 @@ class _SideBarViewState extends State<SideBarView> {
         return const SmsCompaignView();
       case 3:
         return const ReportsView();
+      case 4:
+        return const TemplateView();
       case 5:
         return const SocialCalendarView();
       case 6:
