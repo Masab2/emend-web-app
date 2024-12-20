@@ -19,3 +19,9 @@ export './SmsCompaignsView/createSmsCompaignView/create_sms_compaign_view.dart';
 export './DashboardView/dashboard_view.dart';
 
 export './TemplateView/template_view.dart';
+
+export './ContactListView/contact_list_view.dart';
+
+export './ContactListView/create_contact_view.dart';
+
+export './ContactListView/contact_details_list.dart';

@@ -84,7 +84,8 @@ class ReportsListWidget extends StatelessWidget {
                 ],
               ),
               const Divider(),
-              Expanded(
+              SizedBox(
+                height: context.mh * 0.5,
                 child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {

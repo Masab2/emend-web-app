@@ -39,13 +39,13 @@ dependencies:
   google_fonts: any
   iconly: ^1.0.1
   syncfusion_flutter_calendar: ^26.1.14
-  timelines: ^0.1.0
   font_awesome_flutter: ^10.8.0
-  searchfield: ^1.2.0
   intl: any
   dotted_border: ^2.1.0
   syncfusion_flutter_charts: ^26.1.42
   simple_animation_progress_bar: ^1.8.2
+  file_picker: ^8.1.6
+  flutter_typeahead: ^5.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -29,9 +29,9 @@ class _SmsCompaignViewState extends State<SmsCompaignView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SmsCopaignHeaderWidget(),
+                      const SmsCopaignHeaderWidget(),
                       0.02.ph(context),
-                      SmsCompaignsCardWidget(),
+                      const SmsCompaignsCardWidget(),
                     ],
                   )
                 : const CreateSmsCompaignView();

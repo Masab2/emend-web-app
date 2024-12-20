@@ -13,9 +13,9 @@ class DashboardPiechartCardWidgetOne extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.37,
+        height: context.mh * 0.4,
         child: Container(
-          height: context.mh * 0.37,
+          height: context.mh * 0.4,
           width: context.mw,
           child: Column(
             children: [
@@ -48,8 +48,9 @@ class DashboardPiechartCardWidgetOne extends StatelessWidget {
                         ),
                       ],
                     ),
+                    0.05.ph(context),
                     Container(
-                      height: context.mw * 0.12,
+                      height: context.mw * 0.08,
                       width: context.mw,
                       child: SfCircularChart(
                         legend: const Legend(isVisible: false),
@@ -69,7 +70,7 @@ class DashboardPiechartCardWidgetOne extends StatelessWidget {
                               ),
                             ),
                             radius: '70%',
-                            innerRadius: '50%',
+                            innerRadius: '60%',
                           ),
                         ],
                       ),

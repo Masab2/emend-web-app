@@ -63,7 +63,7 @@ class SmsCompaignsCardWidget extends StatelessWidget {
               Text(
                 "MESSAGING",
                 style: GoogleFonts.barlow(
-                  fontSize: context.mh * 0.024,
+                  fontSize: context.mh * 0.022,
                   fontWeight: FontWeight.w500,
                 ),
               ),

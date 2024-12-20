@@ -13,9 +13,9 @@ class PostInsightsWidget extends StatelessWidget {
     return Card(
       color: Colors.white,
       child: Container(
-        height: screenHeight * 0.37,
+        height: screenHeight * 0.27,
         child: Container(
-          height: screenHeight * 0.37,
+          height: screenHeight * 0.27,
           width: context.mw,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class PostInsightsWidget extends StatelessWidget {
                       yValueMapper: (ChartData data, _) => data.views,
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.blue,
-                      width: 0.2,
+                      width: 0.1,
                     )
                   ],
                 ),

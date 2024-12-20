@@ -11,9 +11,10 @@ class ReportCardComp extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.25,
-        width: context.mw * 0.24,
-        padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+        height: context.mh * 0.16,
+        width: context.mw * 0.256,
+        padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

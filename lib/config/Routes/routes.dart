@@ -9,5 +9,10 @@ class Routes {
           page: () => const SideBarView(),
           transition: Transition.leftToRightWithFade,
         ),
+        GetPage(
+          name: RoutesNames.createContactscreen,
+          page: () => const CreateContactView(),
+          transition: Transition.leftToRightWithFade,
+        ),
       ];
 }

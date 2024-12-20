@@ -26,32 +26,30 @@ class EmailCompaignCardWidget extends StatelessWidget {
           ),
         ),
         0.01.ph(context),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
-          child: const Column(
-            children: [
-              Row(
-                children: [
-                  EmailCompainsBox(
-                    count: '3000',
-                    heading: 'All Your Accounts',
-                  ),
-                  EmailCompainsBox(
-                    count: '2',
-                    heading: 'Opened',
-                  ),
-                  EmailCompainsBox(
-                    count: '2',
-                    heading: 'Clicked',
-                  ),
-                  EmailCompainsBox(
-                    count: '3',
-                    heading: 'Blacklisted',
-                  ),
-                ],
-              )
-            ],
-          ),
+        Column(
+          children: [
+            Row(
+              children: [
+                0.02.pw(context),
+                EmailCompainsBox(
+                  count: '3000',
+                  heading: 'All Your Contacts',
+                ),
+                EmailCompainsBox(
+                  count: '2',
+                  heading: 'Opened',
+                ),
+                EmailCompainsBox(
+                  count: '2',
+                  heading: 'Clicked',
+                ),
+                EmailCompainsBox(
+                  count: '3',
+                  heading: 'Unsubscribed',
+                ),
+              ],
+            )
+          ],
         ),
       ],
     );

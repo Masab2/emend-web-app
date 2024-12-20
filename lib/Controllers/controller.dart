@@ -3,3 +3,4 @@ export 'SideBarController/side_bar_controller.dart';
 export './smsCompaignController/sms_compaign_controller.dart';
 export './createEmailController/create_email_controller.dart';
 export './socialCalenderController/social_calender_controller.dart';
+export './ContactListController/contact_list_controller.dart';

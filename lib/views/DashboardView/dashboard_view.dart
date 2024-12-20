@@ -39,100 +39,125 @@ class DashboardView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
               child: Row(
                 children: [
-                  Column(
-                    children: [
-                      const Row(
+                  Container(
+                    // color: Colors.green,
+                    height: context.mh * 0.85,
+                    child: SingleChildScrollView(
+                      child: Column(
                         children: [
-                          DashboardBarGraphTiles(),
-                          DashboardBarGraphTiles(),
-                          DashboardBarGraphTiles(),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Card(
-                          color: AppColor.whiteColor,
-                          child: Container(
-                            height: context.mh * 0.5,
-                            width: context.mw * 0.6,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: context.mw * 0.02),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                0.02.ph(context),
-                                Text(
-                                  "Profile Growth & Discovery",
-                                  style: GoogleFonts.barlow(
-                                    fontSize: context.mh * 0.024,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: context.mh * 0.01,
-                                ),
-                                Text(
-                                  "See insights on how your profile has grown and changed over time",
-                                  style: GoogleFonts.barlow(
-                                    fontSize: context.mh * 0.017,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: context.mh * 0.02,
-                                ),
-                                Expanded(
-                                  child: SfCartesianChart(
-                                    legend: const Legend(isVisible: false),
-                                    plotAreaBorderWidth: 0,
-                                    tooltipBehavior:
-                                        TooltipBehavior(enable: false),
-                                    primaryXAxis: const CategoryAxis(
-                                      isVisible: false,
-                                    ),
-                                    primaryYAxis: const NumericAxis(
-                                      isVisible: false,
-                                      axisLine: AxisLine(width: 0),
-                                      majorGridLines:
-                                          MajorGridLines(color: Colors.white),
-                                      labelFormat: '',
-                                    ),
-                                    series: <CartesianSeries>[
-                                      ColumnSeries<GraphData, String>(
-                                        dataSource: [
-                                          GraphData('Jan', 35),
-                                          GraphData('Feb', 28),
-                                          GraphData('Mar', 34),
-                                          GraphData('Apr', 32),
+                          const Row(
+                            children: [
+                              DashboardBarGraphTiles(),
+                              DashboardBarGraphTiles(),
+                              DashboardBarGraphTiles(),
+                            ],
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Container(
+                              width: context.mw * 0.6,
+                              // color: Colors.red,
+                              child: Row(
+                                children: [
+                                  Card(
+                                    color: AppColor.whiteColor,
+                                    child: Container(
+                                      height: context.mh * 0.4,
+                                      width: context.mw * 0.4,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: context.mw * 0.02),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          0.02.ph(context),
+                                          Text(
+                                            "Profile Growth & Discovery",
+                                            style: GoogleFonts.barlow(
+                                              fontSize: context.mh * 0.024,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: context.mh * 0.01,
+                                          ),
+                                          Text(
+                                            "See insights on how your profile has grown and changed over time",
+                                            style: GoogleFonts.barlow(
+                                              fontSize: context.mh * 0.017,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: context.mh * 0.02,
+                                          ),
+                                          Expanded(
+                                            child: SfCartesianChart(
+                                              legend: const Legend(
+                                                  isVisible: false),
+                                              plotAreaBorderWidth: 0,
+                                              tooltipBehavior: TooltipBehavior(
+                                                  enable: false),
+                                              primaryXAxis: const CategoryAxis(
+                                                isVisible: true,
+                                              ),
+                                              primaryYAxis: const NumericAxis(
+                                                isVisible: false,
+                                                axisLine: AxisLine(width: 0),
+                                                majorGridLines: MajorGridLines(
+                                                    color: Colors.white),
+                                                labelFormat: '',
+                                              ),
+                                              series: <CartesianSeries>[
+                                                ColumnSeries<GraphData, String>(
+                                                  dataSource: [
+                                                    GraphData('Jan', 35),
+                                                    GraphData('Feb', 28),
+                                                    GraphData('Mar', 34),
+                                                    GraphData('Apr', 32),
+                                                  ],
+                                                  xValueMapper:
+                                                      (GraphData sales, _) =>
+                                                          sales.month,
+                                                  yValueMapper:
+                                                      (GraphData sales, _) =>
+                                                          sales.sales,
+                                                  color: Colors.blue,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  width: 0.07,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ],
-                                        xValueMapper: (GraphData sales, _) =>
-                                            sales.month,
-                                        yValueMapper: (GraphData sales, _) =>
-                                            sales.sales,
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.circular(10),
-                                        width: 0.1, // Reduced bar width
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  const PostImmpresshionCardWidget(),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
+                          Container(
+                            width: context.mw * 0.6,
+                            child: PostInsightsWidget(),
+                          ),
+                        ],
                       ),
-                      const PostImmpresshionCardWidget(),
-                    ],
+                    ),
                   ),
                   Expanded(
                     child: Container(
-                      child: const Column(
-                        children: [
-                          DashboardPiechartCardWidgetOne(),
-                          PostInsightsWidget(),
-                          DashboardPostSummaryWidget()
-                        ],
+                      height: context.mh * 0.85,
+                      child: const SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            DashboardPiechartCardWidgetOne(),
+                            DashboardPostSummaryWidget()
+                          ],
+                        ),
                       ),
                     ),
                   )

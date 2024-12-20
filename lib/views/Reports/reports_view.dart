@@ -12,6 +12,7 @@ class ReportsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.viewsBackgroundColor,
+      height: context.mh,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -30,18 +31,16 @@ class ReportsView extends StatelessWidget {
                 ],
               ),
             ),
-            0.02.ph(context),
+            0.01.ph(context),
             const ReportsUserSearchWidget(),
-            0.02.ph(context),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-              child: const Row(
-                children: [
-                  ReportCardComp(),
-                  ReportCardComp(),
-                  ReportCardComp(),
-                ],
-              ),
+            0.01.ph(context),
+             Row(
+              children: [
+                0.02.pw(context),
+                ReportCardComp(),
+                ReportCardComp(),
+                ReportCardComp(),
+              ],
             ),
             const ReportsListWidget(),
           ],

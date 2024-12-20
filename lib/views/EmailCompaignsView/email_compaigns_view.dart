@@ -23,15 +23,12 @@ class _EmailCompaignsViewState extends State<EmailCompaignsView> {
         child: Obx(() {
           return createEmailController.showCreateEmailView.value == false
               ? Column(
-                  children: [
-                    const EmailCompaginHeaderWidget(),
-                    0.01.ph(context),
-                    const EmailCompaignCardWidget(),
-                    0.01.ph(context),
-                    const EmailCompaaginSecondWidget(),
-                    0.01.ph(context),
-                    const EmailCompaignsListWidget(),
-                    0.01.ph(context),
+                  spacing: context.mh * 0.01,
+                  children: const [
+                    EmailCompaginHeaderWidget(),
+                    EmailCompaignCardWidget(),
+                    EmailCompaaginSecondWidget(),
+                    EmailCompaignsListWidget(),
                   ],
                 )
               : const CreateEmailCompaginView();

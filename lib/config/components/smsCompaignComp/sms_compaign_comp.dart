@@ -12,7 +12,7 @@ class SmsCompaignComp extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.25,
+        height: context.mh * 0.16,
         width: context.mw * 0.18,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

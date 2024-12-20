@@ -106,17 +106,17 @@ class SideBarWidgets extends StatelessWidget {
                             sidebarController.setSelectedIndex(4, "Templates");
                           },
                         ),
-                        DashboardSideBarComp(
-                          icon: Icons.calendar_month_outlined,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'Social Calendar'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 5,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(
-                                5, "Social Calendar");
-                          },
-                        ),
+                        // DashboardSideBarComp(
+                        //   icon: Icons.calendar_month_outlined,
+                        //   title: sidebarController.isSidebarVisible.value
+                        //       ? 'Social Calendar'
+                        //       : null,
+                        //   index: sidebarController.selectedIndex.value == 5,
+                        //   ontap: () {
+                        //     sidebarController.setSelectedIndex(
+                        //         5, "Social Calendar");
+                        //   },
+                        // ),
                         DashboardSideBarComp(
                           icon: Icons.message,
                           title: sidebarController.isSidebarVisible.value
@@ -125,6 +125,16 @@ class SideBarWidgets extends StatelessWidget {
                           index: sidebarController.selectedIndex.value == 6,
                           ontap: () {
                             sidebarController.setSelectedIndex(6, "Chats");
+                          },
+                        ),
+                        DashboardSideBarComp(
+                          icon: Icons.contact_page_outlined,
+                          title: sidebarController.isSidebarVisible.value
+                              ? 'Contact List'
+                              : null,
+                          index: sidebarController.selectedIndex.value == 7,
+                          ontap: () {
+                            sidebarController.setSelectedIndex(7, "Contact List");
                           },
                         ),
                       ],

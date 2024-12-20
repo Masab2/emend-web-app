@@ -1,0 +1,139 @@
+import 'package:emend_web_app/Controllers/ContactListController/contact_list_controller.dart';
+import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconly/iconly.dart';
+
+class ContactListDetailsWidget extends StatelessWidget {
+  const ContactListDetailsWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final ContactListController controller = Get.put(ContactListController());
+    return Column(
+      children: [
+        Container(
+          height: context.mh * 0.06,
+          width: context.mw,
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 220, 220, 223),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+          margin: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+          child: Row(
+            children: [
+              SizedBox(
+                width: context.mw * 0.03,
+                child: Text(
+                  "ID",
+                  style: GoogleFonts.roboto(
+                    fontSize: context.mh * 0.02,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: context.mw * 0.20,
+                child: Text(
+                  "Name",
+                  style: GoogleFonts.roboto(
+                    fontSize: context.mh * 0.02,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: context.mw * 0.20,
+                child: Text(
+                  "Email",
+                  style: GoogleFonts.roboto(
+                    fontSize: context.mh * 0.02,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: context.mw * 0.06,
+                child: Center(
+                  child: Text(
+                    "Actions",
+                    style: GoogleFonts.roboto(
+                      fontSize: context.mh * 0.02,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: context.mh * 0.85,
+          child: Obx(() {
+            return ListView.builder(
+              itemCount: controller.contactList.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+                  padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+                  child: Column(
+                    spacing: context.mh * 0.02,
+                    children: [
+                      0.01.ph(context),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: context.mw * 0.03,
+                            child: Text(
+                              "${index + 1}",
+                              style: GoogleFonts.roboto(
+                                fontSize: context.mh * 0.02,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: context.mw * 0.20,
+                            child: Text(
+                              "${controller.contactList[index].firstName} ${controller.contactList[index].lastName}",
+                              style: GoogleFonts.roboto(
+                                fontSize: context.mh * 0.02,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: context.mw * 0.20,
+                            child: Text(
+                              controller.contactList[index].email,
+                              style: GoogleFonts.roboto(
+                                fontSize: context.mh * 0.02,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: context.mw * 0.06,
+                            child: Center(
+                              child: Icon(
+                                IconlyLight.delete,
+                                color: Colors.red,
+                                size: context.mh * 0.028,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          }),
+        ),
+      ],
+    );
+  }
+}

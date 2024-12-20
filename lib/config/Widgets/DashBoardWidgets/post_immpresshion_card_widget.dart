@@ -4,16 +4,27 @@ import 'package:emend_web_app/config/widgets/DashBoardWidgets/post_impresshion_w
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PostImmpresshionCardWidget extends StatelessWidget {
+class PostImmpresshionCardWidget extends StatefulWidget {
   const PostImmpresshionCardWidget({super.key});
+
+  @override
+  _PostImmpresshionCardWidgetState createState() =>
+      _PostImmpresshionCardWidgetState();
+}
+
+class _PostImmpresshionCardWidgetState
+    extends State<PostImmpresshionCardWidget> {
+  // ScrollController for the horizontal scrolling
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.whiteColor,
+      margin: EdgeInsets.zero,
       child: Container(
         height: context.mh * 0.4,
-        width: context.mw * 0.6,
+        width: context.mw * 0.19,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: context.mw * 0.02,
@@ -38,12 +49,29 @@ class PostImmpresshionCardWidget extends StatelessWidget {
                 ),
               ),
               0.02.ph(context),
-              const Row(
-                children: [
-                  PostImpresshionWidget(),
-                  PostImpresshionWidget(),
-                ],
-              )
+              // Wrap the SingleChildScrollView with Scrollbar
+              Scrollbar(
+                controller: _scrollController,
+                thumbVisibility: true,
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(
+                    vertical: context.mh * 0.02,
+                  ),
+                  child: SizedBox(
+                    width: context.mw * 0.9,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      controller: _scrollController,
+                      child: Row(
+                        children: const [
+                          PostImpresshionWidget(),
+                          PostImpresshionWidget(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

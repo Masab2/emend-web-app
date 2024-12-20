@@ -14,8 +14,8 @@ class EmailCompainsBox extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.25,
-        width: context.mw * 0.18,
+        height: context.mh * 0.16,
+        width: context.mw * 0.19,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

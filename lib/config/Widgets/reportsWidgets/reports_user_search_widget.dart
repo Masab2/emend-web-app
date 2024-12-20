@@ -10,15 +10,17 @@ class ReportsUserSearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
       child: Row(
         children: [
+          0.01.pw(context),
           Expanded(
             child: Container(
               height: context.mh * 0.06,
               padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                  color: Colors.grey.withOpacity(0.23),
+                  borderRadius: BorderRadius.circular(10)),
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: "Search User",

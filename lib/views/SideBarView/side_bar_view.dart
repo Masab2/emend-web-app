@@ -51,10 +51,12 @@ class _SideBarViewState extends State<SideBarView> {
         return const ReportsView();
       case 4:
         return const TemplateView();
-      case 5:
-        return const SocialCalendarView();
+      // case 5:
+      //   return const SocialCalendarView();
       case 6:
         return const ChatView();
+      case 7:
+        return const ContactListView();
       default:
         return const Center(child: Text('Page not found'));
     }

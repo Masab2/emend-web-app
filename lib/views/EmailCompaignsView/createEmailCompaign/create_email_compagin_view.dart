@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Controllers/createEmailController/create_email_controller.dart';
-import '../../../config/components/stepIndicator/time_line_stepper_indicator.dart';
 
 class CreateEmailCompaginView extends StatefulWidget {
   const CreateEmailCompaginView({super.key});
@@ -56,7 +57,7 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
                 width: context.mw,
                 child: Column(
                   children: [
-                    ProcessTimelineIndicator(),
+                    // ProcessTimelineIndicator(),
                     Obx(() {
                       return getselectedIndexForm(
                           createEmailController.processIndex.value);

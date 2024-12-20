@@ -11,62 +11,59 @@ class DashboardPostSummaryWidget extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.37,
+        height: context.mh * 0.42,
         child: Container(
-          height: context.mh * 0.37,
-          child: Container(
-            height: context.mh * 0.37,
-            width: context.mw,
-            padding: EdgeInsets.symmetric(
-                horizontal: context.mw * 0.01, vertical: context.mh * 0.03),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Post Summary',
-                      style: GoogleFonts.barlow(
-                        fontSize: context.mh * 0.022,
-                        fontWeight: FontWeight.w600,
-                      ),
+          height: context.mh * 0.42,
+          width: context.mw,
+          padding: EdgeInsets.symmetric(
+              horizontal: context.mw * 0.01, vertical: context.mh * 0.03),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Post Summary',
+                    style: GoogleFonts.barlow(
+                      fontSize: context.mh * 0.022,
+                      fontWeight: FontWeight.w600,
                     ),
-                    const Icon(Icons.more_horiz, color: Colors.grey),
-                  ],
-                ),
-                SizedBox(height: context.mh * 0.01),
-                Text(
-                  'Total of likes & comments',
-                  style: GoogleFonts.barlow(
-                    fontSize: context.mh * 0.017,
-                    color: Colors.grey,
                   ),
+                  const Icon(Icons.more_horiz, color: Colors.grey),
+                ],
+              ),
+              SizedBox(height: context.mh * 0.01),
+              Text(
+                'Total of likes & comments',
+                style: GoogleFonts.barlow(
+                  fontSize: context.mh * 0.017,
+                  color: Colors.grey,
                 ),
-                SizedBox(height: context.mh * 0.03),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    _buildCircularIndicator(
-                      context: context,
-                      color: Colors.redAccent,
-                      value: 0.75, // 75% completion
-                      label: '2.864',
-                      subtitle: 'Likes',
-                    ),
-                    0.02.pw(context),
-                    _buildCircularIndicator(
-                      context: context,
-                      color: Colors.blueAccent,
-                      value: 0.4, // 40% completion
-                      label: '624',
-                      subtitle: 'Comments',
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: context.mh * 0.08),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildCircularIndicator(
+                    context: context,
+                    color: Colors.redAccent,
+                    value: 0.75, // 75% completion
+                    label: '2.864',
+                    subtitle: 'Likes',
+                  ),
+                  0.02.pw(context),
+                  _buildCircularIndicator(
+                    context: context,
+                    color: Colors.blueAccent,
+                    value: 0.4, // 40% completion
+                    label: '624',
+                    subtitle: 'Comments',
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
@@ -98,7 +95,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
             Text(
               '${(value * 100).toStringAsFixed(0)}%',
               style: GoogleFonts.barlow(
-                fontSize: context.mh * 0.018,
+                fontSize: context.mh * 0.012,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -115,7 +112,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
         Text(
           subtitle,
           style: GoogleFonts.barlow(
-            fontSize: context.mh * 0.016,
+            fontSize: context.mh * 0.013,
             color: Colors.grey,
           ),
         ),

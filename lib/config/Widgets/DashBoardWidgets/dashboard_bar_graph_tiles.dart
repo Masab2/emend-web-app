@@ -11,6 +11,7 @@ class DashboardBarGraphTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // color: Colors.red,
       width: context.mw * 0.20,
       child: Card(
         color: AppColor.whiteColor,
@@ -40,8 +41,8 @@ class DashboardBarGraphTiles extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
-                  height: context.mw * 0.09,
-                  width: context.mw * 0.09,
+                  height: context.mw * 0.06,
+                  width: context.mw * 0.093,
                   child: SfCartesianChart(
                     legend: const Legend(isVisible: false),
                     tooltipBehavior: TooltipBehavior(enable: false),

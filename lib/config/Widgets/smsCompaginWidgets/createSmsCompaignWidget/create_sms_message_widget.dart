@@ -1,11 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:developer';
 import 'package:emend_web_app/Model/EmailCompaignModel/email_compaign_model.dart';
-import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:searchfield/searchfield.dart';
 
 class CreateSmsMessageWidget extends StatefulWidget {
   const CreateSmsMessageWidget({super.key});
@@ -28,96 +24,96 @@ class _CreateSmsMessageWidgetState
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.06),
-          child: Row(
-            children: [
-              SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Message",
-                    style: GoogleFonts.barlow(
-                      fontSize: MediaQuery.of(context).size.height * 0.016,
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.50,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.01),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: SearchField<AccountManager>(
-                      controller: emailRecipientController,
-                      onSuggestionTap: (selected) {
-                        setState(() {
-                          selectedRecipient = selected.item;
-                          emailRecipientController.text = selected.searchKey;
-                        });
-                        log('Selected: ${selected.item?.name}, Contact: ${selected.item?.contact}');
-                      },
-                      searchInputDecoration: SearchInputDecoration(
-                        contentPadding:
-                            EdgeInsets.only(top: 5, left: 0, bottom: 16),
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                      suggestions: accountManagerList
-                          .map(
-                            (manager) => SearchFieldListItem<AccountManager>(
-                              manager.name,
-                              item: manager,
-                              key: UniqueKey(),
-                              child: Text(
-                                manager.name,
-                                style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height *
-                                        0.015),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-              Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.012),
-                  MaterialButton(
-                    color: AppColor.primaryColor,
-                    minWidth: MediaQuery.of(context).size.width * 0.10,
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    onPressed: () {
-                      if (selectedRecipient != null &&
-                          !selectedRecipients
-                              .contains(selectedRecipient)) {
-                        setState(() {
-                          selectedRecipients.add(selectedRecipient!);
-                          emailRecipientController.clear();
-                          selectedRecipient = null;
-                        });
-                      }
-                    },
-                    child: Text(
-                      "Add Member",
-                      style: GoogleFonts.barlow(
-                        fontSize: MediaQuery.of(context).size.height * 0.016,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.06),
+        //   child: Row(
+        //     children: [
+        //       SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+        //       Column(
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           Text(
+        //             "Message",
+        //             style: GoogleFonts.barlow(
+        //               fontSize: MediaQuery.of(context).size.height * 0.016,
+        //             ),
+        //           ),
+        //           Container(
+        //             height: MediaQuery.of(context).size.height * 0.06,
+        //             width: MediaQuery.of(context).size.width * 0.50,
+        //             padding: EdgeInsets.symmetric(
+        //                 horizontal: MediaQuery.of(context).size.width * 0.01),
+        //             decoration: BoxDecoration(
+        //                 color: Colors.white,
+        //                 borderRadius: BorderRadius.circular(10)),
+        //             child: SearchField<AccountManager>(
+        //               controller: emailRecipientController,
+        //               onSuggestionTap: (selected) {
+        //                 setState(() {
+        //                   selectedRecipient = selected.item;
+        //                   emailRecipientController.text = selected.searchKey;
+        //                 });
+        //                 log('Selected: ${selected.item?.name}, Contact: ${selected.item?.contact}');
+        //               },
+        //               searchInputDecoration: SearchInputDecoration(
+        //                 contentPadding:
+        //                     EdgeInsets.only(top: 5, left: 0, bottom: 16),
+        //                 border: InputBorder.none,
+        //                 focusedBorder: InputBorder.none,
+        //               ),
+        //               suggestions: accountManagerList
+        //                   .map(
+        //                     (manager) => SearchFieldListItem<AccountManager>(
+        //                       manager.name,
+        //                       item: manager,
+        //                       key: UniqueKey(),
+        //                       child: Text(
+        //                         manager.name,
+        //                         style: TextStyle(
+        //                             fontSize: MediaQuery.of(context).size.height *
+        //                                 0.015),
+        //                       ),
+        //                     ),
+        //                   )
+        //                   .toList(),
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //       SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+        //       Column(
+        //         children: [
+        //           SizedBox(height: MediaQuery.of(context).size.height * 0.012),
+        //           MaterialButton(
+        //             color: AppColor.primaryColor,
+        //             minWidth: MediaQuery.of(context).size.width * 0.10,
+        //             height: MediaQuery.of(context).size.height * 0.07,
+        //             shape: RoundedRectangleBorder(
+        //               borderRadius: BorderRadius.circular(10),
+        //             ),
+        //             onPressed: () {
+        //               if (selectedRecipient != null &&
+        //                   !selectedRecipients
+        //                       .contains(selectedRecipient)) {
+        //                 setState(() {
+        //                   selectedRecipients.add(selectedRecipient!);
+        //                   emailRecipientController.clear();
+        //                   selectedRecipient = null;
+        //                 });
+        //               }
+        //             },
+        //             child: Text(
+        //               "Add Member",
+        //               style: GoogleFonts.barlow(
+        //                 fontSize: MediaQuery.of(context).size.height * 0.016,
+        //               ),
+        //             ),
+        //           ),
+        //         ],
+        //       )
+        //     ],
+        //   ),
+        // ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.03),
         // Display the selected recipients in a table
         if (selectedRecipients.isNotEmpty)

@@ -41,8 +41,8 @@ class PostImpresshionWidget extends StatelessWidget {
                 ),
                 0.02.ph(context),
                 SimpleAnimationProgressBar(
-                  height: context.mh * 0.02,
-                  width: context.mw * 0.16,
+                  height: context.mh * 0.01,
+                  width: context.mw * 0.1,
                   backgroundColor: Colors.grey.shade200,
                   foregrondColor: Colors.blue,
                   ratio: 0.2,
