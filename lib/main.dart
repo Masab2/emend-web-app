@@ -1,10 +1,10 @@
 import 'package:emend_web_app/Bindings/bindings.dart';
+import 'package:emend_web_app/config/Routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:emend_web_app/config/Template/email_template_one.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'config/routes/routes.dart';
 import 'firebase_options.dart';
 
 void main() async {
