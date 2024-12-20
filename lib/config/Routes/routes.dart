@@ -9,5 +9,10 @@ class Routes {
           page: () => const SideBarView(),
           transition: Transition.leftToRightWithFade,
         ),
+        GetPage(
+          name: UnLayerEditor.route,
+          page: () => const UnLayerEditor(),
+          transition: Transition.leftToRightWithFade,
+        ),
       ];
 }

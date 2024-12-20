@@ -1,7 +1,9 @@
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/views/view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TemplateView extends StatelessWidget {
@@ -28,12 +30,23 @@ class TemplateView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
-              Text(
-                "Email Templates",
-                style: GoogleFonts.barlow(
-                  fontSize: context.mh * 0.028,
-                  fontWeight: FontWeight.w500,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Email Templates",
+                    style: GoogleFonts.barlow(
+                      fontSize: context.mh * 0.028,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed(UnLayerEditor.route);
+                    },
+                    child: const Text('Creates Template'),
+                  )
+                ],
               ),
               // Template Cards
               0.02.ph(context),
