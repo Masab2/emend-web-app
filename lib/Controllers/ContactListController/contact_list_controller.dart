@@ -9,13 +9,13 @@ class ContactListController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
-  var contactLists = <ContactListModel>[].obs;
+  var contactsLists = <ContactListModel>[].obs;
 
   void showCreateContactUi(bool visibility) {
     showCreateContactView.value = visibility;
   }
 
-  RxList<Contact> contactList = <Contact>[].obs;
+  var contactList = <Contact>[].obs;
 
   RxBool showContactListInList = false.obs;
   void showContactListUi(bool visibility, List<Contact> contact) {
@@ -40,7 +40,7 @@ class ContactListController extends GetxController {
             description: descriptionController.text,
             contacts: contacts,
           );
-          contactLists.add(contactList);
+          contactsLists.add(contactList);
 
           Get.snackbar("Success", "Imported ${contacts.length} contacts!");
           nameController.clear();
@@ -85,6 +85,35 @@ class ContactListController extends GetxController {
       return contacts;
     } catch (e) {
       return [];
+    }
+  }
+
+  // Delete The Specific Contact List
+  void deleteContactList(Contact contact) {
+    contactList.remove(contact);
+  }
+
+  // Update the Contact List with the New Csv File
+  void updateContactList(ContactListModel contactList) async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['csv'],
+      );
+
+      if (result != null && result.files.single.bytes != null) {
+        Uint8List fileBytes = result.files.single.bytes!;
+        List<Contact> contacts = _parseContactsFromCSV(fileBytes);
+
+        if (contacts.isNotEmpty) {
+          contactList.contacts = contacts;
+          Get.snackbar("Success", "Updated ${contacts.length} contacts!");
+        } else {
+          Get.snackbar("Error", "No valid contacts found in the file.");
+        }
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to import the file: $e");
     }
   }
 }

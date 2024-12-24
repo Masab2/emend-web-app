@@ -37,9 +37,9 @@ class ReportsView extends StatelessWidget {
              Row(
               children: [
                 0.02.pw(context),
-                ReportCardComp(),
-                ReportCardComp(),
-                ReportCardComp(),
+                const ReportCardComp(),
+                const ReportCardComp(),
+                const ReportCardComp(),
               ],
             ),
             const ReportsListWidget(),

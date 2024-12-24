@@ -8,12 +8,13 @@ class DashboardSideBarComp extends StatelessWidget {
   final bool index;
   final VoidCallback ontap;
   final IconData icon;
-  const DashboardSideBarComp(
-      {super.key,
-      required this.title,
-      required this.index,
-      required this.ontap,
-      required this.icon});
+  const DashboardSideBarComp({
+    super.key,
+    required this.title,
+    required this.index,
+    required this.ontap,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,7 @@ class DashboardSideBarComp extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
         margin: EdgeInsets.only(bottom: context.mh * 0.01),
         decoration: BoxDecoration(
-          color: index == true
-              ? AppColor.sideBarBoxSelectedColor
-              : null,
+          color: index == true ? AppColor.sideBarBoxSelectedColor : null,
           borderRadius: BorderRadius.circular(10),
         ),
         child: GestureDetector(
@@ -36,9 +35,8 @@ class DashboardSideBarComp extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: context.mh * 0.03,
-                color:
-                    index == true ? AppColor.primaryColor : Colors.black,
+                size: context.mh * 0.024,
+                color: index == true ? AppColor.primaryColor : Colors.black,
               ),
               if (title != null) ...[
                 Expanded(
@@ -48,7 +46,7 @@ class DashboardSideBarComp extends StatelessWidget {
                       title!,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.barlow(
-                        fontSize: context.mw * 0.010,
+                        fontSize: context.mh * 0.017,
                         color: index == true
                             ? AppColor.primaryColor
                             : Colors.black,

@@ -34,7 +34,7 @@ class _SmsCompaignViewState extends State<SmsCompaignView> {
                       const SmsCompaignsCardWidget(),
                     ],
                   )
-                : const CreateSmsCompaignView();
+                :  CreateSmsCompaignView();
           },
         ),
       ),

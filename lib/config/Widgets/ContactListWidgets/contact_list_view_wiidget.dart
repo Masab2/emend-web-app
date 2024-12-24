@@ -78,7 +78,7 @@ class ContactListViewWiidget extends StatelessWidget {
                   height: context.mh * 0.85,
                   child: Obx(() {
                     return ListView.builder(
-                      itemCount: controller.contactLists.length,
+                      itemCount: controller.contactsLists.length,
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.symmetric(
@@ -104,7 +104,7 @@ class ContactListViewWiidget extends StatelessWidget {
                                   SizedBox(
                                     width: context.mw * 0.20,
                                     child: Text(
-                                      controller.contactLists[index].name,
+                                      controller.contactsLists[index].name,
                                       style: GoogleFonts.roboto(
                                         fontSize: context.mh * 0.02,
                                         fontWeight: FontWeight.w600,
@@ -116,12 +116,12 @@ class ContactListViewWiidget extends StatelessWidget {
                                       controller.showContactListUi(
                                           true,
                                           controller
-                                              .contactLists[index].contacts);
+                                              .contactsLists[index].contacts);
                                     },
                                     child: SizedBox(
                                       width: context.mw * 0.20,
                                       child: Text(
-                                        "${controller.contactLists[index].contacts.length} Contacts",
+                                        "${controller.contactsLists[index].contacts.length} Contacts",
                                         style: GoogleFonts.roboto(
                                           fontSize: context.mh * 0.02,
                                           fontWeight: FontWeight.w600,
@@ -132,9 +132,15 @@ class ContactListViewWiidget extends StatelessWidget {
                                   SizedBox(
                                     width: context.mw * 0.06,
                                     child: Center(
-                                      child: Icon(
-                                        IconlyLight.add_user,
-                                        size: context.mh * 0.028,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          controller.updateContactList(
+                                              controller.contactsLists[index]);
+                                        },
+                                        child: Icon(
+                                          IconlyLight.add_user,
+                                          size: context.mh * 0.028,
+                                        ),
                                       ),
                                     ),
                                   ),

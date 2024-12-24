@@ -117,10 +117,16 @@ class ContactListDetailsWidget extends StatelessWidget {
                           SizedBox(
                             width: context.mw * 0.06,
                             child: Center(
-                              child: Icon(
-                                IconlyLight.delete,
-                                color: Colors.red,
-                                size: context.mh * 0.028,
+                              child: GestureDetector(
+                                onTap: () {
+                                  controller.deleteContactList(
+                                      controller.contactList[index]);
+                                },
+                                child: Icon(
+                                  IconlyLight.delete,
+                                  color: Colors.red,
+                                  size: context.mh * 0.028,
+                                ),
                               ),
                             ),
                           ),

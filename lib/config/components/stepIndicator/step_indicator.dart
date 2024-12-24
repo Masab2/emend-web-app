@@ -1,4 +1,3 @@
-import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +8,7 @@ class StepIndicator extends StatelessWidget {
   final bool isActive;
   final bool isLast;
   final Widget widget;
-  final VoidCallback onRemove; // Callback to remove the step
+  final VoidCallback onRemove;
 
   const StepIndicator({
     super.key,
@@ -17,7 +16,7 @@ class StepIndicator extends StatelessWidget {
     required this.isActive,
     this.isLast = false,
     required this.widget,
-    required this.onRemove, // Required remove callback
+    required this.onRemove,
   });
 
   @override
@@ -31,23 +30,23 @@ class StepIndicator extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                0.03.pw(context),
+                const SizedBox(width: 20),
                 Container(
                   width: 40,
                   height: 40,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppColor.primaryColor,
+                    color: Colors.blue,
                   ),
                   child: Center(
                     child: Icon(
                       IconlyBold.chat,
                       color: Colors.white,
-                      size: context.mh * 0.040,
+                      size: context.mh * 0.025,
                     ),
                   ),
                 ),
-                0.03.pw(context),
+                const SizedBox(width: 20),
                 Text(
                   title,
                   textAlign: TextAlign.center,
@@ -58,16 +57,13 @@ class StepIndicator extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(right: context.mw * 0.02),
-              child: TextButton(
-                onPressed: onRemove, // Trigger the remove callback
-                child: Text(
-                  "Remove Message",
-                  style: GoogleFonts.barlow(
-                    fontSize: context.mh * 0.020,
-                    fontWeight: FontWeight.bold,
-                  ),
+            TextButton(
+              onPressed: onRemove,
+              child: Text(
+                "Remove Message",
+                style: GoogleFonts.barlow(
+                  fontSize: context.mh * 0.015,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -76,18 +72,14 @@ class StepIndicator extends StatelessWidget {
         if (!isLast)
           Row(
             children: [
-              0.03.pw(context),
-              Row(
-                children: [
-                  Container(
-                    width: 2,
-                    height: context.mh * 0.5,
-                    color: isActive ? AppColor.primaryColor : Colors.grey,
-                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                  ),
-                  widget,
-                ],
+              const SizedBox(width: 20),
+              Container(
+                width: 2,
+                height: 50,
+                color: isActive ? Colors.blue : Colors.grey,
+                margin: const EdgeInsets.symmetric(horizontal: 15),
               ),
+              widget,
             ],
           ),
       ],

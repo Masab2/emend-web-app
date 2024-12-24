@@ -73,7 +73,7 @@ class ScheduleMessageUI extends StatelessWidget {
                 items: List.generate(60, (index) => index)
                     .map((e) => DropdownMenuItem(
                         value: e,
-                        child: Text('${e.toString().padLeft(2, '0')}')))
+                        child: Text(e.toString().padLeft(2, '0'))))
                     .toList(),
                 onChanged: (value) {},
               ),
