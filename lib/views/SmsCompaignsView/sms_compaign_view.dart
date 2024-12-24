@@ -3,7 +3,7 @@ import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/config/widgets/smsCompaginWidgets/sms_compaigns_card_widget.dart';
 import 'package:emend_web_app/config/widgets/smsCompaginWidgets/sms_copaign_header_widget.dart';
-import 'package:emend_web_app/views/SmsCompaignsView/createSmsCompaignView/create_sms_compaign_view.dart';
+import 'package:emend_web_app/views/SmsCompaignsView/createSmsCompaignView/create_sms_campaign_home_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +34,7 @@ class _SmsCompaignViewState extends State<SmsCompaignView> {
                       const SmsCompaignsCardWidget(),
                     ],
                   )
-                :  CreateSmsCompaignView();
+                : CreateSmsCampaignHomeScreenView();
           },
         ),
       ),

@@ -24,4 +24,7 @@ class AppColor {
   static const Color boxBorderColor = Color(0xffDCD1D1);
   // Button Color
   static const Color buttonColor = Color(0xffCAEBE2);
+
+  // TextForm Feild Background Color
+  static const Color textFormFeildBackgroundColor = Color(0xfff9f9f9);
 }

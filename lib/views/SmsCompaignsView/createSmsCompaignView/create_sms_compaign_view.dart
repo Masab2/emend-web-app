@@ -17,15 +17,15 @@ class CreateSmsCompaignView extends StatelessWidget {
     final createSmsController = Get.put(SmsCompaignController());
 
     return Container(
-      color: AppColor.viewsBackgroundColor,
       height: context.mh,
+
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
           child: Column(
             children: [
               _buildHeader(context, createSmsController),
-              const SizedBox(height: 24),
+              0.01.ph(context),
               _buildMessageList(context),
             ],
           ),
@@ -37,36 +37,22 @@ class CreateSmsCompaignView extends StatelessWidget {
   Widget _buildHeader(
       BuildContext context, SmsCompaignController createSmsController) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Row(
-          children: [
-            IconButton(
-              onPressed: () => createSmsController.showCreateEmailUi(false),
-              icon: Icon(Icons.arrow_back, size: context.mh * 0.020),
-            ),
-            Text(
-              "Create SMS Campaign",
-              style: GoogleFonts.barlow(
-                fontSize: context.mh * 0.028,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-        _buildAddMessageButton(),
+        _buildAddMessageButton(context),
       ],
     );
   }
 
-  Widget _buildAddMessageButton() {
+  Widget _buildAddMessageButton(BuildContext context) {
     return Obx(() => controller.messageCount.value < 5
         ? ElevatedButton.icon(
             onPressed: controller.incrementMessage,
             icon: const Icon(Icons.add, color: Colors.white),
-            label: const Text(
+            label: Text(
               'Add Message',
-              style: TextStyle(color: Colors.white),
+              style:
+                  TextStyle(color: Colors.white, fontSize: context.mh * 0.018),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primaryColor,
@@ -126,9 +112,10 @@ class CreateSmsCompaignView extends StatelessWidget {
                 ),
                 child: Text(
                   '${index + 1}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+                    fontSize: context.mh * 0.018,
                   ),
                 ),
               ),
@@ -145,6 +132,7 @@ class CreateSmsCompaignView extends StatelessWidget {
 
   Widget _buildMessageCard(int index, BuildContext context) {
     return Card(
+      color: AppColor.whiteColor,
       margin: const EdgeInsets.only(bottom: 24, right: 16),
       elevation: 2,
       shape: RoundedRectangleBorder(
@@ -155,13 +143,13 @@ class CreateSmsCompaignView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildCardHeader(index),
-            const Divider(height: 24),
+            _buildCardHeader(index, context),
+            const Divider(height: 16),
             _buildSendOptions(context),
             const SizedBox(height: 16),
-            _buildMessageInput(),
+            _buildMessageInput(context),
             const SizedBox(height: 16),
-            _buildFieldChips(),
+            _buildFieldChips(context),
             const SizedBox(height: 16),
             _buildActionButtons(),
           ],
@@ -170,24 +158,25 @@ class CreateSmsCompaignView extends StatelessWidget {
     );
   }
 
-  Widget _buildCardHeader(int index) {
+  Widget _buildCardHeader(int index, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           'Message ${index + 1}',
-          style: const TextStyle(
-            fontSize: 18,
+          style: TextStyle(
+            fontSize: context.mh * 0.018,
             fontWeight: FontWeight.bold,
           ),
         ),
         if (index > 0)
           TextButton.icon(
             onPressed: controller.decrementMessage,
-            icon: const Icon(Icons.delete_outline, color: Colors.red),
-            label: const Text(
+            icon: Icon(Icons.delete_outline,
+                color: Colors.red, size: context.mh * 0.020),
+            label: Text(
               'Remove',
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(color: Colors.red, fontSize: context.mh * 0.016),
             ),
           ),
       ],
@@ -198,32 +187,43 @@ class CreateSmsCompaignView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Sending Options',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: context.mh * 0.016,
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 8),
+        0.006.ph(context),
         Obx(() => Column(
               children: [
                 RadioListTile<bool>(
-                  title: const Text('Send Immediately'),
+                  title: Text(
+                    'Send Immediately',
+                    style: GoogleFonts.barlow(
+                      fontSize: MediaQuery.of(context).size.height * 0.018,
+                    ),
+                  ),
                   value: true,
                   groupValue: controller.sendImmediately.value,
                   onChanged: (value) => controller.sendImmediately.value = true,
                   contentPadding: EdgeInsets.zero,
                 ),
                 RadioListTile<bool>(
-                  title: const Text('Schedule Send'),
+                  title: Text(
+                    'Schedule Send',
+                    style: GoogleFonts.barlow(
+                      fontSize: MediaQuery.of(context).size.height * 0.018,
+                    ),
+                  ),
                   value: false,
                   groupValue: controller.sendImmediately.value,
                   onChanged: (value) =>
                       controller.sendImmediately.value = false,
                   contentPadding: EdgeInsets.zero,
                 ),
-                if (!controller.sendImmediately.value) _buildScheduleOptions(context),
+                if (!controller.sendImmediately.value)
+                  _buildScheduleOptions(context),
               ],
             )),
       ],
@@ -235,16 +235,22 @@ class CreateSmsCompaignView extends StatelessWidget {
       padding: const EdgeInsets.only(left: 32),
       child: Row(
         children: [
-          const Text('Send after'),
-          const SizedBox(width: 8),
+          Text(
+            'Send after',
+            style: GoogleFonts.barlow(
+              fontSize: MediaQuery.of(context).size.height * 0.018,
+            ),
+          ),
+          0.006.pw(context),
           Obx(() {
-            final formattedDate = DateFormat('yyyy-MM-dd').format(controller.selectedDate.value);
+            final formattedDate =
+                DateFormat('yyyy-MM-dd').format(controller.selectedDate.value);
             return ElevatedButton(
               onPressed: () => controller.pickDate(context),
               child: Text(formattedDate),
             );
           }),
-          const SizedBox(width: 8),
+          0.006.pw(context),
           Obx(() {
             final formattedTime = controller.selectedTime.value.format(context);
             return ElevatedButton(
@@ -252,26 +258,26 @@ class CreateSmsCompaignView extends StatelessWidget {
               child: Text(formattedTime),
             );
           }),
-          
         ],
       ),
     );
   }
 
-  Widget _buildMessageInput() {
+  Widget _buildMessageInput(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Message Content',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: context.mh * 0.016,
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 8),
+       0.006.ph(context),
         TextField(
           decoration: InputDecoration(
+            hintStyle: TextStyle(fontSize: context.mh * 0.016),
             hintText:
                 'Hey {{first_name}}, Reply with STOP to stop receiving messages.',
             border: OutlineInputBorder(
@@ -286,18 +292,18 @@ class CreateSmsCompaignView extends StatelessWidget {
     );
   }
 
-  Widget _buildFieldChips() {
+  Widget _buildFieldChips(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Available Fields',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: context.mh * 0.016,
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 8),
+        0.006.ph(context),
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -306,7 +312,8 @@ class CreateSmsCompaignView extends StatelessWidget {
               label: Text(field),
               onPressed: () {},
               backgroundColor: AppColor.primaryColor.withOpacity(0.1),
-              labelStyle: const TextStyle(color: AppColor.primaryColor),
+              labelStyle: TextStyle(
+                  color: AppColor.primaryColor, fontSize: context.mh * 0.016),
             );
           }).toList(),
         ),

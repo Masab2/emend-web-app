@@ -3,6 +3,8 @@ export './SideBarWidgets/side_bar_widgets.dart';
 // Sms Compagin Widget
 export './smsCompaginWidgets/sms_compaigns_card_widget.dart';
 export './smsCompaginWidgets/sms_copaign_header_widget.dart';
+export './smsCompaginWidgets/createSmsCompaignWidget/contact_list_widget.dart';
+export './smsCompaginWidgets/sms_campaign_list_widget.dart';
 
 // Reports Widget
 export './reportsWidgets/reports_header_widget.dart';
@@ -20,7 +22,6 @@ export './emailCompaignWidgets/email_compaigns_list_widget.dart';
 export './chatWidgets/chat_contact_detail_widget.dart';
 export './chatWidgets/chat_contact_list_widget.dart';
 export './chatWidgets/chat_message_widget.dart';
-export './chatWidgets/contact_list_widget.dart';
 
 // Create Email Compagin Screen
 export './createEmailFormWidget/create_email_form_setup_widget.dart';
@@ -28,9 +29,6 @@ export './createEmailFormWidget/email_content_widget.dart';
 export './createEmailFormWidget/create_email_recipent_widget.dart';
 
 
-// Create SMS Compaign Widget
-export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_setup_widget.dart';
-export './smsCompaginWidgets/createSmsCompaignWidget/sms_compaign_content_widget.dart';
 // Dashboard Widgets
 export './DashBoardWidgets/dash_board_header_widget.dart';
 export './DashBoardWidgets/dashboard_bar_graph_tiles.dart';

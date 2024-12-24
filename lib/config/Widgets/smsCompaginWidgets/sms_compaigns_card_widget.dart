@@ -1,6 +1,6 @@
-import 'package:emend_web_app/config/components/messagingComp/messaging_comp.dart';
 import 'package:emend_web_app/config/components/smsCompaignComp/sms_compaign_comp.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,33 +18,53 @@ class SmsCompaignsCardWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "SMS Campaigns",
-                style: GoogleFonts.barlow(
-                  fontSize: context.mh * 0.028,
+                style: GoogleFonts.roboto(
+                  fontSize: context.mh * 0.025,
                   fontWeight: FontWeight.w500,
+                ),
+              ),
+              MaterialButton(
+                minWidth: context.mw * 0.10,
+                color: Colors.blue,
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                height: context.mh * 0.06,
+                onPressed: () {
+                  smsController.showsmsCompaignView.value = true;
+                },
+                child: Text(
+                  "Create Campaign",
+                  style: GoogleFonts.roboto(
+                    fontSize: context.mh * 0.019,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               )
             ],
           ),
         ),
         0.04.ph(context),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-          child: Row(
-            children: [
-              Text(
-                "SINCE LAST VISIT",
-                style: GoogleFonts.barlow(
-                  fontSize: context.mh * 0.024,
-                  fontWeight: FontWeight.w500,
-                ),
-              )
-            ],
-          ),
-        ),
-        0.01.ph(context),
+        // Padding(
+        //   padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+        //   child: Row(
+        //     children: [
+        //       Text(
+        //         "SINCE LAST VISIT",
+        //         style: GoogleFonts.roboto(
+        //           fontSize: context.mh * 0.024,
+        //           fontWeight: FontWeight.w500,
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // ),
+        // 0.01.ph(context),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
           child: const Row(
@@ -56,14 +76,15 @@ class SmsCompaignsCardWidget extends StatelessWidget {
             ],
           ),
         ),
+        0.02.ph(context),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
           child: Row(
             children: [
               Text(
-                "MESSAGING",
-                style: GoogleFonts.barlow(
-                  fontSize: context.mh * 0.022,
+                "Messaging",
+                style: GoogleFonts.roboto(
+                  fontSize: context.mh * 0.019,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -71,33 +92,8 @@ class SmsCompaignsCardWidget extends StatelessWidget {
           ),
         ),
         0.01.ph(context),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-          child: Row(
-            children: [
-              const MessagingComp(
-                text: "Send a group Text",
-                subtext:
-                    "Compose and send group texts to your subscribed contacts",
-              ),
-              const MessagingComp(
-                text: "Start 1-on-chat",
-                subtext:
-                    "Use a textable phone number to start a 1-on-1 chat with a contact",
-              ),
-              GestureDetector(
-                onTap: () {
-                  smsController.showCreateEmailUi(true);
-                },
-                child: const MessagingComp(
-                  text: "Create a SMS campaign",
-                  subtext:
-                      "Automate messages when sunscribers join your contact group",
-                ),
-              ),
-            ],
-          ),
-        ),
+        // ListViewBuilder for Active Messgaing Campign
+        const SmsCompaignsListWidget()
       ],
     );
   }

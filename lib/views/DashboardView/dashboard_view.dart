@@ -103,7 +103,7 @@ class DashboardView extends StatelessWidget {
                                                 isVisible: true,
                                               ),
                                               primaryYAxis: const NumericAxis(
-                                                isVisible: false,
+                                                isVisible: true,
                                                 axisLine: AxisLine(width: 0),
                                                 majorGridLines: MajorGridLines(
                                                     color: Colors.white),

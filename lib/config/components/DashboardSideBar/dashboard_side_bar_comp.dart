@@ -46,7 +46,7 @@ class DashboardSideBarComp extends StatelessWidget {
                       title!,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.barlow(
-                        fontSize: context.mh * 0.017,
+                        fontSize: context.mh * 0.020,
                         color: index == true
                             ? AppColor.primaryColor
                             : Colors.black,

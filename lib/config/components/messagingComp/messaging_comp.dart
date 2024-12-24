@@ -14,8 +14,8 @@ class MessagingComp extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.25,
-        width: context.mw * 0.24,
+        height: context.mh * 0.16,
+        width: context.mw  * 0.8,
         padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
