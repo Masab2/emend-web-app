@@ -3,7 +3,6 @@ import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../Controllers/controller.dart';
 
@@ -22,7 +21,7 @@ class SmsCompaignsCardWidget extends StatelessWidget {
             children: [
               Text(
                 "SMS Campaigns",
-                style: GoogleFonts.roboto(
+                style: TextStyle(
                   fontSize: context.mh * 0.025,
                   fontWeight: FontWeight.w500,
                 ),
@@ -40,7 +39,7 @@ class SmsCompaignsCardWidget extends StatelessWidget {
                 },
                 child: Text(
                   "Create Campaign",
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
                     fontSize: context.mh * 0.019,
                     fontWeight: FontWeight.w500,
                   ),
@@ -56,7 +55,7 @@ class SmsCompaignsCardWidget extends StatelessWidget {
         //     children: [
         //       Text(
         //         "SINCE LAST VISIT",
-        //         style: GoogleFonts.roboto(
+        //         style: TextStyle(
         //           fontSize: context.mh * 0.024,
         //           fontWeight: FontWeight.w500,
         //         ),
@@ -83,7 +82,7 @@ class SmsCompaignsCardWidget extends StatelessWidget {
             children: [
               Text(
                 "Messaging",
-                style: GoogleFonts.roboto(
+                style: TextStyle(
                   fontSize: context.mh * 0.019,
                   fontWeight: FontWeight.w500,
                 ),

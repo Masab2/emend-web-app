@@ -18,7 +18,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
         0.02.pw(context),
         Card(
           color: AppColor.whiteColor,
-          child: Container(
+          child: SizedBox(
             height: context.mh * 0.20,
             width: context.mw * 0.78,
             child: Column(
@@ -31,7 +31,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Email Campaigns",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.020,
                         fontWeight: FontWeight.w600,
                       ),
@@ -76,7 +76,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                                         // 0.01.pw(context),
                                         Text(
                                           "Send",
-                                          style: GoogleFonts.barlow(
+                                          style: TextStyle(
                                             fontSize: context.mh * 0.015,
                                             color: Colors.grey,
                                           ),
@@ -87,7 +87,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                                 ),
                                 Text(
                                   "52",
-                                  style: GoogleFonts.barlow(
+                                  style: TextStyle(
                                     fontSize: context.mh * 0.015,
                                     color: Colors.grey,
                                   ),
@@ -128,7 +128,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                                         // 0.01.pw(context),
                                         Text(
                                           "Drafts",
-                                          style: GoogleFonts.barlow(
+                                          style: TextStyle(
                                             fontSize: context.mh * 0.015,
                                             color: Colors.grey,
                                           ),
@@ -139,7 +139,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                                 ),
                                 Text(
                                   "52",
-                                  style: GoogleFonts.barlow(
+                                  style: TextStyle(
                                     fontSize: context.mh * 0.015,
                                     color: Colors.grey,
                                   ),
@@ -160,7 +160,7 @@ class EmailCompaaginSecondWidget extends StatelessWidget {
                       color: AppColor.buttonColor,
                       child: Text(
                         '+ Create a New Campaign',
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                         ),
                       ),

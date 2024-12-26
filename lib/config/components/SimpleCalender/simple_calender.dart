@@ -7,12 +7,12 @@ class SimpleCalendar extends StatelessWidget {
   final ValueChanged<DateTime> onDateChanged;
 
   const SimpleCalendar({
-    Key? key,
+    super.key,
     required this.initialDate,
     required this.firstDate,
     required this.lastDate,
     required this.onDateChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

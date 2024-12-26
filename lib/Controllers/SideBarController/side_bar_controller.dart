@@ -1,13 +1,14 @@
 import 'package:get/get.dart';
 
-class DashboardController extends GetxController {
+class NavigationController extends GetxController {
   var selectedIndex = 0.obs;
   var selectedTitle = 'Dashboard'.obs;
   var isSidebarVisible = true.obs;
 
-  void setSelectedIndex(int index, String title) {
+  void setSelectedIndex(
+    int index,
+  ) {
     selectedIndex.value = index;
-    selectedTitle.value = title;
   }
 
   void toggleSidebarVisibility() {

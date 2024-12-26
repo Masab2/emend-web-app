@@ -61,7 +61,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
                 },
                 child: Text(
                   "Previous",
-                  style: GoogleFonts.barlow(),
+                  style: TextStyle(),
                 ),
               ),
               MaterialButton(
@@ -70,7 +70,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
                 },
                 child: Text(
                   "Next",
-                  style: GoogleFonts.barlow(),
+                  style: TextStyle(),
                 ),
               )
             ],

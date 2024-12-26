@@ -68,7 +68,7 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
                 },
                 child: Text(
                   "Previous",
-                  style: GoogleFonts.barlow(),
+                  style: TextStyle(),
                 ),
               ),
               MaterialButton(
@@ -77,7 +77,7 @@ class _CreateEmailCompaginViewState extends State<CreateEmailCompaginView> {
                 },
                 child: Text(
                   "Next",
-                  style: GoogleFonts.barlow(),
+                  style: TextStyle(),
                 ),
               )
             ],

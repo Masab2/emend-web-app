@@ -52,18 +52,18 @@ class ChatContactDetailWidget extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.phone, color: Colors.grey),
+                          icon: const Icon(Icons.phone, color: Colors.grey),
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.mail, color: Colors.grey),
+                          icon: const Icon(Icons.mail, color: Colors.grey),
                         ),
                       ],
                     ),
                     ElevatedButton.icon(
                       onPressed: () {},
                       icon: Icon(Icons.add, size: context.mh * 0.018),
-                      label: Text("Create deal"),
+                      label: const Text("Create deal"),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade200,
                         foregroundColor: Colors.black,

@@ -17,7 +17,7 @@ class EmailCompaignCardWidget extends StatelessWidget {
             children: [
               Text(
                 "E-Mail Campaigns",
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.028,
                   fontWeight: FontWeight.w500,
                 ),
@@ -31,19 +31,19 @@ class EmailCompaignCardWidget extends StatelessWidget {
             Row(
               children: [
                 0.02.pw(context),
-                EmailCompainsBox(
+                const EmailCompainsBox(
                   count: '3000',
                   heading: 'All Your Contacts',
                 ),
-                EmailCompainsBox(
+                const EmailCompainsBox(
                   count: '2',
                   heading: 'Opened',
                 ),
-                EmailCompainsBox(
+                const EmailCompainsBox(
                   count: '2',
                   heading: 'Clicked',
                 ),
-                EmailCompainsBox(
+                const EmailCompainsBox(
                   count: '3',
                   heading: 'Unsubscribed',
                 ),

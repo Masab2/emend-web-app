@@ -12,9 +12,9 @@ class DashboardPiechartCardWidgetOne extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.whiteColor,
-      child: Container(
+      child: SizedBox(
         height: context.mh * 0.4,
-        child: Container(
+        child: SizedBox(
           height: context.mh * 0.4,
           width: context.mw,
           child: Column(
@@ -32,14 +32,14 @@ class DashboardPiechartCardWidgetOne extends StatelessWidget {
                           children: [
                             Text(
                               "Frequent Post Types",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.020,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               "Mar 26 - Apr 01",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.016,
                                 color: Colors.grey,
                               ),
@@ -49,7 +49,7 @@ class DashboardPiechartCardWidgetOne extends StatelessWidget {
                       ],
                     ),
                     0.05.ph(context),
-                    Container(
+                    SizedBox(
                       height: context.mw * 0.08,
                       width: context.mw,
                       child: SfCircularChart(

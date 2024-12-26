@@ -13,7 +13,7 @@ class EmailCompainsBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.whiteColor,
-      child: Container(
+      child: SizedBox(
         height: context.mh * 0.16,
         width: context.mw * 0.19,
         child: Column(
@@ -23,7 +23,7 @@ class EmailCompainsBox extends StatelessWidget {
             const Icon(Icons.report),
             Text(
               count,
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.022,
                 fontWeight: FontWeight.w600,
                 color: Colors.grey,
@@ -31,7 +31,7 @@ class EmailCompainsBox extends StatelessWidget {
             ),
             Text(
               heading,
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.022,
                 fontWeight: FontWeight.w600,
                 color: AppColor.primaryColor,

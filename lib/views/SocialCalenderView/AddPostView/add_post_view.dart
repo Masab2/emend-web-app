@@ -41,7 +41,7 @@ class _AddPostViewState extends State<AddPostView> {
               ),
               Text(
                 "Social Calendar",
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.028,
                   fontWeight: FontWeight.w500,
                 ),
@@ -71,7 +71,7 @@ class _AddPostViewState extends State<AddPostView> {
                   children: [
                     Text(
                       "Post",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w500,
                       ),
@@ -79,7 +79,7 @@ class _AddPostViewState extends State<AddPostView> {
                     0.01.pw(context),
                     Text(
                       "Stories",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w500,
                       ),
@@ -87,7 +87,7 @@ class _AddPostViewState extends State<AddPostView> {
                     0.01.pw(context),
                     Text(
                       "Reels",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w500,
                       ),
@@ -98,7 +98,7 @@ class _AddPostViewState extends State<AddPostView> {
                 Row(
                   children: [
                     DottedBorder(
-                      child: Container(
+                      child: SizedBox(
                         height: context.mh * 0.32,
                         width: context.mw * 0.15,
                         child: const Center(
@@ -124,12 +124,11 @@ class _AddPostViewState extends State<AddPostView> {
                     MaterialButton(
                       color: Colors.blue,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)
-                      ),
+                          borderRadius: BorderRadius.circular(8)),
                       onPressed: () {},
                       child: Text(
                         "Create Post",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,

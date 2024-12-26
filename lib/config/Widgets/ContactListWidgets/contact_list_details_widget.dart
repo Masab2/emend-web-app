@@ -2,7 +2,6 @@ import 'package:emend_web_app/Controllers/ContactListController/contact_list_con
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 
 class ContactListDetailsWidget extends StatelessWidget {
@@ -28,7 +27,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                 width: context.mw * 0.03,
                 child: Text(
                   "ID",
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
                     fontSize: context.mh * 0.02,
                     fontWeight: FontWeight.w600,
                   ),
@@ -38,7 +37,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                 width: context.mw * 0.20,
                 child: Text(
                   "Name",
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
                     fontSize: context.mh * 0.02,
                     fontWeight: FontWeight.w600,
                   ),
@@ -48,7 +47,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                 width: context.mw * 0.20,
                 child: Text(
                   "Email",
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
                     fontSize: context.mh * 0.02,
                     fontWeight: FontWeight.w600,
                   ),
@@ -59,7 +58,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Actions",
-                    style: GoogleFonts.roboto(
+                    style: TextStyle(
                       fontSize: context.mh * 0.02,
                       fontWeight: FontWeight.w600,
                     ),
@@ -88,7 +87,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                             width: context.mw * 0.03,
                             child: Text(
                               "${index + 1}",
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.02,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -98,7 +97,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                             width: context.mw * 0.20,
                             child: Text(
                               "${controller.contactList[index].firstName} ${controller.contactList[index].lastName}",
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.02,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -108,7 +107,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                             width: context.mw * 0.20,
                             child: Text(
                               controller.contactList[index].email,
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.02,
                                 fontWeight: FontWeight.w600,
                               ),

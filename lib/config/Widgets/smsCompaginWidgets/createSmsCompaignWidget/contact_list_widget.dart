@@ -9,6 +9,8 @@ class ContactListSmsWidget extends StatelessWidget {
   final focusNode = FocusNode();
   final searchController = TextEditingController();
 
+  ContactListSmsWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,7 +19,8 @@ class ContactListSmsWidget extends StatelessWidget {
         children: [
           _buildHeader(),
           _buildSearchBar(context),
-          Obx(() => controller.isSearchFocused.value || searchController.text.isNotEmpty
+          Obx(() => controller.isSearchFocused.value ||
+                  searchController.text.isNotEmpty
               ? Expanded(child: _buildListView())
               : const SizedBox()),
         ],
@@ -26,95 +29,100 @@ class ContactListSmsWidget extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-  return Padding(
-    padding: const EdgeInsets.all(16),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          'Select List to Add to Campaign',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            'Select List to Add to Campaign',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-        Stack(
-          children: [
-            GestureDetector(
-              onTap: () => controller.toggleDropdown(),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Row(
-                  children: [
-                    const Text('Currently in Campaign'),
-                    const SizedBox(width: 4),
-                    Obx(() => Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text('(${controller.selectedCampaigns.length})'),
-                    )),
-                    const Icon(Icons.arrow_drop_down),
-                  ],
+          Stack(
+            children: [
+              GestureDetector(
+                onTap: () => controller.toggleDropdown(),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade300),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Row(
+                    children: [
+                      const Text('Currently in Campaign'),
+                      const SizedBox(width: 4),
+                      Obx(() => Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 2),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                                '(${controller.selectedCampaigns.length})'),
+                          )),
+                      const Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Obx(() => controller.isDropdownOpen.value
-              ? Positioned(
-                  top: 40,
-                  right: 0,
-                  child: Container(
-                    width: 250,
-                    constraints: const BoxConstraints(maxHeight: 300),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(4),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ...controller.selectedCampaigns.map((campaign) =>
-                            ListTile(
-                              title: Text(campaign['name'] as String),
-                              trailing: IconButton(
-                                icon: const Icon(Icons.close),
-                                onPressed: () => controller.removeFromCampaign(campaign),
+              Obx(
+                () => controller.isDropdownOpen.value
+                    ? Positioned(
+                        top: 40,
+                        right: 0,
+                        child: Container(
+                          width: 250,
+                          constraints: const BoxConstraints(maxHeight: 300),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade300),
+                            borderRadius: BorderRadius.circular(4),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 1,
+                                blurRadius: 4,
+                                offset: const Offset(0, 2),
                               ),
+                            ],
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                ...controller.selectedCampaigns.map(
+                                  (campaign) => ListTile(
+                                    title: Text(campaign['name'] as String),
+                                    trailing: IconButton(
+                                      icon: const Icon(Icons.close),
+                                      onPressed: () => controller
+                                          .removeFromCampaign(campaign),
+                                    ),
+                                  ),
+                                ),
+                                if (controller.selectedCampaigns.isEmpty)
+                                  const Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Text('No campaigns selected'),
+                                  ),
+                              ],
                             ),
                           ),
-                          if (controller.selectedCampaigns.isEmpty)
-                            const Padding(
-                              padding: EdgeInsets.all(16),
-                              child: Text('No campaigns selected'),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              : const SizedBox(),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
-}
+                        ),
+                      )
+                    : const SizedBox(),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _buildSearchBar(BuildContext context) {
     return Container(
@@ -155,30 +163,30 @@ class ContactListSmsWidget extends StatelessWidget {
 
   Widget _buildListView() {
     return Obx(() => ListView.builder(
-      itemCount: controller.filteredContactLists.length,
-      itemBuilder: (context, index) {
-        final item = controller.filteredContactLists[index];
-        return Container(
-          decoration: BoxDecoration(
-            color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
-            border: Border(
-              bottom: BorderSide(color: Colors.grey.shade300),
-            ),
-          ),
-          child: ListTile(
-            title: Text(item['name'] as String),
-            trailing: Text(
-              '${item['contacts']} Contact${item['contacts'] != 1 ? 's' : ''}',
-              style: TextStyle(color: Colors.grey.shade600),
-            ),
-            onTap: () {
-              searchController.text = item['name'] as String;
-              controller.isSearchFocused.value = false;
-              focusNode.unfocus();
-            },
-          ),
-        );
-      },
-    ));
+          itemCount: controller.filteredContactLists.length,
+          itemBuilder: (context, index) {
+            final item = controller.filteredContactLists[index];
+            return Container(
+              decoration: BoxDecoration(
+                color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey.shade300),
+                ),
+              ),
+              child: ListTile(
+                title: Text(item['name'] as String),
+                trailing: Text(
+                  '${item['contacts']} Contact${item['contacts'] != 1 ? 's' : ''}',
+                  style: TextStyle(color: Colors.grey.shade600),
+                ),
+                onTap: () {
+                  searchController.text = item['name'] as String;
+                  controller.isSearchFocused.value = false;
+                  focusNode.unfocus();
+                },
+              ),
+            );
+          },
+        ));
   }
 }

@@ -8,7 +8,6 @@ import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/views/TemplateView/unlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CreateEmailSelectTemplateWidget extends StatelessWidget {
   final controller = Get.put(CreateEmailController());
@@ -116,7 +115,7 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
                 ),
                 Text(
                   'Create New Template',
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
                     fontSize: context.mh * 0.020,
                     fontWeight: FontWeight.w500,
                   ),
@@ -182,7 +181,7 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
               child: ListTile(
                 title: Text(
                   item['name'] as String,
-                  style: GoogleFonts.roboto(
+                  style: TextStyle(
                     fontSize: context.mh * 0.020,
                     fontWeight: FontWeight.w500,
                   ),

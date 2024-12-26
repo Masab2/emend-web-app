@@ -10,7 +10,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.whiteColor,
-      child: Container(
+      child: SizedBox(
         height: context.mh * 0.42,
         child: Container(
           height: context.mh * 0.42,
@@ -25,7 +25,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
                 children: [
                   Text(
                     'Post Summary',
-                    style: GoogleFonts.barlow(
+                    style: TextStyle(
                       fontSize: context.mh * 0.022,
                       fontWeight: FontWeight.w600,
                     ),
@@ -36,7 +36,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
               SizedBox(height: context.mh * 0.01),
               Text(
                 'Total of likes & comments',
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.017,
                   color: Colors.grey,
                 ),
@@ -94,7 +94,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
             ),
             Text(
               '${(value * 100).toStringAsFixed(0)}%',
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.012,
                 fontWeight: FontWeight.w600,
               ),
@@ -104,14 +104,14 @@ class DashboardPostSummaryWidget extends StatelessWidget {
         SizedBox(height: context.mh * 0.01),
         Text(
           label,
-          style: GoogleFonts.barlow(
+          style: TextStyle(
             fontSize: context.mh * 0.017,
             fontWeight: FontWeight.w600,
           ),
         ),
         Text(
           subtitle,
-          style: GoogleFonts.barlow(
+          style: TextStyle(
             fontSize: context.mh * 0.013,
             color: Colors.grey,
           ),

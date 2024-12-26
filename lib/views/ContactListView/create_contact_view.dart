@@ -3,7 +3,6 @@ import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CreateContactView extends StatelessWidget {
   const CreateContactView({super.key});
@@ -32,7 +31,7 @@ class CreateContactView extends StatelessWidget {
               ),
               Text(
                 "Create List",
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.028,
                   fontWeight: FontWeight.w500,
                 ),
@@ -43,7 +42,7 @@ class CreateContactView extends StatelessWidget {
           // Name Field
           Text(
             "Name",
-            style: GoogleFonts.barlow(
+            style: TextStyle(
               fontSize: context.mh * 0.020,
               fontWeight: FontWeight.w500,
             ),
@@ -53,7 +52,7 @@ class CreateContactView extends StatelessWidget {
             controller: controller.nameController,
             decoration: InputDecoration(
               hintText: "Your List Name",
-              hintStyle: GoogleFonts.roboto(
+              hintStyle: TextStyle(
                 fontSize: context.mh * 0.018,
                 color: Colors.grey[600],
               ),
@@ -73,7 +72,7 @@ class CreateContactView extends StatelessWidget {
           // Description Field
           Text(
             "Description",
-            style: GoogleFonts.barlow(
+            style: TextStyle(
               fontSize: context.mh * 0.020,
               fontWeight: FontWeight.w500,
             ),
@@ -84,7 +83,7 @@ class CreateContactView extends StatelessWidget {
             maxLines: 4,
             decoration: InputDecoration(
               hintText: "Your list description",
-              hintStyle: GoogleFonts.roboto(
+              hintStyle: TextStyle(
                 fontSize: context.mh * 0.018,
                 color: Colors.grey[600],
               ),
@@ -125,7 +124,7 @@ class CreateContactView extends StatelessWidget {
                 },
                 child: Text(
                   "Create",
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.020,
                     color: AppColor.whiteColor,
                   ),

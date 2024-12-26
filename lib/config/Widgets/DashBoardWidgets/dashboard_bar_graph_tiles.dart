@@ -10,7 +10,7 @@ class DashboardBarGraphTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // color: Colors.red,
       width: context.mw * 0.20,
       child: Card(
@@ -22,14 +22,14 @@ class DashboardBarGraphTiles extends StatelessWidget {
               children: [
                 Text(
                   "2.648",
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.030,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   "",
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.030,
                     fontWeight: FontWeight.bold,
                   ),
@@ -40,13 +40,13 @@ class DashboardBarGraphTiles extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Container(
+                SizedBox(
                   height: context.mw * 0.06,
                   width: context.mw * 0.093,
                   child: SfCartesianChart(
                     legend: const Legend(isVisible: false),
                     tooltipBehavior: TooltipBehavior(enable: false),
-                     plotAreaBorderWidth: 0,
+                    plotAreaBorderWidth: 0,
                     primaryXAxis: const CategoryAxis(
                       isVisible: false,
                     ),

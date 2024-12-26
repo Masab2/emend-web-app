@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class AllBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => DashboardController());
+    Get.lazyPut(() => NavigationController());
     Get.lazyPut(() => CreateEmailController());
     Get.lazyPut(() => SmsCompaignController());
     Get.lazyPut(() => SocialCalenderController());

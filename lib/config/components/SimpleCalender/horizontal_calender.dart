@@ -9,12 +9,12 @@ class HorizontalCalendar extends StatefulWidget {
   final ValueChanged<DateTime> onDateChanged;
 
   const HorizontalCalendar({
-    Key? key,
+    super.key,
     required this.initialDate,
     required this.firstDate,
     required this.lastDate,
     required this.onDateChanged,
-  }) : super(key: key);
+  });
 
   @override
   _HorizontalCalendarState createState() => _HorizontalCalendarState();
@@ -44,7 +44,7 @@ class _HorizontalCalendarState extends State<HorizontalCalendar> {
 
     return Column(
       children: [
-        Container(
+        SizedBox(
           // color: Colors.red,
           height: 80,
           child: Row(

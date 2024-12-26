@@ -25,7 +25,7 @@ class ReportsListWidget extends StatelessWidget {
                     width: context.mw * 0.15,
                     child: Text(
                       "Name",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w600,
                       ),
@@ -35,7 +35,7 @@ class ReportsListWidget extends StatelessWidget {
                     width: context.mw * 0.13,
                     child: Text(
                       "User Id",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w600,
                       ),
@@ -45,7 +45,7 @@ class ReportsListWidget extends StatelessWidget {
                     width: context.mw * 0.13,
                     child: Text(
                       "OPENERS",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w600,
                       ),
@@ -55,7 +55,7 @@ class ReportsListWidget extends StatelessWidget {
                     width: context.mw * 0.13,
                     child: Text(
                       "Date",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w600,
                       ),
@@ -65,7 +65,7 @@ class ReportsListWidget extends StatelessWidget {
                     width: context.mw * 0.10,
                     child: Text(
                       "Clickers",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w600,
                       ),
@@ -75,7 +75,7 @@ class ReportsListWidget extends StatelessWidget {
                     width: context.mw * 0.10,
                     child: Text(
                       "ACTIONS",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w600,
                       ),
@@ -98,7 +98,7 @@ class ReportsListWidget extends StatelessWidget {
                             width: context.mw * 0.15,
                             child: Text(
                               "Victoria Perez",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.018,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -108,7 +108,7 @@ class ReportsListWidget extends StatelessWidget {
                             width: context.mw * 0.13,
                             child: Text(
                               "LA-0234",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.018,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -118,7 +118,7 @@ class ReportsListWidget extends StatelessWidget {
                             width: context.mw * 0.13,
                             child: Text(
                               "OPENERS",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.018,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -128,7 +128,7 @@ class ReportsListWidget extends StatelessWidget {
                             width: context.mw * 0.13,
                             child: Text(
                               "30 Apr, 2017 to 24 Otc 2020",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.018,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -138,7 +138,7 @@ class ReportsListWidget extends StatelessWidget {
                             width: context.mw * 0.10,
                             child: Text(
                               "Clickers",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.018,
                                 fontWeight: FontWeight.w600,
                               ),

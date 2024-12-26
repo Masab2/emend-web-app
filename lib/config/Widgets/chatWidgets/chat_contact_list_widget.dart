@@ -11,7 +11,7 @@ class ChatContactListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-      child: Row(
+      child: const Row(
         children: [
           ContactListWidget(),
           ChatMessageWidget(),

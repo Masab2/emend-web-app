@@ -36,7 +36,7 @@ class DashBoardHeaderWidget extends StatelessWidget {
           children: [
             Text(
               "Hello Masab Haider",
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.022,
                 fontWeight: FontWeight.w600,
               ),

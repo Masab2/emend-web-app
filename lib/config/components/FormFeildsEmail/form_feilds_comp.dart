@@ -26,7 +26,7 @@ class FormFeildsComp extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.020,
                   fontWeight: FontWeight.w600,
                 ),
@@ -36,20 +36,18 @@ class FormFeildsComp extends StatelessWidget {
                 width: context.mw * 0.60,
                 padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey, 
-                  ),
+                    border: Border.all(
+                      color: Colors.grey,
+                    ),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   maxLines: maxLines,
                   decoration: InputDecoration(
                     hintText: hint,
-                    hintStyle: GoogleFonts.barlow(
+                    hintStyle: TextStyle(
                       fontSize: context.mh * 0.020,
                     ),
-                    contentPadding: EdgeInsets.only(
-                      bottom: context.mh * 0.02
-                    ),
+                    contentPadding: EdgeInsets.only(bottom: context.mh * 0.02),
                     border: InputBorder.none,
                   ),
                 ),

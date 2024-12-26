@@ -24,7 +24,7 @@ class ReportsUserSearchWidget extends StatelessWidget {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: "Search User",
-                  hintStyle: GoogleFonts.barlow(
+                  hintStyle: TextStyle(
                     fontSize: context.mh * 0.020,
                   ),
                   contentPadding: EdgeInsets.symmetric(
@@ -45,7 +45,7 @@ class ReportsUserSearchWidget extends StatelessWidget {
             onPressed: () {},
             child: Text(
               "Add User",
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.020,
                 color: AppColor.whiteColor,
               ),
@@ -56,7 +56,7 @@ class ReportsUserSearchWidget extends StatelessWidget {
             children: [
               Text(
                 "Sort By",
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.020,
                 ),
               ),

@@ -23,7 +23,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text(
                 'Previous Campaigns',
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.020,
                   fontWeight: FontWeight.bold,
                 ),
@@ -38,7 +38,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.05,
                       child: Text(
                         "Id",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -48,7 +48,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "NAME",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -58,7 +58,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "RECIPIENTS",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -68,7 +68,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "OPENERS",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -78,7 +78,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "CLICKERS",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -88,7 +88,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "UNSUBSCRIBED",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -98,7 +98,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "SEND DATE",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -108,7 +108,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.08,
                       child: Text(
                         "ACTIONS",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w600,
                         ),
@@ -124,7 +124,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.05,
                       child: Text(
                         "0001",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -133,7 +133,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "Sept 2021 deliverability",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -142,7 +142,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "73  100",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -151,7 +151,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "1.39",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -160,7 +160,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "1.39",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -169,7 +169,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.10,
                       child: Text(
                         "0",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -178,7 +178,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                       width: context.mw * 0.05,
                       child: Text(
                         "02 Sep,2021",
-                        style: GoogleFonts.barlow(
+                        style: TextStyle(
                           fontSize: context.mh * 0.017,
                         ),
                       ),
@@ -194,7 +194,7 @@ class EmailCompaignsListWidget extends StatelessWidget {
                             onPressed: () {},
                             child: Text(
                               "Reports",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.017,
                                 color: AppColor.whiteColor,
                               ),
@@ -203,11 +203,10 @@ class EmailCompaignsListWidget extends StatelessWidget {
                           MaterialButton(
                             minWidth: context.mw * 0.08,
                             height: context.mh * 0.05,
-                            
                             onPressed: () {},
                             child: Text(
                               "preview",
-                              style: GoogleFonts.barlow(
+                              style: TextStyle(
                                 fontSize: context.mh * 0.017,
                               ),
                             ),

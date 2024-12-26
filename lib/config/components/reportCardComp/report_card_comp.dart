@@ -14,7 +14,6 @@ class ReportCardComp extends StatelessWidget {
         height: context.mh * 0.16,
         width: context.mw * 0.256,
         padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,7 +26,7 @@ class ReportCardComp extends StatelessWidget {
                   children: [
                     Text(
                       "User",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.020,
                         fontWeight: FontWeight.w800,
                       ),
@@ -38,7 +37,7 @@ class ReportCardComp extends StatelessWidget {
                   children: [
                     Text(
                       "0",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.018,
                         fontWeight: FontWeight.w300,
                       ),

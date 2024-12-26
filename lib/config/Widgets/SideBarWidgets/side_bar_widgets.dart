@@ -1,150 +1,127 @@
+import 'package:emend_web_app/Controllers/controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/views/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../components/DashboardSideBar/dashboard_side_bar_comp.dart';
-import 'package:emend_web_app/Controllers/controller.dart';
 
 class SideBarWidgets extends StatelessWidget {
   const SideBarWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final sidebarController = Get.put(DashboardController());
+    final NavigationController controller = Get.find<NavigationController>();
+
+    final menuItems = [
+      {
+        'icon': Icons.home,
+        'title': 'DashBoard',
+        'route': DashboardView.route,
+      },
+      {
+        'icon': Icons.email_outlined,
+        'title': 'E-Mail Campaigns',
+        'route': EmailCompaignsView.route,
+      },
+      {
+        'icon': Icons.dock_outlined,
+        'title': 'SMS Campaigns',
+        'route': SmsCompaignView.route,
+      },
+      {
+        'icon': Icons.add_chart,
+        'title': 'Reports',
+        'route': ReportsView.route,
+      },
+      {
+        'icon': Icons.edit,
+        'title': 'Templates',
+        'route': TemplateView.route,
+      },
+      {
+        'icon': Icons.message,
+        'title': 'Chats',
+        'route': ChatView.route,
+      },
+      {
+        'icon': Icons.contact_page_outlined,
+        'title': 'Contact List',
+        'route': ContactListView.route,
+      },
+    ];
 
     return Obx(() {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Top Menu Row
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.mw * 0.003),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    sidebarController.toggleSidebarVisibility();
-                  },
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ),
+      return Container(
+        color: AppColor.whiteColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Toggle Button
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.005),
+              child: IconButton(
+                onPressed: () {
+                  controller.toggleSidebarVisibility();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
                 ),
-              ],
+              ),
             ),
-          ),
-          // Sidebar Container
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            width: sidebarController.isSidebarVisible.value
-                ? context.mw * 0.17
-                : context.mw * 0.043,
-            height: context.mh * 0.85,
-            color: AppColor.whiteColor,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        DashboardSideBarComp(
-                          icon: Icons.home,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'DashBoard'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 0,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(0, "Dashboard");
-                          },
-                        ),
-                        DashboardSideBarComp(
-                          icon: Icons.email_outlined,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'E-Mail Campaigns'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 1,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(
-                                1, "E-Mail Campaigns");
-                          },
-                        ),
-                        DashboardSideBarComp(
-                          icon: Icons.dock_outlined,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'SMS Campaigns'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 2,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(
-                                2, "SMS Campaigns");
-                          },
-                        ),
-                        
-                        DashboardSideBarComp(
-                          icon: Icons.add_chart,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'Reports'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 3,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(3, "Reports");
-                          },
-                        ),
-                        DashboardSideBarComp(
-                          icon: Icons.edit,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'Templates'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 4,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(4, "Templates");
-                          },
-                        ),
-                        // DashboardSideBarComp(
-                        //   icon: Icons.calendar_month_outlined,
-                        //   title: sidebarController.isSidebarVisible.value
-                        //       ? 'Social Calendar'
-                        //       : null,
-                        //   index: sidebarController.selectedIndex.value == 5,
-                        //   ontap: () {
-                        //     sidebarController.setSelectedIndex(
-                        //         5, "Social Calendar");
-                        //   },
-                        // ),
-                        DashboardSideBarComp(
-                          icon: Icons.message,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'Chats'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 6,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(6, "Chats");
-                          },
-                        ),
-                        DashboardSideBarComp(
-                          icon: Icons.contact_page_outlined,
-                          title: sidebarController.isSidebarVisible.value
-                              ? 'Contact List'
-                              : null,
-                          index: sidebarController.selectedIndex.value == 7,
-                          ontap: () {
-                            sidebarController.setSelectedIndex(7, "Contact List");
-                          },
-                        ),
-                      ],
+            const SizedBox(height: 20),
+            // Sidebar with animation
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              width: controller.isSidebarVisible.value
+                  ? context.mw * 0.17
+                  : context.mw * 0.043,
+              height: context.mh * 0.85,
+              color: AppColor.whiteColor,
+              child: ListView.builder(
+                itemCount: menuItems.length,
+                itemBuilder: (context, index) {
+                  final item = menuItems[index];
+                  final isSelected = controller.selectedIndex.value == index;
+                  return Card(
+                    color: isSelected
+                        ? AppColor.primaryColor
+                        : AppColor.whiteColor,
+                    elevation: 0,
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      leading: Icon(
+                        item['icon'] as IconData,
+                        color: isSelected
+                            ? AppColor.whiteColor
+                            : AppColor.primaryColor,
+                      ),
+                      title: controller.isSidebarVisible.value
+                          ? Text(
+                              item['title'] as String,
+                              style: TextStyle(
+                                color: isSelected
+                                    ? AppColor.whiteColor
+                                    : Colors.black,
+                              ),
+                            )
+                          : null,
+                      onTap: () {
+                        controller.setSelectedIndex(index);
+                        Get.toNamed(item['route'] as String);
+                      },
+                      selected: isSelected,
+                      selectedColor: AppColor.whiteColor,
+                      selectedTileColor: AppColor.primaryColor,
                     ),
-                  ),
-                ),
-              ],
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     });
   }

@@ -2,7 +2,6 @@ import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/views/ContactListView/contact_details_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../../Controllers/controller.dart';
@@ -33,7 +32,7 @@ class ContactListViewWiidget extends StatelessWidget {
                         width: context.mw * 0.03,
                         child: Text(
                           "ID",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.02,
                             fontWeight: FontWeight.w600,
                           ),
@@ -43,7 +42,7 @@ class ContactListViewWiidget extends StatelessWidget {
                         width: context.mw * 0.20,
                         child: Text(
                           "Name",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.02,
                             fontWeight: FontWeight.w600,
                           ),
@@ -53,7 +52,7 @@ class ContactListViewWiidget extends StatelessWidget {
                         width: context.mw * 0.20,
                         child: Text(
                           "Total Contacts",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.02,
                             fontWeight: FontWeight.w600,
                           ),
@@ -64,7 +63,7 @@ class ContactListViewWiidget extends StatelessWidget {
                         child: Center(
                           child: Text(
                             "Actions",
-                            style: GoogleFonts.roboto(
+                            style: TextStyle(
                               fontSize: context.mh * 0.02,
                               fontWeight: FontWeight.w600,
                             ),
@@ -95,7 +94,7 @@ class ContactListViewWiidget extends StatelessWidget {
                                     width: context.mw * 0.03,
                                     child: Text(
                                       "${index + 1}",
-                                      style: GoogleFonts.roboto(
+                                      style: TextStyle(
                                         fontSize: context.mh * 0.02,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -105,7 +104,7 @@ class ContactListViewWiidget extends StatelessWidget {
                                     width: context.mw * 0.20,
                                     child: Text(
                                       controller.contactsLists[index].name,
-                                      style: GoogleFonts.roboto(
+                                      style: TextStyle(
                                         fontSize: context.mh * 0.02,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -122,7 +121,7 @@ class ContactListViewWiidget extends StatelessWidget {
                                       width: context.mw * 0.20,
                                       child: Text(
                                         "${controller.contactsLists[index].contacts.length} Contacts",
-                                        style: GoogleFonts.roboto(
+                                        style: TextStyle(
                                           fontSize: context.mh * 0.02,
                                           fontWeight: FontWeight.w600,
                                         ),

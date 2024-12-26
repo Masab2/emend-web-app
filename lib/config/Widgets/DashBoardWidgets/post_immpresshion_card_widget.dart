@@ -22,7 +22,7 @@ class _PostImmpresshionCardWidgetState
     return Card(
       color: AppColor.whiteColor,
       margin: EdgeInsets.zero,
-      child: Container(
+      child: SizedBox(
         height: context.mh * 0.4,
         width: context.mw * 0.19,
         child: Padding(
@@ -35,14 +35,14 @@ class _PostImmpresshionCardWidgetState
             children: [
               Text(
                 "Best Performing Posts",
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.024,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 "Quickly see which 4 posts have the best engagement from March 26 - April 26",
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.017,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey,
@@ -54,7 +54,7 @@ class _PostImmpresshionCardWidgetState
                 controller: _scrollController,
                 thumbVisibility: true,
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(
+                  padding: EdgeInsets.symmetric(
                     vertical: context.mh * 0.02,
                   ),
                   child: SizedBox(
@@ -62,8 +62,8 @@ class _PostImmpresshionCardWidgetState
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       controller: _scrollController,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           PostImpresshionWidget(),
                           PostImpresshionWidget(),
                         ],

@@ -1,18 +1,17 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class DashboardSideBarComp extends StatelessWidget {
   final String? title;
   final bool index;
-  final VoidCallback ontap;
+  final VoidCallback onTap;
   final IconData icon;
   const DashboardSideBarComp({
     super.key,
     required this.title,
     required this.index,
-    required this.ontap,
+    required this.onTap,
     required this.icon,
   });
 
@@ -26,17 +25,17 @@ class DashboardSideBarComp extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
         margin: EdgeInsets.only(bottom: context.mh * 0.01),
         decoration: BoxDecoration(
-          color: index == true ? Colors.yellowAccent : null,
+          color: index == true ? AppColor.primaryColor : null,
           borderRadius: BorderRadius.circular(10),
         ),
         child: GestureDetector(
-          onTap: ontap,
+          onTap: onTap,
           child: Row(
             children: [
               Icon(
                 icon,
                 size: context.mh * 0.024,
-                color: index == true ? AppColor.primaryColor : Colors.black,
+                color: index == true ? AppColor.whiteColor : Colors.black,
               ),
               if (title != null) ...[
                 Expanded(
@@ -45,11 +44,10 @@ class DashboardSideBarComp extends StatelessWidget {
                     child: Text(
                       title!,
                       overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.020,
-                        color: index == true
-                            ? AppColor.primaryColor
-                            : Colors.black,
+                        color:
+                            index == true ? AppColor.whiteColor : Colors.black,
                       ),
                     ),
                   ),

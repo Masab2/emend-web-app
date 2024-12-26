@@ -26,7 +26,7 @@ class PostImpresshionWidget extends StatelessWidget {
               children: [
                 Text(
                   "ENGAGEMENT",
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.018,
                     fontWeight: FontWeight.w500,
                   ),
@@ -34,7 +34,7 @@ class PostImpresshionWidget extends StatelessWidget {
                 0.01.ph(context),
                 Text(
                   "89.64%",
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.018,
                     fontWeight: FontWeight.w600,
                   ),

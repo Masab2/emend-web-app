@@ -29,7 +29,7 @@ class TemplateHeaderWidget extends StatelessWidget {
                     child: TextFormField(
                       decoration: InputDecoration(
                         hintText: "Search",
-                        hintStyle: GoogleFonts.barlow(
+                        hintStyle: TextStyle(
                           fontSize: context.mh * 0.020,
                         ),
                         contentPadding: EdgeInsets.symmetric(
@@ -65,7 +65,7 @@ class TemplateHeaderWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Hello Masab Haider",
-                      style: GoogleFonts.barlow(
+                      style: TextStyle(
                         fontSize: context.mh * 0.022,
                         fontWeight: FontWeight.w600,
                       ),

@@ -16,9 +16,8 @@ class CreateSmsCompaignView extends StatelessWidget {
   Widget build(BuildContext context) {
     final createSmsController = Get.put(SmsCompaignController());
 
-    return Container(
+    return SizedBox(
       height: context.mh,
-
       child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
@@ -200,7 +199,7 @@ class CreateSmsCompaignView extends StatelessWidget {
                 RadioListTile<bool>(
                   title: Text(
                     'Send Immediately',
-                    style: GoogleFonts.barlow(
+                    style: TextStyle(
                       fontSize: MediaQuery.of(context).size.height * 0.018,
                     ),
                   ),
@@ -212,7 +211,7 @@ class CreateSmsCompaignView extends StatelessWidget {
                 RadioListTile<bool>(
                   title: Text(
                     'Schedule Send',
-                    style: GoogleFonts.barlow(
+                    style: TextStyle(
                       fontSize: MediaQuery.of(context).size.height * 0.018,
                     ),
                   ),
@@ -237,7 +236,7 @@ class CreateSmsCompaignView extends StatelessWidget {
         children: [
           Text(
             'Send after',
-            style: GoogleFonts.barlow(
+            style: TextStyle(
               fontSize: MediaQuery.of(context).size.height * 0.018,
             ),
           ),
@@ -274,7 +273,7 @@ class CreateSmsCompaignView extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-       0.006.ph(context),
+        0.006.ph(context),
         TextField(
           decoration: InputDecoration(
             hintStyle: TextStyle(fontSize: context.mh * 0.016),

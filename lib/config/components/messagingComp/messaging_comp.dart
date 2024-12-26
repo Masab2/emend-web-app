@@ -15,7 +15,7 @@ class MessagingComp extends StatelessWidget {
       color: AppColor.whiteColor,
       child: Container(
         height: context.mh * 0.16,
-        width: context.mw  * 0.8,
+        width: context.mw * 0.8,
         padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,14 +32,14 @@ class MessagingComp extends StatelessWidget {
               children: [
                 Text(
                   text,
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.020,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
                   subtext,
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                       fontSize: context.mh * 0.018,
                       fontWeight: FontWeight.w600,
                       color: Colors.grey),

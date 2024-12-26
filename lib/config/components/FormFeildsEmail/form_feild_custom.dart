@@ -6,11 +6,11 @@ class CustomTextFormField extends StatelessWidget {
   final int maxLines;
 
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     this.maxLines = 4,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,10 @@ class CustomTextFormField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide:  BorderSide(color: Colors.grey.shade100, width: 1.5),
+          borderSide: BorderSide(color: Colors.grey.shade100, width: 1.5),
         ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
       ),
     );
   }

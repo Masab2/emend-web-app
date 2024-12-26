@@ -12,9 +12,9 @@ class PostInsightsWidget extends StatelessWidget {
 
     return Card(
       color: Colors.white,
-      child: Container(
+      child: SizedBox(
         height: screenHeight * 0.27,
-        child: Container(
+        child: SizedBox(
           height: screenHeight * 0.27,
           width: context.mw,
           child: Column(
@@ -31,14 +31,14 @@ class PostInsightsWidget extends StatelessWidget {
                       children: [
                         Text(
                           "Post Insights",
-                          style: GoogleFonts.barlow(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           "Mar 26 - Apr 01",
-                          style: GoogleFonts.barlow(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             color: Colors.grey,
                           ),
@@ -53,7 +53,7 @@ class PostInsightsWidget extends StatelessWidget {
                           value: value,
                           child: Text(
                             value,
-                            style: GoogleFonts.barlow(
+                            style: TextStyle(
                               fontSize: context.mh * 0.014,
                             ),
                           ),
@@ -121,7 +121,7 @@ class PostInsightsWidget extends StatelessWidget {
                 size: context.mh * 0.014, color: Colors.grey),
             Text(
               title,
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.014,
                 color: Colors.grey,
               ),
@@ -136,14 +136,14 @@ class PostInsightsWidget extends StatelessWidget {
             children: [
               Text(
                 day,
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.018,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 value,
-                style: GoogleFonts.barlow(
+                style: TextStyle(
                   fontSize: context.mh * 0.018,
                   fontWeight: FontWeight.bold,
                 ),

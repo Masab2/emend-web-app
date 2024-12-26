@@ -11,7 +11,7 @@ class SmsCompaignComp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.whiteColor,
-      child: Container(
+      child: SizedBox(
         height: context.mh * 0.16,
         width: context.mw * 0.18,
         child: Column(
@@ -20,7 +20,7 @@ class SmsCompaignComp extends StatelessWidget {
           children: [
             Text(
               count,
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.022,
                 fontWeight: FontWeight.w600,
                 color: Colors.grey,
@@ -28,7 +28,7 @@ class SmsCompaignComp extends StatelessWidget {
             ),
             Text(
               "UnRead Message",
-              style: GoogleFonts.barlow(
+              style: TextStyle(
                 fontSize: context.mh * 0.022,
                 fontWeight: FontWeight.w600,
                 color: AppColor.primaryColor,

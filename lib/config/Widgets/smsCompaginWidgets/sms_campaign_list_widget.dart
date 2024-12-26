@@ -1,7 +1,6 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SmsCompaignsListWidget extends StatelessWidget {
   const SmsCompaignsListWidget({super.key});
@@ -10,8 +9,8 @@ class SmsCompaignsListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-            horizontal: context.mw * 0.03,
-          ),
+        horizontal: context.mw * 0.03,
+      ),
       child: Card(
         color: AppColor.whiteColor,
         child: Container(
@@ -29,7 +28,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: Text(
                   'Previous Campaigns',
-                  style: GoogleFonts.barlow(
+                  style: TextStyle(
                     fontSize: context.mh * 0.020,
                     fontWeight: FontWeight.bold,
                   ),
@@ -44,7 +43,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "Name",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             fontWeight: FontWeight.w600,
                           ),
@@ -54,7 +53,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "List",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             fontWeight: FontWeight.w600,
                           ),
@@ -64,7 +63,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "Contacts",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             fontWeight: FontWeight.w600,
                           ),
@@ -74,7 +73,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "Creator",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             fontWeight: FontWeight.w600,
                           ),
@@ -84,13 +83,12 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.10,
                         child: Text(
                           "Status",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.018,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                      
                     ],
                   ),
                   const Divider(),
@@ -101,7 +99,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "Test User",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.017,
                           ),
                         ),
@@ -110,7 +108,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "Test List",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.017,
                           ),
                         ),
@@ -119,23 +117,20 @@ class SmsCompaignsListWidget extends StatelessWidget {
                         width: context.mw * 0.15,
                         child: Text(
                           "133 Contacts",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.017,
                           ),
                         ),
                       ),
-      
                       SizedBox(
                         width: context.mw * 0.15,
                         child: Text(
                           "Syed Zain",
-                          style: GoogleFonts.roboto(
+                          style: TextStyle(
                             fontSize: context.mh * 0.017,
                           ),
                         ),
                       ),
-                      
-                      
                       SizedBox(
                         width: context.mw * 0.10,
                         child: MaterialButton(
@@ -145,7 +140,7 @@ class SmsCompaignsListWidget extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             "Active",
-                            style: GoogleFonts.barlow(
+                            style: TextStyle(
                               fontSize: context.mh * 0.017,
                               color: AppColor.whiteColor,
                             ),
