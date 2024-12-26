@@ -1,6 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:emend_web_app/Controllers/StepController/step_controller.dart';
 import 'package:emend_web_app/Controllers/controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/config/components/stepIndicator/step_divider_comp.dart';
+import 'package:emend_web_app/config/components/stepIndicator/step_item_comp.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/views/SmsCompaignsView/createSmsCompaignView/create_sms_compaign_view.dart';
@@ -82,46 +86,26 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _stepItem('Settings', 0, true),
-              _stepDivider(),
-              _stepItem('Contacts', 1, controller.currentStep.value >= 1),
-              _stepDivider(),
-              _stepItem('Messages', 2, controller.currentStep.value >= 2),
+              const StepItemComp(
+                step: 0,
+                title: 'Settings',
+                active: true,
+              ),
+              const StepDividerComp(),
+              StepItemComp(
+                step: 1,
+                title: 'Contacts',
+                active: controller.currentStep.value >= 1,
+              ),
+              const StepDividerComp(),
+              StepItemComp(
+                step: 2,
+                title: 'Messages',
+                active: controller.currentStep.value >= 2,
+              ),
             ],
           ),
         ));
-  }
-
-  Widget _stepItem(String title, int step, bool active) {
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 12,
-          backgroundColor: active ? Colors.black : Colors.grey[300],
-          child: Text(
-            '${step + 1}',
-            style: const TextStyle(color: Colors.white, fontSize: 12),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Text(
-          title,
-          style: TextStyle(
-            color: active ? Colors.black : Colors.grey,
-            fontWeight: active ? FontWeight.bold : FontWeight.normal,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _stepDivider() {
-    return Container(
-      width: 40,
-      height: 1,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      color: Colors.grey[300],
-    );
   }
 
   Widget _buildCurrentStep(BuildContext context) {
@@ -144,18 +128,19 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildFormField(
-            'Campaign Name',
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter Campaign Name',
-                hintStyle: TextStyle(fontSize: context.mh * 0.020),
-                border: InputBorder.none,
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              ),
-              onChanged: (value) => controller.campaignName.value = value,
+          'Campaign Name',
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Enter Campaign Name',
+              hintStyle: TextStyle(fontSize: context.mh * 0.020),
+              border: InputBorder.none,
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
-            context),
+            onChanged: (value) => controller.campaignName.value = value,
+          ),
+          context,
+        ),
         _buildFormField(
             'Inbox',
             DropdownButtonFormField<String>(

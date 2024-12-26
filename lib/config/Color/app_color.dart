@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
-  static const Color primaryColor = Colors.blue;
+  static const Color primaryColor = Colors.black;
   static const Color secondaryColor = Color(0xff464255);
   static const Color whiteColor = Color(0xffffffff);
   static const Color blueColor = Color(0xff2D9CDB);
@@ -13,8 +13,7 @@ class AppColor {
   static const Color viewsBackgroundColor = Color(0xffF3F2F7);
 
   // Side bar Colors
-  static const Color sideBarBoxSelectedColor =
-      Color.fromRGBO(0, 176, 116, 0.15);
+  // static const Color sideBarBoxSelectedColor = Color.fromARGB(255, 25, 25, 26);
   // Notifcation BackgroundColor
   static const Color notificationBackgroundColor =
       Color.fromRGBO(45, 156, 219, 0.15);

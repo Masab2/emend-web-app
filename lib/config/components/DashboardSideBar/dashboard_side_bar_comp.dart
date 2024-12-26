@@ -26,7 +26,7 @@ class DashboardSideBarComp extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
         margin: EdgeInsets.only(bottom: context.mh * 0.01),
         decoration: BoxDecoration(
-          color: index == true ? AppColor.sideBarBoxSelectedColor : null,
+          color: index == true ? Colors.yellowAccent : null,
           borderRadius: BorderRadius.circular(10),
         ),
         child: GestureDetector(

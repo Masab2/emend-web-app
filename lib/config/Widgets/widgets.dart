@@ -16,6 +16,7 @@ export './reportsWidgets/reports_list_widget.dart';
 export './emailCompaignWidgets/email_compaagin_second_widget.dart';
 export './emailCompaignWidgets/email_compagin_section_one_widget.dart';
 export './emailCompaignWidgets/email_compaign_card_widget.dart';
+export './emailCompaignWidgets/contact_list_email_widget.dart';
 export './emailCompaignWidgets/email_compaigns_list_widget.dart';
 
 // Chat View Widget
@@ -26,7 +27,7 @@ export './chatWidgets/chat_message_widget.dart';
 // Create Email Compagin Screen
 export './createEmailFormWidget/create_email_form_setup_widget.dart';
 export './createEmailFormWidget/email_content_widget.dart';
-export './createEmailFormWidget/create_email_recipent_widget.dart';
+export 'createEmailFormWidget/create_email_template_widget.dart';
 
 
 // Dashboard Widgets

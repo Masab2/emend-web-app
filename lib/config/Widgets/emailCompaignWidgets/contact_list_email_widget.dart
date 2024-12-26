@@ -1,11 +1,13 @@
-import 'package:emend_web_app/Controllers/StepController/step_controller.dart';
+// ignore_for_file: use_key_in_widget_constructors
+
+import 'package:emend_web_app/Controllers/controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extenshions/extenshion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ContactListSmsWidget extends StatelessWidget {
-  final controller = Get.put(StepController());
+class ContactListEmailWidget extends StatelessWidget {
+  final controller = Get.put(CreateEmailController());
   final focusNode = FocusNode();
   final searchController = TextEditingController();
 
@@ -40,31 +42,7 @@ class ContactListSmsWidget extends StatelessWidget {
         ),
         Stack(
           children: [
-            GestureDetector(
-              onTap: () => controller.toggleDropdown(),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Row(
-                  children: [
-                    const Text('Currently in Campaign'),
-                    const SizedBox(width: 4),
-                    Obx(() => Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text('(${controller.selectedCampaigns.length})'),
-                    )),
-                    const Icon(Icons.arrow_drop_down),
-                  ],
-                ),
-              ),
-            ),
+            
             Obx(() => controller.isDropdownOpen.value
               ? Positioned(
                   top: 40,
