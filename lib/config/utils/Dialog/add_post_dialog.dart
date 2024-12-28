@@ -1,8 +1,7 @@
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/controllers/social_calender_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../Controllers/controller.dart';
 
 class AddPostDialog {
   final socialController = Get.put(SocialCalenderController());
@@ -90,16 +89,16 @@ class AddPostDialog {
   }
 
   Widget _buildPlatformIcon(
-      IconData icon, Color color, String tooltip, VoidCallback ontap) {
+      IconData icon, Color color, String tooltip, VoidCallback onTap) {
     return Tooltip(
       message: tooltip,
       child: GestureDetector(
-        onTap: ontap,
+        onTap: onTap,
         child: Container(
           width: 60,
           height: 60,
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
+            color: color.withValues(alpha: 0.1),
             shape: BoxShape.circle,
           ),
           child: Icon(

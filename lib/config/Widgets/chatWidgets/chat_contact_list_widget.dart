@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/widgets/chatWidgets/chat_contact_detail_widget.dart';
 import 'package:emend_web_app/config/widgets/chatWidgets/chat_message_widget.dart';
 import 'package:emend_web_app/config/widgets/chatWidgets/contact_list_widget.dart';

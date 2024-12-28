@@ -1,8 +1,10 @@
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+import 'package:emend_web_app/config/widgets/ReportsWidgets/reports_header_widget.dart';
+import 'package:emend_web_app/config/widgets/ReportsWidgets/reports_list_widget.dart';
+import 'package:emend_web_app/config/widgets/ReportsWidgets/reports_user_search_widget.dart';
+import 'package:emend_web_app/config/components/reportCardComp/report_card_comp.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
-
-import '../../config/Widgets/widgets.dart';
-import '../../config/components/reportCardComp/report_card_comp.dart';
 
 class ReportsView extends StatelessWidget {
   static const String route = '/reports';

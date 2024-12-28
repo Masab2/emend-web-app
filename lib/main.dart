@@ -1,11 +1,12 @@
-import 'package:emend_web_app/Bindings/bindings.dart';
-import 'package:emend_web_app/config/Routes/routes.dart';
+import 'package:emend_web_app/bindings/bindings.dart';
+import 'package:emend_web_app/config/routes/routes.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/views/view.dart';
+import 'package:emend_web_app/views/DashboardView/dashboard_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'firebase_options.dart';
 
@@ -15,6 +16,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   usePathUrlStrategy();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

@@ -1,11 +1,11 @@
-import 'package:emend_web_app/config/Widgets/widgets.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_view_widget.dart';
+import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+import 'package:emend_web_app/controllers/contact_list_controller.dart';
 import 'package:emend_web_app/views/ContactListView/create_contact_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../Controllers/controller.dart';
 
 class ContactListView extends StatelessWidget {
   static const String route = '/contactListView';
@@ -91,7 +91,7 @@ class ContactListView extends StatelessWidget {
                               ),
                             ),
                             0.01.ph(context),
-                            const ContactListViewWiidget(),
+                            const ContactListViewWidget(),
                           ],
                         ),
                       );

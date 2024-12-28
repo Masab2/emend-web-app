@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
 class TopIconComp extends StatelessWidget {

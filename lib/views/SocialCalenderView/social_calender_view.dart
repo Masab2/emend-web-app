@@ -1,10 +1,12 @@
-import 'package:emend_web_app/Controllers/controller.dart';
-import 'package:emend_web_app/Model/EmailCompaignModel/SocialCalenderAppoinmentList/social_media_compaign_model.dart';
-import 'package:emend_web_app/views/view.dart';
+import 'package:emend_web_app/controllers/social_calender_controller.dart';
+import 'package:emend_web_app/model/EmailCompaignModel/SocialCalenderAppoinmentList/social_media_compaign_model.dart';
+import 'package:emend_web_app/views/SocialCalenderView/AddPostView/add_post_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../config/utils/Dialog/add_post_dialog.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+
+import '../../config/utils/Dialog/add_post_dialog.dart';
+
 class SocialCalendarView extends StatelessWidget {
   const SocialCalendarView({super.key});
 

@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,10 +17,10 @@ class HorizontalCalendar extends StatefulWidget {
   });
 
   @override
-  _HorizontalCalendarState createState() => _HorizontalCalendarState();
+  HorizontalCalendarState createState() => HorizontalCalendarState();
 }
 
-class _HorizontalCalendarState extends State<HorizontalCalendar> {
+class HorizontalCalendarState extends State<HorizontalCalendar> {
   late DateTime _selectedDate;
   late DateTime _currentWeekStart;
 

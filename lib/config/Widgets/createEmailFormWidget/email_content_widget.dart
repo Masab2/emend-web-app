@@ -1,5 +1,5 @@
-import 'package:emend_web_app/config/components/FormFeildsEmail/form_feilds_comp.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/components/FormFieldsEmail/form_fields_comp.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
 class CreateEmailContentWidget extends StatelessWidget {
@@ -7,12 +7,13 @@ class CreateEmailContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
-        FormFeildsComp(
+        FormFieldsComp(
           title: "Content",
           hint: "Enter Email Content here",
-          maxLines: 10, height: context.mh * 0.5,
+          maxLines: 10,
+          height: context.mh * 0.5,
         ),
       ],
     );

@@ -1,9 +1,9 @@
-import 'package:emend_web_app/config/Widgets/templateWidgets/template_header.dart';
-import 'package:emend_web_app/config/Widgets/widgets.dart';
+import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+import 'package:emend_web_app/config/widgets/templateWidgets/template_header.dart';
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
-import 'package:emend_web_app/views/view.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/views/TemplateView/unLayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

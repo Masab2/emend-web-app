@@ -1,9 +1,13 @@
-// ignore_for_file: sized_box_for_whitespace, avoid_unnecessary_containers
-
-import 'package:emend_web_app/Model/GraphDataModel/graph_model.dart';
-import 'package:emend_web_app/config/Widgets/widgets.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/widgets/DashBoardWidgets/dash_board_header_widget.dart';
+import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_bar_graph_tiles.dart';
+import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_pie_chart_card_widget.dart';
+import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_post_insight_widget.dart';
+import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_post_summary_widget.dart';
+import 'package:emend_web_app/config/widgets/DashBoardWidgets/post_impression_card_widget.dart';
+import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+import 'package:emend_web_app/model/GraphDataModel/graph_model.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -46,7 +50,7 @@ class DashboardView extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: context.mw * 0.01),
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                             height: context.mh * 0.85,
                             child: SingleChildScrollView(
                               child: Column(
@@ -60,9 +64,8 @@ class DashboardView extends StatelessWidget {
                                   ),
                                   Align(
                                     alignment: Alignment.topLeft,
-                                    child: Container(
+                                    child: SizedBox(
                                       width: context.mw * 0.6,
-                                      // color: Colors.red,
                                       child: Row(
                                         children: [
                                           Card(
@@ -160,12 +163,12 @@ class DashboardView extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          const PostImmpresshionCardWidget(),
+                                          const PostImpressionCardWidget(),
                                         ],
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: context.mw * 0.6,
                                     child: const PostInsightsWidget(),
                                   ),
@@ -174,12 +177,12 @@ class DashboardView extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            child: Container(
+                            child: SizedBox(
                               height: context.mh * 0.85,
                               child: const SingleChildScrollView(
                                 child: Column(
                                   children: [
-                                    DashboardPiechartCardWidgetOne(),
+                                    DashboardPieChartCardWidget(),
                                     DashboardPostSummaryWidget()
                                   ],
                                 ),

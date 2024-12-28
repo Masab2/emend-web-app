@@ -1,0 +1,61 @@
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:flutter/material.dart';
+
+class FormFieldsComp extends StatelessWidget {
+  final String title;
+  final int? maxLines;
+  final double? height;
+  final String? hint;
+  const FormFieldsComp({
+    super.key,
+    required this.title,
+    this.maxLines,
+    required this.height,
+    this.hint,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.06),
+      child: Row(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: context.mh * 0.020,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Container(
+                height: height,
+                width: context.mw * 0.60,
+                padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey,
+                    ),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextFormField(
+                  maxLines: maxLines,
+                  decoration: InputDecoration(
+                    hintText: hint,
+                    hintStyle: TextStyle(
+                      fontSize: context.mh * 0.020,
+                    ),
+                    contentPadding: EdgeInsets.only(bottom: context.mh * 0.02),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,17 +1,23 @@
-import 'package:emend_web_app/Controllers/controller.dart';
-import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
-import 'package:emend_web_app/views/view.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/controllers/side_bar_controller.dart';
+import 'package:emend_web_app/views/ContactListView/contact_list_view.dart';
+import 'package:emend_web_app/views/DashboardView/dashboard_view.dart';
+import 'package:emend_web_app/views/EmailCampaignsView/email_campaigns_view.dart';
+import 'package:emend_web_app/views/Reports/reports_view.dart';
+import 'package:emend_web_app/views/SmsCampaignsView/sms_campaign_view.dart';
+import 'package:emend_web_app/views/TemplateView/template_view.dart';
+import 'package:emend_web_app/views/chatView/chat_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SideBarWidgets extends StatelessWidget {
-  const SideBarWidgets({super.key});
+import '../../color/app_color.dart';
 
+class SideBarWidgets extends StatelessWidget {
+  SideBarWidgets({super.key});
+
+  final NavigationController controller = Get.find<NavigationController>();
   @override
   Widget build(BuildContext context) {
-    final NavigationController controller = Get.find<NavigationController>();
-
     final menuItems = [
       {
         'icon': Icons.home,
@@ -21,12 +27,12 @@ class SideBarWidgets extends StatelessWidget {
       {
         'icon': Icons.email_outlined,
         'title': 'E-Mail Campaigns',
-        'route': EmailCompaignsView.route,
+        'route': EmailCampaignsView.route,
       },
       {
         'icon': Icons.dock_outlined,
         'title': 'SMS Campaigns',
-        'route': SmsCompaignView.route,
+        'route': SmsCampaignView.route,
       },
       {
         'icon': Icons.add_chart,
@@ -52,7 +58,7 @@ class SideBarWidgets extends StatelessWidget {
 
     return Obx(() {
       return Container(
-        color: AppColor.whiteColor,
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -75,46 +81,55 @@ class SideBarWidgets extends StatelessWidget {
               duration: const Duration(milliseconds: 300),
               width: controller.isSidebarVisible.value
                   ? context.mw * 0.17
-                  : context.mw * 0.043,
+                  : context.mw * 0.05, // Control width based on collapsed state
               height: context.mh * 0.85,
-              color: AppColor.whiteColor,
+              color: Colors.white,
               child: ListView.builder(
                 itemCount: menuItems.length,
                 itemBuilder: (context, index) {
                   final item = menuItems[index];
                   final isSelected = controller.selectedIndex.value == index;
-                  return Card(
-                    color: isSelected
-                        ? AppColor.primaryColor
-                        : AppColor.whiteColor,
-                    elevation: 0,
-                    child: ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      leading: Icon(
-                        item['icon'] as IconData,
-                        color: isSelected
-                            ? AppColor.whiteColor
-                            : AppColor.primaryColor,
-                      ),
-                      title: controller.isSidebarVisible.value
-                          ? Text(
-                              item['title'] as String,
-                              style: TextStyle(
-                                color: isSelected
-                                    ? AppColor.whiteColor
-                                    : Colors.black,
+
+                  return GestureDetector(
+                    onTap: () {
+                      controller.setSelectedIndex(index);
+                      Get.toNamed(item['route'] as String); // Navigate on tap
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Card(
+                        color:
+                            isSelected ? AppColor.primaryColor : Colors.white,
+                        elevation: 0,
+                        child: controller.isSidebarVisible.value
+                            ? ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                leading: Icon(
+                                  item['icon'] as IconData,
+                                  color: isSelected
+                                      ? Colors.white
+                                      : AppColor.primaryColor,
+                                ),
+                                title: Text(
+                                  item['title'] as String,
+                                  style: TextStyle(
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  item['icon'] as IconData,
+                                  color: isSelected
+                                      ? Colors.white
+                                      : AppColor.primaryColor,
+                                ),
                               ),
-                            )
-                          : null,
-                      onTap: () {
-                        controller.setSelectedIndex(index);
-                        Get.toNamed(item['route'] as String);
-                      },
-                      selected: isSelected,
-                      selectedColor: AppColor.whiteColor,
-                      selectedTileColor: AppColor.primaryColor,
+                      ),
                     ),
                   );
                 },

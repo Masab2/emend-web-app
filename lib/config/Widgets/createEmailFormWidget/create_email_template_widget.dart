@@ -2,10 +2,10 @@
 
 import 'dart:developer';
 
-import 'package:emend_web_app/Controllers/controller.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
-import 'package:emend_web_app/views/TemplateView/unlayer.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/controllers/create_email_controller.dart';
+import 'package:emend_web_app/views/TemplateView/unLayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

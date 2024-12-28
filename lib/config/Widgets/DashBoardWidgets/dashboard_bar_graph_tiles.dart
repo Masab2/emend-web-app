@@ -1,8 +1,7 @@
 import 'package:emend_web_app/Model/GraphDataModel/graph_model.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashboardBarGraphTiles extends StatelessWidget {

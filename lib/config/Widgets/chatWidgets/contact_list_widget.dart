@@ -1,5 +1,5 @@
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/extenshions/extenshion.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
@@ -9,7 +9,7 @@ class ContactListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
     final List<Map<String, dynamic>> socialPlatforms = [
       {'name': 'Instagram', 'icon': IconlyBold.camera},
       {'name': 'Facebook', 'icon': IconlyBold.message},
@@ -55,12 +55,12 @@ class ContactListWidget extends StatelessWidget {
             0.01.ph(context),
             Scrollbar(
               thumbVisibility: true,
-              controller: _scrollController,
+              controller: scrollController,
               child: Container(
                 width: context.mw * 0.27,
                 margin: EdgeInsets.symmetric(vertical: context.mh * 0.01),
                 child: SingleChildScrollView(
-                  controller: _scrollController,
+                  controller: scrollController,
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.symmetric(vertical: context.mh * 0.01),
                   child: Row(
@@ -68,8 +68,8 @@ class ContactListWidget extends StatelessWidget {
                         .map((platform) => Padding(
                               padding: const EdgeInsets.only(right: 8.0),
                               child: Chip(
-                                backgroundColor:
-                                    AppColor.primaryColor.withOpacity(0.1),
+                                backgroundColor: AppColor.primaryColor
+                                    .withValues(alpha: 0.1),
                                 label: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -78,7 +78,7 @@ class ContactListWidget extends StatelessWidget {
                                       size: context.mh * 0.018,
                                       color: AppColor.primaryColor,
                                     ),
-                                    SizedBox(width: 4),
+                                    const SizedBox(width: 4),
                                     Text(
                                       platform['name'],
                                       style: GoogleFonts.barlow(
