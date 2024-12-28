@@ -99,7 +99,7 @@ class CreateEmailFormSetupWidget extends StatelessWidget {
           height: context.mh * 0.06,
           width: context.mw,
           decoration: BoxDecoration(
-            color: AppColor.textFormFeildBackgroundColor,
+            color: AppColor.textFormFieldBgColor,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey[300]!),
           ),

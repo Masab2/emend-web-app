@@ -1,6 +1,6 @@
-import 'package:emend_web_app/config/components/SMSCampaignComp/sms_campaign_comp.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/sms_campaign_controller.dart';
+import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -91,7 +91,7 @@ class SmsCampaignsCardWidget extends StatelessWidget {
           ),
         ),
         0.01.ph(context),
-        // ListViewBuilder for Active Messgaing Campign
+        // ListViewBuilder for Active Messaging Campaign
         const SmsCampaignsListWidget()
       ],
     );

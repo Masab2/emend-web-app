@@ -1,6 +1,6 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/contact_list_controller.dart';
-import 'package:emend_web_app/views/ContactListView/contact_details_list.dart';
+import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';

@@ -1,5 +1,5 @@
 import 'package:emend_web_app/config/keys/box_key.dart';
-import 'package:emend_web_app/data/local/storage_service.dart';
+import 'package:emend_web_app/data/Local/storage_service.dart';
 import 'package:get/get.dart';
 
 class NavigationController extends GetxController {

@@ -1,20 +1,18 @@
-// ignore_for_file: unused_field
-
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class UnLayerEditor extends StatefulWidget {
+class TemplateEditor extends StatefulWidget {
   static const route = '/template-editor';
 
-  const UnLayerEditor({
+  const TemplateEditor({
     super.key,
   });
 
   @override
-  UnLayerEditorState createState() => UnLayerEditorState();
+  TemplateEditorState createState() => TemplateEditorState();
 }
 
-class UnLayerEditorState extends State<UnLayerEditor> {
+class TemplateEditorState extends State<TemplateEditor> {
   late InAppWebViewController _webViewController;
 
   @override

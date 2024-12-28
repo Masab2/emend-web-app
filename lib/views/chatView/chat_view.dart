@@ -1,6 +1,5 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/ChatWidgets/chat_contact_list_widget.dart';
-import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {

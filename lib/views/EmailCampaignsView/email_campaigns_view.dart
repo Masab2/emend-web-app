@@ -1,12 +1,8 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_card_widget.dart';
-import 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_second_widget.dart';
-import 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_section_one_widget.dart';
-import 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaigns_list_widget.dart';
-import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
-import 'package:emend_web_app/controllers/create_email_controller.dart';
-import 'package:emend_web_app/views/EmailCampaignsView/createEmailCampaign/create_email_campaign_view.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
+import 'package:emend_web_app/controllers/CreateEmailController/create_email_controller.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

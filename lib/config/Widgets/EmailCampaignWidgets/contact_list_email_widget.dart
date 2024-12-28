@@ -1,6 +1,6 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/create_email_controller.dart';
+import 'package:emend_web_app/controllers/CreateEmailController/create_email_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +8,8 @@ class ContactListEmailWidget extends StatelessWidget {
   final controller = Get.put(CreateEmailController());
   final focusNode = FocusNode();
   final searchController = TextEditingController();
+
+  ContactListEmailWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class ContactListEmailWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
+                                color: Colors.grey.withValues(alpha: 0.2),
                                 spreadRadius: 1,
                                 blurRadius: 4,
                                 offset: const Offset(0, 2),
@@ -99,7 +101,7 @@ class ContactListEmailWidget extends StatelessWidget {
       height: context.mh * 0.06,
       width: context.mw,
       decoration: BoxDecoration(
-        color: AppColor.textFormFeildBackgroundColor,
+        color: AppColor.textFormFieldBgColor,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.grey[300]!),
       ),

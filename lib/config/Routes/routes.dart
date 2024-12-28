@@ -1,13 +1,4 @@
-import 'package:emend_web_app/views/ContactListView/contact_list_view.dart';
-import 'package:emend_web_app/views/DashboardView/dashboard_view.dart';
-import 'package:emend_web_app/views/EmailCampaignsView/email_campaigns_view.dart';
-import 'package:emend_web_app/views/LoginView/login_view.dart';
-import 'package:emend_web_app/views/RegisterView/register_view.dart';
-import 'package:emend_web_app/views/Reports/reports_view.dart';
-import 'package:emend_web_app/views/SmsCampaignsView/sms_campaign_view.dart';
-import 'package:emend_web_app/views/TemplateView/template_view.dart';
-import 'package:emend_web_app/views/TemplateView/unLayer.dart';
-import 'package:emend_web_app/views/chatView/chat_view.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -58,8 +49,8 @@ class Routes {
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: UnLayerEditor.route,
-          page: () => const UnLayerEditor(),
+          name: TemplateEditor.route,
+          page: () => const TemplateEditor(),
           transition: Transition.leftToRightWithFade,
         ),
       ];

@@ -1,20 +1,19 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/components/stepIndicator/step_divider_comp.dart';
-import 'package:emend_web_app/config/components/stepIndicator/step_item_comp.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/SMSCampaignWidgets/CreateSMSCampaignWidget/contact_list_widget.dart';
-import 'package:emend_web_app/controllers/sms_campaign_controller.dart';
-import 'package:emend_web_app/controllers/step_controller.dart';
-import 'package:emend_web_app/views/SmsCampaignsView/createSmsCampaignView/create_sms_compaign_view.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
+import 'package:emend_web_app/controllers/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'create_sms_campaign_view.dart';
+
 class CreateSmsCampaignHomeScreenView extends StatelessWidget {
   final StepController controller = Get.put(StepController());
-  final smscontroller = Get.put(SmsCampaignController());
+  final smsController = Get.put(SmsCampaignController());
+
+  CreateSmsCampaignHomeScreenView({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +25,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  smscontroller.showSMSCampaignView.value = false;
+                  smsController.showSMSCampaignView.value = false;
                 },
                 child: Icon(
                   Icons.arrow_back,
@@ -59,7 +58,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
                 onPressed: () {
                   controller.previousStep();
                 },
-                child: Text(
+                child: const Text(
                   "Previous",
                   style: TextStyle(),
                 ),
@@ -68,7 +67,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
                 onPressed: () {
                   controller.nextStep();
                 },
-                child: Text(
+                child: const Text(
                   "Next",
                   style: TextStyle(),
                 ),
@@ -116,7 +115,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
         case 1:
           return ContactListSmsWidget();
         case 2:
-          return CreateSmsCompaignView();
+          return CreateSMSCampaignView();
         default:
           return const SizedBox();
       }
@@ -205,7 +204,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
           height: context.mh * 0.06,
           width: context.mw,
           decoration: BoxDecoration(
-            color: AppColor.textFormFeildBackgroundColor,
+            color: AppColor.textFormFieldBgColor,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey[300]!),
           ),

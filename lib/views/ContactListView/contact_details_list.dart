@@ -1,6 +1,6 @@
-import 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_details_widget.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ContactDetailsList extends StatelessWidget {

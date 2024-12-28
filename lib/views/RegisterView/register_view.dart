@@ -1,9 +1,8 @@
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/components/FormFieldsEmail/text_form_field.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/styles/app_styles.dart';
-import 'package:emend_web_app/views/DashboardView/dashboard_view.dart';
-import 'package:emend_web_app/views/LoginView/login_view.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

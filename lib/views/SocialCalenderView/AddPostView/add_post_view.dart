@@ -2,10 +2,9 @@ import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/components/FormFieldsEmail/form_field_custom.dart';
-import 'package:emend_web_app/config/components/SimpleCalender/horizontal_calender.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/social_calender_controller.dart';
+import 'package:emend_web_app/controllers/SocialCalenderController/social_calender_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

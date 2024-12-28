@@ -1,15 +1,15 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/sms_campaign_controller.dart';
-import 'package:emend_web_app/controllers/step_controller.dart';
+import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
+import 'package:emend_web_app/controllers/StepController/step_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class CreateSmsCompaignView extends StatelessWidget {
+class CreateSMSCampaignView extends StatelessWidget {
   final StepController controller = Get.put(StepController());
+
+  CreateSMSCampaignView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class CreateSmsCompaignView extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
@@ -309,7 +309,7 @@ class CreateSmsCompaignView extends StatelessWidget {
             return InputChip(
               label: Text(field),
               onPressed: () {},
-              backgroundColor: AppColor.primaryColor.withOpacity(0.1),
+              backgroundColor: AppColor.primaryColor.withValues(alpha: 0.1),
               labelStyle: TextStyle(
                   color: AppColor.primaryColor, fontSize: context.mh * 0.016),
             );

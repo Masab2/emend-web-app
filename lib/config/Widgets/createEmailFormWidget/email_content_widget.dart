@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/components/FormFieldsEmail/form_fields_comp.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 

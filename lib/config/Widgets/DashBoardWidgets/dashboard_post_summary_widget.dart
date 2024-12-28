@@ -87,7 +87,7 @@ class DashboardPostSummaryWidget extends StatelessWidget {
               child: CircularProgressIndicator(
                 value: value,
                 color: color,
-                backgroundColor: color.withOpacity(0.2),
+                backgroundColor: color.withValues(alpha: 0.2),
                 strokeWidth: 5,
               ),
             ),

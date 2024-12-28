@@ -1,6 +1,6 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/step_controller.dart';
+import 'package:emend_web_app/controllers/StepController/step_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -85,7 +85,7 @@ class ContactListSmsWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
+                                color: Colors.grey.withValues(alpha: 0.2),
                                 spreadRadius: 1,
                                 blurRadius: 4,
                                 offset: const Offset(0, 2),
@@ -129,7 +129,7 @@ class ContactListSmsWidget extends StatelessWidget {
       height: context.mh * 0.06,
       width: context.mw,
       decoration: BoxDecoration(
-        color: AppColor.textFormFeildBackgroundColor,
+        color: AppColor.textFormFieldBgColor,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.grey[300]!),
       ),

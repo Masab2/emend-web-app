@@ -1,0 +1,33 @@
+// This file is used to export all the widgets in the application so that they can be easily imported in other files. This is done to avoid the long import statements in the files where the widgets are used.
+
+export 'package:emend_web_app/config/widgets/AuthWidget/auth_widget.dart';
+export 'package:emend_web_app/config/widgets/ChatWidgets/chat_contact_detail_widget.dart';
+export 'package:emend_web_app/config/widgets/ChatWidgets/chat_contact_list_widget.dart';
+export 'package:emend_web_app/config/widgets/ChatWidgets/chat_message_widget.dart';
+export 'package:emend_web_app/config/widgets/ChatWidgets/contact_list_widget.dart';
+export 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_details_widget.dart';
+export 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_view_widget.dart';
+export 'package:emend_web_app/config/widgets/CreateEmailFormWidget/create_email_form_setup_widget.dart';
+export 'package:emend_web_app/config/widgets/CreateEmailFormWidget/create_email_template_widget.dart';
+export 'package:emend_web_app/config/widgets/CreateEmailFormWidget/email_content_widget.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/dash_board_header_widget.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_bar_graph_tiles.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_pie_chart_card_widget.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_post_insight_widget.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_post_summary_widget.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/post_impression_card_widget.dart';
+export 'package:emend_web_app/config/widgets/DashBoardWidgets/post_impression_widget.dart';
+export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/contact_list_email_widget.dart';
+export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_card_widget.dart';
+export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_second_widget.dart';
+export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_section_one_widget.dart';
+export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaigns_list_widget.dart';
+export 'package:emend_web_app/config/widgets/ReportsWidgets/reports_header_widget.dart';
+export 'package:emend_web_app/config/widgets/ReportsWidgets/reports_list_widget.dart';
+export 'package:emend_web_app/config/widgets/ReportsWidgets/reports_user_search_widget.dart';
+export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/CreateSMSCampaignWidget/contact_list_widget.dart';
+export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/sms_campaign_header_widget.dart';
+export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/sms_campaign_list_widget.dart';
+export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/sms_campaigns_card_widget.dart';
+export 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+export 'package:emend_web_app/config/widgets/templateWidgets/template_header.dart';

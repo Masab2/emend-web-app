@@ -1,6 +1,6 @@
-import 'package:emend_web_app/controllers/social_calender_controller.dart';
-import 'package:emend_web_app/model/EmailCompaignModel/SocialCalenderAppoinmentList/social_media_compaign_model.dart';
-import 'package:emend_web_app/views/SocialCalenderView/AddPostView/add_post_view.dart';
+import 'package:emend_web_app/controllers/SocialCalenderController/social_calender_controller.dart';
+import 'package:emend_web_app/model/SocialCalenderAppointmentList/social_media_campaign_model.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -17,7 +17,7 @@ class SocialCalendarView extends StatelessWidget {
     AddPostDialog dialog = AddPostDialog();
 
     return Obx(() {
-      return socialController.showaddPostView.value == false
+      return socialController.showAddPostView.value == false
           ? SfCalendar(
               view: CalendarView.month,
               initialDisplayDate: DateTime.now(),
@@ -35,7 +35,7 @@ class SocialCalendarView extends StatelessWidget {
                 showAgenda: false,
               ),
               dataSource:
-                  MeetingDataSource(SocialMediaCompaignModel.getDataSource()),
+                  MeetingDataSource(SocialMediaCampaignModel.getDataSource()),
               onTap: (CalendarTapDetails details) {
                 if (details.targetElement == CalendarElement.calendarCell) {
                   final List<Appointment> appointments =

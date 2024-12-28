@@ -1,9 +1,8 @@
-import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
-import 'package:emend_web_app/config/widgets/templateWidgets/template_header.dart';
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/views/TemplateView/unLayer.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,11 +14,11 @@ class TemplateView extends StatelessWidget {
   Widget build(BuildContext context) {
     // List of templates data
     final List<Map<String, String>> templates = [
-      {'image': ImageAsset.emtemp1pictitle, 'title': "Email Template 1"},
-      {'image': ImageAsset.emtemp1pictitle, 'title': "Email Template 2"},
-      {'image': ImageAsset.emtemp1pictitle, 'title': "Email Template 3"},
-      {'image': ImageAsset.emtemp1pictitle, 'title': "Email Template 4"},
-      {'image': ImageAsset.emtemp1pictitle, 'title': "Email Template 5"},
+      {'image': ImageAsset.templateImage, 'title': "Email Template 1"},
+      {'image': ImageAsset.templateImage, 'title': "Email Template 2"},
+      {'image': ImageAsset.templateImage, 'title': "Email Template 3"},
+      {'image': ImageAsset.templateImage, 'title': "Email Template 4"},
+      {'image': ImageAsset.templateImage, 'title': "Email Template 5"},
     ];
 
     return Scaffold(
@@ -51,7 +50,7 @@ class TemplateView extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Get.toNamed(UnLayerEditor.route);
+                            Get.toNamed(TemplateEditor.route);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.primaryColor,

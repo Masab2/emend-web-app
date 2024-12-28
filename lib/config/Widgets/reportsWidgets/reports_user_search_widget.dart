@@ -18,7 +18,7 @@ class ReportsUserSearchWidget extends StatelessWidget {
               height: context.mh * 0.06,
               padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
               decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.23),
+                  color: Colors.grey.withValues(alpha: 0.23),
                   borderRadius: BorderRadius.circular(10)),
               child: TextFormField(
                 decoration: InputDecoration(

@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/components/EmailCampaignBox/email_campaigns_box.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';

@@ -1,12 +1,6 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/DashBoardWidgets/dash_board_header_widget.dart';
-import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_bar_graph_tiles.dart';
-import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_pie_chart_card_widget.dart';
-import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_post_insight_widget.dart';
-import 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_post_summary_widget.dart';
-import 'package:emend_web_app/config/widgets/DashBoardWidgets/post_impression_card_widget.dart';
-import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/model/GraphDataModel/graph_model.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';

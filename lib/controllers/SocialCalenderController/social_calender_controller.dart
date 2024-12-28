@@ -1,8 +1,7 @@
-
 import 'package:get/get.dart';
 
 class SocialCalenderController extends GetxController {
-  RxBool showaddPostView = false.obs;
+  RxBool showAddPostView = false.obs;
   // RxList<String> filePaths = <String>[].obs;
 
   // Future pickMultipleFiles() async {
@@ -25,6 +24,6 @@ class SocialCalenderController extends GetxController {
   // }
 
   void showAddPostUi(bool visibility) {
-    showaddPostView.value = visibility;
+    showAddPostView.value = visibility;
   }
 }

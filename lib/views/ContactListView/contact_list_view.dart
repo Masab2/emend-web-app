@@ -1,9 +1,8 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_view_widget.dart';
-import 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
-import 'package:emend_web_app/controllers/contact_list_controller.dart';
-import 'package:emend_web_app/views/ContactListView/create_contact_view.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
+import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

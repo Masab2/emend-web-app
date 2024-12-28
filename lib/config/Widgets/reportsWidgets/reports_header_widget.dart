@@ -1,5 +1,5 @@
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/components/TopIconComp/top_icon_comp.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';

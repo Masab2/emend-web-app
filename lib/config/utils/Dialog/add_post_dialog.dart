@@ -1,5 +1,5 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/social_calender_controller.dart';
+import 'package:emend_web_app/controllers/SocialCalenderController/social_calender_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

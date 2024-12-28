@@ -1,11 +1,8 @@
 import 'package:emend_web_app/config/color/app_color.dart';
-import 'package:emend_web_app/config/components/stepIndicator/step_divider_comp.dart';
-import 'package:emend_web_app/config/components/stepIndicator/step_item_comp.dart';
+import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/CreateEmailFormWidget/create_email_form_setup_widget.dart';
-import 'package:emend_web_app/config/widgets/CreateEmailFormWidget/create_email_template_widget.dart';
-import 'package:emend_web_app/config/widgets/EmailCampaignWidgets/contact_list_email_widget.dart';
-import 'package:emend_web_app/controllers/create_email_controller.dart';
+import 'package:emend_web_app/config/widgets/widgets.dart';
+import 'package:emend_web_app/controllers/CreateEmailController/create_email_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

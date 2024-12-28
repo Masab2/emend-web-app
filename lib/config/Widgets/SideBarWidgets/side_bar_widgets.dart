@@ -1,12 +1,6 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/side_bar_controller.dart';
-import 'package:emend_web_app/views/ContactListView/contact_list_view.dart';
-import 'package:emend_web_app/views/DashboardView/dashboard_view.dart';
-import 'package:emend_web_app/views/EmailCampaignsView/email_campaigns_view.dart';
-import 'package:emend_web_app/views/Reports/reports_view.dart';
-import 'package:emend_web_app/views/SmsCampaignsView/sms_campaign_view.dart';
-import 'package:emend_web_app/views/TemplateView/template_view.dart';
-import 'package:emend_web_app/views/chatView/chat_view.dart';
+import 'package:emend_web_app/controllers/NavigationController/navigation_controller.dart';
+import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
