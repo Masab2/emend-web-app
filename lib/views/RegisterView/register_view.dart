@@ -1,14 +1,12 @@
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/components.dart';
+import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/config/styles/app_styles.dart';
-import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterView extends StatelessWidget {
-  static const route = '/register';
-
   const RegisterView({super.key});
 
   @override
@@ -72,7 +70,7 @@ class RegisterView extends StatelessWidget {
                         // Register Button
                         ElevatedButton(
                           onPressed: () {
-                            Get.offAllNamed(DashboardView.route);
+                            Get.offAllNamed(RouteNames.dashboard);
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(double.infinity, 50),
@@ -89,7 +87,7 @@ class RegisterView extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Get.offNamed(LoginView.route);
+                            Get.offNamed(RouteNames.login);
                           },
                           child: const Text(
                             "Already have an account? Login",

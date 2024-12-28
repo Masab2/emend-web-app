@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashboardView extends StatelessWidget {
-  static const route = '/dashboard';
   const DashboardView({super.key});
 
   @override

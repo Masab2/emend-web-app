@@ -4,8 +4,8 @@ import 'dart:developer';
 
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/controllers/CreateEmailController/create_email_controller.dart';
-import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -104,7 +104,7 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
             height: context.mh * 0.06,
             onPressed: () {
               Get.toNamed(
-                TemplateEditor.route,
+                RouteNames.templateEditor,
               );
             },
             child: Row(

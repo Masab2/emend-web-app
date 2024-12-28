@@ -1,6 +1,6 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/controllers/NavigationController/navigation_controller.dart';
-import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,37 +16,37 @@ class SideBarWidgets extends StatelessWidget {
       {
         'icon': Icons.home,
         'title': 'DashBoard',
-        'route': DashboardView.route,
+        'route': RouteNames.dashboard,
       },
       {
         'icon': Icons.email_outlined,
         'title': 'E-Mail Campaigns',
-        'route': EmailCampaignsView.route,
+        'route': RouteNames.emailCampaigns,
       },
       {
         'icon': Icons.dock_outlined,
         'title': 'SMS Campaigns',
-        'route': SmsCampaignView.route,
+        'route': RouteNames.smsCampaigns,
       },
       {
         'icon': Icons.add_chart,
         'title': 'Reports',
-        'route': ReportsView.route,
+        'route': RouteNames.reports,
       },
       {
         'icon': Icons.edit,
         'title': 'Templates',
-        'route': TemplateView.route,
+        'route': RouteNames.templates,
       },
       {
         'icon': Icons.message,
         'title': 'Chats',
-        'route': ChatView.route,
+        'route': RouteNames.chats,
       },
       {
         'icon': Icons.contact_page_outlined,
         'title': 'Contact List',
-        'route': ContactListView.route,
+        'route': RouteNames.contactList,
       },
     ];
 

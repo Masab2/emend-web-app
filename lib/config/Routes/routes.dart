@@ -1,55 +1,57 @@
 import 'package:emend_web_app/views/views.dart';
 import 'package:get/get.dart';
 
+import 'route_names.dart';
+
 class Routes {
   static appRoutes() => [
         GetPage(
-          name: LoginView.route,
+          name: RouteNames.login,
           page: () => const LoginView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: RegisterView.route,
+          name: RouteNames.register,
           page: () => const RegisterView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: DashboardView.route,
+          name: RouteNames.dashboard,
           page: () => const DashboardView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: EmailCampaignsView.route,
+          name: RouteNames.emailCampaigns,
           page: () => const EmailCampaignsView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: SmsCampaignView.route,
+          name: RouteNames.smsCampaigns,
           page: () => const SmsCampaignView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: ReportsView.route,
+          name: RouteNames.reports,
           page: () => const ReportsView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: TemplateView.route,
+          name: RouteNames.templates,
           page: () => const TemplateView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: ChatView.route,
+          name: RouteNames.chats,
           page: () => const ChatView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: ContactListView.route,
+          name: RouteNames.contactList,
           page: () => const ContactListView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: TemplateEditor.route,
+          name: RouteNames.templateEditor,
           page: () => const TemplateEditor(),
           transition: Transition.leftToRightWithFade,
         ),

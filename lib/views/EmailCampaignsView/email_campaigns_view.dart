@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EmailCampaignsView extends StatefulWidget {
-  static const String route = '/emailCampaignsView';
   const EmailCampaignsView({super.key});
 
   @override

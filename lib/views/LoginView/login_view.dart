@@ -1,13 +1,12 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/components.dart';
+import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/config/styles/app_styles.dart'; // Import text styles
 import 'package:emend_web_app/config/widgets/widgets.dart';
-import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginView extends StatelessWidget {
-  static const route = '/';
   const LoginView({super.key});
 
   @override
@@ -49,7 +48,7 @@ class LoginView extends StatelessWidget {
                       // Sign In Button
                       ElevatedButton(
                         onPressed: () {
-                          Get.offAllNamed(DashboardView.route);
+                          Get.offAllNamed(RouteNames.dashboard);
                         },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
@@ -67,7 +66,7 @@ class LoginView extends StatelessWidget {
                       // Create Account Text
                       TextButton(
                         onPressed: () {
-                          Get.offNamed(RegisterView.route);
+                          Get.offNamed(RouteNames.register);
                         },
                         child: const Text(
                           "Don't have an account yet? Create an account",

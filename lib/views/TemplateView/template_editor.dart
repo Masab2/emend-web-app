@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class TemplateEditor extends StatefulWidget {
-  static const route = '/template-editor';
-
   const TemplateEditor({
     super.key,
   });
@@ -13,7 +11,7 @@ class TemplateEditor extends StatefulWidget {
 }
 
 class TemplateEditorState extends State<TemplateEditor> {
-  late InAppWebViewController _webViewController;
+  late InAppWebViewController webViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class TemplateEditorState extends State<TemplateEditor> {
           url: WebUri('https://react-email-editor-ce42a.web.app/'),
         ),
         onWebViewCreated: (controller) {
-          _webViewController = controller;
+          webViewController = controller;
         },
         onLoadStart: (controller, url) {
           debugPrint("Page started loading: $url");

@@ -1,7 +1,7 @@
 import 'package:emend_web_app/bindings/bindings.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/config/routes/routes.dart';
-import 'package:emend_web_app/views/views.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       ),
       initialBinding: AllBinding(),
       getPages: Routes.appRoutes(),
-      initialRoute: DashboardView.route,
+      initialRoute: RouteNames.dashboard,
     );
   }
 }
