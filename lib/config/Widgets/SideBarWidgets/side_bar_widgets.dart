@@ -10,6 +10,7 @@ class SideBarWidgets extends StatelessWidget {
   SideBarWidgets({super.key});
 
   final NavigationController controller = Get.find<NavigationController>();
+
   @override
   Widget build(BuildContext context) {
     final menuItems = [
@@ -51,33 +52,32 @@ class SideBarWidgets extends StatelessWidget {
     ];
 
     return Obx(() {
-      return Container(
+      final isSidebarVisible = controller.isSidebarVisible.value;
+
+      return AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
         color: Colors.white,
+        width: isSidebarVisible ? context.mw * 0.17 : context.mw * 0.05,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Toggle Button
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.005),
+              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
               child: IconButton(
                 onPressed: () {
                   controller.toggleSidebarVisibility();
                 },
                 icon: const Icon(
                   Icons.menu,
-                  color: Colors.black,
+                  color: AppColor.primaryColor,
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            // Sidebar with animation
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: controller.isSidebarVisible.value
-                  ? context.mw * 0.17
-                  : context.mw * 0.05, // Control width based on collapsed state
-              height: context.mh * 0.85,
-              color: Colors.white,
+            // Sidebar Menu
+            Expanded(
               child: ListView.builder(
                 itemCount: menuItems.length,
                 itemBuilder: (context, index) {
@@ -87,42 +87,48 @@ class SideBarWidgets extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       controller.setSelectedIndex(index);
-                      Get.toNamed(item['route'] as String); // Navigate on tap
+                      Get.toNamed(item['route'] as String);
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Card(
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      height: context.mh * 0.07,
+                      decoration: BoxDecoration(
                         color:
                             isSelected ? AppColor.primaryColor : Colors.white,
-                        elevation: 0,
-                        child: controller.isSidebarVisible.value
-                            ? ListTile(
-                                contentPadding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                leading: Icon(
-                                  item['icon'] as IconData,
-                                  color: isSelected
-                                      ? Colors.white
-                                      : AppColor.primaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: context.mw * 0.003,
+                        vertical: context.mh * 0.01,
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+                      child: Row(
+                        mainAxisAlignment: isSidebarVisible
+                            ? MainAxisAlignment.start
+                            : MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            item['icon'] as IconData,
+                            color: isSelected
+                                ? Colors.white
+                                : AppColor.primaryColor,
+                          ),
+                          if (isSidebarVisible) ...[
+                            const SizedBox(width: 10),
+                            Flexible(
+                              child: Text(
+                                item['title'] as String,
+                                style: TextStyle(
+                                  color:
+                                      isSelected ? Colors.white : Colors.black,
                                 ),
-                                title: Text(
-                                  item['title'] as String,
-                                  style: TextStyle(
-                                    color: isSelected
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                ),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(
-                                  item['icon'] as IconData,
-                                  color: isSelected
-                                      ? Colors.white
-                                      : AppColor.primaryColor,
-                                ),
+                                overflow: TextOverflow.ellipsis,
                               ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                   );
