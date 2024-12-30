@@ -1,16 +1,24 @@
-import 'package:emend_web_app/model/ContactListModel/contact_list_model.dart';
+import 'dart:developer';
+import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
+import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_http_repo.dart';
+import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_repo.dart';
+import 'package:emend_web_app/data/Response/status.dart';
 import 'package:file_picker/file_picker.dart';
-import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class ContactListController extends GetxController {
   RxBool showCreateContactView = false.obs;
+  final CreateListAndContactRepo _createListAndContactRepo =
+      CreateListAndContactHttpRepo();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-
-  var contactsLists = <ContactListModel>[].obs;
-
+  TextEditingController editFirstNameController = TextEditingController();
+  TextEditingController editLastNameController = TextEditingController();
+  TextEditingController editEmailController = TextEditingController();
+  TextEditingController editPhoneController = TextEditingController();
+  
   void showCreateContactUi(bool visibility) {
     showCreateContactView.value = visibility;
   }
@@ -23,69 +31,17 @@ class ContactListController extends GetxController {
     contactList.value = contact;
   }
 
-  Future<void> importCSV() async {
+  Future<FilePickerResult> importCSV() async {
+    FilePickerResult? result;
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
+      result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['csv'],
       );
-
-      if (result != null && result.files.single.bytes != null) {
-        Uint8List fileBytes = result.files.single.bytes!;
-        List<Contact> contacts = _parseContactsFromCSV(fileBytes);
-
-        if (contacts.isNotEmpty) {
-          ContactListModel contactList = ContactListModel(
-            name: nameController.text,
-            description: descriptionController.text,
-            contacts: contacts,
-          );
-          contactsLists.add(contactList);
-
-          Get.snackbar("Success", "Imported ${contacts.length} contacts!");
-          nameController.clear();
-          descriptionController.clear();
-        } else {
-          Get.snackbar("Error", "No valid contacts found in the file.");
-        }
-      }
     } catch (e) {
       Get.snackbar("Error", "Failed to import the file: $e");
     }
-  }
-
-  List<Contact> _parseContactsFromCSV(Uint8List fileBytes) {
-    try {
-      String content = String.fromCharCodes(fileBytes);
-      List<String> lines = content.split('\n');
-
-      if (lines.isEmpty || lines.length < 2) {
-        return [];
-      }
-
-      List<Contact> contacts = lines
-          .skip(1)
-          .where((line) => line.trim().isNotEmpty)
-          .map((line) {
-            List<String> fields = line.split(',');
-
-            if (fields.length >= 4) {
-              return Contact(
-                firstName: fields[0].trim(),
-                lastName: fields[1].trim(),
-                mobileNo: fields[2].trim(),
-                email: fields[3].trim(),
-              );
-            }
-            return null;
-          })
-          .whereType<Contact>()
-          .toList();
-
-      return contacts;
-    } catch (e) {
-      return [];
-    }
+    return result!;
   }
 
   // Delete The Specific Contact List
@@ -94,26 +50,84 @@ class ContactListController extends GetxController {
   }
 
   // Update the Contact List with the New Csv File
-  void updateContactList(ContactListModel contactList) async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['csv'],
-      );
+  void updateContactList() async {}
 
-      if (result != null && result.files.single.bytes != null) {
-        Uint8List fileBytes = result.files.single.bytes!;
-        List<Contact> contacts = _parseContactsFromCSV(fileBytes);
-
-        if (contacts.isNotEmpty) {
-          contactList.contacts = contacts;
-          Get.snackbar("Success", "Updated ${contacts.length} contacts!");
-        } else {
-          Get.snackbar("Error", "No valid contacts found in the file.");
-        }
-      }
-    } catch (e) {
-      Get.snackbar("Error", "Failed to import the file: $e");
+  // Create the Contact List From Api
+  void createList() async {
+    if (nameController.text.isEmpty) {
+      Get.snackbar("Error", "Please enter the list name.");
+      return;
     }
+    await _createListAndContactRepo.createListApi(nameController.text).then(
+      (value) async {
+        Get.snackbar("Success", value.message ?? "");
+        getContactListApi();
+      },
+    ).onError(
+      (error, stackTrace) {
+        log("Error: $error");
+        Get.snackbar("Error", error.toString());
+      },
+    );
+  }
+
+  // Create the Contact in List Api
+  void createContactInList(listname) async {
+    await importCSV().then(
+      (value) async {
+        await _createListAndContactRepo
+            .createContactInListApi(listname, value.files.single.bytes!)
+            .then(
+          (value) {
+            Get.snackbar("Success", value.message ?? "");
+            getContactListApi();
+          },
+        ).onError(
+          (error, stackTrace) {
+            Get.snackbar("Error", error.toString());
+          },
+        );
+      },
+    );
+  }
+
+  final rxRequestStatus = Status.loading.obs;
+  final getListModel = GetListModel().obs;
+  // Get the Contact List From Api
+  void setRxRequestStatusForGetList(Status value) =>
+      rxRequestStatus.value = value;
+  void setGetListApiResponse(GetListModel value) => getListModel.value = value;
+
+  // Hit The Api
+  void getContactListApi() async {
+    setRxRequestStatusForGetList(Status.loading);
+    await _createListAndContactRepo.getContactsListApi().then(
+      (value) {
+        setRxRequestStatusForGetList(Status.completed);
+        setGetListApiResponse(value);
+      },
+    ).onError(
+      (error, stackTrace) {
+        log("Error: $error");
+        setRxRequestStatusForGetList(Status.error);
+      },
+    );
+  }
+
+  // Update the Contact List
+  void updateContactListApi(contactId, String? firstName, String? lastName,
+      String? email, String? phone) async {
+    await _createListAndContactRepo
+        .updateContactListApi(contactId, firstName, lastName, email, phone)
+        .then(
+      (value) {
+        Get.snackbar("Success", value.message ?? "");
+        getContactListApi();
+      },
+    ).onError(
+      (error, stackTrace) {
+        Get.snackbar("Error", error.toString());
+      },
+    );
   }
 }

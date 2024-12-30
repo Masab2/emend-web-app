@@ -113,14 +113,7 @@ class CreateContactView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 onPressed: () async {
-                  if (controller.nameController.text.isNotEmpty &&
-                      controller.descriptionController.text.isNotEmpty) {
-                    await controller.importCSV().then(
-                      (value) {
-                        controller.showCreateContactUi(false);
-                      },
-                    );
-                  }
+                  controller.createList();
                 },
                 child: Text(
                   "Create",

@@ -1,18 +1,29 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/utils/Dialog/create_list_dialog_box.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
 import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ContactListView extends StatelessWidget {
+class ContactListView extends StatefulWidget {
   static const String route = '/contactListView';
   const ContactListView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<ContactListView> createState() => _ContactListViewState();
+}
+
+class _ContactListViewState extends State<ContactListView> {
     final ContactListController controller = Get.put(ContactListController());
+    @override
+  void initState() {
+    controller.getContactListApi();
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         children: [
@@ -71,9 +82,15 @@ class ContactListView extends StatelessWidget {
                                               BorderRadius.circular(10),
                                         ),
                                         onPressed: () async {
-                                          controller
-                                              .showContactListUi(false, []);
-                                          controller.showCreateContactUi(true);
+                                          CreateListDialogBox
+                                              .showCreateListDialog(
+                                            context,
+                                            controller.nameController,
+                                            () {
+                                              controller.createList();
+                                              Navigator.pop(context);
+                                            },
+                                          );
                                         },
                                         child: Text(
                                           "Create List",

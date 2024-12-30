@@ -1,4 +1,5 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/utils/Dialog/edit_contact_dialog.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ class ContactListDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ContactListController controller = Get.put(ContactListController());
+    EditContactDialog editContactDialog = EditContactDialog();
     return Column(
       children: [
         Container(
@@ -106,7 +108,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                           SizedBox(
                             width: context.mw * 0.20,
                             child: Text(
-                              controller.contactList[index].email,
+                              controller.contactList[index].email ?? "",
                               style: TextStyle(
                                 fontSize: context.mh * 0.02,
                                 fontWeight: FontWeight.w600,
@@ -114,18 +116,75 @@ class ContactListDetailsWidget extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: context.mw * 0.06,
+                            width: context.mw * 0.07,
                             child: Center(
-                              child: GestureDetector(
-                                onTap: () {
-                                  controller.deleteContactList(
-                                      controller.contactList[index]);
-                                },
-                                child: Icon(
-                                  IconlyLight.delete,
-                                  color: Colors.red,
-                                  size: context.mh * 0.028,
-                                ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Center(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        controller.deleteContactList(
+                                            controller.contactList[index]);
+                                      },
+                                      child: Icon(
+                                        IconlyLight.delete,
+                                        color: Colors.red,
+                                        size: context.mh * 0.023,
+                                      ),
+                                    ),
+                                  ),
+                                  0.02.pw(context),
+                                  Center(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        controller.editFirstNameController
+                                            .text = controller
+                                                .contactList[index].firstName ??
+                                            "";
+                                        controller.editLastNameController.text =
+                                            controller.contactList[index]
+                                                    .lastName ??
+                                                "";
+                                        controller.editEmailController.text =
+                                            controller
+                                                    .contactList[index].email ??
+                                                "";
+                                        controller.editPhoneController.text =
+                                            controller
+                                                    .contactList[index].phone ??
+                                                "";
+                                        editContactDialog.showEditContactDialog(
+                                          context,
+                                          controller.editFirstNameController,
+                                          controller.editLastNameController,
+                                          controller.editEmailController,
+                                          controller.editPhoneController,
+                                          () {
+                                            controller.updateContactListApi(
+                                              controller.contactList[index].id,
+                                              controller
+                                                  .editFirstNameController.text,
+                                              controller
+                                                  .editLastNameController.text,
+                                              controller
+                                                  .editEmailController.text,
+                                              controller
+                                                  .editPhoneController.text,
+                                            );
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      },
+                                      child: Icon(
+                                        IconlyLight.edit_square,
+                                        color: Colors.blue,
+                                        size: context.mh * 0.023,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

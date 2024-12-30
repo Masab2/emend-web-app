@@ -114,6 +114,7 @@ class SideBarWidgets extends StatelessWidget {
                             color: isSelected
                                 ? Colors.white
                                 : AppColor.primaryColor,
+                            size: context.mh * 0.028,    
                           ),
                           if (isSidebarVisible) ...[
                             const SizedBox(width: 10),
@@ -121,6 +122,7 @@ class SideBarWidgets extends StatelessWidget {
                               child: Text(
                                 item['title'] as String,
                                 style: TextStyle(
+                                  fontSize: context.mh * 0.020,
                                   color:
                                       isSelected ? Colors.white : Colors.black,
                                 ),

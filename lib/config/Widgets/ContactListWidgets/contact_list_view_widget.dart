@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_is_empty
+
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
+import 'package:emend_web_app/data/Response/status.dart';
 import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -75,80 +78,94 @@ class ContactListViewWidget extends StatelessWidget {
                 SizedBox(
                   height: context.mh * 0.85,
                   child: Obx(() {
-                    return ListView.builder(
-                      itemCount: controller.contactsLists.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: context.mw * 0.02),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: context.mw * 0.01),
-                          child: Column(
-                            spacing: context.mh * 0.02,
-                            children: [
-                              0.01.ph(context),
-                              Row(
+                    switch (controller.rxRequestStatus.value) {
+                      case Status.loading:
+                        return SizedBox(
+                            height: context.mw * 0.10,
+                            width: context.mw * 0.10,
+                            child: const CircularProgressIndicator());
+                      case Status.completed:
+                        return ListView.builder(
+                          itemCount: controller.getListModel.value.list?.length,
+                          itemBuilder: (context, index) {
+                            var data =
+                                controller.getListModel.value.list?[index];
+                            return Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: context.mw * 0.02),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: context.mw * 0.01),
+                              child: Column(
+                                spacing: context.mh * 0.02,
                                 children: [
-                                  SizedBox(
-                                    width: context.mw * 0.03,
-                                    child: Text(
-                                      "${index + 1}",
-                                      style: TextStyle(
-                                        fontSize: context.mh * 0.02,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: context.mw * 0.20,
-                                    child: Text(
-                                      controller.contactsLists[index].name,
-                                      style: TextStyle(
-                                        fontSize: context.mh * 0.02,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      controller.showContactListUi(
-                                          true,
-                                          controller
-                                              .contactsLists[index].contacts);
-                                    },
-                                    child: SizedBox(
-                                      width: context.mw * 0.20,
-                                      child: Text(
-                                        "${controller.contactsLists[index].contacts.length} Contacts",
-                                        style: TextStyle(
-                                          fontSize: context.mh * 0.02,
-                                          fontWeight: FontWeight.w600,
+                                  0.01.ph(context),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: context.mw * 0.03,
+                                        child: Text(
+                                          "${index + 1}",
+                                          style: TextStyle(
+                                            fontSize: context.mh * 0.02,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: context.mw * 0.06,
-                                    child: Center(
-                                      child: GestureDetector(
+                                      SizedBox(
+                                        width: context.mw * 0.20,
+                                        child: Text(
+                                          data?.name ?? "",
+                                          style: TextStyle(
+                                            fontSize: context.mh * 0.02,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
                                         onTap: () {
-                                          controller.updateContactList(
-                                              controller.contactsLists[index]);
+                                          controller.showContactListUi(
+                                              true, data?.contacts ?? []);
                                         },
-                                        child: Icon(
-                                          IconlyLight.add_user,
-                                          size: context.mh * 0.028,
+                                        child: SizedBox(
+                                          width: context.mw * 0.20,
+                                          child: Text(
+                                            "${data?.contacts?.length} Contacts",
+                                            style: TextStyle(
+                                              fontSize: context.mh * 0.02,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                      SizedBox(
+                                        width: context.mw * 0.06,
+                                        child: Center(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              if (data?.contacts?.length == 0) {
+                                                controller.createContactInList(
+                                                    data?.name ?? "");
+                                              }
+                                            },
+                                            child: Icon(
+                                              IconlyLight.add_user,
+                                              size: context.mh * 0.028,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         );
-                      },
-                    );
+                      case Status.error:
+                        return const Text("Some Thing Went Wrong");
+                      default:
+                        return const SizedBox();
+                    }
                   }),
                 ),
               ],
