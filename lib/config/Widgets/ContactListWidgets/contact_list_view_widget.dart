@@ -7,6 +7,7 @@ import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ContactListViewWidget extends StatelessWidget {
   const ContactListViewWidget({super.key});
@@ -80,10 +81,53 @@ class ContactListViewWidget extends StatelessWidget {
                   child: Obx(() {
                     switch (controller.rxRequestStatus.value) {
                       case Status.loading:
-                        return SizedBox(
-                            height: context.mw * 0.10,
-                            width: context.mw * 0.10,
-                            child: const CircularProgressIndicator());
+                        return ListView.builder(
+                          itemCount: 6,
+                          itemBuilder: (context, index) {
+                            return Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
+                              child: Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: context.mw * 0.02),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: context.mw * 0.01),
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: context.mh * 0.02),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: context.mw * 0.03,
+                                          height: context.mh * 0.02,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(width: context.mw * 0.02),
+                                        Container(
+                                          width: context.mw * 0.20,
+                                          height: context.mh * 0.02,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(width: context.mw * 0.02),
+                                        Container(
+                                          width: context.mw * 0.20,
+                                          height: context.mh * 0.02,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(width: context.mw * 0.02),
+                                        Container(
+                                          width: context.mw * 0.06,
+                                          height: context.mh * 0.028,
+                                          color: Colors.grey,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
                       case Status.completed:
                         return ListView.builder(
                           itemCount: controller.getListModel.value.list?.length,

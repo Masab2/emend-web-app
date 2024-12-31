@@ -18,6 +18,12 @@ class ContactListController extends GetxController {
   TextEditingController editLastNameController = TextEditingController();
   TextEditingController editEmailController = TextEditingController();
   TextEditingController editPhoneController = TextEditingController();
+
+  @override
+  void onInit() {
+    getContactListApi();
+    super.onInit();
+  }
   
   void showCreateContactUi(bool visibility) {
     showCreateContactView.value = visibility;

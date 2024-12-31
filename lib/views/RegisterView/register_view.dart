@@ -6,13 +6,15 @@ import 'package:emend_web_app/config/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/AuthController/auth_controller.dart';
+
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    final authController = Get.put(AuthController());
     return Scaffold(
       body: Row(
         children: [
@@ -59,18 +61,22 @@ class RegisterView extends StatelessWidget {
                           ),
                         ),
                         // Username Field
-                        const CommonTextFormField(
-                          label: "Email",
+                        CommonTextFormField(
+                          label: "Name",
+                          controller: authController.nameController,
                         ),
                         // Password Field
-                        const CommonTextFormField(
-                          label: "Password",
-                          obscureText: true,
+                        CommonTextFormField(
+                          label: "Email",
+                          controller: authController.emailController,
                         ),
                         // Register Button
                         ElevatedButton(
                           onPressed: () {
-                            Get.offAllNamed(RouteNames.dashboard);
+                            authController.registerUser(
+                              authController.nameController.text,
+                              authController.emailController.text,
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(double.infinity, 50),
@@ -85,15 +91,27 @@ class RegisterView extends StatelessWidget {
                             style: AppTextStyles.button,
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Get.offNamed(RouteNames.login);
-                          },
-                          child: const Text(
-                            "Already have an account? Login",
-                            style: AppTextStyles.heading4,
-                          ), // Login Link
-                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Already have an account?",
+                              style: AppTextStyles.heading4,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Get.offNamed(RouteNames.login);
+                              },
+                              child: const Text(
+                                "Sign IN",
+                                style: TextStyle(
+                                  color: AppColor.primaryColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),

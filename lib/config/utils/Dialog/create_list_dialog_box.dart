@@ -75,7 +75,7 @@ class CreateListDialogBox {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(
-                        color: AppColor.blueColor,
+                        color: AppColor.primaryColor,
                         width: 2,
                       ),
                     ),
@@ -94,7 +94,7 @@ class CreateListDialogBox {
                     OutlinedButton(
                       onPressed: () => Navigator.of(context).pop(),
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: AppColor.blueColor),
+                        side: const BorderSide(color: AppColor.primaryColor),
                         padding: EdgeInsets.symmetric(
                           horizontal: context.mw * 0.02,
                           vertical: context.mh * 0.018,
@@ -106,7 +106,7 @@ class CreateListDialogBox {
                       child: Text(
                         "Cancel",
                         style: TextStyle(
-                          color: AppColor.blueColor,
+                          color: AppColor.primaryColor,
                           fontSize: context.mh * 0.018,
                           fontWeight: FontWeight.w500,
                         ),
@@ -116,7 +116,7 @@ class CreateListDialogBox {
                     ElevatedButton(
                       onPressed: createList,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColor.blueColor,
+                        backgroundColor: AppColor.primaryColor,
                         padding: EdgeInsets.symmetric(
                           horizontal: context.mw * 0.02,
                           vertical: context.mh * 0.018,

@@ -1,8 +1,9 @@
+import 'package:emend_web_app/config/Routes/route_names.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/components.dart';
-import 'package:emend_web_app/config/routes/route_names.dart';
-import 'package:emend_web_app/config/styles/app_styles.dart'; // Import text styles
+import 'package:emend_web_app/config/styles/app_styles.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
+import 'package:emend_web_app/controllers/AuthController/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +13,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final authController = Get.put(AuthController());
     return Scaffold(
       body: AuthCommonWidget(
         formWidget: Center(
@@ -29,26 +31,21 @@ class LoginView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     spacing: 16,
                     children: [
-                      // Welcome Back Text
                       Text(
-                        "Welcome Back",
+                        "Welcome to Emend",
                         style: AppTextStyles.heading3.copyWith(
                           color: Colors.grey,
                         ),
                       ),
-                      // Username Field
-                      const CommonTextFormField(
+                      CommonTextFormField(
                         label: "Email",
+                        controller: authController.emailController,
                       ),
-                      // Password Field
-                      const CommonTextFormField(
-                        label: "Password",
-                        obscureText: true,
-                      ),
-                      // Sign In Button
                       ElevatedButton(
                         onPressed: () {
-                          Get.offAllNamed(RouteNames.dashboard);
+                          authController.loginUser(
+                            authController.emailController.text,
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
@@ -63,15 +60,26 @@ class LoginView extends StatelessWidget {
                           style: AppTextStyles.button,
                         ),
                       ),
-                      // Create Account Text
-                      TextButton(
-                        onPressed: () {
-                          Get.offNamed(RouteNames.register);
-                        },
-                        child: const Text(
-                          "Don't have an account yet? Create an account",
-                          style: AppTextStyles.heading4,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Don't have an account?",
+                            style: AppTextStyles.heading4,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Get.toNamed(RouteNames.register);
+                            },
+                            child: const Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                color: AppColor.primaryColor,
+                              ),
+                            ),
+                          ),
+                        ],
                       )
                     ],
                   ),

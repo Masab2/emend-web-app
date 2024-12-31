@@ -17,11 +17,6 @@ class ContactListView extends StatefulWidget {
 
 class _ContactListViewState extends State<ContactListView> {
     final ContactListController controller = Get.put(ContactListController());
-    @override
-  void initState() {
-    controller.getContactListApi();
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +70,7 @@ class _ContactListViewState extends State<ContactListView> {
                                     children: [
                                       MaterialButton(
                                         minWidth: context.mw * 0.15,
-                                        color: AppColor.blueColor,
+                                        color: AppColor.primaryColor,
                                         height: context.mh * 0.06,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:

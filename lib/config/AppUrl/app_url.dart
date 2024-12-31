@@ -1,5 +1,9 @@
 class AppUrl {
-  static const String baseUrl = 'http://192.168.0.107:3000';
+  static const String baseUrl = 'http://192.168.0.108:3000';
+
+  // Auth Urls
+  static String login(token) => '$baseUrl/auth/signin?token=$token';
+  static const String register = '$baseUrl/auth/signup';
 
   // Create List Url
   static const String createList = '$baseUrl/sms/lists/create';
@@ -15,5 +19,5 @@ class AppUrl {
 
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJtaGRldnM0NzcwQGdtYWlsLmNvbSIsImlhdCI6MTczNTU3NjkwNywiZXhwIjoxNzM1NjA5MzA3fQ.vglpZ_pPPLbYP_xjHpm302sQ3fU2cBJzBl7Lvfy9CZ0";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJtaGRldnM0NzcwQGdtYWlsLmNvbSIsImlhdCI6MTczNTY2MTQ2MSwiZXhwIjoxNzM1NjkzODYxfQ.s7OUrnbSEsU7VC5OBqAnjaP_K5swg86PS6al0taYcQ0";
 }
