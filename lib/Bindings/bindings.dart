@@ -10,5 +10,6 @@ class AllBinding extends Bindings {
     Get.lazyPut(() => SocialCalenderController());
     Get.lazyPut(() => StepController());
     Get.lazyPut(() => ContactListController());
+    Get.lazyPut(() => AuthController());
   }
 }

@@ -1,5 +1,5 @@
 class AppUrl {
-  static const String baseUrl = 'http://192.168.0.108:3000';
+  static const String baseUrl = 'http://192.168.10.17:3000';
 
   // Auth Urls
   static String login(token) => '$baseUrl/auth/signin?token=$token';
