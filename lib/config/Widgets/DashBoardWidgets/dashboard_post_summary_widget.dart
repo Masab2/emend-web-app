@@ -25,8 +25,8 @@ class DashboardPostSummaryWidget extends StatelessWidget {
                   Text(
                     'Post Summary',
                     style: TextStyle(
-                      fontSize: context.mh * 0.022,
-                      fontWeight: FontWeight.w600,
+                      fontSize: context.mh * 0.018,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Icon(Icons.more_horiz, color: Colors.grey),

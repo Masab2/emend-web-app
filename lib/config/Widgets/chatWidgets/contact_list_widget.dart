@@ -11,11 +11,10 @@ class ContactListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
     final List<Map<String, dynamic>> socialPlatforms = [
-      {'name': 'Instagram', 'icon': IconlyBold.camera},
+      {'name': 'HeyMarket', 'icon': IconlyBold.message},
       {'name': 'Facebook', 'icon': IconlyBold.message},
       {'name': 'WhatsApp', 'icon': IconlyBold.chat},
       {'name': 'TikTok', 'icon': IconlyBold.video},
-      {'name': 'Twitter', 'icon': IconlyBold.paper},
     ];
 
     return Card(
@@ -57,7 +56,7 @@ class ContactListWidget extends StatelessWidget {
               thumbVisibility: true,
               controller: scrollController,
               child: Container(
-                width: context.mw * 0.27,
+                width: context.mw * 0.28,
                 margin: EdgeInsets.symmetric(vertical: context.mh * 0.01),
                 child: SingleChildScrollView(
                   controller: scrollController,
@@ -71,18 +70,17 @@ class ContactListWidget extends StatelessWidget {
                                 backgroundColor: AppColor.primaryColor
                                     .withValues(alpha: 0.1),
                                 label: Row(
-                                  mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
                                       platform['icon'],
-                                      size: context.mh * 0.018,
+                                      size: context.mh * 0.016,
                                       color: AppColor.primaryColor,
                                     ),
-                                    const SizedBox(width: 4),
+                                    0.004.pw(context),
                                     Text(
                                       platform['name'],
                                       style: GoogleFonts.barlow(
-                                        fontSize: context.mh * 0.016,
+                                        fontSize: context.mh * 0.014,
                                         color: AppColor.primaryColor,
                                       ),
                                     ),

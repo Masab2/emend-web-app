@@ -34,14 +34,14 @@ class PostImpressionCardWidgetState extends State<PostImpressionCardWidget> {
               Text(
                 "Best Performing Posts",
                 style: TextStyle(
-                  fontSize: context.mh * 0.024,
+                  fontSize: context.mh * 0.018,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 "Quickly see which 4 posts have the best engagement from March 26 - April 26",
                 style: TextStyle(
-                  fontSize: context.mh * 0.017,
+                  fontSize: context.mh * 0.014,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey,
                 ),

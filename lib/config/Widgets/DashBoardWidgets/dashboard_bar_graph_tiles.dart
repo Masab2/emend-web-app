@@ -22,14 +22,14 @@ class DashboardBarGraphTiles extends StatelessWidget {
                 Text(
                   "2.648",
                   style: TextStyle(
-                    fontSize: context.mh * 0.030,
+                    fontSize: context.mh * 0.024,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   "",
                   style: TextStyle(
-                    fontSize: context.mh * 0.030,
+                    fontSize: context.mh * 0.024,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -65,7 +65,7 @@ class DashboardBarGraphTiles extends StatelessWidget {
                         xValueMapper: (GraphData sales, _) => sales.month,
                         yValueMapper: (GraphData sales, _) => sales.sales,
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue,
+                        color: AppColor.primaryColor,
                         width: 0.3,
                       ),
                     ],

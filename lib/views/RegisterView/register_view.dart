@@ -71,25 +71,33 @@ class RegisterView extends StatelessWidget {
                           controller: authController.emailController,
                         ),
                         // Register Button
-                        ElevatedButton(
-                          onPressed: () {
-                            authController.registerUser(
-                              authController.nameController.text,
-                              authController.emailController.text,
-                            );
+                        Obx(
+                          () {
+                            return authController.isLoading.value == true
+                                ? const CircularProgressIndicator()
+                                : ElevatedButton(
+                                    onPressed: () {
+                                      authController.registerUser(
+                                        authController.nameController.text,
+                                        authController.emailController.text,
+                                        context,
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      minimumSize:
+                                          const Size(double.infinity, 50),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: AppColor.primaryColor,
+                                    ),
+                                    child: const Text(
+                                      "REGISTER",
+                                      style: AppTextStyles.button,
+                                    ),
+                                  );
                           },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            foregroundColor: Colors.white,
-                            backgroundColor: AppColor.primaryColor,
-                          ),
-                          child: const Text(
-                            "REGISTER",
-                            style: AppTextStyles.button,
-                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

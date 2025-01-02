@@ -32,7 +32,7 @@ class DashboardPieChartCardWidget extends StatelessWidget {
                             Text(
                               "Frequent Post Types",
                               style: TextStyle(
-                                fontSize: context.mh * 0.020,
+                                fontSize: context.mh * 0.018,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -59,17 +59,21 @@ class DashboardPieChartCardWidget extends StatelessWidget {
                             xValueMapper: (ChartData data, _) => data.category,
                             yValueMapper: (ChartData data, _) =>
                                 data.percentage,
+                                
                             dataLabelSettings: const DataLabelSettings(
                               isVisible: true,
                               labelPosition: ChartDataLabelPosition.outside,
                               useSeriesColor: true,
+                              
                               connectorLineSettings: ConnectorLineSettings(
                                 type: ConnectorType.curve,
                                 length: '15%',
                               ),
                             ),
+                            
                             radius: '70%',
                             innerRadius: '60%',
+                            
                           ),
                         ],
                       ),

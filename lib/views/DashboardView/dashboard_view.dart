@@ -30,7 +30,7 @@ class DashboardView extends StatelessWidget {
                           Text(
                             "Analytics Overview",
                             style: TextStyle(
-                              fontSize: context.mh * 0.028,
+                              fontSize: context.mh * 0.025,
                               fontWeight: FontWeight.w500,
                             ),
                           )
@@ -78,7 +78,7 @@ class DashboardView extends StatelessWidget {
                                                     "Profile Growth & Discovery",
                                                     style: TextStyle(
                                                       fontSize:
-                                                          context.mh * 0.024,
+                                                          context.mh * 0.018,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
@@ -90,7 +90,7 @@ class DashboardView extends StatelessWidget {
                                                     "See insights on how your profile has grown and changed over time",
                                                     style: TextStyle(
                                                       fontSize:
-                                                          context.mh * 0.017,
+                                                          context.mh * 0.014,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       color: Colors.grey,
@@ -143,7 +143,7 @@ class DashboardView extends StatelessWidget {
                                                               (GraphData sales,
                                                                       _) =>
                                                                   sales.sales,
-                                                          color: Colors.blue,
+                                                          color: AppColor.primaryColor,
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(10),
