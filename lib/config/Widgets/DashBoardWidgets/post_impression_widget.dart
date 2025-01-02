@@ -1,3 +1,4 @@
+import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
@@ -27,14 +28,14 @@ class PostImpressionWidget extends StatelessWidget {
                   "ENGAGEMENT",
                   style: TextStyle(
                     fontSize: context.mh * 0.018,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 0.01.ph(context),
                 Text(
                   "89.64%",
                   style: TextStyle(
-                    fontSize: context.mh * 0.018,
+                    fontSize: context.mh * 0.015,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -43,7 +44,7 @@ class PostImpressionWidget extends StatelessWidget {
                   height: context.mh * 0.01,
                   width: context.mw * 0.1,
                   backgroundColor: Colors.grey.shade200,
-                  foregrondColor: Colors.blue,
+                  foregrondColor: AppColor.primaryColor,
                   ratio: 0.2,
                   direction: Axis.horizontal,
                   curve: Curves.fastLinearToSlowEaseIn,

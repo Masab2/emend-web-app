@@ -1,3 +1,4 @@
+import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -84,7 +85,7 @@ class PostInsightsWidget extends StatelessWidget {
                       xValueMapper: (ChartData data, _) => data.day,
                       yValueMapper: (ChartData data, _) => data.views,
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.blue,
+                      color: AppColor.primaryColor,
                       width: 0.1,
                     )
                   ],

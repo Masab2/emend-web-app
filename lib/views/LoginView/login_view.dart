@@ -44,28 +44,38 @@ class LoginView extends StatelessWidget {
                         label: "Email",
                         controller: authController.emailController,
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (authController.emailController.text.isEmpty) {
-                            Get.snackbar("Error", "Please Fill the Fields");
-                          } else {
-                            log(token.value);
-                            authController
-                                .loginUser(authController.emailController.text);
-                          }
+                      Obx(
+                        () {
+                          return authController.isLoading.value == true
+                              ? const CircularProgressIndicator()
+                              : ElevatedButton(
+                                  onPressed: () {
+                                    if (authController
+                                        .emailController.text.isEmpty) {
+                                      Get.snackbar(
+                                          "Error", "Please Fill the Fields");
+                                    } else {
+                                      log(token.value);
+                                      authController.loginUser(
+                                          authController.emailController.text,
+                                          context);
+                                    }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    minimumSize:
+                                        const Size(double.infinity, 50),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    foregroundColor: Colors.white,
+                                    backgroundColor: AppColor.primaryColor,
+                                  ),
+                                  child: const Text(
+                                    "SIGN IN",
+                                    style: AppTextStyles.button,
+                                  ),
+                                );
                         },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          foregroundColor: Colors.white,
-                          backgroundColor: AppColor.primaryColor,
-                        ),
-                        child: const Text(
-                          "SIGN IN",
-                          style: AppTextStyles.button,
-                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
