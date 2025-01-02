@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
-import 'package:emend_web_app/data/Network/base_api_service.dart';
-import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart'; // For setting content type
+
 import 'package:emend_web_app/data/Error/app_exception.dart';
+import 'package:emend_web_app/data/Network/base_api_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 
 class NetworkApiService implements BaseApiServices {
   @override

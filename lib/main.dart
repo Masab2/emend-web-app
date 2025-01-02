@@ -16,7 +16,7 @@ import 'firebase_options.dart';
 void main() async {
   log("Called");
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -29,7 +29,6 @@ void main() async {
 
   runApp(const MyApp());
 }
-
 
 void loadToken() {
   token.value = box.value.read(BoxKeys.authToken) ?? '';
