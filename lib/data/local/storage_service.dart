@@ -1,15 +1,34 @@
-import 'package:get_storage/get_storage.dart';
+import 'dart:developer';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
-  static final GetStorage _box = GetStorage();
-
-  static GetStorage get box => _box;
-
-  static T? read<T>(String key) {
-    return _box.read<T>(key);
+  /// Save a value to shared preferences
+  Future<void> save(String key, String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
+    log('Saved: $key = $value');
   }
 
-  static void write(String key, dynamic value) {
-    _box.write(key, value);
+  /// Read a value from shared preferences
+  Future<String?> read(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    final value = prefs.getString(key);
+    log('Read: $key = $value');
+    return value;
+  }
+
+  /// Remove a specific key from shared preferences
+  Future<void> remove(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+    log('Removed: $key');
+  }
+
+  /// Clear all keys from shared preferences
+  Future<void> clear() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    log('Cleared all keys');
   }
 }

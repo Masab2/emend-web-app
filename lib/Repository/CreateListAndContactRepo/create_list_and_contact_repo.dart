@@ -12,5 +12,11 @@ abstract class CreateListAndContactRepo {
   Future<GetListModel> getContactsListApi();
 
   // Update the Contact List
-  Future<CreateContactInListModel> updateContactListApi(contactId, String? firstName, String? lastName, String? email, String? phone);
+  Future<CreateContactInListModel> updateContactListApi(
+    contactId,
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? phone,
+  );
 }

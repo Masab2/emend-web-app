@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/config/Routes/route_names.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/components.dart';
@@ -43,9 +46,13 @@ class LoginView extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          authController.loginUser(
-                            authController.emailController.text,
-                          );
+                          if (authController.emailController.text.isEmpty) {
+                            Get.snackbar("Error", "Please Fill the Fields");
+                          } else {
+                            log(token.value);
+                            authController
+                                .loginUser(authController.emailController.text);
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
