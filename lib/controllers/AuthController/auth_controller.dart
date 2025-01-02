@@ -40,7 +40,7 @@ class AuthController extends GetxController {
 
   // Login the User and Get token Stored in the getStorage
   void loginUser(String email, BuildContext context) async {
-    isLoading.value = true; // Start loading
+    isLoading.value = true;
     await _authRepo.loginApi(token.value, email).then(
       (value) {
         nameController.clear();

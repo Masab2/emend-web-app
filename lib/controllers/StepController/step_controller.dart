@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:emend_web_app/Repository/GenerateSmsRepo/generate_sms_http_repo.dart';
+import 'package:emend_web_app/Repository/GenerateSmsRepo/generate_sms_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -116,5 +120,52 @@ class StepController extends GetxController {
 
   void removeFromCampaign(Map<String, dynamic> campaign) {
     selectedCampaigns.remove(campaign);
+  }
+
+  // Ai Message Gereration
+  final RxString selectedTone = 'Professional'.obs;
+  final RxString selectedOccasion = 'General'.obs;
+  final RxList<String> tones =
+      ['Professional', 'Casual', 'Friendly', 'Formal'].obs;
+  var occassionController = TextEditingController().obs;
+  var additionalNotesController = TextEditingController().obs;
+  var generatedText = TextEditingController().obs;
+  RxBool isLoading = false.obs;
+  void updateTone(String value) => selectedTone.value = value;
+
+  void addNewTone(String newTone) {
+    tones.add(newTone);
+    selectedTone.value = newTone;
+  }
+
+  void generateMessage() {
+    Get.back();
+  }
+
+  final GenerateSmsRepo _generateSmsRepo = GenerateSmsHttpRepo();
+
+  void generateSmsMessage() async {
+    generatedText.value.text = '';  
+    isLoading.value = true;
+    await _generateSmsRepo
+        .generateSmsApi(
+      selectedTone.value,
+      occassionController.value.text,
+      additionalNotesController.value.text,
+    )
+        .then(
+      (value) {
+        isLoading.value = false;
+        log(value.sms?.smsContent ?? '');
+        generatedText.value.text = value.sms?.smsContent ?? '';
+        occassionController.value.clear();
+        additionalNotesController.value.clear();
+      },
+    ).onError(
+      (error, stackTrace) {
+        isLoading.value = false;
+        Get.snackbar("Error", error.toString());
+      },
+    );
   }
 }

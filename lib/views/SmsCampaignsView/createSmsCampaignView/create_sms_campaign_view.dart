@@ -1,8 +1,10 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
 import 'package:emend_web_app/controllers/StepController/step_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -149,7 +151,7 @@ class CreateSMSCampaignView extends StatelessWidget {
             const SizedBox(height: 16),
             _buildFieldChips(context),
             const SizedBox(height: 16),
-            _buildActionButtons(),
+            _buildActionButtons(context),
           ],
         ),
       ),
@@ -319,7 +321,7 @@ class CreateSMSCampaignView extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(BuildContext context) {
     return Row(
       children: [
         IconButton(
@@ -332,7 +334,248 @@ class CreateSMSCampaignView extends StatelessWidget {
           onPressed: () {},
           tooltip: 'Attach File',
         ),
+        Container(
+          margin: const EdgeInsets.only(left: 16),
+          child: ElevatedButton.icon(
+            onPressed: () => _showAIAssistantDialog(context),
+            icon: const Icon(Icons.chat),
+            label: Text(
+              'AI Assistant',
+              style: TextStyle(fontSize: context.mh * 0.016),
+            ),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+        ),
       ],
+    );
+  }
+
+  void _showAIAssistantDialog(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: context.mw * 0.6,
+              maxHeight: context.mh * 0.9,
+            ),
+            child: Obx(() {
+              return Container(
+                padding: const EdgeInsets.all(24),
+                child: Form(
+                  key: formKey,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'AI Assistant',
+                              style: TextStyle(
+                                fontSize: context.mh * 0.022,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        ),
+                        0.01.ph(context),
+
+                        // Tone Selection
+                        Text(
+                          'Select Tone',
+                          style: TextStyle(
+                            fontSize: context.mh * 0.016,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        0.006.ph(context),
+                        Obx(() {
+                          return Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                isExpanded: true,
+                                value: controller.selectedTone.value,
+                                items: controller.tones.map((String tone) {
+                                  return DropdownMenuItem<String>(
+                                    value: tone,
+                                    child: Text(tone),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  controller.updateTone(newValue!);
+                                },
+                              ),
+                            ),
+                          );
+                        }),
+                        0.01.ph(context),
+
+                        // Occasion Input
+                        Text(
+                          'Occasion',
+                          style: TextStyle(
+                            fontSize: context.mh * 0.016,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        0.006.ph(context),
+                        TextFormField(
+                          controller: controller.occassionController.value,
+                          decoration: InputDecoration(
+                            hintText: 'Enter the occasion or purpose',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 16,
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter the occasion';
+                            }
+                            return null;
+                          },
+                        ),
+                        0.01.ph(context),
+
+                        // Additional Notes
+                        Text(
+                          'Additional Notes',
+                          style: TextStyle(
+                            fontSize: context.mh * 0.016,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        0.006.ph(context),
+                        TextFormField(
+                          controller:
+                              controller.additionalNotesController.value,
+                          maxLines: 3,
+                          decoration: InputDecoration(
+                            hintText:
+                                'Add any additional notes or requirements',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 16,
+                            ),
+                          ),
+                        ),
+                        0.01.ph(context),
+
+                        // Generate Button
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                controller.generateSmsMessage();
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 32,
+                                vertical: 16,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: const Text(
+                              'Generate Content',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        ),
+                        0.01.ph(context),
+
+                        // Generated Content
+                        Text(
+                          'Generated Content',
+                          style: TextStyle(
+                            fontSize: context.mh * 0.016,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        0.006.ph(context),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey.shade300),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Stack(
+                            children: [
+                              TextFormField(
+                                controller: controller.generatedText.value,
+                                maxLines: 5,
+                                readOnly: true,
+                                decoration: InputDecoration(
+                                  hintText:
+                                      'Generated content will appear here',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  contentPadding: const EdgeInsets.all(16),
+                                ),
+                              ),
+                              Positioned(
+                                right: 8,
+                                top: 8,
+                                child: IconButton(
+                                  icon: const Icon(Icons.copy),
+                                  onPressed: () {
+                                    Clipboard.setData(ClipboardData(
+                                      text: controller.generatedText.value.text,
+                                    ));
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content:
+                                            Text('Content copied to clipboard'),
+                                        duration: Duration(seconds: 2),
+                                      ),
+                                    );
+                                  },
+                                  tooltip: 'Copy to clipboard',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }),
+          ),
+        );
+      },
     );
   }
 }

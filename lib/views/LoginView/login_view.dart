@@ -50,16 +50,17 @@ class LoginView extends StatelessWidget {
                               ? const CircularProgressIndicator()
                               : ElevatedButton(
                                   onPressed: () {
-                                    if (authController
-                                        .emailController.text.isEmpty) {
-                                      Get.snackbar(
-                                          "Error", "Please Fill the Fields");
-                                    } else {
-                                      log(token.value);
-                                      authController.loginUser(
-                                          authController.emailController.text,
-                                          context);
-                                    }
+                                    // if (authController
+                                    //     .emailController.text.isEmpty) {
+                                    //   Get.snackbar(
+                                    //       "Error", "Please Fill the Fields");
+                                    // } else {
+                                    //   log(token.value);
+                                    //   authController.loginUser(
+                                    //       authController.emailController.text,
+                                    //       context);
+                                    // }
+                                    Get.toNamed(RouteNames.dashboard);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     minimumSize:
