@@ -1,4 +1,3 @@
-import 'package:emend_web_app/config/components/ReportCardComp/report_card_comp.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';

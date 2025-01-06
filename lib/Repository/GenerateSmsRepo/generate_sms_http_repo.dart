@@ -1,7 +1,6 @@
 import 'package:emend_web_app/Model/GenerateSmsModel/generate_sms_model.dart';
 import 'package:emend_web_app/Repository/GenerateSmsRepo/generate_sms_repo.dart';
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
-import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 
 class GenerateSmsHttpRepo implements GenerateSmsRepo {

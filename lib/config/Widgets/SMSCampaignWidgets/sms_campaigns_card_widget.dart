@@ -2,7 +2,6 @@ import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/Routes/route_names.dart';
 import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -14,7 +13,6 @@ class SmsCampaignsCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final smsController = Get.put(SmsCampaignController());
     return Column(
       children: [
         Padding(
