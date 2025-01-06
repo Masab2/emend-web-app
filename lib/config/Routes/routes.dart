@@ -56,13 +56,18 @@ class Routes {
           transition: Transition.leftToRightWithFade,
         ),
         GetPage(
-          name: RouteNames.createSmsBulkCompaignScreen,
+          name: RouteNames.createSmsBulkCampaignScreen,
           page: () => CreateSmsCampaignHomeScreenView(),
           transition: Transition.leftToRightWithFade,
         ),
         GetPage(
-          name: RouteNames.createSmsOneToOneCompaignScreen,
+          name: RouteNames.createSmsOneToOneCampaignScreen,
           page: () => const CreateSmsOneToOneView(),
+          transition: Transition.leftToRightWithFade,
+        ),
+        GetPage(
+          name: RouteNames.createEmailCampaign,
+          page: () => const CreateEmailCampaignView(),
           transition: Transition.leftToRightWithFade,
         ),
         GetPage(

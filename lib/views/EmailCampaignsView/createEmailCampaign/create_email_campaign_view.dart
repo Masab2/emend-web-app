@@ -19,83 +19,84 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
   final controller = Get.put(CreateEmailController());
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColor.viewsBackgroundColor,
-      height: context.mh,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  controller.showCreateEmailView.value = false;
-                },
-                child: Icon(
-                  Icons.arrow_back,
-                  size: context.mh * 0.020,
-                ),
-              ),
-            ],
-          ),
-          _buildStepper(),
-          SingleChildScrollView(
-            child: Container(
-              height: context.mh * 0.8,
-              width: context.mw * 0.7,
-              padding: EdgeInsets.symmetric(
-                horizontal: context.mw * 0.02,
-                vertical: context.mh * 0.02,
-              ),
-              decoration: BoxDecoration(
-                color: AppColor.whiteColor,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey[300]!),
-              ),
-              child: Obx(() {
-                return getSelectedIndexForm(controller.currentStep.value);
-              }),
+    return Scaffold(
+      body: Container(
+        color: AppColor.viewsBackgroundColor,
+        height: context.mh,
+        child: Row(
+          children: [
+            SideBarWidgets(
+              key: UniqueKey(),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              MaterialButton(
-                onPressed: () {
-                  controller.previousStep();
-                },
-                child: const Text(
-                  "Previous",
-                  style: TextStyle(),
-                ),
+            Expanded(
+              child: Column(
+                children: [
+                  _buildStepper(),
+                  SingleChildScrollView(
+                    child: Container(
+                      height: context.mh * 0.8,
+                      width: context.mw * 0.7,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.mw * 0.02,
+                        vertical: context.mh * 0.02,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.whiteColor,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey[300]!),
+                      ),
+                      child: Obx(() {
+                        return getSelectedIndexForm(
+                            controller.currentStep.value);
+                      }),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      MaterialButton(
+                        onPressed: () {
+                          controller.previousStep();
+                        },
+                        child: const Text(
+                          "Previous",
+                          style: TextStyle(),
+                        ),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          if (controller.currentStep.value == 0 &&
+                              controller.singleEmailController.value.text
+                                  .isNotEmpty) {
+                            controller.nextStep();
+                          } else if (controller.currentStep.value == 1) {
+                            if (controller.subjectController.value.text.isNotEmpty &&
+                                controller
+                                    .contentController.value.text.isNotEmpty &&
+                                controller.fromName.value.text.isNotEmpty &&
+                                controller.fromEmail.value.text.isNotEmpty) {
+                              controller.nextStep();
+                            } else {
+                              Get.snackbar(
+                                "Validation Error",
+                                "Please fill all the required fields before proceeding.",
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            }
+                          }
+                        },
+                        child: const Text(
+                          "Next",
+                          style: TextStyle(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              MaterialButton(
-                onPressed: () {
-                  if (controller.currentStep.value == 0 &&
-                      controller.singleEmailController.value.text.isNotEmpty) {
-                    controller.nextStep();
-                  } else if (controller.currentStep.value == 1) {
-                    if (controller.subjectController.value.text.isNotEmpty &&
-                        controller.contentController.value.text.isNotEmpty &&
-                        controller.fromName.value.text.isNotEmpty &&
-                        controller.fromEmail.value.text.isNotEmpty) {
-                      controller.nextStep();
-                    } else {
-                      Get.snackbar(
-                        "Validation Error",
-                        "Please fill all the required fields before proceeding.",
-                        snackPosition: SnackPosition.BOTTOM,
-                      );
-                    }
-                  }
-                },
-                child: const Text(
-                  "Next",
-                  style: TextStyle(),
-                ),
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

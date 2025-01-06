@@ -10,7 +10,7 @@ class EmailCampaignsListWidget extends StatelessWidget {
     return Card(
       color: AppColor.whiteColor,
       child: Container(
-        height: context.mh * 0.40,
+        height: context.mh * 0.60,
         width: context.mw * 0.78,
         padding: EdgeInsets.symmetric(
           horizontal: context.mw * 0.01,

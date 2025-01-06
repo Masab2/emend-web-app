@@ -1,4 +1,3 @@
-import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/routes/route_names.dart';
@@ -7,20 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TemplateView extends StatelessWidget {
-  static const String route = '/templateView';
   const TemplateView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // List of templates data
-    final List<Map<String, String>> templates = [
-      {'image': ImageAsset.templateImage, 'title': "Email Template 1"},
-      {'image': ImageAsset.templateImage, 'title': "Email Template 2"},
-      {'image': ImageAsset.templateImage, 'title': "Email Template 3"},
-      {'image': ImageAsset.templateImage, 'title': "Email Template 4"},
-      {'image': ImageAsset.templateImage, 'title': "Email Template 5"},
-    ];
-
     return Scaffold(
       body: Row(
         children: [
@@ -78,8 +67,7 @@ class TemplateView extends StatelessWidget {
                     SizedBox(
                       height: context.mh * 0.8,
                       width: context.mw * 0.8,
-                      child: SingleChildScrollView(
-                          child: TemplateGrid(templates: templates)),
+                      child: SingleChildScrollView(child: TemplateGrid()),
                     ),
                   ],
                 ),
@@ -88,66 +76,6 @@ class TemplateView extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class TemplateGrid extends StatelessWidget {
-  const TemplateGrid({
-    super.key,
-    required this.templates,
-  });
-
-  final List<Map<String, String>> templates;
-
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 20,
-      runSpacing: 30,
-      children: templates.map((template) {
-        return Container(
-          height: context.mh * 0.45,
-          width: context.mw * 0.15,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-              image: AssetImage(template['image']!),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              // Open Template Button
-              Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Text(
-                      "Email Template 1",
-                      style: TextStyle(
-                        fontSize: context.mh * 0.020,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }).toList(),
     );
   }
 }

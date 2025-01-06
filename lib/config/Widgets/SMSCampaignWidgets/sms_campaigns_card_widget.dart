@@ -76,7 +76,7 @@ class SmsCampaignsCardWidget extends StatelessWidget {
                           end: Alignment.bottomRight,
                         ),
                         onTap: () => Get.toNamed(
-                            RouteNames.createSmsOneToOneCompaignScreen),
+                            RouteNames.createSmsOneToOneCampaignScreen),
                       ),
                     ),
                     SizedBox(width: context.mw * 0.02),
@@ -96,7 +96,7 @@ class SmsCampaignsCardWidget extends StatelessWidget {
                           end: Alignment.bottomRight,
                         ),
                         onTap: () =>
-                            Get.toNamed(RouteNames.createSmsBulkCompaignScreen),
+                            Get.toNamed(RouteNames.createSmsBulkCampaignScreen),
                       ),
                     ),
                   ],
