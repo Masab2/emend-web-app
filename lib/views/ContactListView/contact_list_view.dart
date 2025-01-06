@@ -1,3 +1,7 @@
+// ignore_for_file: unused_local_variable
+
+import 'dart:html' as html;
+
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/utils/Dialog/create_list_dialog_box.dart';
@@ -16,7 +20,19 @@ class ContactListView extends StatefulWidget {
 }
 
 class _ContactListViewState extends State<ContactListView> {
-    final ContactListController controller = Get.put(ContactListController());
+  final ContactListController controller = Get.put(ContactListController());
+
+  /// Method to trigger download of the demo CSV file
+  void downloadDemoCsv() {
+    const demoCsvPath = 'assets/csv/demo.csv';
+    const fileName = 'demo.csv';
+
+    // Create an anchor element and trigger the download
+    html.AnchorElement anchorElement = html.AnchorElement(href: demoCsvPath)
+      ..setAttribute('download', fileName)
+      ..click();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,8 +112,27 @@ class _ContactListViewState extends State<ContactListView> {
                                           ),
                                         ),
                                       ),
+                                      0.01.pw(context),
+                                      MaterialButton(
+                                        minWidth: context.mw * 0.15,
+                                        color: AppColor.secondaryColor,
+                                        height: context.mh * 0.06,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        onPressed: downloadDemoCsv,
+                                        child: Text(
+                                          "Download Demo CSV",
+                                          style: TextStyle(
+                                            fontSize: context.mh * 0.02,
+                                            fontWeight: FontWeight.w600,
+                                            color: AppColor.whiteColor,
+                                          ),
+                                        ),
+                                      ),
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                             ),

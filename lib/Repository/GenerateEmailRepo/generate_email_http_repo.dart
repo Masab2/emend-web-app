@@ -1,7 +1,6 @@
 import 'package:emend_web_app/Model/GenerateEmailModel/genrate_email_model.dart';
 import 'package:emend_web_app/Repository/GenerateEmailRepo/generate_email_repo.dart';
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
-import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 
 class GenerateEmailHttpRepo implements GenerateEmailRepo {

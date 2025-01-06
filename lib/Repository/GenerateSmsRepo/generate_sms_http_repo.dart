@@ -16,7 +16,7 @@ class GenerateSmsHttpRepo implements GenerateSmsRepo {
     };
     final response =
         await _api.getPostApiResponse(AppUrl.generateSmsMessage, data, {
-      "Authorization": "Bearer ${token.value}",
+      "Authorization": "Bearer ${AppUrl.token}",
       "Accept": "application/json",
       "Content-Type": "application/json",
     });
