@@ -1,6 +1,7 @@
 import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/controllers.dart';
+import 'package:emend_web_app/data/Response/status.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,7 @@ class _CreateOneToOneContactWidgetState
   final controller = Get.put(SmsCampaignController());
   final contactController = Get.put(ContactListController());
   final searchController = TextEditingController();
+  final focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,8 @@ class _CreateOneToOneContactWidgetState
           _buildHeader(),
           _buildSearchBar(context),
           Obx(() {
-            // Check if the dropdown should be open
-            if (controller.isDropdownOpen.value || searchController.text.isNotEmpty) {
+            if (controller.isDropdownOpen.value ||
+                searchController.text.isNotEmpty) {
               return Expanded(child: _buildListView());
             }
             return const SizedBox();
@@ -57,69 +59,84 @@ class _CreateOneToOneContactWidgetState
   }
 
   Widget _buildSearchBar(BuildContext context) {
-    return Container(
-      height: context.mh * 0.06,
-      width: context.mw,
-      decoration: BoxDecoration(
-        color: AppColor.textFormFieldBgColor,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey[300]!),
-      ),
-      child: TextField(
-        controller: searchController,
-        onChanged: (value) {
-          contactController.filterContacts(value);
-          if (!controller.isDropdownOpen.value) {
-            controller.toggleDropdown();
-          }
-        },
-        onTap: () {
-          if (!controller.isDropdownOpen.value) {
-            controller.toggleDropdown();
-          }
-        },
-        decoration: InputDecoration(
-          hintText: 'Add List to Campaign',
-          hintStyle: TextStyle(fontSize: context.mh * 0.020),
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-          suffixIcon: IconButton(
-            icon: const Icon(Icons.clear),
-            onPressed: () {
-              searchController.clear();
-              contactController.filterContacts('');
-              controller.isDropdownOpen.value = false;
-            },
+    return Obx(() {
+      return Container(
+        height: context.mh * 0.06,
+        width: context.mw,
+        decoration: BoxDecoration(
+          color: AppColor.textFormFieldBgColor,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey[300]!),
+        ),
+        child: TextField(
+          controller: contactController.selectedContactController.value,
+          focusNode: focusNode,
+          onChanged: (value) {
+            contactController.filterList(value);
+          },
+          onTap: () {
+            controller.isDropdownOpen.value = !controller.isDropdownOpen.value;
+          },
+          decoration: InputDecoration(
+            hintText: 'Select Contact',
+            hintStyle: TextStyle(fontSize: context.mh * 0.020),
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.clear),
+              onPressed: () {
+                contactController.selectedContactController.value.clear();
+                contactController.filterList('');
+                focusNode.unfocus();
+                controller.isDropdownOpen.value = false;
+              },
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _buildListView() {
     return Obx(() {
-      return ListView.builder(
-        itemCount: contactController.contactList.length,
-        itemBuilder: (context, index) {
-          final item = contactController.contactList[index];
-          return Container(
-            decoration: BoxDecoration(
-              color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
-              border: Border(
-                bottom: BorderSide(color: Colors.grey.shade300),
-              ),
-            ),
-            child: ListTile(
-              title: Text(item.firstName ?? ""),
-              trailing: Text(
-                item.lastName ?? "",
-                style: TextStyle(color: Colors.grey.shade600),
-              ),
-              onTap: () {},
-            ),
+      final list = contactController.getallContact.value.data;
+      switch (contactController.rxRequestStatusForAllContact.value) {
+        case Status.loading:
+          return SizedBox(
+              height: context.mw * 0.10,
+              width: context.mw * 0.10,
+              child: const CircularProgressIndicator());
+        case Status.completed:
+          return ListView.builder(
+            itemCount: list?.length,
+            itemBuilder: (context, index) {
+              final item = list?[index];
+              return Container(
+                decoration: BoxDecoration(
+                  color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey.shade300),
+                  ),
+                ),
+                child: ListTile(
+                  title: Text(item?.firstName ?? ""),
+                  subtitle: Text(item?.phone ?? ""),
+                  onTap: () {
+                    contactController.selectedContactController.value.text =
+                        item?.phone ?? "";
+                    controller.toggleDropdown();
+                    focusNode.unfocus();
+                  },
+                ),
+              );
+            },
           );
-        },
-      );
+
+        case Status.error:
+          return const Text("No Data");
+        default:
+          return const SizedBox();
+      }
     });
   }
 }

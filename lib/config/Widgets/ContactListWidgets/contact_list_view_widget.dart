@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_is_empty
 
+import 'package:emend_web_app/config/Routes/route_names.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
 import 'package:emend_web_app/data/Response/status.dart';
@@ -166,8 +167,8 @@ class ContactListViewWidget extends StatelessWidget {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          controller.showContactListUi(
-                                              true, data?.contacts ?? []);
+                                          Get.toNamed(RouteNames
+                                              .contactListDetailsScreen);
                                         },
                                         child: SizedBox(
                                           width: context.mw * 0.20,

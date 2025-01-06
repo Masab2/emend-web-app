@@ -8,12 +8,23 @@ class ContactDetailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColor.viewsBackgroundColor,
-      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.05),
-      child: const Column(
+    return Scaffold(
+      body: Row(
         children: [
-          ContactListDetailsWidget(),
+          SideBarWidgets(
+            key: UniqueKey(),
+          ),
+          Expanded(
+            child: Container(
+              color: AppColor.viewsBackgroundColor,
+              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.05),
+              child: const Column(
+                children: [
+                  ContactListDetailsWidget(),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

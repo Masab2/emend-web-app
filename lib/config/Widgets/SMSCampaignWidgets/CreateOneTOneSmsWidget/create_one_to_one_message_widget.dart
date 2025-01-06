@@ -1,4 +1,4 @@
-import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
 import 'package:emend_web_app/controllers/StepController/step_controller.dart';
@@ -7,138 +7,30 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class CreateSMSBulkCampaignView extends StatelessWidget {
-  final StepController controller = Get.put(StepController());
+class CreateOneToOneMessageWidget extends StatefulWidget {
+  const CreateOneToOneMessageWidget({super.key});
 
-  CreateSMSBulkCampaignView({super.key});
+  @override
+  State<CreateOneToOneMessageWidget> createState() =>
+      _CreateOneToOneMessageWidgetState();
+}
+
+class _CreateOneToOneMessageWidgetState
+    extends State<CreateOneToOneMessageWidget> {
+  final smscontroller = Get.put(SmsCampaignController());
+  final controller = Get.put(StepController());
 
   @override
   Widget build(BuildContext context) {
-    final createSmsController = Get.put(SmsCampaignController());
-
-    return SizedBox(
-      height: context.mh,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
-          child: Column(
-            children: [
-              _buildHeader(context, createSmsController),
-              0.01.ph(context),
-              _buildMessageList(context),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHeader(
-      BuildContext context, SmsCampaignController createSmsController) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        _buildAddMessageButton(context),
-      ],
-    );
-  }
-
-  Widget _buildAddMessageButton(BuildContext context) {
-    return Obx(() => controller.messageCount.value < 5
-        ? ElevatedButton.icon(
-            onPressed: controller.incrementMessage,
-            icon: const Icon(Icons.add, color: Colors.white),
-            label: Text(
-              'Add Message',
-              style:
-                  TextStyle(color: Colors.white, fontSize: context.mh * 0.018),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColor.primaryColor,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          )
-        : const SizedBox.shrink());
-  }
-
-  Widget _buildMessageList(BuildContext context) {
-    return Obx(() => Stack(
-          children: [
-            // Vertical Timeline
-            Positioned(
-              left: 30,
-              top: 0,
-              bottom: 0,
-              child: Container(
-                width: 2,
-                color: Colors.grey[300],
-              ),
-            ),
-            Column(
-              children: List.generate(
-                controller.messageCount.value,
-                (index) => _buildMessageCardWithTimeline(index, context),
-              ),
-            ),
-          ],
-        ));
-  }
-
-  Widget _buildMessageCardWithTimeline(int index, BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Timeline Node
-        Container(
-          margin: const EdgeInsets.only(top: 24, left: 24, right: 16),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: AppColor.primaryColor,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
-                      blurRadius: 4,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Text(
-                  '${index + 1}',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: context.mh * 0.018,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        // Message Card
-        Expanded(
-          child: _buildMessageCard(index, context),
-        ),
-      ],
+    return Container(
+      child: _buildMessageCard(0, context),
     );
   }
 
   Widget _buildMessageCard(int index, BuildContext context) {
-    return Card(
-      color: AppColor.whiteColor,
-      margin: const EdgeInsets.only(bottom: 24, right: 16),
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -150,7 +42,20 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
             const SizedBox(height: 16),
             _buildFieldChips(context),
             const SizedBox(height: 16),
-            _buildActionButtons(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildActionButtons(context),
+                _buildActionButton(
+                  context,
+                  "Send Message",
+                  Icons.send,
+                  () {
+                    smscontroller.sendSingleUserMessageApi();
+                  },
+                )
+              ],
+            ),
           ],
         ),
       ),
@@ -162,22 +67,12 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Message ${index + 1}',
+          'Create Message',
           style: TextStyle(
             fontSize: context.mh * 0.018,
             fontWeight: FontWeight.bold,
           ),
         ),
-        if (index > 0)
-          TextButton.icon(
-            onPressed: controller.decrementMessage,
-            icon: Icon(Icons.delete_outline,
-                color: Colors.red, size: context.mh * 0.020),
-            label: Text(
-              'Remove',
-              style: TextStyle(color: Colors.red, fontSize: context.mh * 0.016),
-            ),
-          ),
       ],
     );
   }
@@ -275,6 +170,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         ),
         0.006.ph(context),
         TextField(
+          controller: smscontroller.messageController,
           decoration: InputDecoration(
             hintStyle: TextStyle(fontSize: context.mh * 0.016),
             hintText:
@@ -286,6 +182,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
             fillColor: Colors.grey[50],
           ),
           maxLines: 3,
+          onChanged: (value) => smscontroller.updateMessage(value),
         ),
       ],
     );
@@ -303,20 +200,61 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           ),
         ),
         0.006.ph(context),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: controller.fields.map((field) {
-            return InputChip(
-              label: Text(field),
-              onPressed: () {},
-              backgroundColor: AppColor.primaryColor.withValues(alpha: 0.1),
-              labelStyle: TextStyle(
-                  color: AppColor.primaryColor, fontSize: context.mh * 0.016),
-            );
-          }).toList(),
-        ),
+        Obx(() => Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: smscontroller.availableFields.map((field) {
+                return InputChip(
+                  label: Text(field),
+                  onPressed: () => smscontroller.insertFieldAtCursor(field),
+                  backgroundColor: AppColor.primaryColor.withValues(alpha: 0.1),
+                  labelStyle: TextStyle(
+                      color: AppColor.primaryColor,
+                      fontSize: context.mh * 0.016),
+                );
+              }).toList(),
+            )),
       ],
+    );
+  }
+
+  Widget _buildActionButton(
+    BuildContext context,
+    String label,
+    IconData icon,
+    VoidCallback onTap,
+  ) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.mw * 0.015,
+          vertical: context.mh * 0.012,
+        ),
+        decoration: BoxDecoration(
+          color: AppColor.primaryColor.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              size: context.mh * 0.02,
+              color: AppColor.primaryColor,
+            ),
+            SizedBox(width: context.mw * 0.01),
+            Text(
+              label,
+              style: TextStyle(
+                color: AppColor.primaryColor,
+                fontSize: context.mh * 0.016,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -432,7 +370,6 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                         }),
                         0.01.ph(context),
 
-                        // Occasion Input
                         Text(
                           'Occasion',
                           style: TextStyle(
@@ -462,7 +399,6 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                         ),
                         0.01.ph(context),
 
-                        // Additional Notes
                         Text(
                           'Additional Notes',
                           style: TextStyle(
@@ -489,7 +425,6 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                         ),
                         0.01.ph(context),
 
-                        // Generate Button
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
@@ -514,7 +449,6 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                         ),
                         0.01.ph(context),
 
-                        // Generated Content
                         Text(
                           'Generated Content',
                           style: TextStyle(

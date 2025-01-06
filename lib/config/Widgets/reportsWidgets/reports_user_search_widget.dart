@@ -22,7 +22,7 @@ class ReportsUserSearchWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Search User",
+                  hintText: "Search Reports",
                   hintStyle: TextStyle(
                     fontSize: context.mh * 0.020,
                   ),
@@ -37,20 +37,7 @@ class ReportsUserSearchWidget extends StatelessWidget {
             ),
           ),
           0.02.pw(context),
-          MaterialButton(
-            color: Colors.green,
-            minWidth: context.mw * 0.08,
-            height: context.mh * 0.06,
-            onPressed: () {},
-            child: Text(
-              "Add User",
-              style: TextStyle(
-                fontSize: context.mh * 0.020,
-                color: AppColor.whiteColor,
-              ),
-            ),
-          ),
-          0.01.pw(context),
+          
           Row(
             children: [
               Text(

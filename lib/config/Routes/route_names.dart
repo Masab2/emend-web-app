@@ -12,4 +12,5 @@ class RouteNames {
   static const String createSmsBulkCampaignScreen = '/sms-campaigns/create';
   static const String createSmsOneToOneCampaignScreen = '/send-sms';
   static const String createEmailCampaign = '/email-campaigns/create';
+  static const String contactListDetailsScreen = '/contactListScreenScreen';
 }

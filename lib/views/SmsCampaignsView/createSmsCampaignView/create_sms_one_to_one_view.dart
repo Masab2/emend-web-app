@@ -1,13 +1,14 @@
 import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/Widgets/SMSCampaignWidgets/CreateOneTOneSmsWidget/create_one_to_one_contact_widget.dart';
+import 'package:emend_web_app/config/Widgets/SMSCampaignWidgets/CreateOneTOneSmsWidget/create_one_to_one_message_widget.dart';
 import 'package:emend_web_app/config/Widgets/SideBarWidgets/side_bar_widgets.dart';
 import 'package:emend_web_app/config/components/stepIndicator/step_divider_comp.dart';
 import 'package:emend_web_app/config/components/stepIndicator/step_item_comp.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
-import 'package:emend_web_app/controllers/StepController/step_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../controllers/controllers.dart';
 
 class CreateSmsOneToOneView extends StatefulWidget {
   const CreateSmsOneToOneView({super.key});
@@ -19,6 +20,7 @@ class CreateSmsOneToOneView extends StatefulWidget {
 class _CreateSmsOneToOneViewState extends State<CreateSmsOneToOneView> {
   final StepController controller = Get.put(StepController());
   final smsController = Get.put(SmsCampaignController());
+  final contactController = Get.put(ContactListController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +66,15 @@ class _CreateSmsOneToOneViewState extends State<CreateSmsOneToOneView> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          controller.nextStep();
+                          if (contactController.selectedContactController.value
+                              .text.isNotEmpty) {
+                            controller.nextStep();
+                          } else {
+                            Get.snackbar(
+                              "Validation Error",
+                              "Please Select the Contact Phone No",
+                            );
+                          }
                         },
                         child: const Text(
                           "Next",
@@ -110,7 +120,7 @@ class _CreateSmsOneToOneViewState extends State<CreateSmsOneToOneView> {
         case 0:
           return const CreateOneToOneContactWidget();
         case 1:
-          return Container();
+          return const CreateOneToOneMessageWidget();
         default:
           return const SizedBox();
       }

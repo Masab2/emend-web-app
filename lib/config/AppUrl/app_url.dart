@@ -26,6 +26,12 @@ class AppUrl {
 
   // Send Email Url
   static const String sendEmail = '$baseUrl/email/sendEmail';
+
+  // Send Message Url
+  static const String sendMessage = '$baseUrl/sms/messages/send';
+
+  // Get All Contacts
+  static const String getAllContactsUrl = '$baseUrl/sms/contacts/get';
   // Temp Token
   static const String token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImVtYWlsIjoicGFydHp5MDlAZ21haWwuY29tIiwiaWF0IjoxNzM2MTc4ODkzLCJleHAiOjE3MzYyNjUyOTN9.p8qgVXxWs66FD8qrcLQZTvCeNJFCnLR-TUDXp7P8pKM";

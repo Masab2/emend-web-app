@@ -70,5 +70,10 @@ class Routes {
           page: () => const CreateEmailCampaignView(),
           transition: Transition.leftToRightWithFade,
         ),
+        GetPage(
+          name: RouteNames.contactListDetailsScreen,
+          page: () => const ContactDetailsList(),
+          transition: Transition.leftToRightWithFade,
+        ),
       ];
 }
