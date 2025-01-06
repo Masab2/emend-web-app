@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:emend_web_app/Model/CreateContactInListModel/create_contact_in_list_model.dart';
 import 'package:emend_web_app/Model/CreateListModel/create_list_model.dart';
+import 'package:emend_web_app/Model/GetAllContactModel/getAll_contact_model.dart';
 import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
 
 abstract class CreateListAndContactRepo {
@@ -19,4 +20,7 @@ abstract class CreateListAndContactRepo {
     String? email,
     String? phone,
   );
+
+  // Get All Contacts
+  Future<GetAllContacts> getAllContactsApi();
 }

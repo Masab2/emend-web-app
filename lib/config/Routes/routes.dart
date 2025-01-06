@@ -65,5 +65,10 @@ class Routes {
           page: () => const CreateSmsOneToOneView(),
           transition: Transition.leftToRightWithFade,
         ),
+        GetPage(
+          name: RouteNames.contactListDetailsScreen,
+          page: () => const ContactDetailsList(),
+          transition: Transition.leftToRightWithFade,
+        ),
       ];
 }

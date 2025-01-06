@@ -40,14 +40,14 @@ class ReportsView extends StatelessWidget {
                     0.01.ph(context),
                     const ReportsUserSearchWidget(),
                     0.01.ph(context),
-                    Row(
-                      children: [
-                        0.02.pw(context),
-                        const ReportCardComp(),
-                        const ReportCardComp(),
-                        const ReportCardComp(),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     0.02.pw(context),
+                    //     const ReportCardComp(),
+                    //     const ReportCardComp(),
+                    //     const ReportCardComp(),
+                    //   ],
+                    // ),
                     const ReportsListWidget(),
                   ],
                 ),

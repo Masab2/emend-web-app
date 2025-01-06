@@ -11,4 +11,5 @@ class RouteNames {
   static const String templateEditor = '/template-editor';
   static const String createSmsBulkCompaignScreen = '/createSmsBulkCompaignScreen';
   static const String createSmsOneToOneCompaignScreen = '/createSmsOneToOneCompaignScreen';
+  static const String contactListDetailsScreen = '/contactListScreenScreen';
 }

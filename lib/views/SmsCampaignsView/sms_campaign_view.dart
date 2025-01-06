@@ -1,9 +1,7 @@
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
-import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
-import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 class SmsCampaignView extends StatefulWidget {
   static const String route = '/smsCampaignsView';

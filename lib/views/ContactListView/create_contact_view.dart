@@ -14,11 +14,7 @@ class CreateContactView extends StatefulWidget {
 class _CreateContactViewState extends State<CreateContactView> {
   final ContactListController controller = Get.put(ContactListController());
 
-  @override
-  void initState() {
-    controller.getContactListApi();
-    super.initState();
-  }
+  
 
   @override
   Widget build(BuildContext context) {

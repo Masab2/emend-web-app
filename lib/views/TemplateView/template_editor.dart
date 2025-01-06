@@ -1,3 +1,5 @@
+import 'package:emend_web_app/config/assets/image_asset.dart';
+import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -16,6 +18,17 @@ class TemplateEditorState extends State<TemplateEditor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Image(
+          image: AssetImage(ImageAsset.logo),
+        ),
+        centerTitle: true,
+        title: Text(
+          "Email Editor",
+          style: TextStyle(
+              fontSize: context.mh * 0.024, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
           url: WebUri('https://react-email-editor-ce42a.web.app/'),

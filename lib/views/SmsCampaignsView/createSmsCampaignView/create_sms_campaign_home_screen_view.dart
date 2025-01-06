@@ -113,7 +113,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
         case 1:
           return ContactListSmsWidget();
         case 2:
-          return CreateSMSCampaignView();
+          return CreateSMSBulkCampaignView();
         default:
           return const SizedBox();
       }

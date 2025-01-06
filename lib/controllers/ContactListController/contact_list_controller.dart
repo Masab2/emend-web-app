@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:emend_web_app/Model/GetAllContactModel/getAll_contact_model.dart';
 import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
 import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_http_repo.dart';
 import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_repo.dart';
@@ -22,9 +23,10 @@ class ContactListController extends GetxController {
   @override
   void onInit() {
     getContactListApi();
+    getAllContactApi();
     super.onInit();
   }
-  
+
   void showCreateContactUi(bool visibility) {
     showCreateContactView.value = visibility;
   }
@@ -164,5 +166,30 @@ class ContactListController extends GetxController {
               element.phone!.toLowerCase().contains(value.toLowerCase()))
           .toList();
     }
+  }
+
+  final rxRequestStatusForAllContact = Status.loading.obs;
+  final getallContact = GetAllContacts().obs;
+  var selectedContactController = TextEditingController().obs;
+  // Get the Contact List From Api
+  void setRxRequestStatusForGetContacts(Status value) =>
+      rxRequestStatusForAllContact.value = value;
+  void setGetContactsApiResponse(GetAllContacts data) {
+    getallContact.value = data;
+  }
+
+  // Get All Contacts
+  void getAllContactApi() async {
+    setRxRequestStatusForGetContacts(Status.loading);
+    await _createListAndContactRepo.getAllContactsApi().then(
+      (value) {
+        setRxRequestStatusForGetContacts(Status.completed);
+        setGetContactsApiResponse(value);
+      },
+    ).onError(
+      (error, stackTrace) {
+        setRxRequestStatusForGetContacts(Status.error);
+      },
+    );
   }
 }
