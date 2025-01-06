@@ -32,7 +32,11 @@ class AppUrl {
 
   // Get All Contacts
   static const String getAllContactsUrl = '$baseUrl/sms/contacts/get';
+
+  // Get Template
+  static const String getAllTemplates = '$baseUrl/templates';
+
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImVtYWlsIjoicGFydHp5MDlAZ21haWwuY29tIiwiaWF0IjoxNzM2MTc4ODkzLCJleHAiOjE3MzYyNjUyOTN9.p8qgVXxWs66FD8qrcLQZTvCeNJFCnLR-TUDXp7P8pKM";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImVtYWlsIjoic3hhaW4xMjNAZ21haWwuY29tIiwiaWF0IjoxNzM2MTgyOTc2LCJleHAiOjE3MzYyMTUzNzZ9.kjpDRsZG2Y8BkgRSrNetjvGpUC0MqRojHY_3uHpo9BY";
 }

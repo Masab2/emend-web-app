@@ -1,7 +1,9 @@
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:get/get.dart';
 
 class TemplateEditor extends StatefulWidget {
   const TemplateEditor({
@@ -14,7 +16,7 @@ class TemplateEditor extends StatefulWidget {
 
 class TemplateEditorState extends State<TemplateEditor> {
   late InAppWebViewController webViewController;
-
+  TemplateController controller = Get.put(TemplateController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +33,8 @@ class TemplateEditorState extends State<TemplateEditor> {
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
-          url: WebUri('https://react-email-editor-ce42a.web.app/'),
+          url: WebUri(
+              'https://react-email-editor-ce42a.web.app${controller.code.value}'),
         ),
         onWebViewCreated: (controller) {
           webViewController = controller;

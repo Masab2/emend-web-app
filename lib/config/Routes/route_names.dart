@@ -10,7 +10,8 @@ class RouteNames {
   static const String contactList = '/contact-list';
   static const String templateEditor = '/template-editor';
   static const String createSmsBulkCampaignScreen = '/sms-campaigns/create';
-  static const String createSmsOneToOneCampaignScreen = '/send-sms';
+  static const String createSmsOneToOneCampaignScreen =
+      '/sms-campaigns/send-sms';
   static const String createEmailCampaign = '/email-campaigns/create';
-  static const String contactListDetailsScreen = '/contactListScreenScreen';
+  static const String contactListDetailsScreen = '/contact-list/details';
 }

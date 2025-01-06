@@ -30,4 +30,5 @@ export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/sms_campaign_hea
 export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/sms_campaign_list_widget.dart';
 export 'package:emend_web_app/config/widgets/SMSCampaignWidgets/sms_campaigns_card_widget.dart';
 export 'package:emend_web_app/config/widgets/SideBarWidgets/side_bar_widgets.dart';
+export 'package:emend_web_app/config/widgets/templateWidgets/template_grid.dart';
 export 'package:emend_web_app/config/widgets/templateWidgets/template_header.dart';
