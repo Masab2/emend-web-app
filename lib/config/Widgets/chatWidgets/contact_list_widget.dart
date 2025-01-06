@@ -66,25 +66,30 @@ class ContactListWidget extends StatelessWidget {
                     children: socialPlatforms
                         .map((platform) => Padding(
                               padding: const EdgeInsets.only(right: 8.0),
-                              child: Chip(
-                                backgroundColor: AppColor.primaryColor
-                                    .withValues(alpha: 0.1),
-                                label: Row(
-                                  children: [
-                                    Icon(
-                                      platform['icon'],
-                                      size: context.mh * 0.016,
-                                      color: AppColor.primaryColor,
-                                    ),
-                                    0.004.pw(context),
-                                    Text(
-                                      platform['name'],
-                                      style: GoogleFonts.barlow(
-                                        fontSize: context.mh * 0.014,
+                              child: GestureDetector(
+                                onTap: () {
+                                  
+                                },
+                                child: Chip(
+                                  backgroundColor: AppColor.primaryColor
+                                      .withValues(alpha: 0.1),
+                                  label: Row(
+                                    children: [
+                                      Icon(
+                                        platform['icon'],
+                                        size: context.mh * 0.016,
                                         color: AppColor.primaryColor,
                                       ),
-                                    ),
-                                  ],
+                                      0.004.pw(context),
+                                      Text(
+                                        platform['name'],
+                                        style: GoogleFonts.barlow(
+                                          fontSize: context.mh * 0.014,
+                                          color: AppColor.primaryColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ))

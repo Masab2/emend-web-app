@@ -9,4 +9,6 @@ class RouteNames {
   static const String chats = '/chats';
   static const String contactList = '/contact-list';
   static const String templateEditor = '/template-editor';
+  static const String createSmsBulkCompaignScreen = '/createSmsBulkCompaignScreen';
+  static const String createSmsOneToOneCompaignScreen = '/createSmsOneToOneCompaignScreen';
 }

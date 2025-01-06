@@ -8,10 +8,16 @@ class SmsCampaignComp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: AppColor.whiteColor,
+    return Container(
+
+      margin: EdgeInsets.only(right: context.mw * 0.008),
+      decoration: BoxDecoration(
+        color: AppColor.whiteColor,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.grey[300]!),
+      ),
       child: SizedBox(
-        height: context.mh * 0.16,
+        height: context.mh * 0.12,
         width: context.mw * 0.18,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

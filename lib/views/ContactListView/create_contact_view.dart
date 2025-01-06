@@ -4,13 +4,24 @@ import 'package:emend_web_app/controllers/ContactListController/contact_list_con
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CreateContactView extends StatelessWidget {
+class CreateContactView extends StatefulWidget {
   const CreateContactView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final ContactListController controller = Get.put(ContactListController());
+  State<CreateContactView> createState() => _CreateContactViewState();
+}
 
+class _CreateContactViewState extends State<CreateContactView> {
+  final ContactListController controller = Get.put(ContactListController());
+
+  @override
+  void initState() {
+    controller.getContactListApi();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       color: AppColor.viewsBackgroundColor,
       padding: EdgeInsets.symmetric(horizontal: context.mw * 0.05),

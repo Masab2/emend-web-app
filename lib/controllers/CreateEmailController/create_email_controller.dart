@@ -1,7 +1,18 @@
+import 'dart:developer';
+
+import 'package:emend_web_app/Repository/GenerateEmailRepo/generate_email_http_repo.dart';
+import 'package:emend_web_app/Repository/GenerateEmailRepo/generate_email_repo.dart';
+import 'package:emend_web_app/Repository/SendEmailRepo/send_email_http_repo.dart';
+import 'package:emend_web_app/Repository/SendEmailRepo/send_email_repo.dart';
+import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CreateEmailController extends GetxController {
   RxBool showCreateEmailView = false.obs;
+  var showEmailTypeSelection = true.obs;
+  var selectedEmailType = 'text'.obs;
+  var selectedRecipentType = 'Single'.obs;
   void showCreateEmailUi(bool visibility) {
     showCreateEmailView.value = visibility;
   }
@@ -18,33 +29,24 @@ class CreateEmailController extends GetxController {
 
   var selectedContacts = <String>[].obs;
   var isSearchFocused = false.obs;
-  var contactLists = [
-    {'name': 'Test List', 'contacts': 4},
-    {'name': 'test', 'contacts': 0},
-    {'name': 'List created on 2024-12-24 00:01:20', 'contacts': 1},
-    {'name': 'Emend Health Care 1', 'contacts': 139},
-    {'name': 'Emend Health Care 2', 'contacts': 133},
-  ].obs;
 
-  var filteredContactLists = [].obs;
+  final controller = Get.put(ContactListController());
+  // Filter List of Contacts
+  void filterList(String value) {
+    if (value.isEmpty) {
+      controller.getContactListApi();
+    } else {
+      controller.getListModel.value.list = controller.getListModel.value.list!
+          .where((element) =>
+              element.name!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    }
+  }
 
   @override
   void onInit() {
     super.onInit();
-    filteredContactLists.value = contactLists;
-  }
-
-  void filterContacts(String query) {
-    if (query.isEmpty) {
-      filteredContactLists.value = contactLists;
-    } else {
-      filteredContactLists.value = contactLists
-          .where((list) => list['name']
-              .toString()
-              .toLowerCase()
-              .contains(query.toLowerCase()))
-          .toList();
-    }
+    controller.getContactListApi();
   }
 
   var selectedCampaigns = <Map<String, dynamic>>[].obs;
@@ -62,5 +64,90 @@ class CreateEmailController extends GetxController {
 
   void removeFromCampaign(Map<String, dynamic> campaign) {
     selectedCampaigns.remove(campaign);
+  }
+
+  final RxString selectedTone = 'Professional'.obs;
+  final RxString subject = ''.obs;
+  final RxString callToAction = ''.obs;
+
+  var subjectController = TextEditingController().obs;
+  var contentController = TextEditingController().obs;
+  var fromName = TextEditingController().obs;
+  var fromEmail = TextEditingController().obs;
+
+  var singleEmailController = TextEditingController().obs;
+
+  // List of available tones
+  final List<String> tones = [
+    'Professional',
+    'Friendly',
+    'Casual',
+    'Formal',
+    'Persuasive',
+    'Enthusiastic',
+    'Urgent',
+    'Informative'
+  ];
+
+  void setTone(String? value) {
+    if (value != null) {
+      selectedTone.value = value;
+    }
+  }
+
+  void setSubject(String value) {
+    subject.value = value;
+  }
+
+  void setCallToAction(String value) {
+    callToAction.value = value;
+  }
+
+  final GenerateEmailRepo _generateEmailRepo = GenerateEmailHttpRepo();
+
+  void generateEmailApi() async {
+    await _generateEmailRepo
+        .generateEmailApi(selectedTone.value, subject.value, callToAction.value)
+        .then(
+      (value) {
+        subjectController.value.text = value.email?.emailContent?.subject ?? '';
+        contentController.value.text = value.email?.emailContent?.body ?? '';
+        log(value.email?.emailContent?.subject ?? '');
+        Get.back();
+      },
+    ).onError((error, stackTrace) {
+      log(error.toString());
+    });
+  }
+
+  final SendEmailRepo _sendEmailRepo = SendEmailHttpRepo();
+
+  void sendEmailApi(contentType) async {
+    try {
+      await _sendEmailRepo
+          .sendEmailApi(
+        singleEmailController.value.text,
+        fromEmail.value.text,
+        subjectController.value.text,
+        contentType,
+        contentController.value.text,
+      )
+          .then((value) {
+        Get.snackbar(
+          "Email Sent",
+          "Email has been sent successfully.",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }).onError((error, stackTrace) {
+        log(error.toString());
+        Get.snackbar(
+          "Error",
+          error.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      });
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

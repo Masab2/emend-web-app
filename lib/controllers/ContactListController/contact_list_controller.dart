@@ -102,7 +102,9 @@ class ContactListController extends GetxController {
   // Get the Contact List From Api
   void setRxRequestStatusForGetList(Status value) =>
       rxRequestStatus.value = value;
-  void setGetListApiResponse(GetListModel value) => getListModel.value = value;
+  void setGetListApiResponse(GetListModel data) {
+    getListModel.value = data;
+  }
 
   // Hit The Api
   void getContactListApi() async {
@@ -120,6 +122,18 @@ class ContactListController extends GetxController {
     );
   }
 
+  // Filter List of Contacts
+  void filterList(String value) {
+    if (value.isEmpty) {
+      getContactListApi();
+    } else {
+      getListModel.value.list = getListModel.value.list!
+          .where((element) =>
+              element.name!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    }
+  }
+
   // Update the Contact List
   void updateContactListApi(contactId, String? firstName, String? lastName,
       String? email, String? phone) async {
@@ -135,5 +149,20 @@ class ContactListController extends GetxController {
         Get.snackbar("Error", error.toString());
       },
     );
+  }
+
+  // Filter Contacts
+  void filterContacts(String value) {
+    if (value.isEmpty) {
+      getContactListApi();
+    } else {
+      contactList.value = contactList
+          .where((element) =>
+              element.firstName!.toLowerCase().contains(value.toLowerCase()) ||
+              element.lastName!.toLowerCase().contains(value.toLowerCase()) ||
+              element.email!.toLowerCase().contains(value.toLowerCase()) ||
+              element.phone!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    }
   }
 }

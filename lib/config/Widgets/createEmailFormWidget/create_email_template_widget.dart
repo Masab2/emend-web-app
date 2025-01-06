@@ -1,7 +1,4 @@
 // ignore_for_file: use_key_in_widget_constructors
-
-import 'dart:developer';
-
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/routes/route_names.dart';
@@ -141,13 +138,13 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
         controller: searchController,
         focusNode: focusNode,
         onChanged: (value) {
-          controller.filterContacts(value);
+          controller.filterList(value);
         },
         onTap: () {
           controller.isSearchFocused.value = true;
         },
         decoration: InputDecoration(
-          hintText: 'Add List to Campaign',
+          hintText: 'Select Template',
           hintStyle: TextStyle(fontSize: context.mh * 0.020),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
@@ -155,7 +152,7 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
             icon: const Icon(Icons.clear),
             onPressed: () {
               searchController.clear();
-              controller.filterContacts('');
+              controller.filterList('');
               focusNode.unfocus();
               controller.isSearchFocused.value = false;
             },
@@ -167,10 +164,8 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
 
   Widget _buildListView() {
     return Obx(() => ListView.builder(
-          itemCount: controller.filteredContactLists.length,
+          itemCount: 10,
           itemBuilder: (context, index) {
-            log('Index: $index   Length: ${controller.filteredContactLists.length}');
-            final item = controller.filteredContactLists[index];
             return Container(
               decoration: BoxDecoration(
                 color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
@@ -180,14 +175,14 @@ class CreateEmailSelectTemplateWidget extends StatelessWidget {
               ),
               child: ListTile(
                 title: Text(
-                  item['name'] as String,
+                  "Emend Template",
                   style: TextStyle(
                     fontSize: context.mh * 0.020,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 onTap: () {
-                  searchController.text = item['name'] as String;
+                  // searchController.text = item['name'] as String;
                   controller.isSearchFocused.value = false;
                   focusNode.unfocus();
                 },

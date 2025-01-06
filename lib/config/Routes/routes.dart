@@ -55,5 +55,15 @@ class Routes {
           page: () => const TemplateEditor(),
           transition: Transition.leftToRightWithFade,
         ),
+        GetPage(
+          name: RouteNames.createSmsBulkCompaignScreen,
+          page: () => CreateSmsCampaignHomeScreenView(),
+          transition: Transition.leftToRightWithFade,
+        ),
+        GetPage(
+          name: RouteNames.createSmsOneToOneCompaignScreen,
+          page: () => const CreateSmsOneToOneView(),
+          transition: Transition.leftToRightWithFade,
+        ),
       ];
 }

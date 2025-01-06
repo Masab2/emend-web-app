@@ -19,7 +19,13 @@ class AppUrl {
   
   // Generate Sms Message Url
   static const String generateSmsMessage = '$baseUrl/api/generate-sms';
+
+  // Genrate Email Url
+  static const String generateEmail = '$baseUrl/api/generate-email';
+
+  // Send Email Url
+  static const String sendEmail = '$baseUrl/email/sendEmail';
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJtaGRldnM0NzcwQGdtYWlsLmNvbSIsImlhdCI6MTczNTY2MTQ2MSwiZXhwIjoxNzM1NjkzODYxfQ.s7OUrnbSEsU7VC5OBqAnjaP_K5swg86PS6al0taYcQ0";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsImVtYWlsIjoibWhkZXZzNDc3MEBnbWFpbC5jb20iLCJpYXQiOjE3MzYwMDM0MDAsImV4cCI6MTczNjAzNTgwMH0.xJnP2amHhfmGfiZRrMOt_KUkHKu3Rajx2DgAeEwx6pw";
 }

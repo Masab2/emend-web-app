@@ -21,6 +21,7 @@ export 'package:emend_web_app/views/Reports/reports_view.dart';
 export 'package:emend_web_app/views/SMSCampaignsView/CreateSMSCampaignView/create_sms_campaign_home_screen_view.dart';
 export 'package:emend_web_app/views/SMSCampaignsView/CreateSMSCampaignView/create_sms_campaign_view.dart';
 export 'package:emend_web_app/views/SMSCampaignsView/sms_campaign_view.dart';
+export 'package:emend_web_app/views/SmsCampaignsView/createSmsCampaignView/create_sms_one_to_one_view.dart';
 // *********************SocialCalender View********************************
 export 'package:emend_web_app/views/SocialCalenderView/AddPostView/add_post_view.dart';
 export 'package:emend_web_app/views/SocialCalenderView/social_calender_view.dart';

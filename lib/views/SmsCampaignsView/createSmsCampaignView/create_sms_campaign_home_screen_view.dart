@@ -16,63 +16,61 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
   CreateSmsCampaignHomeScreenView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColor.viewsBackgroundColor,
-      height: context.mh,
-      child: Column(
+    return Scaffold(
+      body: Row(
         children: [
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  smsController.showSMSCampaignView.value = false;
-                },
-                child: Icon(
-                  Icons.arrow_back,
-                  size: context.mh * 0.020,
-                ),
-              ),
-            ],
+          SideBarWidgets(
+            key: UniqueKey(),
           ),
-          _buildStepper(),
-          SingleChildScrollView(
+          Expanded(
             child: Container(
-              height: context.mh * 0.8,
-              width: context.mw * 0.7,
-              padding: EdgeInsets.symmetric(
-                horizontal: context.mw * 0.02,
-                vertical: context.mh * 0.02,
+              color: AppColor.viewsBackgroundColor,
+              height: context.mh,
+              child: Column(
+                children: [
+                  _buildStepper(),
+                  SingleChildScrollView(
+                    child: Container(
+                      height: context.mh * 0.8,
+                      width: context.mw * 0.7,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.mw * 0.02,
+                        vertical: context.mh * 0.02,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColor.whiteColor,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey[300]!),
+                      ),
+                      child: _buildCurrentStep(context),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      MaterialButton(
+                        onPressed: () {
+                          controller.previousStep();
+                        },
+                        child: const Text(
+                          "Previous",
+                          style: TextStyle(),
+                        ),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          controller.nextStep();
+                        },
+                        child: const Text(
+                          "Next",
+                          style: TextStyle(),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
-              decoration: BoxDecoration(
-                color: AppColor.whiteColor,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey[300]!),
-              ),
-              child: _buildCurrentStep(context),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              MaterialButton(
-                onPressed: () {
-                  controller.previousStep();
-                },
-                child: const Text(
-                  "Previous",
-                  style: TextStyle(),
-                ),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  controller.nextStep();
-                },
-                child: const Text(
-                  "Next",
-                  style: TextStyle(),
-                ),
-              )
-            ],
           ),
         ],
       ),

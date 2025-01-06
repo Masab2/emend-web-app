@@ -62,7 +62,7 @@ class ContactListViewWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: context.mw * 0.06,
+                        width: context.mw * 0.15, // Increased width for actions
                         child: Center(
                           child: Text(
                             "Actions",
@@ -116,7 +116,7 @@ class ContactListViewWidget extends StatelessWidget {
                                         ),
                                         SizedBox(width: context.mw * 0.02),
                                         Container(
-                                          width: context.mw * 0.06,
+                                          width: context.mw * 0.15,
                                           height: context.mh * 0.028,
                                           color: Colors.grey,
                                         ),
@@ -140,7 +140,6 @@ class ContactListViewWidget extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: context.mw * 0.01),
                               child: Column(
-                                spacing: context.mh * 0.02,
                                 children: [
                                   0.01.ph(context),
                                   Row(
@@ -181,21 +180,103 @@ class ContactListViewWidget extends StatelessWidget {
                                           ),
                                         ),
                                       ),
+                                      // Actions column with multiple icons
                                       SizedBox(
-                                        width: context.mw * 0.06,
-                                        child: Center(
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              if (data?.contacts?.length == 0) {
-                                                controller.createContactInList(
-                                                    data?.name ?? "");
-                                              }
-                                            },
-                                            child: Icon(
-                                              IconlyLight.add_user,
-                                              size: context.mh * 0.028,
+                                        width: context.mw * 0.15,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            // Add Contact Icon
+                                            IconButton(
+                                              onPressed: () {
+                                                if (data?.contacts?.length ==
+                                                    0) {
+                                                  controller
+                                                      .createContactInList(
+                                                    data?.name ?? "",
+                                                  );
+                                                }
+                                              },
+                                              icon: Icon(
+                                                IconlyLight.add_user,
+                                                size: context.mh * 0.026,
+                                                color: Colors.blue,
+                                              ),
+                                              tooltip: 'Add Contact',
                                             ),
-                                          ),
+                                            // Upload CSV Icon
+                                            IconButton(
+                                              onPressed: () {
+                                                if (data?.contacts?.length ==
+                                                    0) {
+                                                  controller
+                                                      .createContactInList(
+                                                    data?.name ?? "",
+                                                  );
+                                                }
+                                              },
+                                              icon: Icon(
+                                                Icons.upload_file,
+                                                size: context.mh * 0.026,
+                                                color: Colors.green,
+                                              ),
+                                              tooltip: 'Upload CSV',
+                                            ),
+                                            // Edit Icon
+                                            IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                IconlyLight.edit,
+                                                size: context.mh * 0.026,
+                                                color: Colors.orange,
+                                              ),
+                                              tooltip: 'Edit',
+                                            ),
+                                            // Delete Icon
+                                            IconButton(
+                                              onPressed: () {
+                                                // Handle delete with confirmation
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      AlertDialog(
+                                                    title: const Text(
+                                                        'Delete List'),
+                                                    content: const Text(
+                                                        'Are you sure you want to delete this list?'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                context),
+                                                        child: const Text(
+                                                            'Cancel'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: const Text(
+                                                          'Delete',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.red),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                              icon: Icon(
+                                                IconlyLight.delete,
+                                                size: context.mh * 0.026,
+                                                color: Colors.red,
+                                              ),
+                                              tooltip: 'Delete',
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
@@ -206,7 +287,7 @@ class ContactListViewWidget extends StatelessWidget {
                           },
                         );
                       case Status.error:
-                        return const Text("Some Thing Went Wrong");
+                        return const Text("Something Went Wrong");
                       default:
                         return const SizedBox();
                     }

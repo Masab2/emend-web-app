@@ -1,3 +1,4 @@
+import 'package:emend_web_app/config/Widgets/createEmailFormWidget/create_email_preview_widget.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
@@ -69,13 +70,29 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
               ),
               MaterialButton(
                 onPressed: () {
-                  controller.nextStep();
+                  if (controller.currentStep.value == 0 &&
+                      controller.singleEmailController.value.text.isNotEmpty) {
+                    controller.nextStep();
+                  } else if (controller.currentStep.value == 1) {
+                    if (controller.subjectController.value.text.isNotEmpty &&
+                        controller.contentController.value.text.isNotEmpty &&
+                        controller.fromName.value.text.isNotEmpty &&
+                        controller.fromEmail.value.text.isNotEmpty) {
+                      controller.nextStep();
+                    } else {
+                      Get.snackbar(
+                        "Validation Error",
+                        "Please fill all the required fields before proceeding.",
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    }
+                  }
                 },
                 child: const Text(
                   "Next",
                   style: TextStyle(),
                 ),
-              )
+              ),
             ],
           ),
         ],
@@ -84,31 +101,33 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
   }
 
   Widget _buildStepper() {
-    return Obx(() => Container(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const StepItemComp(
-                step: 0,
-                title: 'Send To',
-                active: true,
-              ),
-              const StepDividerComp(),
-              StepItemComp(
-                step: 1,
-                title: 'Subject and Content',
-                active: controller.currentStep.value >= 1,
-              ),
-              const StepDividerComp(),
-              StepItemComp(
-                step: 2,
-                title: 'Content',
-                active: controller.currentStep.value >= 2,
-              ),
-            ],
-          ),
-        ));
+    return Obx(
+      () => Container(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const StepItemComp(
+              step: 0,
+              title: 'Send To',
+              active: true,
+            ),
+            const StepDividerComp(),
+            StepItemComp(
+              step: 1,
+              title: 'Subject and Content',
+              active: controller.currentStep.value >= 1,
+            ),
+            const StepDividerComp(),
+            StepItemComp(
+              step: 2,
+              title: 'Preview',
+              active: controller.currentStep.value >= 2,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget getSelectedIndexForm(int index) {
@@ -118,7 +137,7 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
       case 1:
         return const CreateEmailFormSetupWidget();
       case 2:
-        return CreateEmailSelectTemplateWidget();
+        return EmailPreviewWidget();
       default:
         return const Text("No Form");
     }

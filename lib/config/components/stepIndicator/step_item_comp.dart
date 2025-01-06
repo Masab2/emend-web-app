@@ -1,3 +1,4 @@
+import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:flutter/material.dart';
 
 class StepItemComp extends StatelessWidget {
@@ -12,7 +13,7 @@ class StepItemComp extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 12,
-          backgroundColor: active ? Colors.black : Colors.grey[300],
+          backgroundColor: active ? AppColor.primaryColor : Colors.grey[300],
           child: Text(
             '${step + 1}',
             style: const TextStyle(color: Colors.white, fontSize: 12),

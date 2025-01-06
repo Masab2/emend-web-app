@@ -61,7 +61,7 @@ class NetworkApiService implements BaseApiServices {
     }
     dynamic responseJson;
     try {
-      final response = await http.get(Uri.parse(url), headers: headers);
+      final response = await http.get(Uri.parse(url), headers: headers).timeout(const Duration(seconds: 30));
       responseJson = returnResponse(response);
     } on SocketException {
       throw NoInternetException('');
@@ -89,6 +89,8 @@ class NetworkApiService implements BaseApiServices {
         throw BadRequestException(response.body.toString());
       case 401:
         throw UnauthorisedException(response.body.toString());
+      case 403:
+        throw CommunicationErrorException(response.body.toString());
       case 500:
         throw ServerErrorException(response.body.toString());
       default:

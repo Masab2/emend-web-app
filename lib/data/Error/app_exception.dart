@@ -38,3 +38,6 @@ class NoInternetException extends AppException {
 class ServerErrorException extends AppException {
   ServerErrorException([String? message]) : super(message, 'Server Error');
 }
+class CommunicationErrorException extends AppException {
+  CommunicationErrorException([String? message]) : super(message, 'Error During Communication');
+}

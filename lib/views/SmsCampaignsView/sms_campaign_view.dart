@@ -16,7 +16,6 @@ class SmsCampaignView extends StatefulWidget {
 class _SmsCampaignViewState extends State<SmsCampaignView> {
   @override
   Widget build(BuildContext context) {
-    final smsController = Get.put(SmsCampaignController());
     return Scaffold(
       body: Row(
         children: [
@@ -27,20 +26,14 @@ class _SmsCampaignViewState extends State<SmsCampaignView> {
             child: SizedBox(
               height: context.mh,
               child: SingleChildScrollView(
-                child: Obx(
-                  () {
-                    return smsController.showSMSCampaignView.value == false
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SmsCampaignHeaderWidget(),
-                              0.02.ph(context),
-                              const SmsCampaignsCardWidget(),
-                            ],
-                          )
-                        : CreateSmsCampaignHomeScreenView();
-                  },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SmsCampaignHeaderWidget(),
+                    0.02.ph(context),
+                    const SmsCampaignsCardWidget(),
+                  ],
                 ),
               ),
             ),
