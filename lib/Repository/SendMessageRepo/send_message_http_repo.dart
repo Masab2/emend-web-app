@@ -1,6 +1,7 @@
 import 'package:emend_web_app/Model/SendMessageModel/send_message_model.dart';
 import 'package:emend_web_app/Repository/SendMessageRepo/send_message_repo.dart';
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 
 class SendMessageHttpRepo implements SendMessageRepo {
@@ -13,7 +14,7 @@ class SendMessageHttpRepo implements SendMessageRepo {
       "content": content,
     };
     final response = await _api.getPostApiResponse(AppUrl.sendMessage, data, {
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
       "Content-Type": "application/json",
     });
