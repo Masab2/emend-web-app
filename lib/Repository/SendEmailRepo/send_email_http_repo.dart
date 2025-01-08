@@ -1,6 +1,7 @@
 import 'package:emend_web_app/Model/SendEmailModel/send_email_model.dart';
 import 'package:emend_web_app/Repository/SendEmailRepo/send_email_repo.dart';
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 
 class SendEmailHttpRepo implements SendEmailRepo {
@@ -35,7 +36,7 @@ class SendEmailHttpRepo implements SendEmailRepo {
       AppUrl.sendEmail,
       data,
       {
-        "Authorization": "Bearer ${AppUrl.token}",
+        "Authorization": "Bearer ${token.value}",
         "Accept": "application/json",
         "Content-Type": "application/json",
       },

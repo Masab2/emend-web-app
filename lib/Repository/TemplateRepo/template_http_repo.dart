@@ -1,4 +1,5 @@
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 import 'package:emend_web_app/model/TemplateModel/template_model.dart';
 
@@ -12,7 +13,7 @@ class TemplateHttpRepo implements TemplateRepo {
     final response = await _api.getGetApiResponse(
       AppUrl.getAllTemplates,
       {
-        "Authorization": "Bearer ${AppUrl.token}",
+        "Authorization": "Bearer ${token.value}",
       },
     );
     return TemplateModel.fromJson(response);
