@@ -23,16 +23,12 @@ class _SmsCampaignViewState extends State<SmsCampaignView> {
           Expanded(
             child: SizedBox(
               height: context.mh,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SmsCampaignHeaderWidget(),
-                    0.02.ph(context),
-                    const SmsCampaignsCardWidget(),
-                  ],
-                ),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SmsCampaignsCardWidget(),
+                ],
               ),
             ),
           ),

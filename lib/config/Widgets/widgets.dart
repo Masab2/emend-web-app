@@ -8,7 +8,6 @@ export 'package:emend_web_app/config/widgets/ChatWidgets/contact_list_widget.dar
 export 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_details_widget.dart';
 export 'package:emend_web_app/config/widgets/ContactListWidgets/contact_list_view_widget.dart';
 export 'package:emend_web_app/config/widgets/CreateEmailFormWidget/create_email_form_setup_widget.dart';
-export 'package:emend_web_app/config/widgets/CreateEmailFormWidget/create_email_template_widget.dart';
 export 'package:emend_web_app/config/widgets/CreateEmailFormWidget/email_content_widget.dart';
 export 'package:emend_web_app/config/widgets/DashBoardWidgets/dash_board_header_widget.dart';
 export 'package:emend_web_app/config/widgets/DashBoardWidgets/dashboard_bar_graph_tiles.dart';
@@ -22,6 +21,7 @@ export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign
 export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_second_widget.dart';
 export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaign_section_one_widget.dart';
 export 'package:emend_web_app/config/widgets/EmailCampaignWidgets/email_campaigns_list_widget.dart';
+export './CreateBulkEmailWidgets/create_bulk_email_select_contact_widget.dart';
 export 'package:emend_web_app/config/widgets/ReportsWidgets/reports_header_widget.dart';
 export 'package:emend_web_app/config/widgets/ReportsWidgets/reports_list_widget.dart';
 export 'package:emend_web_app/config/widgets/ReportsWidgets/reports_user_search_widget.dart';

@@ -15,6 +15,7 @@ class SmsCampaignsCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        0.02.ph(context),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
           child: Row(
@@ -23,8 +24,9 @@ class SmsCampaignsCardWidget extends StatelessWidget {
               Text(
                 "SMS Campaigns",
                 style: TextStyle(
-                  fontSize: context.mh * 0.025,
-                  fontWeight: FontWeight.w500,
+                  fontSize: context.mh * 0.020,
+                  fontWeight: FontWeight.w600,
+                  color: AppColor.primaryColor,
                 ),
               ),
             ],
@@ -32,80 +34,71 @@ class SmsCampaignsCardWidget extends StatelessWidget {
         ),
         0.02.ph(context),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.035),
-          child: const Row(
-            children: [
-              SmsCampaignComp(count: "0"),
-              SmsCampaignComp(count: "0"),
-              SmsCampaignComp(count: "0"),
-              SmsCampaignComp(count: "0"),
+          padding: EdgeInsets.symmetric(horizontal: context.mw * 0.022),
+          child: Row(
+            spacing: context.mw * 0.010,
+            children: const [
+              SmsCampaignComp(
+                  count: "12",
+                  icon: IconlyLight.message,
+                  heading: "Unread Message"),
+              SmsCampaignComp(
+                  count: "12",
+                  icon: IconlyLight.message,
+                  heading: "Unread Message"),
+              SmsCampaignComp(
+                  count: "12",
+                  icon: IconlyLight.message,
+                  heading: "Unread Message"),
+              SmsCampaignComp(
+                  count: "12",
+                  icon: IconlyLight.message,
+                  heading: "Unread Message"),
             ],
           ),
         ),
         0.02.ph(context),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Text(
-                "Messaging",
-                style: TextStyle(
-                  fontSize: context.mh * 0.019,
-                  fontWeight: FontWeight.w500,
+              Expanded(
+                child: _buildMessageCard(
+                  context,
+                  title: "One-to-One Messaging",
+                  description:
+                      "Send personalized messages to individual recipients",
+                  icon: IconlyBold.message,
+                  gradient: const LinearGradient(
+                    colors: [AppColor.primaryColor, AppColor.secondaryColor],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  onTap: () =>
+                      Get.toNamed(RouteNames.createSmsOneToOneCampaignScreen),
                 ),
               ),
-              0.02.ph(context),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: _buildMessageCard(
-                        context,
-                        title: "One-to-One Messaging",
-                        description:
-                            "Send personalized messages to individual recipients",
-                        icon: IconlyBold.message,
-                        gradient: const LinearGradient(
-                          colors: [
-                            AppColor.primaryColor,
-                            AppColor.secondaryColor
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        onTap: () => Get.toNamed(
-                            RouteNames.createSmsOneToOneCampaignScreen),
-                      ),
-                    ),
-                    SizedBox(width: context.mw * 0.02),
-                    Expanded(
-                      child: _buildMessageCard(
-                        context,
-                        title: "Bulk SMS Campaign",
-                        description:
-                            "Send mass SMS campaigns to multiple recipients with scheduling options.",
-                        icon: IconlyBold.chart,
-                        gradient: const LinearGradient(
-                          colors: [
-                            AppColor.primaryColor,
-                            AppColor.secondaryColor
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        onTap: () =>
-                            Get.toNamed(RouteNames.createSmsBulkCampaignScreen),
-                      ),
-                    ),
-                  ],
+              SizedBox(width: context.mw * 0.01),
+              Expanded(
+                child: _buildMessageCard(
+                  context,
+                  title: "Bulk SMS Campaign",
+                  description:
+                      "Send mass SMS campaigns to multiple recipients with scheduling options.",
+                  icon: IconlyBold.chart,
+                  gradient: const LinearGradient(
+                    colors: [AppColor.primaryColor, AppColor.secondaryColor],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  onTap: () =>
+                      Get.toNamed(RouteNames.createSmsBulkCampaignScreen),
                 ),
               ),
             ],
           ),
         ),
-        0.01.ph(context),
+        0.02.ph(context),
         const SmsCampaignsListWidget()
       ],
     );
@@ -122,17 +115,10 @@ class SmsCampaignsCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: context.mh * 0.16, // Reduced height
+        height: context.mh * 0.16,
         decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: gradient.colors.first.withOpacity(0.2),
-              blurRadius: 6,
-              offset: const Offset(0, 3),
-            ),
-          ],
+          color: AppColor.whiteColor,
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
           padding: EdgeInsets.all(context.mw * 0.015),
@@ -142,15 +128,17 @@ class SmsCampaignsCardWidget extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(context.mw * 0.008),
+                    padding: EdgeInsets.all(context.mw * 0.01),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(8),
+                      color: AppColor.primaryColor.withOpacity(0.08),
+                      borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Icon(
-                      icon,
-                      color: Colors.white,
-                      size: context.mh * 0.025,
+                    child: IconTheme(
+                      data: IconThemeData(
+                        color: AppColor.primaryColor,
+                        size: context.mh * 0.020,
+                      ),
+                      child: Icon(icon),
                     ),
                   ),
                   SizedBox(width: context.mw * 0.01),
@@ -158,8 +146,8 @@ class SmsCampaignsCardWidget extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: context.mh * 0.02,
+                        color: AppColor.primaryColor,
+                        fontSize: context.mh * 0.015,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -171,8 +159,8 @@ class SmsCampaignsCardWidget extends StatelessWidget {
                 child: Text(
                   description,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontSize: context.mh * 0.014,
+                    color: AppColor.primaryColor.withOpacity(0.9),
+                    fontSize: context.mh * 0.010,
                     height: 1.4,
                   ),
                   maxLines: 3,

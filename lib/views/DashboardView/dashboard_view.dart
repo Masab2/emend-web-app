@@ -21,7 +21,7 @@ class DashboardView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const DashBoardHeaderWidget(),
+                    // const DashBoardHeaderWidget(),
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: context.mw * 0.02),

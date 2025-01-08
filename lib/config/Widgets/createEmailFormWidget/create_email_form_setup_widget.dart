@@ -5,17 +5,16 @@ import 'package:emend_web_app/controllers/CreateEmailController/create_email_con
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'create_email_template_widget.dart';
-
 class CreateEmailFormSetupWidget extends StatefulWidget {
   const CreateEmailFormSetupWidget({super.key});
 
   @override
-  State<CreateEmailFormSetupWidget> createState() => _CreateEmailFormSetupWidgetState();
+  State<CreateEmailFormSetupWidget> createState() =>
+      _CreateEmailFormSetupWidgetState();
 }
 
-class _CreateEmailFormSetupWidgetState extends State<CreateEmailFormSetupWidget> {
+class _CreateEmailFormSetupWidgetState
+    extends State<CreateEmailFormSetupWidget> {
   final controller = Get.put(CreateEmailController());
 
   @override
@@ -60,9 +59,7 @@ class _CreateEmailFormSetupWidgetState extends State<CreateEmailFormSetupWidget>
                         hintStyle: TextStyle(fontSize: context.mh * 0.020),
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16
-                        ),
+                            horizontal: 16, vertical: 16),
                       ),
                     ),
                     context,
@@ -104,7 +101,8 @@ class _CreateEmailFormSetupWidgetState extends State<CreateEmailFormSetupWidget>
                   hintText: 'Enter Subject',
                   hintStyle: TextStyle(fontSize: context.mh * 0.020),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 ),
               ),
               context,
@@ -129,41 +127,18 @@ class _CreateEmailFormSetupWidgetState extends State<CreateEmailFormSetupWidget>
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey[300]!),
                   ),
-                  child: Column(
-                    children: [
-                      _buildEmailTypeOption(
-                        'text',
-                        'Text Email',
-                        'Create a custom email with your own content',
-                        Icons.edit,
+                  child: Container(
+                    height: context.mh * 0.25,
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(
+                      controller: controller.contentController.value,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        hintText: 'Enter Content',
+                        hintStyle: TextStyle(fontSize: context.mh * 0.020),
+                        border: InputBorder.none,
                       ),
-                      if (controller.selectedEmailType.value == 'text') 
-                        Container(
-                          height: context.mh * 0.25,
-                          padding: const EdgeInsets.all(8),
-                          child: TextField(
-                            controller: controller.contentController.value,
-                            maxLines: null,
-                            decoration: InputDecoration(
-                              hintText: 'Enter Content',
-                              hintStyle: TextStyle(fontSize: context.mh * 0.020),
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      _buildEmailTypeOption(
-                        'template',
-                        'Email Template',
-                        'Use pre-designed email templates',
-                        Icons.article,
-                      ),
-                      if (controller.selectedEmailType.value == 'template')
-                        Container(
-                          height: context.mh * 0.25,
-                          margin: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-                          child: CreateEmailSelectTemplateWidget(),
-                        ),
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -174,7 +149,8 @@ class _CreateEmailFormSetupWidgetState extends State<CreateEmailFormSetupWidget>
     });
   }
 
-  Widget _buildFormField(String label, Widget field, BuildContext context, double height) {
+  Widget _buildFormField(
+      String label, Widget field, BuildContext context, double height) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -256,61 +232,5 @@ class _CreateEmailFormSetupWidgetState extends State<CreateEmailFormSetupWidget>
         ),
       ),
     );
-  }
-
-  Widget _buildEmailTypeOption(
-    String value,
-    String title,
-    String description,
-    IconData icon,
-  ) {
-    return Obx(() => InkWell(
-      onTap: () => controller.selectedEmailType.value = value,
-      child: Container(
-        padding: EdgeInsets.all(context.mw * 0.015),
-        decoration: BoxDecoration(
-          color: controller.selectedEmailType.value == value
-              ? AppColor.primaryColor.withOpacity(0.1)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: [
-            Radio<String>(
-              value: value,
-              groupValue: controller.selectedEmailType.value,
-              onChanged: (newValue) {
-                controller.selectedEmailType.value = newValue!;
-              },
-              activeColor: AppColor.primaryColor,
-            ),
-            SizedBox(width: context.mw * 0.01),
-            Icon(icon, color: AppColor.primaryColor),
-            SizedBox(width: context.mw * 0.02),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: context.mh * 0.018,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: context.mh * 0.014,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    ));
   }
 }

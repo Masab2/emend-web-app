@@ -1,5 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
+import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
@@ -7,72 +11,188 @@ import 'package:emend_web_app/data/Response/status.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// ignore: must_be_immutable
 class TemplateGrid extends StatelessWidget {
-  TemplateGrid({
-    super.key,
-  });
+  TemplateGrid({super.key});
 
-  TemplateController controller = Get.put(TemplateController());
+  final TemplateController controller = Get.put(TemplateController());
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       switch (controller.rxRequestStatusForAllTemplate.value) {
         case Status.loading:
-          return const Center(
-            child: CircularProgressIndicator(),
+          return const LoadingComponent(
+            title: 'Template Loading...',
           );
         case Status.error:
-          return const Text('Templates not Loaded, Something bad happened');
+          return const ErrorComponent(title: "Unable To Load the Templates");
         case Status.completed:
-          return Wrap(
-            spacing: 20,
-            runSpacing: 30,
-            children: controller.templateModel.value.templates?.map((template) {
-                  return InkWell(
-                    onTap: () {
-                      Get.toNamed(RouteNames.templateEditor);
-                      controller.code.value = template.template ?? '';
-                      debugPrint(controller.code.value);
-                    },
-                    child: Container(
-                      height: context.mh * 0.45,
-                      width: context.mw * 0.15,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: AssetImage(ImageAsset.templateImage),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          // Open Template Button
-                          Card(
-                              color: AppColor.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  template.name ?? 'Template',
-                                  style: TextStyle(
-                                    fontSize: context.mh * 0.020,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )),
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList() ??
-                List.empty(),
-          );
+          return _buildCompletedState(context);
         default:
           return const SizedBox.shrink();
       }
     });
+  }
+
+  Widget _buildCompletedState(BuildContext context) {
+    final templates = controller.templateModel.value.templates;
+
+    if (templates == null || templates.isEmpty) {
+      return _buildEmptyState(context);
+    }
+
+    return Padding(
+      padding: EdgeInsets.all(context.mw * 0.02),
+      child: SizedBox(
+        height: context.mh * 0.8,
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: _getCrossAxisCount(context),
+            childAspectRatio: 0.6,
+            crossAxisSpacing: context.mw * 0.02,
+            mainAxisSpacing: context.mw * 0.02,
+          ),
+          itemCount: templates.length,
+          itemBuilder: (context, index) =>
+              _buildTemplateCard(context, templates[index]),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.description_outlined,
+            size: context.mh * 0.06,
+            color: Colors.grey[400],
+          ),
+          SizedBox(height: context.mh * 0.02),
+          Text(
+            'No templates available',
+            style: TextStyle(
+              fontSize: context.mh * 0.018,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey[800],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTemplateCard(BuildContext context, dynamic template) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Card(
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: InkWell(
+          onTap: () {
+            Get.toNamed(RouteNames.templateEditor);
+            controller.code.value = template.template ?? '';
+          },
+          borderRadius: BorderRadius.circular(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(12),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(ImageAsset.templateImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              // Template Info
+              Container(
+                padding: EdgeInsets.all(context.mw * 0.01),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          template.name ?? 'Untitled Template',
+                          style: TextStyle(
+                            fontSize: context.mh * 0.016,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[800],
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: context.mh * 0.005),
+                        Row(
+                          children: [
+                            _buildTag(context, 'Email Template'),
+                            IconButton(
+                              onPressed: () {
+                                Get.toNamed(RouteNames.templateEditor);
+                                controller.code.value = template.template ?? '';
+                              },
+                              icon: Icon(
+                                Icons.edit_outlined,
+                                size: context.mh * 0.022,
+                                color: AppColor.primaryColor,
+                              ),
+                              tooltip: 'Edit Template',
+                              splashRadius: 20,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTag(BuildContext context, String text) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.mw * 0.008,
+        vertical: context.mh * 0.004,
+      ),
+      decoration: BoxDecoration(
+        color: AppColor.primaryColor.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: context.mh * 0.012,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+
+  int _getCrossAxisCount(BuildContext context) {
+    final width = context.mw;
+    if (width > 1600) return 6;
+    if (width > 1200) return 5;
+    if (width > 900) return 4;
+    if (width > 600) return 3;
+    return 2;
   }
 }

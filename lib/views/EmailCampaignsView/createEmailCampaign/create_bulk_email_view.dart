@@ -1,25 +1,22 @@
-import 'dart:developer';
-
 import 'package:emend_web_app/config/Widgets/createEmailFormWidget/create_email_preview_widget.dart';
-import 'package:emend_web_app/config/Widgets/createEmailFormWidget/create_email_type_widget.dart';
-import 'package:emend_web_app/config/Widgets/createEmailFormWidget/create_email_with_template_view.dart';
+import 'package:emend_web_app/config/Widgets/widgets.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/components.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/controllers/CreateEmailController/create_email_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CreateEmailCampaignView extends StatefulWidget {
-  const CreateEmailCampaignView({super.key});
+class CreateBulkEmailCampaignView extends StatefulWidget {
+  const CreateBulkEmailCampaignView({super.key});
 
   @override
-  State<CreateEmailCampaignView> createState() =>
-      _CreateEmailCampaignViewState();
+  State<CreateBulkEmailCampaignView> createState() =>
+      _CreateBulkEmailCampaignViewState();
 }
 
-class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
+class _CreateBulkEmailCampaignViewState
+    extends State<CreateBulkEmailCampaignView> {
   final controller = Get.put(CreateEmailController());
   @override
   Widget build(BuildContext context) {
@@ -69,16 +66,11 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          log(controller.currentStep.value.toString());
-                          log(controller.selectedEmailType.value);
                           if (controller.currentStep.value == 0 &&
                               controller.singleEmailController.value.text
                                   .isNotEmpty) {
                             controller.nextStep();
-                          } else if (controller.currentStep.value == 1 &&
-                              controller.selectedEmailType.value != "") {
-                            controller.nextStep();
-                          } else if (controller.currentStep.value == 2) {
+                          } else if (controller.currentStep.value == 1) {
                             if (controller.subjectController.value.text.isNotEmpty &&
                                 controller
                                     .contentController.value.text.isNotEmpty &&
@@ -125,26 +117,14 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
             const StepDividerComp(),
             StepItemComp(
               step: 1,
-              title: 'Email Type',
+              title: 'Subject and Content',
               active: controller.currentStep.value >= 1,
             ),
             const StepDividerComp(),
-            controller.selectedEmailType.value == "text"
-                ? StepItemComp(
-                    step: 2,
-                    title: 'Subject and Content',
-                    active: controller.currentStep.value >= 2,
-                  )
-                : StepItemComp(
-                    step: 2,
-                    title: 'Subject and Template',
-                    active: controller.currentStep.value >= 2,
-                  ),
-            const StepDividerComp(),
             StepItemComp(
-              step: 3,
+              step: 2,
               title: 'Preview',
-              active: controller.currentStep.value >= 3,
+              active: controller.currentStep.value >= 2,
             ),
           ],
         ),
@@ -155,14 +135,10 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
   Widget getSelectedIndexForm(int index) {
     switch (index) {
       case 0:
-        return ContactListEmailWidget();
-      case 2:
-        return controller.selectedEmailType.value == "text"
-            ? const CreateEmailFormSetupWidget()
-            : const CreateEmailWithTemplateView();
+        return CreateBulkEmailSelectContactWidget();
       case 1:
-        return CreateEmailTypeWidget();
-      case 3:
+        return const CreateEmailFormSetupWidget();
+      case 2:
         return EmailPreviewWidget();
       default:
         return const Text("No Form");

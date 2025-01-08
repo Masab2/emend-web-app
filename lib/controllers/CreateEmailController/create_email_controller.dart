@@ -11,11 +11,17 @@ import 'package:get/get.dart';
 class CreateEmailController extends GetxController {
   RxBool showCreateEmailView = false.obs;
   var showEmailTypeSelection = true.obs;
-  var selectedEmailType = 'text'.obs;
+  var selectedEmailType = ''.obs;
   var selectedRecipentType = 'Single'.obs;
+
+  final selectedTemplateType = 'saved'.obs;
+  final singleEmailController = TextEditingController().obs;
   void showCreateEmailUi(bool visibility) {
     showCreateEmailView.value = visibility;
   }
+
+  final RxList<Map<String, String>> selectedEmails =
+      <Map<String, String>>[].obs;
 
   var currentStep = 0.obs;
 
@@ -75,8 +81,6 @@ class CreateEmailController extends GetxController {
   var fromName = TextEditingController().obs;
   var fromEmail = TextEditingController().obs;
 
-  var singleEmailController = TextEditingController().obs;
-
   // List of available tones
   final List<String> tones = [
     'Professional',
@@ -126,7 +130,7 @@ class CreateEmailController extends GetxController {
     try {
       await _sendEmailRepo
           .sendEmailApi(
-        singleEmailController.value.text,
+        selectedEmails,
         fromEmail.value.text,
         subjectController.value.text,
         contentType,

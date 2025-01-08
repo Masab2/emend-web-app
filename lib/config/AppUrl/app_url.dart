@@ -1,7 +1,7 @@
 class AppUrl {
-  // static const String baseUrl = 'http://127.0.0.1:3000';
-  static const String baseUrl =
-      'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
+  static const String baseUrl = 'http://127.0.0.1:3000';
+  // static const String baseUrl =
+      // 'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
   // Auth Urls
   static String login(token) => '$baseUrl/auth/signin?token=$token';
   static const String register = '$baseUrl/auth/signup';
@@ -38,5 +38,5 @@ class AppUrl {
 
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImVtYWlsIjoic3hhaW4xMjNAZ21haWwuY29tIiwiaWF0IjoxNzM2MTgyOTc2LCJleHAiOjE3MzYyMTUzNzZ9.kjpDRsZG2Y8BkgRSrNetjvGpUC0MqRojHY_3uHpo9BY";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksImVtYWlsIjoiZmFpemFhc2hyYWYwNzg2QGdtYWlsLmNvbSIsImlhdCI6MTczNjI3NTU4NCwiZXhwIjoxNzM2MzYxOTg0fQ.RhvtsYCtmTC2M-3COcNxvu__M-hG9mUT94mtxBo9JJc";
 }

@@ -75,5 +75,10 @@ class Routes {
           page: () => const ContactDetailsList(),
           transition: Transition.leftToRightWithFade,
         ),
+        GetPage(
+          name: RouteNames.createBulkEmailScreen,
+          page: () => const CreateBulkEmailCampaignView(),
+          transition: Transition.leftToRightWithFade,
+        ),
       ];
 }

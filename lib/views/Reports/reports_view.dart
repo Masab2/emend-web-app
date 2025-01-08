@@ -1,3 +1,4 @@
+import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class ReportsView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const ReportsHeaderWidget(),
+                    0.02.ph(context),
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: context.mw * 0.02),
@@ -29,8 +30,10 @@ class ReportsView extends StatelessWidget {
                           Text(
                             "Reports",
                             style: TextStyle(
-                              fontSize: context.mh * 0.028,
-                              fontWeight: FontWeight.w500,
+                              fontSize: context.mh * 0.020,
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.primaryColor,
+                              letterSpacing: 0.3,
                             ),
                           )
                         ],
@@ -39,14 +42,6 @@ class ReportsView extends StatelessWidget {
                     0.01.ph(context),
                     const ReportsUserSearchWidget(),
                     0.01.ph(context),
-                    // Row(
-                    //   children: [
-                    //     0.02.pw(context),
-                    //     const ReportCardComp(),
-                    //     const ReportCardComp(),
-                    //     const ReportCardComp(),
-                    //   ],
-                    // ),
                     const ReportsListWidget(),
                   ],
                 ),

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_is_empty
 
 import 'package:emend_web_app/config/Routes/route_names.dart';
+import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
+import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
 import 'package:emend_web_app/data/Response/status.dart';
@@ -8,7 +10,6 @@ import 'package:emend_web_app/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ContactListViewWidget extends StatelessWidget {
   const ContactListViewWidget({super.key});
@@ -82,53 +83,7 @@ class ContactListViewWidget extends StatelessWidget {
                   child: Obx(() {
                     switch (controller.rxRequestStatus.value) {
                       case Status.loading:
-                        return ListView.builder(
-                          itemCount: 6,
-                          itemBuilder: (context, index) {
-                            return Shimmer.fromColors(
-                              baseColor: Colors.grey[300]!,
-                              highlightColor: Colors.grey[100]!,
-                              child: Container(
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: context.mw * 0.02),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: context.mw * 0.01),
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: context.mh * 0.02),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: context.mw * 0.03,
-                                          height: context.mh * 0.02,
-                                          color: Colors.grey,
-                                        ),
-                                        SizedBox(width: context.mw * 0.02),
-                                        Container(
-                                          width: context.mw * 0.20,
-                                          height: context.mh * 0.02,
-                                          color: Colors.grey,
-                                        ),
-                                        SizedBox(width: context.mw * 0.02),
-                                        Container(
-                                          width: context.mw * 0.20,
-                                          height: context.mh * 0.02,
-                                          color: Colors.grey,
-                                        ),
-                                        SizedBox(width: context.mw * 0.02),
-                                        Container(
-                                          width: context.mw * 0.15,
-                                          height: context.mh * 0.028,
-                                          color: Colors.grey,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                        return const LoadingComponent(title: "List Loading...");
                       case Status.completed:
                         return ListView.builder(
                           itemCount: controller.getListModel.value.list?.length,
@@ -288,7 +243,9 @@ class ContactListViewWidget extends StatelessWidget {
                           },
                         );
                       case Status.error:
-                        return const Text("Something Went Wrong");
+                        return const ErrorComponent(
+                          title: 'Unable to Load The List',
+                        );
                       default:
                         return const SizedBox();
                     }

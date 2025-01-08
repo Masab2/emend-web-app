@@ -8,56 +8,129 @@ class ReportsUserSearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.mw * 0.02,
+        vertical: context.mh * 0.02,
+      ),
       child: Row(
         children: [
-          0.01.pw(context),
+          // Search Bar
           Expanded(
             child: Container(
               height: context.mh * 0.06,
-              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
               decoration: BoxDecoration(
-                  color: Colors.grey.withValues(alpha: 0.23),
-                  borderRadius: BorderRadius.circular(10)),
+                color: Colors.grey[50],
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(
+                  color: Colors.grey.shade200,
+                  width: 1,
+                ),
+              ),
               child: TextFormField(
+                style: TextStyle(
+                  fontSize: context.mh * 0.015,
+                  color: Colors.grey[800],
+                ),
                 decoration: InputDecoration(
-                  hintText: "Search Reports",
+                  hintText: "Search reports...",
                   hintStyle: TextStyle(
-                    fontSize: context.mh * 0.020,
+                    fontSize: context.mh * 0.015,
+                    color: Colors.grey[500],
+                  ),
+                  prefixIcon: Icon(
+                    IconlyLight.search,
+                    size: context.mh * 0.022,
+                    color: Colors.grey[600],
                   ),
                   contentPadding: EdgeInsets.symmetric(
-                    vertical: context.mh * 0.01,
+                    vertical: context.mh * 0.012,
                     horizontal: context.mw * 0.01,
                   ),
-                  prefixIcon: const Icon(IconlyLight.search),
                   border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
               ),
             ),
           ),
-          0.02.pw(context),
-          
-          Row(
-            children: [
-              Text(
-                "Sort By",
-                style: TextStyle(
-                  fontSize: context.mh * 0.020,
-                ),
-              ),
-              const Icon(Icons.arrow_drop_down)
-            ],
+
+          0.015.pw(context),
+          _buildSortButton(context),
+          0.015.pw(context),
+          _buildFilterButton(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSortButton(BuildContext context) {
+    return Container(
+      height: context.mh * 0.06,
+      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.012),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(
+          color: Colors.grey.shade200,
+          width: 1,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            IconlyLight.category,
+            size: context.mh * 0.02,
+            color: AppColor.primaryColor
           ),
-          0.01.pw(context),
-          Container(
-            height: context.mw * 0.03,
-            width: context.mw * 0.03,
-            decoration: BoxDecoration(
-              color: AppColor.notificationBackgroundColor,
-              borderRadius: BorderRadius.circular(10),
+          SizedBox(width: context.mw * 0.005),
+          Text(
+            "Sort",
+            style: TextStyle(
+              fontSize: context.mh * 0.015,
+              color: Colors.grey[700],
+              fontWeight: FontWeight.w500,
             ),
-            child: const Icon(IconlyBold.filter),
+          ),
+          Icon(
+            Icons.keyboard_arrow_down,
+            size: context.mh * 0.02,
+            color: Colors.grey[700],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFilterButton(BuildContext context) {
+    return Container(
+      height: context.mh * 0.06,
+      padding: EdgeInsets.symmetric(horizontal: context.mw * 0.012),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(
+          color: Colors.grey.shade200,
+          width: 1,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            IconlyLight.filter,
+            size: context.mh * 0.02,
+            color: AppColor.primaryColor
+          ),
+          SizedBox(width: context.mw * 0.005),
+          Text(
+            "Filters",
+            style: TextStyle(
+              fontSize: context.mh * 0.015,
+              color: Colors.grey[700],
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),

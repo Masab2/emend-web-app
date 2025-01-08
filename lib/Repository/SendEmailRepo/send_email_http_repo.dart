@@ -7,18 +7,18 @@ class SendEmailHttpRepo implements SendEmailRepo {
   final _api = NetworkApiService();
   @override
   Future<SendEmailModel> sendEmailApi(
-    email,
+    List<Map<String, String>> selectedEmails,
     fromEmail,
     subject,
     contentType,
     content,
   ) async {
+    List<Map<String, String>> recipients = selectedEmails
+        .map((emailMap) => {"Email": emailMap["Email"]!})
+        .toList();
+
     Map<String, dynamic> data = {
-      "Recipients": [
-        {
-          "Email": email,
-        }
-      ],
+      "Recipients": recipients,
       "Content": {
         "From": fromEmail,
         "Subject": subject,
@@ -28,8 +28,8 @@ class SendEmailHttpRepo implements SendEmailRepo {
             "Content": content,
           },
         ],
-        "Charset": "utf-8"
-      }
+        "Charset": "utf-8",
+      },
     };
     final response = await _api.getPostApiResponse(
       AppUrl.sendEmail,

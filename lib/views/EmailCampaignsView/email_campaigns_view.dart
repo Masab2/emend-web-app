@@ -26,16 +26,14 @@ class _EmailCampaignsViewState extends State<EmailCampaignsView> {
             child: Container(
               color: AppColor.viewsBackgroundColor,
               alignment: Alignment.topCenter,
-              child: SingleChildScrollView(
-                  child: Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                spacing: context.mh * 0.02,
+                spacing: context.mh * 0.01,
                 children: const [
-                  EmailCampaignHeaderWidget(),
                   EmailCampaignCardWidget(),
                   EmailCampaignsListWidget(),
                 ],
-              )),
+              ),
             ),
           ),
         ],
