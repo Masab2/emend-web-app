@@ -67,7 +67,7 @@ class SideBarWidgets extends StatelessWidget {
       final isSidebarVisible = controller.isSidebarVisible.value;
 
       return AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 0),
         curve: Curves.easeInOutCubic,
         width: isSidebarVisible ? context.width * 0.17 : context.width * 0.06,
         decoration: BoxDecoration(
@@ -82,7 +82,6 @@ class SideBarWidgets extends StatelessWidget {
         ),
         child: Column(
           children: [
-            // Sidebar Header with Logo
             Container(
               height: context.height * 0.08,
               padding: EdgeInsets.symmetric(horizontal: context.width * 0.012),
@@ -110,20 +109,16 @@ class SideBarWidgets extends StatelessWidget {
                         letterSpacing: 0.3,
                       ),
                     ),
-                  IconButton(
-                    onPressed: controller.toggleSidebarVisibility,
-                    icon: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
-                      child: Icon(
-                        isSidebarVisible
-                            ? Icons.chevron_left
-                            : Icons.chevron_right,
-                        key: ValueKey<bool>(isSidebarVisible),
-                        size: context.height * 0.022, // Slightly reduced size
-                        color: AppColor.primaryColor,
-                      ),
+                  InkWell(
+                    onTap: controller.toggleSidebarVisibility,
+                    child: Icon(
+                      isSidebarVisible
+                          ? Icons.chevron_left
+                          : Icons.chevron_right,
+                      key: ValueKey<bool>(isSidebarVisible),
+                      size: context.height * 0.022,
+                      color: AppColor.primaryColor,
                     ),
-                    splashRadius: 20,
                   ),
                 ],
               ),
@@ -157,8 +152,7 @@ class SideBarWidgets extends StatelessWidget {
                           ),
                         ),
                       ...List.generate(
-                        (section['items'] as List)
-                            .length, // Type-safe length access
+                        (section['items'] as List).length,
                         (itemIndex) {
                           final item = section['items'][itemIndex];
                           final isSelected = controller.selectedIndex.value ==
@@ -206,8 +200,7 @@ class SideBarWidgets extends StatelessWidget {
                                         child: Text(
                                           item['title'],
                                           style: TextStyle(
-                                            fontSize: context.height *
-                                                0.016, // Reduced size
+                                            fontSize: context.height * 0.016,
                                             fontWeight: isSelected
                                                 ? FontWeight.w500
                                                 : FontWeight.w400,
