@@ -227,4 +227,19 @@ class ContactListController extends GetxController {
       );
     }
   }
+
+  // Delete Contact List & List
+  void deleteContactListAndList(listName) async {
+    await _createListAndContactRepo.deleteListandContacts(listName).then(
+      (value) {
+        Get.snackbar("Success", value.message ?? "");
+        getContactListApi();
+      },
+    ).onError(
+      (error, stackTrace) {
+        log(error.toString());
+        Get.snackbar("Error", error.toString());
+      },
+    );
+  }
 }

@@ -33,4 +33,7 @@ abstract class CreateListAndContactRepo {
     phone,
     listName,
   );
+
+  Future<AddSingleContactModel> deleteListandContacts(listName);
+  
 }

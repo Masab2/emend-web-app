@@ -243,8 +243,10 @@ class ContactListViewWidget extends StatelessWidget {
                                                       ),
                                                       TextButton(
                                                         onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
+                                                          controller
+                                                              .deleteContactListAndList(
+                                                                  data.name ??
+                                                                      "");
                                                         },
                                                         child: const Text(
                                                           'Delete',

@@ -101,4 +101,19 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     });
     return AddSingleContactModel.fromJson(response);
   }
+
+  @override
+  Future<AddSingleContactModel> deleteListandContacts(listName) async {
+    Map<String, dynamic> data = {
+      "listName": listName,
+    };
+    final response =
+        await _api.getDeleteApiResponse(AppUrl.deleteListUrl, data, {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${AppUrl.token}",
+      "Accept": "application/json",
+    });
+
+    return AddSingleContactModel.fromJson(response);
+  }
 }

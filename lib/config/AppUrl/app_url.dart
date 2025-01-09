@@ -1,7 +1,7 @@
 class AppUrl {
   static const String baseUrl = 'http://127.0.0.1:3000';
   // static const String baseUrl =
-      // 'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
+  // 'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
   // Auth Urls
   static String login(token) => '$baseUrl/auth/signin?token=$token';
   static const String register = '$baseUrl/auth/signup';
@@ -38,6 +38,9 @@ class AppUrl {
 
   // Add Single Contact in the List
   static const String addSingleContact = '$baseUrl/sms/single/contacts/add';
+
+  // Delete List and contacts in Url
+  static const String deleteListUrl = '$baseUrl/sms/lists/contacts/delete';
 
   // Temp Token
   static const String token =
