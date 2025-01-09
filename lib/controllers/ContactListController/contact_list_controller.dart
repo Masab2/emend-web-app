@@ -1,12 +1,15 @@
 import 'dart:developer';
+
 import 'package:emend_web_app/Model/GetAllContactModel/getAll_contact_model.dart';
 import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
 import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_http_repo.dart';
 import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_repo.dart';
 import 'package:emend_web_app/data/Response/status.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../config/utils/EasyLoading/custom_progress_indicator.dart';
 
 class ContactListController extends GetxController {
   RxBool showCreateContactView = false.obs;
@@ -205,13 +208,15 @@ class ContactListController extends GetxController {
         phone == "" &&
         email == "" &&
         listName == "") {
-      Get.snackbar("Error", "Please Fill All the Feilds");
+      Get.snackbar("Error", "Please Fill All the Fields");
     } else {
+      showLoader();
       await _createListAndContactRepo
           .addSingleContactApi(firstName, lastName, email, phone, listName)
           .then(
         (value) {
-          log("Contact Addedd Succesfully");
+          hideLoader();
+          log("Contact Added Successfully");
           singleFirstNameController.value.clear();
           singleLastNameController.value.clear();
           singleEmailController.value.clear();
@@ -221,6 +226,7 @@ class ContactListController extends GetxController {
         },
       ).onError(
         (error, stackTrace) {
+          hideLoader();
           log(error.toString());
           Get.snackbar("Error", error.toString());
         },
