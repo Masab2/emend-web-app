@@ -16,6 +16,7 @@ class CreateEmailController extends GetxController {
 
   final selectedTemplateType = 'saved'.obs;
   final singleEmailController = TextEditingController().obs;
+  final bulkEmailController = TextEditingController().obs;
   void showCreateEmailUi(bool visibility) {
     showCreateEmailView.value = visibility;
   }

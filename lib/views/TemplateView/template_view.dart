@@ -26,15 +26,17 @@ class TemplateView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Header
-                    const TemplateHeaderWidget(),
+                    0.01.ph(context),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "Email Templates",
                           style: TextStyle(
-                            fontSize: context.mh * 0.028,
-                            fontWeight: FontWeight.w500,
+                            fontSize: context.mh * 0.020,
+                            fontWeight: FontWeight.w600,
+                            color: AppColor.primaryColor,
+                            letterSpacing: 0.3,
                           ),
                         ),
                         ElevatedButton(

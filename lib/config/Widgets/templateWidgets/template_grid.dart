@@ -2,6 +2,7 @@
 
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
+import 'package:emend_web_app/config/components/EmptyStateComponent/empty_state_component.dart';
 import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
 import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
@@ -10,6 +11,7 @@ import 'package:emend_web_app/controllers/TemplateController/template_controller
 import 'package:emend_web_app/data/Response/status.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
 
 class TemplateGrid extends StatelessWidget {
   TemplateGrid({super.key});
@@ -38,7 +40,10 @@ class TemplateGrid extends StatelessWidget {
     final templates = controller.templateModel.value.templates;
 
     if (templates == null || templates.isEmpty) {
-      return _buildEmptyState(context);
+      return const EmptyStateComponent(
+        title: 'No Templates Available',
+        icon: IconlyLight.document,
+      );
     }
 
     return Padding(
@@ -56,30 +61,6 @@ class TemplateGrid extends StatelessWidget {
           itemBuilder: (context, index) =>
               _buildTemplateCard(context, templates[index]),
         ),
-      ),
-    );
-  }
-
-  Widget _buildEmptyState(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.description_outlined,
-            size: context.mh * 0.06,
-            color: Colors.grey[400],
-          ),
-          SizedBox(height: context.mh * 0.02),
-          Text(
-            'No templates available',
-            style: TextStyle(
-              fontSize: context.mh * 0.018,
-              fontWeight: FontWeight.w600,
-              color: Colors.grey[800],
-            ),
-          ),
-        ],
       ),
     );
   }

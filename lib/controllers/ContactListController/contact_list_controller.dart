@@ -20,9 +20,13 @@ class ContactListController extends GetxController {
   TextEditingController editEmailController = TextEditingController();
   TextEditingController editPhoneController = TextEditingController();
 
+  var singleFirstNameController = TextEditingController().obs;
+  var singleLastNameController = TextEditingController().obs;
+  var singleEmailController = TextEditingController().obs;
+  var singlePhoneController = TextEditingController().obs;
+
   @override
   void onInit() {
-    getContactListApi();
     getAllContactApi();
     super.onInit();
   }
@@ -191,5 +195,36 @@ class ContactListController extends GetxController {
         setRxRequestStatusForGetContacts(Status.error);
       },
     );
+  }
+
+  // Add Single Contact in the List
+  void addSingleContactInList(
+      firstName, lastName, phone, email, listName) async {
+    if (firstName == "" &&
+        lastName == "" &&
+        phone == "" &&
+        email == "" &&
+        listName == "") {
+      Get.snackbar("Error", "Please Fill All the Feilds");
+    } else {
+      await _createListAndContactRepo
+          .addSingleContactApi(firstName, lastName, email, phone, listName)
+          .then(
+        (value) {
+          log("Contact Addedd Succesfully");
+          singleFirstNameController.value.clear();
+          singleLastNameController.value.clear();
+          singleEmailController.value.clear();
+          singlePhoneController.value.clear();
+          Get.back();
+          getContactListApi();
+        },
+      ).onError(
+        (error, stackTrace) {
+          log(error.toString());
+          Get.snackbar("Error", error.toString());
+        },
+      );
+    }
   }
 }

@@ -1,12 +1,12 @@
 import 'dart:typed_data';
 
+import 'package:emend_web_app/Model/AddSingleContactModel/add_single_contact_model.dart';
 import 'package:emend_web_app/Model/CreateContactInListModel/create_contact_in_list_model.dart';
 import 'package:emend_web_app/Model/CreateListModel/create_list_model.dart';
 import 'package:emend_web_app/Model/GetAllContactModel/getAll_contact_model.dart';
 import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
 import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_repo.dart';
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
-import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 
 class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
@@ -63,7 +63,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     };
     final response = await _api.getPostApiResponse(AppUrl.updateContact, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${token.value}",
+      "Authorization": "Bearer ${AppUrl.token}",
       "Accept": "application/json",
     });
     return CreateContactInListModel.fromJson(response);
@@ -76,5 +76,29 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     });
 
     return GetAllContacts.fromJson(response);
+  }
+
+  @override
+  Future<AddSingleContactModel> addSingleContactApi(
+    firstName,
+    lastName,
+    email,
+    phone,
+    listName,
+  ) async {
+    Map<String, dynamic> data = {
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "phone": phone,
+      "listName": listName,
+    };
+    final response =
+        await _api.getPostApiResponse(AppUrl.addSingleContact, data, {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${AppUrl.token}",
+      "Accept": "application/json",
+    });
+    return AddSingleContactModel.fromJson(response);
   }
 }

@@ -36,7 +36,10 @@ class AppUrl {
   // Get Template
   static const String getAllTemplates = '$baseUrl/templates';
 
+  // Add Single Contact in the List
+  static const String addSingleContact = '$baseUrl/sms/single/contacts/add';
+
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksImVtYWlsIjoiZmFpemFhc2hyYWYwNzg2QGdtYWlsLmNvbSIsImlhdCI6MTczNjI3NTU4NCwiZXhwIjoxNzM2MzYxOTg0fQ.RhvtsYCtmTC2M-3COcNxvu__M-hG9mUT94mtxBo9JJc";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAsImVtYWlsIjoibWFzYWJAd2F0dGxlc29sLmNvbSIsImlhdCI6MTczNjQ0MTc2MSwiZXhwIjoxNzM2NTI4MTYxfQ.uFeY-04MJebolJ27qllgCVz5ouwkYyEbqy2mkPmsoTM";
 }

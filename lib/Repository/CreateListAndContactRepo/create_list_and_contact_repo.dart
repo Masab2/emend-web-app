@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:emend_web_app/Model/AddSingleContactModel/add_single_contact_model.dart';
 import 'package:emend_web_app/Model/CreateContactInListModel/create_contact_in_list_model.dart';
 import 'package:emend_web_app/Model/CreateListModel/create_list_model.dart';
 import 'package:emend_web_app/Model/GetAllContactModel/getAll_contact_model.dart';
@@ -23,4 +24,13 @@ abstract class CreateListAndContactRepo {
 
   // Get All Contacts
   Future<GetAllContacts> getAllContactsApi();
+
+  // Add Single Contact in the List
+  Future<AddSingleContactModel> addSingleContactApi(
+    firstName,
+    lastName,
+    email,
+    phone,
+    listName,
+  );
 }

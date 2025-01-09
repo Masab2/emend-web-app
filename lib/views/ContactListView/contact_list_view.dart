@@ -32,6 +32,12 @@ class _ContactListViewState extends State<ContactListView> {
   }
 
   @override
+  void initState() {
+    controller.getContactListApi();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
@@ -56,7 +62,7 @@ class _ContactListViewState extends State<ContactListView> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             MaterialButton(
-                              minWidth: context.mw * 0.15,
+                              minWidth: context.mw * 0.10,
                               color: AppColor.primaryColor,
                               height: context.mh * 0.06,
                               shape: RoundedRectangleBorder(
@@ -75,7 +81,7 @@ class _ContactListViewState extends State<ContactListView> {
                               child: Text(
                                 "Create List",
                                 style: TextStyle(
-                                  fontSize: context.mh * 0.02,
+                                  fontSize: context.mh * 0.013,
                                   fontWeight: FontWeight.w600,
                                   color: AppColor.whiteColor,
                                 ),
@@ -83,7 +89,7 @@ class _ContactListViewState extends State<ContactListView> {
                             ),
                             0.01.pw(context),
                             MaterialButton(
-                              minWidth: context.mw * 0.15,
+                              minWidth: context.mw * 0.10,
                               color: AppColor.secondaryColor,
                               height: context.mh * 0.06,
                               shape: RoundedRectangleBorder(
@@ -93,7 +99,7 @@ class _ContactListViewState extends State<ContactListView> {
                               child: Text(
                                 "Download Demo CSV",
                                 style: TextStyle(
-                                  fontSize: context.mh * 0.02,
+                                  fontSize: context.mh * 0.013,
                                   fontWeight: FontWeight.w600,
                                   color: AppColor.whiteColor,
                                 ),

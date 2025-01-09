@@ -103,7 +103,7 @@ class EmailCampaignCardWidget extends StatelessWidget {
                         end: Alignment.bottomRight,
                       ),
                       onTap: () =>
-                          Get.toNamed(RouteNames.createSmsBulkCampaignScreen),
+                          Get.toNamed(RouteNames.createBulkEmailScreen),
                     ),
                   ),
                 ],

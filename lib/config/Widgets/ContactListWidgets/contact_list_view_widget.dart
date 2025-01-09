@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_is_empty
 
 import 'package:emend_web_app/config/Routes/route_names.dart';
+import 'package:emend_web_app/config/components/EmptyStateComponent/empty_state_component.dart';
 import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
 import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/utils/Dialog/add_single_contact_in_list_dialog.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
 import 'package:emend_web_app/data/Response/status.dart';
 import 'package:emend_web_app/views/views.dart';
@@ -85,11 +87,17 @@ class ContactListViewWidget extends StatelessWidget {
                       case Status.loading:
                         return const LoadingComponent(title: "List Loading...");
                       case Status.completed:
+                        final list = controller.getListModel.value.list;
+                        if (list == null || list.isEmpty) {
+                          return const EmptyStateComponent(
+                            title: "No List Available",
+                            icon: IconlyLight.user,
+                          );
+                        }
                         return ListView.builder(
-                          itemCount: controller.getListModel.value.list?.length,
+                          itemCount: list.length,
                           itemBuilder: (context, index) {
-                            var data =
-                                controller.getListModel.value.list?[index];
+                            var data = list[index];
                             return Container(
                               margin: EdgeInsets.symmetric(
                                   horizontal: context.mw * 0.02),
@@ -113,7 +121,7 @@ class ContactListViewWidget extends StatelessWidget {
                                       SizedBox(
                                         width: context.mw * 0.20,
                                         child: Text(
-                                          data?.name ?? "",
+                                          data.name ?? "",
                                           style: TextStyle(
                                             fontSize: context.mh * 0.02,
                                             fontWeight: FontWeight.w600,
@@ -128,7 +136,7 @@ class ContactListViewWidget extends StatelessWidget {
                                         child: SizedBox(
                                           width: context.mw * 0.20,
                                           child: Text(
-                                            "${data?.contacts?.length} Contacts",
+                                            "${data.contacts?.length ?? 0} Contacts",
                                             style: TextStyle(
                                               fontSize: context.mh * 0.02,
                                               fontWeight: FontWeight.w600,
@@ -136,23 +144,52 @@ class ContactListViewWidget extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      // Actions column with multiple icons
                                       SizedBox(
                                         width: context.mw * 0.15,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            // Add Contact Icon
                                             IconButton(
                                               onPressed: () {
-                                                if (data?.contacts?.length ==
-                                                    0) {
-                                                  controller
-                                                      .createContactInList(
-                                                    data?.name ?? "",
-                                                  );
-                                                }
+                                                AddSingleContactInListDialog
+                                                    .showAddContactDialog(
+                                                  context,
+                                                  firstNameController: controller
+                                                      .singleFirstNameController
+                                                      .value,
+                                                  lastNameController: controller
+                                                      .singleLastNameController
+                                                      .value,
+                                                  emailController: controller
+                                                      .singleEmailController
+                                                      .value,
+                                                  phoneController: controller
+                                                      .singlePhoneController
+                                                      .value,
+                                                  onAdd: () {
+                                                    controller
+                                                        .addSingleContactInList(
+                                                      controller
+                                                          .singleFirstNameController
+                                                          .value
+                                                          .text,
+                                                      controller
+                                                          .singleLastNameController
+                                                          .value
+                                                          .text,
+                                                      controller
+                                                          .singlePhoneController
+                                                          .value
+                                                          .text,
+                                                      controller
+                                                          .singleEmailController
+                                                          .value
+                                                          .text,
+                                                      data.name ?? "",
+                                                    );
+                                                  },
+                                                );
                                               },
                                               icon: Icon(
                                                 IconlyLight.add_user,
@@ -161,15 +198,13 @@ class ContactListViewWidget extends StatelessWidget {
                                               ),
                                               tooltip: 'Add Contact',
                                             ),
-                                            // Upload CSV Icon
                                             IconButton(
                                               onPressed: () {
-                                                if (data?.contacts?.length ==
+                                                if (data.contacts?.length ==
                                                     0) {
                                                   controller
                                                       .createContactInList(
-                                                    data?.name ?? "",
-                                                  );
+                                                          data.name ?? "");
                                                 }
                                               },
                                               icon: Icon(
@@ -179,7 +214,6 @@ class ContactListViewWidget extends StatelessWidget {
                                               ),
                                               tooltip: 'Upload CSV',
                                             ),
-                                            // Edit Icon
                                             IconButton(
                                               onPressed: () {},
                                               icon: Icon(
@@ -189,10 +223,8 @@ class ContactListViewWidget extends StatelessWidget {
                                               ),
                                               tooltip: 'Edit',
                                             ),
-                                            // Delete Icon
                                             IconButton(
                                               onPressed: () {
-                                                // Handle delete with confirmation
                                                 showDialog(
                                                   context: context,
                                                   builder: (context) =>
