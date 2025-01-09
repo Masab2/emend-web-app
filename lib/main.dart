@@ -11,6 +11,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'config/utils/EasyLoading/custom_progress_indicator.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -26,7 +27,7 @@ void main() async {
     },
   );
   usePathUrlStrategy();
-
+  configEasyLoading();
   runApp(const MyApp());
 }
 
