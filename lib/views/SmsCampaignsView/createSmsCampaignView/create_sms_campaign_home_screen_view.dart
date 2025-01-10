@@ -156,32 +156,6 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
               onChanged: (value) => controller.selectedInbox.value = value!,
             ),
             context),
-        _buildFormField(
-          'Tags',
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Add Tag',
-              hintStyle: TextStyle(fontSize: context.mh * 0.020),
-              border: InputBorder.none,
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            ),
-          ),
-          context,
-        ),
-        _buildFormField(
-          'Timezone',
-          DropdownButtonFormField<String>(
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            ),
-            items: const [],
-            onChanged: (value) => controller.selectedTimezone.value = value!,
-          ),
-          context,
-        ),
       ],
     );
   }

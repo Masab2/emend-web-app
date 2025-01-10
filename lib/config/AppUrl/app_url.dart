@@ -42,7 +42,10 @@ class AppUrl {
   // Delete List and contacts in Url
   static const String deleteListUrl = '$baseUrl/sms/lists/contacts/delete';
 
+  // Update ListName
+  static const String updateListNameUrl = "$baseUrl/sms/lists/update";
+
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAsImVtYWlsIjoibWFzYWJAd2F0dGxlc29sLmNvbSIsImlhdCI6MTczNjQ0MTc2MSwiZXhwIjoxNzM2NTI4MTYxfQ.uFeY-04MJebolJ27qllgCVz5ouwkYyEbqy2mkPmsoTM";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsImVtYWlsIjoibWFzYWJAd2F0dGxlc29sLmNvbSIsImlhdCI6MTczNjUyNjAzOCwiZXhwIjoxNzM2NjEyNDM4fQ.NoUSr__TFXJOUjjYeEZTasOr6FPoM3WWAtVkOdycmr0";
 }

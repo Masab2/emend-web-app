@@ -6,6 +6,7 @@ import 'package:emend_web_app/config/components/ErrorComponent/error_component.d
 import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/utils/Dialog/add_single_contact_in_list_dialog.dart';
+import 'package:emend_web_app/config/utils/Dialog/create_list_dialog_box.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
 import 'package:emend_web_app/data/Response/status.dart';
 import 'package:emend_web_app/views/views.dart';
@@ -81,7 +82,7 @@ class ContactListViewWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: context.mh * 0.85,
+                  height: context.mh * 0.75,
                   child: Obx(() {
                     switch (controller.rxRequestStatus.value) {
                       case Status.loading:
@@ -130,8 +131,10 @@ class ContactListViewWidget extends StatelessWidget {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          Get.toNamed(RouteNames
-                                              .contactListDetailsScreen);
+                                          Get.toNamed(
+                                              RouteNames
+                                                  .contactListDetailsScreen,
+                                              arguments: data.contacts);
                                         },
                                         child: SizedBox(
                                           width: context.mw * 0.20,
@@ -215,7 +218,22 @@ class ContactListViewWidget extends StatelessWidget {
                                               tooltip: 'Upload CSV',
                                             ),
                                             IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                CreateListDialogBox
+                                                    .showCreateListDialog(
+                                                  context,
+                                                  controller.nameController,
+                                                  () {
+                                                    controller
+                                                        .updateContactListName(
+                                                      data.name ?? "",
+                                                      controller.nameController
+                                                          .value.text,
+                                                    );
+                                                  },
+                                                  false,
+                                                );
+                                              },
                                               icon: Icon(
                                                 IconlyLight.edit,
                                                 size: context.mh * 0.026,
@@ -277,8 +295,11 @@ class ContactListViewWidget extends StatelessWidget {
                           },
                         );
                       case Status.error:
-                        return const ErrorComponent(
+                        return ErrorComponent(
                           title: 'Unable to Load The List',
+                          ontap: () {
+                            controller.getContactListApi();
+                          },
                         );
                       default:
                         return const SizedBox();

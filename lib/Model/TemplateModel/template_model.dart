@@ -10,7 +10,7 @@ TemplateModel templateModelFromJson(String str) =>
 String templateModelToJson(TemplateModel data) => json.encode(data.toJson());
 
 class TemplateModel {
-  final List<Template>? templates;
+  late final List<Template>? templates;
 
   TemplateModel({
     this.templates,

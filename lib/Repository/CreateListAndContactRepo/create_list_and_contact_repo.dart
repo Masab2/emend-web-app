@@ -35,5 +35,6 @@ abstract class CreateListAndContactRepo {
   );
 
   Future<AddSingleContactModel> deleteListandContacts(listName);
+  Future<AddSingleContactModel> updateListNameApi(listName, updatedListname);
   
 }

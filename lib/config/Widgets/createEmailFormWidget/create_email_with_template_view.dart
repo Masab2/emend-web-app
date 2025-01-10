@@ -1,21 +1,195 @@
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
+import 'package:emend_web_app/config/assets/image_asset.dart';
+import 'package:emend_web_app/config/components/EmptyStateComponent/empty_state_component.dart';
+import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
+import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
+import 'package:emend_web_app/config/routes/route_names.dart';
+import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
+import 'package:emend_web_app/data/Response/status.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconly/iconly.dart';
 
-import '../templateWidgets/template_grid.dart';
+import '../../Color/app_color.dart';
 
 class CreateEmailWithTemplateView extends StatelessWidget {
-  const CreateEmailWithTemplateView({super.key});
-
+  CreateEmailWithTemplateView({super.key});
+  final TemplateController controller = Get.put(TemplateController());
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: context.mh * 0.5,
-          width: context.mw,
-          child: SingleChildScrollView(child: TemplateGrid()),
+        // Header
+          Row(
+            children: [
+              Text(
+                "Email Preview",
+                style: GoogleFonts.outfit(
+                  fontWeight: FontWeight.bold,
+                  fontSize: context.mh * 0.025,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Icon(
+                Icons.arrow_forward_ios,
+                size: context.mh * 0.020,
+              ),
+            ],
+          ),
+          0.02.ph(context),
+        Obx(
+          () {
+            switch (controller.rxRequestStatusForAllTemplate.value) {
+              case Status.loading:
+                return const LoadingComponent(
+                  title: 'Template Loading...',
+                );
+              case Status.error:
+                return ErrorComponent(
+                  title: "Unable To Load the Templates",
+                  ontap: () {
+                    controller.getAllTemplateApi();
+                  },
+                );
+              case Status.completed:
+                return _buildCompletedState(context);
+              default:
+                return const SizedBox.shrink();
+            }
+          },
         ),
       ],
     );
+  }
+
+  Widget _buildCompletedState(BuildContext context) {
+    final templates = controller.templateModel.value.templates;
+
+    if (templates == null || templates.isEmpty) {
+      return const EmptyStateComponent(
+        title: 'No Templates Available',
+        icon: IconlyLight.document,
+      );
+    }
+
+    return Padding(
+      padding: EdgeInsets.all(context.mw * 0.02),
+      child: SizedBox(
+        height: context.mh * 0.6,
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: _getCrossAxisCount(context),
+            childAspectRatio: 0.8,
+            crossAxisSpacing: context.mw * 0.02,
+            mainAxisSpacing: context.mw * 0.02,
+          ),
+          itemCount: templates.length,
+          itemBuilder: (context, index) =>
+              _buildTemplateCard(context, templates[index]),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTemplateCard(BuildContext context, dynamic template) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Card(
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: InkWell(
+          onTap: () {
+            Get.toNamed(RouteNames.templateEditor);
+            templateCode.value = template.template ?? '';
+          },
+          borderRadius: BorderRadius.circular(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(12),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(ImageAsset.templateImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              // Template Info
+              Container(
+                padding: EdgeInsets.all(context.mw * 0.01),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          template.name ?? 'Untitled Template',
+                          style: TextStyle(
+                            fontSize: context.mh * 0.016,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[800],
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: context.mh * 0.005),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _buildTag(context, 'Email Template'),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTag(BuildContext context, String text) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.mw * 0.008,
+        vertical: context.mh * 0.004,
+      ),
+      decoration: BoxDecoration(
+        color: AppColor.primaryColor.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: context.mh * 0.012,
+          color: AppColor.primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+
+  int _getCrossAxisCount(BuildContext context) {
+    final width = context.mw;
+    if (width > 1600) return 6;
+    if (width > 1200) return 5;
+    if (width > 900) return 4;
+    if (width > 600) return 3;
+    return 2;
   }
 }

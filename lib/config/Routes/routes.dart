@@ -1,9 +1,13 @@
+import 'package:emend_web_app/config/AppUrl/app_url.dart';
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
+import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
 import 'package:emend_web_app/views/views.dart';
 import 'package:get/get.dart';
 
 import 'route_names.dart';
 
 class Routes {
+  final controller = Get.put(TemplateController());
   static appRoutes() => [
         GetPage(
           name: RouteNames.login,
@@ -37,7 +41,7 @@ class Routes {
         ),
         GetPage(
           name: RouteNames.templates,
-          page: () => const TemplateView(),
+          page: () => TemplateView(),
           transition: Transition.fadeIn,
         ),
         GetPage(
@@ -51,9 +55,12 @@ class Routes {
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: RouteNames.templateEditor,
+          name: "${RouteNames.templateEditor}${templateCode.value}/?token=${AppUrl.token}",
           page: () => const TemplateEditor(),
           transition: Transition.leftToRightWithFade,
+          parameters: const {
+            "token": AppUrl.token,
+          },
         ),
         GetPage(
           name: RouteNames.createSmsBulkCampaignScreen,

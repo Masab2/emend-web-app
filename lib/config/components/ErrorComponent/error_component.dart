@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 class ErrorComponent extends StatelessWidget {
   final String title;
-  const ErrorComponent({super.key, required this.title});
+  final VoidCallback ontap;
+  const ErrorComponent({super.key, required this.title, required this.ontap});
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -28,8 +29,7 @@ class ErrorComponent extends StatelessWidget {
           ),
           SizedBox(height: context.mh * 0.01),
           TextButton.icon(
-            onPressed: () {
-            },
+            onPressed: ontap,
             icon: const Icon(Icons.refresh_rounded),
             label: const Text('Retry'),
             style: TextButton.styleFrom(

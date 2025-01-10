@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/components/EmptyStateComponent/empty_state_component.dart';
@@ -27,7 +28,12 @@ class TemplateGrid extends StatelessWidget {
             title: 'Template Loading...',
           );
         case Status.error:
-          return const ErrorComponent(title: "Unable To Load the Templates");
+          return ErrorComponent(
+            title: "Unable To Load the Templates",
+            ontap: () {
+              controller.getAllTemplateApi();
+            },
+          );
         case Status.completed:
           return _buildCompletedState(context);
         default:
@@ -76,7 +82,7 @@ class TemplateGrid extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Get.toNamed(RouteNames.templateEditor);
-            controller.code.value = template.template ?? '';
+            templateCode.value = template.template ?? '';
           },
           borderRadius: BorderRadius.circular(12),
           child: Column(
@@ -123,7 +129,7 @@ class TemplateGrid extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 Get.toNamed(RouteNames.templateEditor);
-                                controller.code.value = template.template ?? '';
+                                templateCode.value = template.template ?? '';
                               },
                               icon: Icon(
                                 Icons.edit_outlined,

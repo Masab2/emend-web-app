@@ -86,11 +86,7 @@ class NetworkApiService implements BaseApiServices {
     dynamic responseJson;
     try {
       final response = await http
-          .delete(
-            Uri.parse(url),
-            headers: headers,
-            body: jsonEncode(data)
-          )
+          .delete(Uri.parse(url), headers: headers, body: jsonEncode(data))
           .timeout(const Duration(seconds: 30));
       responseJson = returnResponse(response);
     } on SocketException {
@@ -128,5 +124,30 @@ class NetworkApiService implements BaseApiServices {
         throw FetchDataException(
             'Error occurred while communicating with the server, Status Code: ${response.statusCode}');
     }
+  }
+
+  @override
+  Future getPutApiResponse(String url, data, headers) async {
+    if (kDebugMode) {
+      print('Update Request: $url');
+    }
+
+    dynamic responseJson;
+    try {
+      final response = await http
+          .put(Uri.parse(url), headers: headers, body: jsonEncode(data))
+          .timeout(const Duration(seconds: 30));
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw NoInternetException('No Internet Connection');
+    } on TimeoutException {
+      throw FetchDataException('Network Request timed out');
+    }
+
+    if (kDebugMode) {
+      print('Response: $responseJson');
+    }
+
+    return responseJson;
   }
 }

@@ -33,7 +33,7 @@ class _ContactListViewState extends State<ContactListView> {
 
   @override
   void initState() {
-    controller.getContactListApi();
+    // controller.getContactListApi();
     super.initState();
   }
 
@@ -50,7 +50,23 @@ class _ContactListViewState extends State<ContactListView> {
               color: AppColor.viewsBackgroundColor,
               child: Column(
                 children: [
-                  0.01.ph(context),
+                  0.02.ph(context),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Lists",
+                          style: TextStyle(
+                              fontSize: context.mh * 0.020,
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.primaryColor,
+                              letterSpacing: 0.3),
+                        )
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: context.mw * 0.03),
@@ -76,6 +92,7 @@ class _ContactListViewState extends State<ContactListView> {
                                     controller.createList();
                                     Navigator.pop(context);
                                   },
+                                  true,
                                 );
                               },
                               child: Text(

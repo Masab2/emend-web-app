@@ -3,8 +3,11 @@ import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
 class CreateListDialogBox {
-  static void showCreateListDialog(BuildContext context,
-      TextEditingController nameController, VoidCallback createList) {
+  static void showCreateListDialog(
+      BuildContext context,
+      TextEditingController nameController,
+      VoidCallback createList,
+      bool value) {
     showDialog(
       context: context,
       builder: (context) {
@@ -24,7 +27,7 @@ class CreateListDialogBox {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Create New List",
+                      value == true ? "Create New List" : "Update List Name",
                       style: TextStyle(
                         fontSize: context.mh * 0.028,
                         fontWeight: FontWeight.bold,
@@ -53,7 +56,7 @@ class CreateListDialogBox {
                 TextFormField(
                   controller: nameController,
                   decoration: InputDecoration(
-                    hintText: "Enter list name",
+                    hintText: value == true ?  "Enter list name" : "Enter the New Name",
                     hintStyle: TextStyle(
                       color: Colors.grey[400],
                       fontSize: context.mh * 0.018,
@@ -127,7 +130,7 @@ class CreateListDialogBox {
                         ),
                       ),
                       child: Text(
-                        "Create List",
+                        value == true ? "Create List" : "Update List",
                         style: TextStyle(
                           color: AppColor.whiteColor,
                           fontSize: context.mh * 0.018,

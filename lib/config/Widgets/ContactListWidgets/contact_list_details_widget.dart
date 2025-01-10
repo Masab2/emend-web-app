@@ -1,3 +1,8 @@
+// ignore_for_file: must_be_immutable
+
+import 'dart:developer';
+import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
+import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/utils/Dialog/edit_contact_dialog.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
@@ -6,12 +11,15 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
 class ContactListDetailsWidget extends StatelessWidget {
-  const ContactListDetailsWidget({super.key});
+  List<Contact> contactlist;
+  ContactListDetailsWidget({super.key, required this.contactlist});
+  final ContactListController controller = Get.find<ContactListController>();
 
   @override
   Widget build(BuildContext context) {
-    final ContactListController controller = Get.put(ContactListController());
+    log(contactlist.length.toString());
     EditContactDialog editContactDialog = EditContactDialog();
+
     return Column(
       children: [
         Container(
@@ -71,131 +79,116 @@ class ContactListDetailsWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: context.mh * 0.85,
-          child: Obx(() {
-            return ListView.builder(
-              itemCount: controller.contactList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
-                  padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
-                  child: Column(
-                    spacing: context.mh * 0.02,
-                    children: [
-                      0.01.ph(context),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: context.mw * 0.03,
-                            child: Text(
-                              "${index + 1}",
-                              style: TextStyle(
-                                fontSize: context.mh * 0.02,
-                                fontWeight: FontWeight.w600,
-                              ),
+          height: context.mh * 0.75,
+          child: ListView.builder(
+            itemCount: contactlist.length,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
+                padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+                child: Column(
+                  spacing: context.mh * 0.02,
+                  children: [
+                    0.01.ph(context),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: context.mw * 0.03,
+                          child: Text(
+                            "${index + 1}",
+                            style: TextStyle(
+                              fontSize: context.mh * 0.02,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(
-                            width: context.mw * 0.20,
-                            child: Text(
-                              "${controller.contactList[index].firstName} ${controller.contactList[index].lastName}",
-                              style: TextStyle(
-                                fontSize: context.mh * 0.02,
-                                fontWeight: FontWeight.w600,
-                              ),
+                        ),
+                        SizedBox(
+                          width: context.mw * 0.20,
+                          child: Text(
+                            "${contactlist[index].firstName} ${contactlist[index].lastName}",
+                            style: TextStyle(
+                              fontSize: context.mh * 0.02,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(
-                            width: context.mw * 0.20,
-                            child: Text(
-                              controller.contactList[index].email ?? "",
-                              style: TextStyle(
-                                fontSize: context.mh * 0.02,
-                                fontWeight: FontWeight.w600,
-                              ),
+                        ),
+                        SizedBox(
+                          width: context.mw * 0.20,
+                          child: Text(
+                            contactlist[index].email ?? "",
+                            style: TextStyle(
+                              fontSize: context.mh * 0.02,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(
-                            width: context.mw * 0.07,
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Center(
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        controller.deleteContactList(
-                                            controller.contactList[index]);
-                                      },
-                                      child: Icon(
-                                        IconlyLight.delete,
-                                        color: Colors.red,
-                                        size: context.mh * 0.023,
-                                      ),
+                        ),
+                        SizedBox(
+                          width: context.mw * 0.07,
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Icon(
+                                      IconlyLight.delete,
+                                      color: Colors.red,
+                                      size: context.mh * 0.023,
                                     ),
                                   ),
-                                  0.02.pw(context),
-                                  Center(
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        controller.editFirstNameController
-                                            .text = controller
-                                                .contactList[index].firstName ??
-                                            "";
-                                        controller.editLastNameController.text =
-                                            controller.contactList[index]
-                                                    .lastName ??
-                                                "";
-                                        controller.editEmailController.text =
+                                ),
+                                0.02.pw(context),
+                                Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      controller.editFirstNameController.text =
+                                          contactlist[index].firstName ?? "";
+                                      controller.editLastNameController.text =
+                                          contactlist[index].lastName ?? "";
+                                      controller.editEmailController.text =
+                                          contactlist[index].email ?? "";
+                                      controller.editPhoneController.text =
+                                          contactlist[index].phone ?? "";
+                                      editContactDialog.showEditContactDialog(
+                                        context,
+                                        controller.editFirstNameController,
+                                        controller.editLastNameController,
+                                        controller.editEmailController,
+                                        controller.editPhoneController,
+                                        () {
+                                          controller.updateContactListApi(
+                                            controller.contactList[index].id,
                                             controller
-                                                    .contactList[index].email ??
-                                                "";
-                                        controller.editPhoneController.text =
+                                                .editFirstNameController.text,
                                             controller
-                                                    .contactList[index].phone ??
-                                                "";
-                                        editContactDialog.showEditContactDialog(
-                                          context,
-                                          controller.editFirstNameController,
-                                          controller.editLastNameController,
-                                          controller.editEmailController,
-                                          controller.editPhoneController,
-                                          () {
-                                            controller.updateContactListApi(
-                                              controller.contactList[index].id,
-                                              controller
-                                                  .editFirstNameController.text,
-                                              controller
-                                                  .editLastNameController.text,
-                                              controller
-                                                  .editEmailController.text,
-                                              controller
-                                                  .editPhoneController.text,
-                                            );
-                                            Navigator.pop(context);
-                                          },
-                                        );
-                                      },
-                                      child: Icon(
-                                        IconlyLight.edit_square,
-                                        color: Colors.blue,
-                                        size: context.mh * 0.023,
-                                      ),
+                                                .editLastNameController.text,
+                                            controller.editEmailController.text,
+                                            controller.editPhoneController.text,
+                                          );
+                                          Navigator.pop(context);
+                                        },
+                                      );
+                                    },
+                                    child: Icon(
+                                      IconlyLight.edit_square,
+                                      color: Colors.blue,
+                                      size: context.mh * 0.023,
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          }),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ],
     );

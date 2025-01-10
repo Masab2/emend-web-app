@@ -69,30 +69,51 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          log(controller.currentStep.value.toString());
-                          log(controller.selectedEmailType.value);
-                          if (controller.currentStep.value == 0 &&
-                              controller.singleEmailController.value.text
-                                  .isNotEmpty) {
-                            controller.nextStep();
-                          } else if (controller.currentStep.value == 1 &&
-                              controller.selectedEmailType.value != "") {
-                            controller.nextStep();
-                          } else if (controller.currentStep.value == 2) {
-                            if (controller.subjectController.value.text.isNotEmpty &&
-                                controller
-                                    .contentController.value.text.isNotEmpty &&
-                                controller.fromName.value.text.isNotEmpty &&
-                                controller.fromEmail.value.text.isNotEmpty) {
-                              controller.nextStep();
-                            } else {
-                              Get.snackbar(
-                                "Validation Error",
-                                "Please fill all the required fields before proceeding.",
-                                snackPosition: SnackPosition.BOTTOM,
-                              );
-                            }
-                          }
+                          log("Current Step Before Increment: ${controller.currentStep.value}");
+                          controller.nextStep();
+                          log("Current Step After Increment: ${controller.currentStep.value}");
+                          // if (controller.currentStep.value == 0) {
+                          //   if (controller
+                          //       .singleEmailController.value.text.isNotEmpty) {
+                          //     controller.nextStep();
+                          //   } else {
+                          //     Get.snackbar(
+                          //       "Validation Error",
+                          //       "Please provide the recipient's email address.",
+                          //       snackPosition: SnackPosition.BOTTOM,
+                          //     );
+                          //   }
+                          // } else if (controller.currentStep.value == 1) {
+                          //   if (controller.selectedEmailType.value.isNotEmpty) {
+                          //     controller.nextStep();
+                          //   } else {
+                          //     Get.snackbar(
+                          //       "Validation Error",
+                          //       "Please select an email type before proceeding.",
+                          //       snackPosition: SnackPosition.BOTTOM,
+                          //     );
+                          //   }
+                          // } else if (controller.currentStep.value == 2) {
+                          //   if (controller.selectedEmailType.value == "text") {
+                          //     if (controller.subjectController.value.text.isNotEmpty &&
+                          //         controller.contentController.value.text
+                          //             .isNotEmpty &&
+                          //         controller.fromName.value.text.isNotEmpty &&
+                          //         controller.fromEmail.value.text.isNotEmpty) {
+                          //       controller.nextStep();
+                          //     } else {
+                          //       Get.snackbar(
+                          //         "Validation Error",
+                          //         "Please fill all the required fields before proceeding.",
+                          //         snackPosition: SnackPosition.BOTTOM,
+                          //       );
+                          //     }
+                          //   } else {
+                          //     controller.nextStep();
+                          //   }
+                          // } else if (controller.currentStep.value == 3) {
+                          //   log("Preview step reached.");
+                          // }
                         },
                         child: const Text(
                           "Next",
@@ -156,12 +177,12 @@ class _CreateEmailCampaignViewState extends State<CreateEmailCampaignView> {
     switch (index) {
       case 0:
         return ContactListEmailWidget();
+      case 1:
+        return CreateEmailTypeWidget();
       case 2:
         return controller.selectedEmailType.value == "text"
             ? const CreateEmailFormSetupWidget()
-            : const CreateEmailWithTemplateView();
-      case 1:
-        return CreateEmailTypeWidget();
+            : CreateEmailWithTemplateView();
       case 3:
         return EmailPreviewWidget();
       default:

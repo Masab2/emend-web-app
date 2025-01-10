@@ -116,4 +116,20 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
 
     return AddSingleContactModel.fromJson(response);
   }
+
+  @override
+  Future<AddSingleContactModel> updateListNameApi(
+      listName, updatedListname) async {
+    Map<String, dynamic> data = {
+      "currentListName": listName,
+      "newListName": updatedListname,
+    };
+    final response =
+        await _api.getPutApiResponse(AppUrl.updateListNameUrl, data, {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${AppUrl.token}",
+      "Accept": "application/json",
+    });
+    return AddSingleContactModel.fromJson(response);
+  }
 }

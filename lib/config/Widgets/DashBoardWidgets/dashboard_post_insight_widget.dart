@@ -10,101 +10,113 @@ class PostInsightsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Card(
-      color: Colors.white,
+    return Container(
+      height: screenHeight * 0.27,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.grey.shade200,
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: SizedBox(
         height: screenHeight * 0.27,
-        child: SizedBox(
-          height: screenHeight * 0.27,
-          width: context.mw,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Title and Date Range Dropdown
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Post Insights",
-                          style: TextStyle(
-                            fontSize: context.mh * 0.018,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "Mar 26 - Apr 01",
-                          style: TextStyle(
-                            fontSize: context.mh * 0.018,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    DropdownButton<String>(
-                      value: "Week 1",
-                      items: <String>['Week 1', 'Week 2', 'Week 3']
-                          .map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(
-                            value,
-                            style: TextStyle(
-                              fontSize: context.mh * 0.014,
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {},
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              // Bar Chart
-              Expanded(
-                child: SfCartesianChart(
-                  plotAreaBorderWidth: 0,
-                  primaryXAxis: const CategoryAxis(
-                    axisLine: AxisLine(width: 0),
-                    majorTickLines: MajorTickLines(width: 0),
-                  ),
-                  primaryYAxis: const NumericAxis(
-                    isVisible: false,
-                    minimum: 0,
-                    maximum: 10,
-                    interval: 2,
-                  ),
-                  series: <CartesianSeries>[
-                    ColumnSeries<ChartData, String>(
-                      dataSource: _getChartData(),
-                      xValueMapper: (ChartData data, _) => data.day,
-                      yValueMapper: (ChartData data, _) => data.views,
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.primaryColor,
-                      width: 0.1,
-                    )
-                  ],
-                ),
-              ),
-
-              SizedBox(height: screenHeight * 0.02),
-              // Best and Worst Performance
-              Row(
+        width: context.mw,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Title and Date Range Dropdown
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _performanceWidget(
-                      context, "Best Performance", "Sunday", "8.6k"),
-                  0.01.pw(context),
-                  _performanceWidget(
-                      context, "Worst Performance", "Thursday", "246"),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Post Insights",
+                        style: TextStyle(
+                          fontSize: context.mh * 0.016,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        "Mar 26 - Apr 01",
+                        style: TextStyle(
+                          fontSize: context.mh * 0.012,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  DropdownButton<String>(
+                    value: "Week 1",
+                    items: <String>['Week 1', 'Week 2', 'Week 3']
+                        .map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: TextStyle(
+                            fontSize: context.mh * 0.014,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {},
+                  ),
                 ],
               ),
-            ],
-          ),
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            // Bar Chart
+            Expanded(
+              child: SfCartesianChart(
+                plotAreaBorderWidth: 0,
+                primaryXAxis: const CategoryAxis(
+                  axisLine: AxisLine(width: 0),
+                  majorTickLines: MajorTickLines(width: 0),
+                ),
+                primaryYAxis: const NumericAxis(
+                  isVisible: false,
+                  minimum: 0,
+                  maximum: 10,
+                  interval: 2,
+                ),
+                series: <CartesianSeries>[
+                  ColumnSeries<ChartData, String>(
+                    dataSource: _getChartData(),
+                    xValueMapper: (ChartData data, _) => data.day,
+                    yValueMapper: (ChartData data, _) => data.views,
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColor.primaryColor,
+                    width: 0.1,
+                  )
+                ],
+              ),
+            ),
+    
+            SizedBox(height: screenHeight * 0.02),
+            // Best and Worst Performance
+            Row(
+              children: [
+                _performanceWidget(
+                    context, "Best Performance", "Sunday", "8.6k"),
+                0.01.pw(context),
+                _performanceWidget(
+                    context, "Worst Performance", "Thursday", "246"),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -137,14 +149,14 @@ class PostInsightsWidget extends StatelessWidget {
               Text(
                 day,
                 style: TextStyle(
-                  fontSize: context.mh * 0.018,
+                  fontSize: context.mh * 0.014,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 value,
                 style: TextStyle(
-                  fontSize: context.mh * 0.018,
+                  fontSize: context.mh * 0.012,
                   fontWeight: FontWeight.bold,
                 ),
               ),

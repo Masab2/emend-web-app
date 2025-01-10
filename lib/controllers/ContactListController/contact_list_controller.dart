@@ -31,6 +31,7 @@ class ContactListController extends GetxController {
   @override
   void onInit() {
     getAllContactApi();
+    getContactListApi();
     super.onInit();
   }
 
@@ -237,6 +238,23 @@ class ContactListController extends GetxController {
   // Delete Contact List & List
   void deleteContactListAndList(listName) async {
     await _createListAndContactRepo.deleteListandContacts(listName).then(
+      (value) {
+        Get.snackbar("Success", value.message ?? "");
+        getContactListApi();
+      },
+    ).onError(
+      (error, stackTrace) {
+        log(error.toString());
+        Get.snackbar("Error", error.toString());
+      },
+    );
+  }
+
+  // Update Contact List Name
+  void updateContactListName(listName, newListName) async {
+    await _createListAndContactRepo
+        .updateListNameApi(listName, newListName)
+        .then(
       (value) {
         Get.snackbar("Success", value.message ?? "");
         getContactListApi();

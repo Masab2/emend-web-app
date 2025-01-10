@@ -27,8 +27,8 @@ class PostImpressionWidget extends StatelessWidget {
                 Text(
                   "ENGAGEMENT",
                   style: TextStyle(
-                    fontSize: context.mh * 0.018,
-                    fontWeight: FontWeight.w700,
+                    fontSize: context.mh * 0.016,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 0.01.ph(context),

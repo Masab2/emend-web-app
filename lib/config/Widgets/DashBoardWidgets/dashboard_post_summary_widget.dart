@@ -1,4 +1,3 @@
-import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
@@ -7,63 +6,75 @@ class DashboardPostSummaryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: AppColor.whiteColor,
-      child: SizedBox(
-        height: context.mh * 0.42,
-        child: Container(
-          height: context.mh * 0.42,
-          width: context.mw,
-          padding: EdgeInsets.symmetric(
-              horizontal: context.mw * 0.01, vertical: context.mh * 0.03),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Post Summary',
-                    style: TextStyle(
-                      fontSize: context.mh * 0.018,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Icon(Icons.more_horiz, color: Colors.grey),
-                ],
-              ),
-              SizedBox(height: context.mh * 0.01),
-              Text(
-                'Total of likes & comments',
-                style: TextStyle(
-                  fontSize: context.mh * 0.017,
-                  color: Colors.grey,
-                ),
-              ),
-              SizedBox(height: context.mh * 0.08),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildCircularIndicator(
-                    context: context,
-                    color: Colors.redAccent,
-                    value: 0.75, // 75% completion
-                    label: '2.864',
-                    subtitle: 'Likes',
-                  ),
-                  0.02.pw(context),
-                  _buildCircularIndicator(
-                    context: context,
-                    color: Colors.blueAccent,
-                    value: 0.4, // 40% completion
-                    label: '624',
-                    subtitle: 'Comments',
-                  ),
-                ],
-              ),
-            ],
+    return Container(
+      height: context.mh * 0.42,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.grey.shade200,
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
           ),
+        ],
+      ),
+      child: Container(
+        height: context.mh * 0.42,
+        width: context.mw,
+        padding: EdgeInsets.symmetric(
+            horizontal: context.mw * 0.01, vertical: context.mh * 0.03),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Post Summary',
+                  style: TextStyle(
+                    fontSize: context.mh * 0.016,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const Icon(Icons.more_horiz, color: Colors.grey),
+              ],
+            ),
+            SizedBox(height: context.mh * 0.01),
+            Text(
+              'Total of likes & comments',
+              style: TextStyle(
+                fontSize: context.mh * 0.013,
+                color: Colors.grey,
+              ),
+            ),
+            SizedBox(height: context.mh * 0.08),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildCircularIndicator(
+                  context: context,
+                  color: Colors.redAccent,
+                  value: 0.75, // 75% completion
+                  label: '2.864',
+                  subtitle: 'Likes',
+                ),
+                0.02.pw(context),
+                _buildCircularIndicator(
+                  context: context,
+                  color: Colors.blueAccent,
+                  value: 0.4, // 40% completion
+                  label: '624',
+                  subtitle: 'Comments',
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -104,14 +115,14 @@ class DashboardPostSummaryWidget extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            fontSize: context.mh * 0.017,
+            fontSize: context.mh * 0.014,
             fontWeight: FontWeight.w600,
           ),
         ),
         Text(
           subtitle,
           style: TextStyle(
-            fontSize: context.mh * 0.013,
+            fontSize: context.mh * 0.012,
             color: Colors.grey,
           ),
         ),
