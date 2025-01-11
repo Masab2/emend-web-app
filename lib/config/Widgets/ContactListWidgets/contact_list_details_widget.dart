@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:developer';
+
 import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
-import 'package:emend_web_app/config/Color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/config/utils/Dialog/edit_contact_dialog.dart';
 import 'package:emend_web_app/controllers/ContactListController/contact_list_controller.dart';
@@ -11,13 +11,13 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
 class ContactListDetailsWidget extends StatelessWidget {
-  List<Contact> contactlist;
-  ContactListDetailsWidget({super.key, required this.contactlist});
+  List<Contact> contactList;
+  ContactListDetailsWidget({super.key, required this.contactList});
   final ContactListController controller = Get.find<ContactListController>();
 
   @override
   Widget build(BuildContext context) {
-    log(contactlist.length.toString());
+    log(contactList.length.toString());
     EditContactDialog editContactDialog = EditContactDialog();
 
     return Column(
@@ -81,7 +81,7 @@ class ContactListDetailsWidget extends StatelessWidget {
         SizedBox(
           height: context.mh * 0.75,
           child: ListView.builder(
-            itemCount: contactlist.length,
+            itemCount: contactList.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.symmetric(horizontal: context.mw * 0.02),
@@ -105,7 +105,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                         SizedBox(
                           width: context.mw * 0.20,
                           child: Text(
-                            "${contactlist[index].firstName} ${contactlist[index].lastName}",
+                            "${contactList[index].firstName} ${contactList[index].lastName}",
                             style: TextStyle(
                               fontSize: context.mh * 0.02,
                               fontWeight: FontWeight.w600,
@@ -115,7 +115,7 @@ class ContactListDetailsWidget extends StatelessWidget {
                         SizedBox(
                           width: context.mw * 0.20,
                           child: Text(
-                            contactlist[index].email ?? "",
+                            contactList[index].email ?? "",
                             style: TextStyle(
                               fontSize: context.mh * 0.02,
                               fontWeight: FontWeight.w600,
@@ -144,13 +144,13 @@ class ContactListDetailsWidget extends StatelessWidget {
                                   child: GestureDetector(
                                     onTap: () {
                                       controller.editFirstNameController.text =
-                                          contactlist[index].firstName ?? "";
+                                          contactList[index].firstName ?? "";
                                       controller.editLastNameController.text =
-                                          contactlist[index].lastName ?? "";
+                                          contactList[index].lastName ?? "";
                                       controller.editEmailController.text =
-                                          contactlist[index].email ?? "";
+                                          contactList[index].email ?? "";
                                       controller.editPhoneController.text =
-                                          contactlist[index].phone ?? "";
+                                          contactList[index].phone ?? "";
                                       editContactDialog.showEditContactDialog(
                                         context,
                                         controller.editFirstNameController,

@@ -4,7 +4,7 @@ import 'package:emend_web_app/config/components/EmptyStateComponent/empty_state_
 import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
 import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/routes/route_names.dart';
+import 'package:emend_web_app/config/utils/helper_functions.dart';
 import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
 import 'package:emend_web_app/data/Response/status.dart';
 import 'package:flutter/material.dart';
@@ -22,23 +22,23 @@ class CreateEmailWithTemplateView extends StatelessWidget {
     return Column(
       children: [
         // Header
-          Row(
-            children: [
-              Text(
-                "Email Preview",
-                style: GoogleFonts.outfit(
-                  fontWeight: FontWeight.bold,
-                  fontSize: context.mh * 0.025,
-                ),
+        Row(
+          children: [
+            Text(
+              "Email Preview",
+              style: GoogleFonts.outfit(
+                fontWeight: FontWeight.bold,
+                fontSize: context.mh * 0.025,
               ),
-              const SizedBox(width: 8),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: context.mh * 0.020,
-              ),
-            ],
-          ),
-          0.02.ph(context),
+            ),
+            const SizedBox(width: 8),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: context.mh * 0.020,
+            ),
+          ],
+        ),
+        0.02.ph(context),
         Obx(
           () {
             switch (controller.rxRequestStatusForAllTemplate.value) {
@@ -103,8 +103,15 @@ class CreateEmailWithTemplateView extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            Get.toNamed(RouteNames.templateEditor);
+            // Get.toNamed(
+            //   RouteNames.templateEditor,
+            //   arguments: {
+            //     'code': templateCode.value,
+            //     'token': token.value,
+            //   },
+            // );
             templateCode.value = template.template ?? '';
+            HelperFunctions.launchInSameTab();
           },
           borderRadius: BorderRadius.circular(12),
           child: Column(

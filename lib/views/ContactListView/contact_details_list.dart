@@ -42,7 +42,7 @@ class ContactDetailsList extends StatelessWidget {
                     ),
                   ),
                   ContactListDetailsWidget(
-                    contactlist: contactList,
+                    contactList: contactList,
                   )
                 ],
               ),

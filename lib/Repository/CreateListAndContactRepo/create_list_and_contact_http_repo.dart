@@ -7,6 +7,7 @@ import 'package:emend_web_app/Model/GetAllContactModel/getAll_contact_model.dart
 import 'package:emend_web_app/Model/GetListModel/get_list_model.dart';
 import 'package:emend_web_app/Repository/CreateListAndContactRepo/create_list_and_contact_repo.dart';
 import 'package:emend_web_app/config/AppUrl/app_url.dart';
+import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/data/Network/network_api_service.dart';
 
 class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
@@ -20,7 +21,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     };
     final response = await _api.getPostApiResponse(AppUrl.createList, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
     });
     return CreateListModel.fromJson(response);
@@ -36,7 +37,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
 
     final response = await _api.getPostApiResponse(AppUrl.createContact, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
     });
 
@@ -46,7 +47,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
   @override
   Future<GetListModel> getContactsListApi() async {
     final response = await _api.getGetApiResponse(AppUrl.getList, {
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
     });
     return GetListModel.fromJson(response);
   }
@@ -63,7 +64,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     };
     final response = await _api.getPostApiResponse(AppUrl.updateContact, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
     });
     return CreateContactInListModel.fromJson(response);
@@ -72,7 +73,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
   @override
   Future<GetAllContacts> getAllContactsApi() async {
     final response = await _api.getGetApiResponse(AppUrl.getAllContactsUrl, {
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
     });
 
     return GetAllContacts.fromJson(response);
@@ -96,7 +97,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     final response =
         await _api.getPostApiResponse(AppUrl.addSingleContact, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
     });
     return AddSingleContactModel.fromJson(response);
@@ -110,7 +111,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     final response =
         await _api.getDeleteApiResponse(AppUrl.deleteListUrl, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
     });
 
@@ -127,7 +128,7 @@ class CreateListAndContactHttpRepo implements CreateListAndContactRepo {
     final response =
         await _api.getPutApiResponse(AppUrl.updateListNameUrl, data, {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
     });
     return AddSingleContactModel.fromJson(response);

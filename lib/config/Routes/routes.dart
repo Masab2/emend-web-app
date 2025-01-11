@@ -1,5 +1,3 @@
-import 'package:emend_web_app/config/AppUrl/app_url.dart';
-import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
 import 'package:emend_web_app/views/views.dart';
 import 'package:get/get.dart';
@@ -54,14 +52,11 @@ class Routes {
           page: () => const ContactListView(),
           transition: Transition.fadeIn,
         ),
-        GetPage(
-          name: "${RouteNames.templateEditor}${templateCode.value}/?token=${AppUrl.token}",
-          page: () => const TemplateEditor(),
-          transition: Transition.leftToRightWithFade,
-          parameters: const {
-            "token": AppUrl.token,
-          },
-        ),
+        // GetPage(
+        //   name: RouteNames.templateEditor,
+        //   page: () => TemplateEditor(),
+        //   transition: Transition.leftToRightWithFade,
+        // ),
         GetPage(
           name: RouteNames.createSmsBulkCampaignScreen,
           page: () => CreateSmsCampaignHomeScreenView(),

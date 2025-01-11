@@ -1,10 +1,5 @@
-import 'dart:developer';
-
-import 'package:emend_web_app/config/AppUrl/app_url.dart';
-import 'package:emend_web_app/config/GlobalVarriable/global.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/routes/route_names.dart';
 import 'package:emend_web_app/config/widgets/widgets.dart';
 import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +12,6 @@ class TemplateView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("${RouteNames.templateEditor}${templateCode.value}/?token=${AppUrl.token}");
     return Scaffold(
       body: Row(
         children: [
@@ -47,7 +41,13 @@ class TemplateView extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Get.toNamed(RouteNames.templateEditor);
+                            // Get.toNamed(
+                            //   RouteNames.templateEditor,
+                            //   arguments: {
+                            //     'code': templateCode.value,
+                            //     'token': token.value,
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColor.primaryColor,

@@ -8,7 +8,7 @@ class RouteNames {
   static const String templates = '/templates';
   static const String chats = '/chats';
   static const String contactList = '/contact-list';
-  static const String templateEditor = '/template-editor';
+  // static String templateEditor = '/template-editor';
   static const String createSmsBulkCampaignScreen = '/sms-campaigns/create';
   static const String createSmsOneToOneCampaignScreen =
       '/sms-campaigns/send-sms';

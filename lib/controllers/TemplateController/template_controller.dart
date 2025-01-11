@@ -8,9 +8,8 @@ import 'package:get/get.dart';
 class TemplateController extends GetxController {
   final rxRequestStatusForAllTemplate = Status.loading.obs;
   var templateModel = TemplateModel().obs;
-  // final code = ''.obs;
-
   final TemplateRepo _fetchTemplate = TemplateHttpRepo();
+  // final baseUrl = 'https://react-email-editor-ce42a.web.app';
 
   final searchController = TextEditingController().obs;
 

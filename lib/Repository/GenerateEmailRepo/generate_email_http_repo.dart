@@ -19,7 +19,7 @@ class GenerateEmailHttpRepo implements GenerateEmailRepo {
       "callToAction": callOfAction,
     };
     final response = await _api.getPostApiResponse(AppUrl.generateEmail, data, {
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
       "Content-Type": "application/json",
     });

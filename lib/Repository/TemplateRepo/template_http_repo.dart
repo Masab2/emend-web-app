@@ -13,7 +13,7 @@ class TemplateHttpRepo implements TemplateRepo {
     final response = await _api.getGetApiResponse(
       AppUrl.getAllTemplates,
       {
-        "Authorization": "Bearer ${AppUrl.token}",
+        "Authorization": "Bearer ${token.value}",
       },
     );
     return TemplateModel.fromJson(response);

@@ -43,7 +43,6 @@ class LoginView extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(context.mw * 0.02),
                       decoration: BoxDecoration(
-                       
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(context.mw * 0.01),
                         ),
@@ -215,15 +214,15 @@ class LoginView extends StatelessWidget {
       onPressed: authController.isLoading.value
           ? null
           : () {
-              // if (authController.emailController.text.isEmpty) {
-              //   Get.snackbar("Error", "Please enter your email address");
-              // } else {
-              //   authController.loginUser(
-              //     authController.emailController.text,
-              //     context,
-              //   );
-              // }
-              Get.toNamed(RouteNames.dashboard);
+              if (authController.emailController.text.isEmpty) {
+                Get.snackbar("Error", "Please enter your email address");
+              } else {
+                authController.loginUser(
+                  authController.emailController.text,
+                  context,
+                );
+              }
+              // Get.toNamed(RouteNames.dashboard);
             },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primaryColor,

@@ -1,7 +1,7 @@
 class AppUrl {
-  static const String baseUrl = 'http://127.0.0.1:3000';
-  // static const String baseUrl =
-  // 'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
+  // static const String baseUrl = 'http://127.0.0.1:3000';
+  static const String baseUrl =
+      'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
   // Auth Urls
   static String login(token) => '$baseUrl/auth/signin?token=$token';
   static const String register = '$baseUrl/auth/signup';

@@ -7,7 +7,7 @@ import 'package:emend_web_app/config/components/EmptyStateComponent/empty_state_
 import 'package:emend_web_app/config/components/ErrorComponent/error_component.dart';
 import 'package:emend_web_app/config/components/LoadingComponent/loading_component.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/config/routes/route_names.dart';
+import 'package:emend_web_app/config/utils/helper_functions.dart';
 import 'package:emend_web_app/controllers/TemplateController/template_controller.dart';
 import 'package:emend_web_app/data/Response/status.dart';
 import 'package:flutter/material.dart';
@@ -81,8 +81,15 @@ class TemplateGrid extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            Get.toNamed(RouteNames.templateEditor);
             templateCode.value = template.template ?? '';
+            HelperFunctions.launchInSameTab();
+            // Get.toNamed(
+            //   RouteNames.templateEditor,
+            //   arguments: {
+            //     'code': templateCode.value,
+            //     'token': token.value,
+            //   },
+            // );
           },
           borderRadius: BorderRadius.circular(12),
           child: Column(
@@ -128,8 +135,9 @@ class TemplateGrid extends StatelessWidget {
                             _buildTag(context, 'Email Template'),
                             IconButton(
                               onPressed: () {
-                                Get.toNamed(RouteNames.templateEditor);
                                 templateCode.value = template.template ?? '';
+                                HelperFunctions.launchInSameTab();
+                                // Get.toNamed(RouteNames.templateEditor);
                               },
                               icon: Icon(
                                 Icons.edit_outlined,
