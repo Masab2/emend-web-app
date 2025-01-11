@@ -27,7 +27,7 @@ class CreateEmailController extends GetxController {
   var currentStep = 0.obs;
 
   void nextStep() {
-    if (currentStep.value < 2) currentStep.value++;
+    if (currentStep.value < 3) currentStep.value++;
   }
 
   void previousStep() {

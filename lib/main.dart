@@ -17,7 +17,6 @@ import 'firebase_options.dart';
 void main() async {
   log("Called");
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

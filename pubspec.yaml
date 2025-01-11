@@ -30,9 +30,10 @@ dependencies:
   shimmer: ^3.0.0
   shared_preferences: ^2.3.4
   dropdown_search: ^6.0.1
+  flutter_easyloading: ^3.0.5
+
   flutter_web_plugins:
     sdk: flutter
-  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:
