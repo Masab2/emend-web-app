@@ -48,6 +48,11 @@ class AppUrl {
   // Create Bulk Sms Campiagns URl
   static const String createBulkSmsCampaign = '$baseUrl/sms/createsmscampaign';
 
+  // Create Bulk Message Immidiate
+  static const String createBulkMessage = '$baseUrl/sms/createsmscampaignImmediate';
+
+  // Haymarket Inboxes Api
+  static const String inboxesUrl = "https://api.heymarket.com/v1/inboxes";
   // Temp Token
   static const String token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsImVtYWlsIjoibWFzYWJAd2F0dGxlc29sLmNvbSIsImlhdCI6MTczNjc2NzY0NCwiZXhwIjoxNzM2ODU0MDQ0fQ.9wqi0Jff-6xpRp1Ky5_d3NScw4wL8JVA7M7v1qooFmg";

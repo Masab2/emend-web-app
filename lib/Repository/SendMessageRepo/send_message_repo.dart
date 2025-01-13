@@ -3,6 +3,8 @@ import 'package:emend_web_app/Model/SendMessageModel/send_message_model.dart';
 
 abstract class SendMessageRepo {
   Future<SendMessageModel> singleSendMessageApi(phone, content);
-  Future<AddSingleContactModel> bulkSendMessageApi(campaignName, listid, inboxId, message , executeAt);
+  Future<AddSingleContactModel> bulkSendMessageSchdueleApi(campaignName, listid, inboxId, message , executeAt);
+  Future<AddSingleContactModel> bulkSendMessageImmidiateApi(campaignName, listid, inboxId, message);
+
 
 }

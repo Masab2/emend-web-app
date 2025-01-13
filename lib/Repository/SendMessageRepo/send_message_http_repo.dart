@@ -24,7 +24,7 @@ class SendMessageHttpRepo implements SendMessageRepo {
   }
 
   @override
-  Future<AddSingleContactModel> bulkSendMessageApi(
+  Future<AddSingleContactModel> bulkSendMessageSchdueleApi(
       campaignName, listid, inboxId, message, executeAt) async {
     Map<String, dynamic> data = {
       "campaignName": campaignName,
@@ -35,10 +35,29 @@ class SendMessageHttpRepo implements SendMessageRepo {
     };
     final response =
         await _api.getPostApiResponse(AppUrl.createBulkSmsCampaign, data, {
-      "Authorization": "Bearer ${AppUrl.token}",
+      "Authorization": "Bearer ${token.value}",
       "Accept": "application/json",
       "Content-Type": "application/json",
     });
+    return AddSingleContactModel.fromJson(response);
+  }
+
+  @override
+  Future<AddSingleContactModel> bulkSendMessageImmidiateApi(
+      campaignName, listid, inboxId, message) async {
+    Map<String, dynamic> data = {
+      "inboxId": inboxId,
+      "listId": listid,
+      "content": message,
+      "campaignName": campaignName,
+    };
+    final response =
+        await _api.getPostApiResponse(AppUrl.createBulkMessage, data, {
+      "Authorization": "Bearer ${token.value}",
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    });
+
     return AddSingleContactModel.fromJson(response);
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
@@ -9,13 +11,11 @@ import 'package:intl/intl.dart';
 
 class CreateSMSBulkCampaignView extends StatelessWidget {
   final StepController controller = Get.put(StepController());
-
+  final smsController = Get.put(SmsCampaignController());
   CreateSMSBulkCampaignView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final createSmsController = Get.put(SmsCampaignController());
-
     return SizedBox(
       height: context.mh,
       child: SingleChildScrollView(
@@ -23,7 +23,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
           child: Column(
             children: [
-              _buildHeader(context, createSmsController),
+              _buildHeader(context, smsController),
               0.01.ph(context),
               _buildMessageList(context),
             ],
@@ -35,10 +35,10 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
 
   Widget _buildHeader(
       BuildContext context, SmsCampaignController createSmsController) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        _buildAddMessageButton(context),
+        // _buildAddMessageButton(context),
       ],
     );
   }
@@ -150,7 +150,24 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
             const SizedBox(height: 16),
             _buildFieldChips(context),
             const SizedBox(height: 16),
-            _buildActionButtons(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildActionButtons(context),
+                _buildActionButton(
+                  context,
+                  "Send Message",
+                  Icons.send,
+                  () {
+                    log(smsController.selectListController.value.text);
+                    smsController.smsCampaignsApi(
+                      int.parse(smsController.selectListController.value.text),
+                      80020,
+                    );
+                  },
+                )
+              ],
+            ),
           ],
         ),
       ),
@@ -204,8 +221,9 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                     ),
                   ),
                   value: true,
-                  groupValue: controller.sendImmediately.value,
-                  onChanged: (value) => controller.sendImmediately.value = true,
+                  groupValue: smsController.sendImmediately.value,
+                  onChanged: (value) =>
+                      smsController.sendImmediately.value = true,
                   contentPadding: EdgeInsets.zero,
                 ),
                 RadioListTile<bool>(
@@ -216,12 +234,12 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                     ),
                   ),
                   value: false,
-                  groupValue: controller.sendImmediately.value,
+                  groupValue: smsController.sendImmediately.value,
                   onChanged: (value) =>
-                      controller.sendImmediately.value = false,
+                      smsController.sendImmediately.value = false,
                   contentPadding: EdgeInsets.zero,
                 ),
-                if (!controller.sendImmediately.value)
+                if (!smsController.sendImmediately.value)
                   _buildScheduleOptions(context),
               ],
             )),
@@ -242,18 +260,19 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           ),
           0.006.pw(context),
           Obx(() {
-            final formattedDate =
-                DateFormat('yyyy-MM-dd').format(controller.selectedDate.value);
+            final formattedDate = DateFormat('yyyy-MM-dd')
+                .format(smsController.selectedDate.value);
             return ElevatedButton(
-              onPressed: () => controller.pickDate(context),
+              onPressed: () => smsController.pickDate(context),
               child: Text(formattedDate),
             );
           }),
           0.006.pw(context),
           Obx(() {
-            final formattedTime = controller.selectedTime.value.format(context);
+            final formattedTime =
+                smsController.selectedTime.value.format(context);
             return ElevatedButton(
-              onPressed: () => controller.pickTime(context),
+              onPressed: () => smsController.pickTime(context),
               child: Text(formattedTime),
             );
           }),
@@ -275,6 +294,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         ),
         0.006.ph(context),
         TextField(
+          controller: smsController.textContentController.value,
           decoration: InputDecoration(
             hintStyle: TextStyle(fontSize: context.mh * 0.016),
             hintText:
@@ -306,7 +326,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: controller.fields.map((field) {
+          children: smsController.availableFields.map((field) {
             return InputChip(
               label: Text(field),
               onPressed: () {},
@@ -351,6 +371,46 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildActionButton(
+    BuildContext context,
+    String label,
+    IconData icon,
+    VoidCallback onTap,
+  ) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.mw * 0.015,
+          vertical: context.mh * 0.012,
+        ),
+        decoration: BoxDecoration(
+          color: AppColor.primaryColor.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              size: context.mh * 0.02,
+              color: AppColor.primaryColor,
+            ),
+            SizedBox(width: context.mw * 0.01),
+            Text(
+              label,
+              style: TextStyle(
+                color: AppColor.primaryColor,
+                fontSize: context.mh * 0.016,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

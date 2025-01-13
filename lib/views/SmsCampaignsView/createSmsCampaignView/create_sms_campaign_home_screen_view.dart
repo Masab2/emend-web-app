@@ -127,6 +127,7 @@ class CreateSmsCampaignHomeScreenView extends StatelessWidget {
         _buildFormField(
           'Campaign Name',
           TextField(
+            controller: smsController.campaignNameController.value,
             decoration: InputDecoration(
               hintText: 'Enter Campaign Name',
               hintStyle: TextStyle(fontSize: context.mh * 0.020),

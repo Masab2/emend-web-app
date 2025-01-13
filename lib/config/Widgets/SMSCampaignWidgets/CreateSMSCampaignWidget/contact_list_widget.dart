@@ -1,13 +1,15 @@
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
-import 'package:emend_web_app/controllers/StepController/step_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../controllers/controllers.dart';
 
 class ContactListSmsWidget extends StatelessWidget {
   final controller = Get.put(StepController());
   final focusNode = FocusNode();
   final searchController = TextEditingController();
+  final smsController = Get.put(SmsCampaignController());
 
   ContactListSmsWidget({super.key});
 
@@ -163,9 +165,10 @@ class ContactListSmsWidget extends StatelessWidget {
 
   Widget _buildListView() {
     return Obx(() => ListView.builder(
-          itemCount: controller.filteredContactLists.length,
+          itemCount: smsController.controller.getListModel.value.list?.length,
           itemBuilder: (context, index) {
-            final item = controller.filteredContactLists[index];
+            final item =
+                smsController.controller.getListModel.value.list?[index];
             return Container(
               decoration: BoxDecoration(
                 color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
@@ -174,13 +177,15 @@ class ContactListSmsWidget extends StatelessWidget {
                 ),
               ),
               child: ListTile(
-                title: Text(item['name'] as String),
+                title: Text(item?.name ?? ""),
                 trailing: Text(
-                  '${item['contacts']} Contact${item['contacts'] != 1 ? 's' : ''}',
+                  '${item?.contacts?.length} Contact',
                   style: TextStyle(color: Colors.grey.shade600),
                 ),
                 onTap: () {
-                  searchController.text = item['name'] as String;
+                  searchController.text = item?.name ?? "";
+                  smsController.selectListController.value.text =
+                      item?.id.toString() ?? "";
                   controller.isSearchFocused.value = false;
                   focusNode.unfocus();
                 },

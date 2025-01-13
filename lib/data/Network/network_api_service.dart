@@ -63,7 +63,7 @@ class NetworkApiService implements BaseApiServices {
     try {
       final response = await http
           .get(Uri.parse(url), headers: headers)
-          .timeout(const Duration(seconds: 30));
+          .timeout(const Duration(seconds: 60));
       responseJson = returnResponse(response);
     } on SocketException {
       throw NoInternetException('');
@@ -87,7 +87,7 @@ class NetworkApiService implements BaseApiServices {
     try {
       final response = await http
           .delete(Uri.parse(url), headers: headers, body: jsonEncode(data))
-          .timeout(const Duration(seconds: 30));
+          .timeout(const Duration(seconds: 60));
       responseJson = returnResponse(response);
     } on SocketException {
       throw NoInternetException('No Internet Connection');
@@ -136,7 +136,7 @@ class NetworkApiService implements BaseApiServices {
     try {
       final response = await http
           .put(Uri.parse(url), headers: headers, body: jsonEncode(data))
-          .timeout(const Duration(seconds: 30));
+          .timeout(const Duration(seconds: 60));
       responseJson = returnResponse(response);
     } on SocketException {
       throw NoInternetException('No Internet Connection');
