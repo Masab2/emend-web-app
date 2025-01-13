@@ -21,11 +21,10 @@ class AuthRepoHttpRepo implements AuthRepo {
   }
 
   @override
-  Future<UserModel> registerApi(name, email) async {
+  Future<UserModel> registerApi(email) async {
     final response = await _api.getPostApiResponse(
       AppUrl.register,
       {
-        "name": name,
         "email": email,
       },
       {

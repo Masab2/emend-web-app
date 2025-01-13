@@ -13,11 +13,6 @@ class Routes {
           transition: Transition.fadeIn,
         ),
         GetPage(
-          name: RouteNames.register,
-          page: () => const RegisterView(),
-          transition: Transition.fadeIn,
-        ),
-        GetPage(
           name: RouteNames.dashboard,
           page: () => const DashboardView(),
           transition: Transition.fadeIn,

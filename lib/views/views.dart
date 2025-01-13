@@ -14,8 +14,6 @@ export 'package:emend_web_app/views/EmailCampaignsView/email_campaigns_view.dart
 export './EmailCampaignsView/createEmailCampaign/create_bulk_email_view.dart';
 // *********************Emails View***************************************
 export 'package:emend_web_app/views/LoginView/login_view.dart';
-// *********************Register View*****************************
-export 'package:emend_web_app/views/RegisterView/register_view.dart';
 // *********************Reports View*************************************
 export 'package:emend_web_app/views/Reports/reports_view.dart';
 // *********************SMSCampaigns View*********************************

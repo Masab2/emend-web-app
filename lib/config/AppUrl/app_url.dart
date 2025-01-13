@@ -1,7 +1,7 @@
 class AppUrl {
-  // static const String baseUrl = 'http://127.0.0.1:3000';
-  static const String baseUrl =
-      'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
+  static const String baseUrl = 'http://127.0.0.1:3000';
+  // static const String baseUrl =
+  //     'https://bmms-backend.1hq4npdw3mqn0.us-west-2.cs.amazonlightsail.com';
   // Auth Urls
   static String login(token) => '$baseUrl/auth/signin?token=$token';
   static const String register = '$baseUrl/auth/signup';
@@ -45,7 +45,10 @@ class AppUrl {
   // Update ListName
   static const String updateListNameUrl = "$baseUrl/sms/lists/update";
 
+  // Create Bulk Sms Campiagns URl
+  static const String createBulkSmsCampaign = '$baseUrl/sms/createsmscampaign';
+
   // Temp Token
   static const String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsImVtYWlsIjoibWFzYWJAd2F0dGxlc29sLmNvbSIsImlhdCI6MTczNjUyNjAzOCwiZXhwIjoxNzM2NjEyNDM4fQ.NoUSr__TFXJOUjjYeEZTasOr6FPoM3WWAtVkOdycmr0";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsImVtYWlsIjoibWFzYWJAd2F0dGxlc29sLmNvbSIsImlhdCI6MTczNjc2NzY0NCwiZXhwIjoxNzM2ODU0MDQ0fQ.9wqi0Jff-6xpRp1Ky5_d3NScw4wL8JVA7M7v1qooFmg";
 }

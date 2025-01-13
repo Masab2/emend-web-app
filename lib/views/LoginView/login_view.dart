@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:emend_web_app/config/Routes/route_names.dart';
 import 'package:emend_web_app/config/assets/image_asset.dart';
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
@@ -95,38 +94,6 @@ class LoginView extends StatelessWidget {
                                 _buildSignInButton(context, authController)),
 
                             SizedBox(height: context.mh * 0.03),
-
-                            // Sign Up Link
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Don't have an account?",
-                                  style: TextStyle(
-                                    color: Colors.grey[600],
-                                    fontSize: context.mh * 0.016,
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () =>
-                                      Get.toNamed(RouteNames.register),
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: AppColor.primaryColor,
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: context.mw * 0.01,
-                                      vertical: context.mh * 0.01,
-                                    ),
-                                  ),
-                                  child: Text(
-                                    "Sign Up",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: context.mh * 0.016,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
                           ],
                         ),
                       ),
@@ -217,7 +184,7 @@ class LoginView extends StatelessWidget {
               if (authController.emailController.text.isEmpty) {
                 Get.snackbar("Error", "Please enter your email address");
               } else {
-                authController.loginUser(
+                authController.registerUser(
                   authController.emailController.text,
                   context,
                 );
@@ -245,7 +212,7 @@ class LoginView extends StatelessWidget {
               ),
             )
           : Text(
-              "Sign In",
+              "Continue With Email",
               style: TextStyle(
                 fontSize: context.mh * 0.018,
                 fontWeight: FontWeight.w500,
