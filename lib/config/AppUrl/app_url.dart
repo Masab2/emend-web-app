@@ -24,7 +24,8 @@ class AppUrl {
   // Genrate Email Url
   static const String generateEmail = '$baseUrl/api/generate-email';
 
-  // Send Email Url
+  // Send Email    Url utl utl
+  
   static const String sendEmail = '$baseUrl/email/sendEmail';
 
   // Send Message Url
