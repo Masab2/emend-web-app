@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:emend_web_app/config/color/app_color.dart';
 import 'package:emend_web_app/config/extensions/extension.dart';
 import 'package:emend_web_app/controllers/SMSCampaignController/sms_campaign_controller.dart';
@@ -11,7 +9,7 @@ import 'package:intl/intl.dart';
 
 class CreateSMSBulkCampaignView extends StatelessWidget {
   final StepController controller = Get.put(StepController());
-  final smsController = Get.put(SmsCampaignController());
+  final createSmsController = Get.put(SmsCampaignController());
   CreateSMSBulkCampaignView({super.key});
 
   @override
@@ -23,7 +21,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: context.mw * 0.01),
           child: Column(
             children: [
-              _buildHeader(context, smsController),
+              _buildHeader(context, createSmsController),
               0.01.ph(context),
               _buildMessageList(context),
             ],
@@ -33,14 +31,9 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
     );
   }
 
-<<<<<<< HEAD
   Widget _buildHeader(
       BuildContext context, SmsCampaignController createSmsController) {
     return const Row(
-=======
-  Widget _buildHeader(BuildContext context, SmsCampaignController createSmsController) {
-    return Row(
->>>>>>> 35a00d48c9fe0569d39c7bee45156a6abbbee1c2
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         // _buildAddMessageButton(context),
@@ -55,7 +48,8 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
             icon: const Icon(Icons.add, color: Colors.white),
             label: Text(
               'Add Message',
-              style: TextStyle(color: Colors.white, fontSize: context.mh * 0.018),
+              style:
+                  TextStyle(color: Colors.white, fontSize: context.mh * 0.018),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primaryColor,
@@ -163,11 +157,8 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                   "Send Message",
                   Icons.send,
                   () {
-                    log(smsController.selectListController.value.text);
-                    smsController.smsCampaignsApi(
-                      int.parse(smsController.selectListController.value.text),
-                      80020,
-                    );
+                    createSmsController.smsCampaignsApi(
+                        int.parse(createSmsController.selectListController.value.text), 80020);
                   },
                 )
               ],
@@ -192,7 +183,8 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         if (index > 0)
           TextButton.icon(
             onPressed: controller.decrementMessage,
-            icon: Icon(Icons.delete_outline, color: Colors.red, size: context.mh * 0.020),
+            icon: Icon(Icons.delete_outline,
+                color: Colors.red, size: context.mh * 0.020),
             label: Text(
               'Remove',
               style: TextStyle(color: Colors.red, fontSize: context.mh * 0.016),
@@ -224,9 +216,9 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                     ),
                   ),
                   value: true,
-                  groupValue: smsController.sendImmediately.value,
+                  groupValue: createSmsController.sendImmediately.value,
                   onChanged: (value) =>
-                      smsController.sendImmediately.value = true,
+                      createSmsController.sendImmediately.value = true,
                   contentPadding: EdgeInsets.zero,
                 ),
                 RadioListTile<bool>(
@@ -237,21 +229,13 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                     ),
                   ),
                   value: false,
-<<<<<<< HEAD
-                  groupValue: smsController.sendImmediately.value,
+                  groupValue: createSmsController.sendImmediately.value,
                   onChanged: (value) =>
-                      smsController.sendImmediately.value = false,
+                      createSmsController.sendImmediately.value = false,
                   contentPadding: EdgeInsets.zero,
                 ),
-                if (!smsController.sendImmediately.value)
+                if (!createSmsController.sendImmediately.value)
                   _buildScheduleOptions(context),
-=======
-                  groupValue: controller.sendImmediately.value,
-                  onChanged: (value) => controller.sendImmediately.value = false,
-                  contentPadding: EdgeInsets.zero,
-                ),
-                if (!controller.sendImmediately.value) _buildScheduleOptions(context),
->>>>>>> 35a00d48c9fe0569d39c7bee45156a6abbbee1c2
               ],
             )),
       ],
@@ -271,23 +255,19 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           ),
           0.006.pw(context),
           Obx(() {
-<<<<<<< HEAD
             final formattedDate = DateFormat('yyyy-MM-dd')
-                .format(smsController.selectedDate.value);
-=======
-            final formattedDate = DateFormat('yyyy-MM-dd').format(controller.selectedDate.value);
->>>>>>> 35a00d48c9fe0569d39c7bee45156a6abbbee1c2
+                .format(createSmsController.selectedDate.value);
             return ElevatedButton(
-              onPressed: () => smsController.pickDate(context),
+              onPressed: () => createSmsController.pickDate(context),
               child: Text(formattedDate),
             );
           }),
           0.006.pw(context),
           Obx(() {
             final formattedTime =
-                smsController.selectedTime.value.format(context);
+                createSmsController.selectedTime.value.format(context);
             return ElevatedButton(
-              onPressed: () => smsController.pickTime(context),
+              onPressed: () => createSmsController.pickTime(context),
               child: Text(formattedTime),
             );
           }),
@@ -309,10 +289,11 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         ),
         0.006.ph(context),
         TextField(
-          controller: smsController.textContentController.value,
+          controller: createSmsController.textContentController.value,
           decoration: InputDecoration(
             hintStyle: TextStyle(fontSize: context.mh * 0.016),
-            hintText: 'Hey {{first_name}}, Reply with STOP to stop receiving messages.',
+            hintText:
+                'Hey {{first_name}}, Reply with STOP to stop receiving messages.',
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),
@@ -340,48 +321,15 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: smsController.availableFields.map((field) {
+          children: createSmsController.availableFields.map((field) {
             return InputChip(
               label: Text(field),
               onPressed: () {},
               backgroundColor: AppColor.primaryColor.withValues(alpha: 0.1),
-              labelStyle: TextStyle(color: AppColor.primaryColor, fontSize: context.mh * 0.016),
+              labelStyle: TextStyle(
+                  color: AppColor.primaryColor, fontSize: context.mh * 0.016),
             );
           }).toList(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildActionButtons(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.insert_emoticon),
-          onPressed: () {},
-          tooltip: 'Add Emoji',
-        ),
-        IconButton(
-          icon: const Icon(Icons.attach_file),
-          onPressed: () {},
-          tooltip: 'Attach File',
-        ),
-        Container(
-          margin: const EdgeInsets.only(left: 16),
-          child: ElevatedButton.icon(
-            onPressed: () => _showAIAssistantDialog(context),
-            icon: const Icon(Icons.chat),
-            label: Text(
-              'AI Assistant',
-              style: TextStyle(fontSize: context.mh * 0.016),
-            ),
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          ),
         ),
       ],
     );
@@ -424,6 +372,40 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildActionButtons(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(
+          icon: const Icon(Icons.insert_emoticon),
+          onPressed: () {},
+          tooltip: 'Add Emoji',
+        ),
+        IconButton(
+          icon: const Icon(Icons.attach_file),
+          onPressed: () {},
+          tooltip: 'Attach File',
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 16),
+          child: ElevatedButton.icon(
+            onPressed: () => _showAIAssistantDialog(context),
+            icon: const Icon(Icons.chat),
+            label: Text(
+              'AI Assistant',
+              style: TextStyle(fontSize: context.mh * 0.016),
+            ),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -545,10 +527,12 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                         ),
                         0.006.ph(context),
                         TextFormField(
-                          controller: controller.additionalNotesController.value,
+                          controller:
+                              controller.additionalNotesController.value,
                           maxLines: 3,
                           decoration: InputDecoration(
-                            hintText: 'Add any additional notes or requirements',
+                            hintText:
+                                'Add any additional notes or requirements',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -606,7 +590,8 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                                 maxLines: 5,
                                 readOnly: true,
                                 decoration: InputDecoration(
-                                  hintText: 'Generated content will appear here',
+                                  hintText:
+                                      'Generated content will appear here',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -624,7 +609,8 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                                     ));
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content: Text('Content copied to clipboard'),
+                                        content:
+                                            Text('Content copied to clipboard'),
                                         duration: Duration(seconds: 2),
                                       ),
                                     );

@@ -165,10 +165,10 @@ class ContactListSmsWidget extends StatelessWidget {
 
   Widget _buildListView() {
     return Obx(() => ListView.builder(
-          itemCount: smsController.controller.getListModel.value.list?.length,
+          itemCount: smsController.contactListController.getListModel.value.list?.length,
           itemBuilder: (context, index) {
             final item =
-                smsController.controller.getListModel.value.list?[index];
+                smsController.contactListController.getListModel.value.list?[index];
             return Container(
               decoration: BoxDecoration(
                 color: index % 2 == 0 ? Colors.grey.shade100 : Colors.white,
