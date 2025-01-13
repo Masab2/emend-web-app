@@ -13,7 +13,7 @@ class SmsCampaignController extends GetxController {
     isDropdownOpen.value = !isDropdownOpen.value;
   }
 
-  final controller = Get.put(ContactListController());
+  final contactListController = Get.put(ContactListController());
 
   final messageController = TextEditingController();
   final availableFields = <String>[
@@ -28,6 +28,7 @@ class SmsCampaignController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    contactListController.getContactListApi();
     messageController.addListener(() {
       message.value = messageController.text;
     });
@@ -67,11 +68,11 @@ class SmsCampaignController extends GetxController {
 
   void sendSingleUserMessageApi() async {
     if (message.value == "") {
-      Get.snackbar("Empty Feilds", "Please Enter the message");
+      Get.snackbar("Empty Fields", "Please Enter the message");
     } else {
       await _repo
           .singleSendMessageApi(
-              controller.selectedContactController.value.text, message.value)
+              contactListController.selectedContactController.value.text, message.value)
           .then(
         (value) {
           Get.snackbar("Success", "Message Sent Successfully");

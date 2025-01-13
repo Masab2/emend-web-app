@@ -33,9 +33,14 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
     );
   }
 
+<<<<<<< HEAD
   Widget _buildHeader(
       BuildContext context, SmsCampaignController createSmsController) {
     return const Row(
+=======
+  Widget _buildHeader(BuildContext context, SmsCampaignController createSmsController) {
+    return Row(
+>>>>>>> 35a00d48c9fe0569d39c7bee45156a6abbbee1c2
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         // _buildAddMessageButton(context),
@@ -50,8 +55,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
             icon: const Icon(Icons.add, color: Colors.white),
             label: Text(
               'Add Message',
-              style:
-                  TextStyle(color: Colors.white, fontSize: context.mh * 0.018),
+              style: TextStyle(color: Colors.white, fontSize: context.mh * 0.018),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.primaryColor,
@@ -188,8 +192,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
         if (index > 0)
           TextButton.icon(
             onPressed: controller.decrementMessage,
-            icon: Icon(Icons.delete_outline,
-                color: Colors.red, size: context.mh * 0.020),
+            icon: Icon(Icons.delete_outline, color: Colors.red, size: context.mh * 0.020),
             label: Text(
               'Remove',
               style: TextStyle(color: Colors.red, fontSize: context.mh * 0.016),
@@ -234,6 +237,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                     ),
                   ),
                   value: false,
+<<<<<<< HEAD
                   groupValue: smsController.sendImmediately.value,
                   onChanged: (value) =>
                       smsController.sendImmediately.value = false,
@@ -241,6 +245,13 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                 ),
                 if (!smsController.sendImmediately.value)
                   _buildScheduleOptions(context),
+=======
+                  groupValue: controller.sendImmediately.value,
+                  onChanged: (value) => controller.sendImmediately.value = false,
+                  contentPadding: EdgeInsets.zero,
+                ),
+                if (!controller.sendImmediately.value) _buildScheduleOptions(context),
+>>>>>>> 35a00d48c9fe0569d39c7bee45156a6abbbee1c2
               ],
             )),
       ],
@@ -260,8 +271,12 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           ),
           0.006.pw(context),
           Obx(() {
+<<<<<<< HEAD
             final formattedDate = DateFormat('yyyy-MM-dd')
                 .format(smsController.selectedDate.value);
+=======
+            final formattedDate = DateFormat('yyyy-MM-dd').format(controller.selectedDate.value);
+>>>>>>> 35a00d48c9fe0569d39c7bee45156a6abbbee1c2
             return ElevatedButton(
               onPressed: () => smsController.pickDate(context),
               child: Text(formattedDate),
@@ -297,8 +312,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
           controller: smsController.textContentController.value,
           decoration: InputDecoration(
             hintStyle: TextStyle(fontSize: context.mh * 0.016),
-            hintText:
-                'Hey {{first_name}}, Reply with STOP to stop receiving messages.',
+            hintText: 'Hey {{first_name}}, Reply with STOP to stop receiving messages.',
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),
@@ -331,8 +345,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
               label: Text(field),
               onPressed: () {},
               backgroundColor: AppColor.primaryColor.withValues(alpha: 0.1),
-              labelStyle: TextStyle(
-                  color: AppColor.primaryColor, fontSize: context.mh * 0.016),
+              labelStyle: TextStyle(color: AppColor.primaryColor, fontSize: context.mh * 0.016),
             );
           }).toList(),
         ),
@@ -532,12 +545,10 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                         ),
                         0.006.ph(context),
                         TextFormField(
-                          controller:
-                              controller.additionalNotesController.value,
+                          controller: controller.additionalNotesController.value,
                           maxLines: 3,
                           decoration: InputDecoration(
-                            hintText:
-                                'Add any additional notes or requirements',
+                            hintText: 'Add any additional notes or requirements',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -595,8 +606,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                                 maxLines: 5,
                                 readOnly: true,
                                 decoration: InputDecoration(
-                                  hintText:
-                                      'Generated content will appear here',
+                                  hintText: 'Generated content will appear here',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -614,8 +624,7 @@ class CreateSMSBulkCampaignView extends StatelessWidget {
                                     ));
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content:
-                                            Text('Content copied to clipboard'),
+                                        content: Text('Content copied to clipboard'),
                                         duration: Duration(seconds: 2),
                                       ),
                                     );
