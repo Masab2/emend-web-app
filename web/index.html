@@ -38,5 +38,27 @@
   <script src="flutter.js" defer></script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyALPLzsz_7dYo7zsNRvxkTjSFZXKyj9ors",
+    authDomain: "emend-app-72300.firebaseapp.com",
+    projectId: "emend-app-72300",
+    storageBucket: "emend-app-72300.firebasestorage.app",
+    messagingSenderId: "824671639857",
+    appId: "1:824671639857:web:c128d9edbb40310c347810",
+    measurementId: "G-2Q4XVEYQ85"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </html>

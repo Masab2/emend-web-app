@@ -25,7 +25,7 @@ class AppUrl {
   static const String generateEmail = '$baseUrl/api/generate-email';
 
   // Send Email    Url utl utl
-  
+
   static const String sendEmail = '$baseUrl/email/sendEmail';
 
   // Send Message Url
@@ -37,7 +37,7 @@ class AppUrl {
   // Get Template
   static const String getAllTemplates = '$baseUrl/templates';
 
-  // Add Single Contact in the List
+  // Add Single Contact in the List list list 
   static const String addSingleContact = '$baseUrl/sms/single/contacts/add';
 
   // Delete List and contacts in Url
